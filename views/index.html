@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="node_modules/core-js/client/shim.min.js"></script>
+    <script src="node_modules/zone.js/dist/zone.js"></script>
+    <script src="node_modules/reflect-metadata/Reflect.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+    <script src="client/systemjs.config.js"></script>
+    <script src="public/jquery-3.1.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="public/bootstrap/css/bootstrap.min.css">
+    <script src="public/bootstrap/js/bootstrap.min.js"></script>
+    <script>
+      System.import('applicationStartup').catch(function (err) {
+        console.error(err);
+      });
+    </script>
+    <title>Document</title>
+    <base href="/">
+</head>
+<body>
+    <my-app>Loading...</my-app>
+</body>
+</html>
