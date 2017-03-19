@@ -8,6 +8,10 @@ import * as cookieParser from 'cookie-parser';
 import * as ejs from 'ejs';
 import * as path from 'path';
 import * as hbs from 'express-handlebars';
+import * as passport from 'passport';
+import * as LocalStrategy from 'passport-local';
+
+import { userRoute } from './routes';
 
 class Server {
     public test:string;
@@ -36,17 +40,18 @@ class Server {
             resave: false,
             saveUninitialized: true,
             cookie: { secure: true }
-        }))
+        }));
+
         this.app.use('/public', express.static(path.join(__dirname, '/../public')));
         this.app.use('/node_modules', express.static(path.join(__dirname, '/../node_modules')));
         this.app.use('/client', express.static(path.join(__dirname, '/../client')));
-
     }
 
     private router(){
         this.app.get('/', function(req, res){
             res.render('index.html');
         });
+        this.app.use('/user',userRoute);
     }
 
     private start(){

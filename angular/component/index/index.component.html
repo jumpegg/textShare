@@ -1,2 +1,53 @@
-<h1>{{title}}</h1>
-<button class="btn btn-primary" routerLink="/userpage">Login</button>
+<div class="container">
+    <div class="loginWrapper">
+        <div class="indexTitle">
+            <h3>Text Share</h3>
+        </div>
+        <hr>
+        <div class="tailPic">
+            <img src="public/img/Cat-typing.gif" alt="판사님 이건 저희집 고양이가 한것 입니다.">
+        </div>
+            <div class="form-group">
+                <label for="">ID</label>
+                <input type="text" [(ngModel)]="user.id" #userId="ngModel" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="">PASS</label>
+                <input type="text" [(ngModel)]="user.password" #userPassword="ngModel" class="form-control" >
+            </div>
+        <hr>
+        <button class="btn btn-success" data-toggle="modal" data-target="#SignUp">Sign Up</button>
+        <button class="btn btn-primary" (click)="login(user)">Login</button>
+    </div>
+    <div class="modal fade" id="SignUp">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>
+                        회원가입
+                    </h3>
+                </div>
+                <form [formGroup]="joinForm" (ngSubmit)="onSubmit($event)">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="">ID</label>
+                            <input type="text" class="form-control" formControlName="joinId">
+                        </div>
+                        <div class="form-group">
+                            <label for="">PASS</label>
+                            <input type="text" class="form-control" formControlName="joinPass">
+                        </div>
+                        <div class="form-group">
+                            <label for="">E-mail</label>
+                            <input type="text" class="form-control" formControlName="joinEmail">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" *ngIf="joinForm.valid">가입</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">취소</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -2,7 +2,8 @@ import {Component} from '@angular/core';
 
 @Component({
     selector: 'userpage',
-    templateUrl: 'client/component/userpage/userpage.component.html'
+    templateUrl: 'client/component/userpage/userpage.component.html',
+    styleUrls: ['client/component/userpage/userpage.component.css']
 })
 export class UserpageComponent {
     private title:String;
