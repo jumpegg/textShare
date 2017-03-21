@@ -13,6 +13,7 @@ import { UserService } from '../../service/user.service';
 export class IndexComponent{
     private title:String;
     private user:User;
+    private joiner:User;
     // Validators.pattern("")
     joinForm = new FormGroup({
         joinId : new FormControl('',Validators.compose([Validators.required])),
@@ -24,6 +25,7 @@ export class IndexComponent{
     constructor(private userService:UserService, private router:Router){
         this.title = "Index Page";
         this.user = new User();
+        this.joiner = new User();
     }
 // routerLink="/userpage"
     login(input){
@@ -39,5 +41,20 @@ export class IndexComponent{
             },
             error => alert(error)
         );
+    }
+    join(input){
+        this.userService.userInsert(input).subscribe(
+            data => {
+                if(data.mesg){
+                    alert('가입되었습니다!');
+                }else{
+                    alert('가입도중 문제가 발생했습니다.');
+                }
+            },
+            error =>{
+                console.log(error);
+                alert('가입도중 문제가 발생했습니다.')
+            }
+        )
     }
 }

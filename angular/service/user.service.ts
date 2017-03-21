@@ -13,7 +13,7 @@ export class UserService{
     }
 
     userInsert(input:User){
-        return this.http.post('/insert_user', input, {headers:this.header})
+        return this.http.post('/user/user_join', input, {headers:this.header})
             .map(res=>res.json());
     }
     userLogin(input:User){

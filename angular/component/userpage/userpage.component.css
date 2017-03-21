@@ -22,8 +22,21 @@
 label{
     cursor: pointer;
 }
-.well{
+.tree-list{
+    background-color: rgb(0, 0, 0);
     padding: 8px 0;
     border-radius: 0px;
     width:250px;
+    float:left;
+}
+.nav-list a{
+    border: 1px solid black;
+    color: #FFF;
+}
+.nav-list a:hover{
+    background-color: black;
+    border: 1px solid #FFF;
+}
+.main-view{
+    float:left
 }
