@@ -21,13 +21,26 @@ export class Crud{
             }
         })
     }
+    /**
+     * defaultInfo
+     * 테이블 기본정보 조회
+     */
     public defaultInfo() {
         return this.tableArr;
     }
+    /**
+     * selectAll
+     * 테이블을 모두 조회할 때 사용
+     */
     public selectAll(){
         this.query = `select * from ${this.table}`;
         this.type = true;
     }
+
+    /**
+     * selectOne
+     * 원하는 조건을 충족하는 1개 결과값을 원할 경우
+     */
     public selectOne(input:Map<string, string>){
         this.query = `select * from ${this.table} where `;
         for(let [key, val] of input.entries()){
@@ -35,28 +48,31 @@ export class Crud{
         }
         this.type = true;
     }
-    
+
     /**
      * insert 함수
      * map 형태의 input을 받음
      * key 값은 table 의 col 이름, val 값은 넣을 데이터
      */
-    public insert(input:Map<string, string>){
-        let colArr:Array<string> = [];
-        let valueArr:Array<string> = [];
+    public insert(input:Object){
+        let colArr:Array<any> = [];
+        let valueArr:Array<any> = [];
         let col:string;
         let value:string;
         this.query = `insert into ${this.table} `;
 
-        for(let [key, val] of input.entries()){
-            colArr.push(key);
-            valueArr.push(val);
-        }
+        Object.keys(input)
+            .map((e) => {
+                colArr.push(e);
+                valueArr.push(input[e]);
+            });
         col = colArr.join(', ');
-        value = valueArr.join(', ');
+        value = valueArr.join('\',\' ');
 
-        this.query += `(${col}) values(${value})`;
+        this.query += `(${col}) values('${value}')`;
         this.type = false;
+
+        return this;
     }
 
     /**
@@ -75,7 +91,7 @@ export class Crud{
                     return {mesg : 'done'};
                 }
             }else{
-                return data;
+                return "data";
             }
         });
     }

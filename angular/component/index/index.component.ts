@@ -41,11 +41,8 @@ export class IndexComponent{
     join(input){
         this.userService.userInsert(input).subscribe(
             data => {
-                if(data.mesg){
-                    alert('가입되었습니다!');
-                }else{
-                    alert('가입도중 문제가 발생했습니다.');
-                }
+                console.log(data.mesg);
+                (data.mesg) ? alert('가입되었습니다!') : alert('가입도중 문제가 발생했습니다.')
             },
             error =>{
                 console.log(error);
