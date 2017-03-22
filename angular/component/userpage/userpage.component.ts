@@ -10,5 +10,4 @@ export class UserpageComponent {
     constructor(){
         this.title = "userpage";
     }
-
 }

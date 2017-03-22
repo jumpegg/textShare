@@ -14,20 +14,17 @@ export class IndexComponent{
     private title:String;
     private user:User;
     private joiner:User;
-    // Validators.pattern("")
     joinForm = new FormGroup({
         joinId : new FormControl('',Validators.compose([Validators.required])),
         joinPass : new FormControl('',Validators.compose([Validators.required])),
         joinEmail : new FormControl('',Validators.compose([Validators.required]))
     });
 
-
     constructor(private userService:UserService, private router:Router){
         this.title = "Index Page";
         this.user = new User();
         this.joiner = new User();
     }
-// routerLink="/userpage"
     login(input){
         this.userService.userLogin(input).subscribe(
             data => {
@@ -35,7 +32,6 @@ export class IndexComponent{
                     alert('존재하지 않는 사용자 입니다.');
                     return false;
                 }else{
-                    // this.router.navigate(['/userpage',data]);
                     this.router.navigate(['/userpage']);
                 }
             },
@@ -53,8 +49,14 @@ export class IndexComponent{
             },
             error =>{
                 console.log(error);
-                alert('가입도중 문제가 발생했습니다.')
+                alert('가입도중 문제가 발생했습니다.');
             }
+        )
+    }
+    user_test(){
+        this.userService.userTest().subscribe(
+            data => console.log(data.output),
+            error => console.log(error)
         )
     }
 }
