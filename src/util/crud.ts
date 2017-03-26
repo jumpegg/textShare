@@ -80,20 +80,20 @@ export class Crud{
      * 마지막에 queryWork 을 실행하면 등록된 this.query 를 실행한다.
      * 반환값이 필요한 명령이었는지는 this.type 을 통해 판별
      */
-    public queryWork(){
+    public go(input){
         conn.query(this.query, (err, data) => {
+            console.log("data length : "+data.length);
             if(err){
-                console.log(err);
+                input.json(err);
             }else if(!data.length){
                 if(this.type){
-                    return {mesg : 'no_res'};
+                    input.json({msg : 'no_res'});
                 }else{
-                    return {mesg : 'done'};
+                    input.json({msg : 'done'});
                 }
             }else{
-                return "data";
+                input.json(data);
             }
         });
     }
-
 }

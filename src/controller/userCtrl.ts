@@ -23,11 +23,9 @@ export class UserCtrl{
         })
     }
     public join: RequestHandler = (req, res) => {
-        console.log( this.usertbl.insert(req.body).queryWork());
-        
+        this.usertbl.insert(req.body).go(res);
     }
     public test: RequestHandler = (req, res) =>{
-        console.log(this.usertbl.defaultInfo());
         res.json({ output : this.usertbl.defaultInfo()});
     }
 }
