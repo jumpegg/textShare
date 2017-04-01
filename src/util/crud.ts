@@ -35,18 +35,25 @@ export class Crud{
     public selectAll(){
         this.query = `select * from ${this.table}`;
         this.type = true;
+
+        return this;
     }
 
     /**
      * selectOne
      * 원하는 조건을 충족하는 1개 결과값을 원할 경우
      */
-    public selectOne(input:Map<string, string>){
+    public selectOne(input:Object){
         this.query = `select * from ${this.table} where `;
-        for(let [key, val] of input.entries()){
-            this.query += `${key} = ${val}`;
-        }
+        let whereArr:Array<any> = [];
+        Object.keys(input).map((data) => {
+            whereArr.push(` ${data} = '${input[data]}' `)
+        })
+        this.query += whereArr.join(' AND ');
+        this.query += ` limit 1`;
         this.type = true;
+
+        return this;
     }
 
     /**
@@ -61,13 +68,12 @@ export class Crud{
         let value:string;
         this.query = `insert into ${this.table} `;
 
-        Object.keys(input)
-            .map((e) => {
-                colArr.push(e);
-                valueArr.push(input[e]);
-            });
-        col = colArr.join(', ');
-        value = valueArr.join('\',\' ');
+        Object.keys(input).map((e) => {
+            colArr.push(e);
+            valueArr.push(input[e]);
+        });
+        col = colArr.join(", ");
+        value = valueArr.join("', '");
 
         this.query += `(${col}) values('${value}')`;
         this.type = false;
@@ -80,20 +86,24 @@ export class Crud{
      * 마지막에 queryWork 을 실행하면 등록된 this.query 를 실행한다.
      * 반환값이 필요한 명령이었는지는 this.type 을 통해 판별
      */
-    public go(input){
+    public go(callback){
         conn.query(this.query, (err, data) => {
             console.log("data length : "+data.length);
             if(err){
-                input.json(err);
+                callback(err);
             }else if(!data.length){
                 if(this.type){
-                    input.json({msg : 'no_res'});
+                    callback({msg : 'no_res'});
                 }else{
-                    input.json({msg : 'done'});
+                    callback({msg : 'done'});
                 }
             }else{
-                input.json(data);
+                callback(data);
             }
         });
+    }
+
+    public querychk(){
+        return this.query;
     }
 }

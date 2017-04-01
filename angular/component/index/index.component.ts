@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators, FormBuilder} from '@angular/forms';
 import { User } from '../../vo/user';
 import { UserService } from '../../service/user.service';
+// import { AuthGuard } from '../../service/auth-guard.service';
 
 @Component({
     selector:'index',
@@ -28,10 +29,10 @@ export class IndexComponent{
     login(input){
         this.userService.userLogin(input).subscribe(
             data => {
-                if(data.idx == "no_user"){
+                if(data.msg == "no_res"){
                     alert('존재하지 않는 사용자 입니다.');
                     return false;
-                }else{
+                }else if(data == true){
                     this.router.navigate(['/userpage']);
                 }
             },
@@ -41,11 +42,9 @@ export class IndexComponent{
     join(input){
         this.userService.userInsert(input).subscribe(
             data => {
-                console.log(data.msg);
-                (data.msg == 'done') ? alert('가입되었습니다!') : alert('가입도중 문제가 발생했습니다.')
+                (data.msg == 'done') ? alert('가입되었습니다!') : alert('가입도중 문제가 발생했습니다.');
             },
             error =>{
-                console.log(error);
                 alert('가입도중 문제가 발생했습니다.');
             }
         )

@@ -38,8 +38,7 @@ class Server {
         this.app.use(session({
             secret: 'tEsTeD',
             resave: false,
-            saveUninitialized: true,
-            cookie: { secure: true }
+            saveUninitialized: true
         }));
 
         this.app.use('/public', express.static(path.join(__dirname, '/../public')));
