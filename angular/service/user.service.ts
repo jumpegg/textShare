@@ -25,6 +25,5 @@ export class UserService{
     }
     chkSess(){
         return this.http.get('/user/sess', {headers:this.header})
-
     }
 }

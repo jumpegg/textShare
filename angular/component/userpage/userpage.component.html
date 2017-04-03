@@ -1,30 +1,37 @@
 <div class="container-fluid">
     <div class="row">
         <div class="tree-list">
-            <div>
-                <ul class="nav nav-list">
-                    <li><label class="tree-toggler nav-header">My Pages</label>
-                        <ul class="nav nav-list tree">
-                            <li><a routerLink="#">개인정보</a></li>
-                        </ul>
-                    </li>
-                    <li class="divider"></li>
-                    <li><label class="tree-toggler nav-header">Text Share</label>
-                        <ul class="nav nav-list tree">
-                            <li><a routerLink="#">Blog 관리</a></li>
-                            <li><a routerLink="#">Text 관리</a></li>
-                        </ul>
-                    </li>
-                    <li class="divider"></li>
-                    <li><label class="tree-toggler nav-header">Study</label>
-                        <ul class="nav nav-list tree">
-                            <li><a routerLink="#">관리중인 스터디</a></li>
-                            <li><a routerLink="#">가입한 스터디</a></li>
-                            <li><a routerLink="#">스터디 검색</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
+            <h1 class="userLabel">
+                {{user}}
+            </h1>
+            <ul class="nav nav-list">
+                <li>
+                    <ul class="nav nav-list tree">
+                        <li><a routerLink="/userpage">HOME</a></li>
+                    </ul>
+                </li>
+                <li class="divider"></li>
+                <li><label class="tree-toggler nav-header">My Pages</label>
+                    <ul class="nav nav-list tree">
+                        <li><a routerLink="mypage">개인정보</a></li>
+                    </ul>
+                </li>
+                <li class="divider"></li>
+                <li><label class="tree-toggler nav-header">Text Share</label>
+                    <ul class="nav nav-list tree">
+                        <li><a routerLink="textShare">TextShare</a></li>
+                        <li><a routerLink="textBag">MyText Bag</a></li>
+                    </ul>
+                </li>
+                <li class="divider"></li>
+                <li><label class="tree-toggler nav-header">Study</label>
+                    <ul class="nav nav-list tree">
+                        <li><a routerLink="stdAdmin">관리중인 스터디</a></li>
+                        <li><a routerLink="stdJoin">가입한 스터디</a></li>
+                        <li><a routerLink="stdSearch">스터디 검색</a></li>
+                    </ul>
+                </li>
+            </ul>
         </div>
         <div class="main-view">
             <router-outlet></router-outlet>

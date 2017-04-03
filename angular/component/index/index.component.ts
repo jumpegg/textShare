@@ -44,7 +44,7 @@ export class IndexComponent{
             data => {
                 (data.msg == 'done') ? alert('가입되었습니다!') : alert('가입도중 문제가 발생했습니다.');
             },
-            error =>{
+            error => {
                 alert('가입도중 문제가 발생했습니다.');
             }
         )

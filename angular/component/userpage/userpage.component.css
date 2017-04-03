@@ -26,17 +26,39 @@ label{
     background-color: rgb(0, 0, 0);
     padding: 8px 0;
     border-radius: 0px;
-    width:250px;
+    width: 16%;
+    min-width:192px;
     float:left;
+    overflow: auto;
+    overflow-x: hidden;
 }
 .nav-list a{
-    border: 1px solid black;
+    border-bottom: 1px solid black;
     color: #FFF;
 }
 .nav-list a:hover{
     background-color: black;
-    border: 1px solid #FFF;
+    border-bottom: 1px solid rgb(255, 0, 0);
+}
+.nav-list a:focus{
+    background-color: rgb(62, 62, 62);
 }
 .main-view{
-    float:left
+    float:left;
+    height: 100%;
+    width: 84%;
+    min-width: 1008px;
+    overflow: auto;
+}
+.container-fluid, .row, .tree-list{
+    height: 100%;
+}
+.container-fluid{
+    width: 100%;
+    min-width: 1200px;
+}
+.userLabel{
+    text-align: center;
+    color: #FFF;
+    margin-bottom: 50px;
 }

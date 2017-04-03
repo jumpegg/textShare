@@ -19,13 +19,14 @@ export class AuthGuard implements CanActivate{
                     // console.log(res.json().length);
                     return true;
                 }else{
+                    this.router.navigate(['/index']);
                     return false;
                 }
             },
             error =>{
                 console.log(error);
             }
-        );;
+        )
     }
     // canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean{
     //     return this.canActivate(route, state);

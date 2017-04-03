@@ -1,0 +1,11 @@
+.listWrap{
+    width: 85%;
+    margin: 20px auto;
+    margin-bottom: 0px;
+}
+.listWrap h1{
+    margin: 40px 0px;
+}
+.studyList th{
+    text-align: center;
+}
