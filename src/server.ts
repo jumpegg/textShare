@@ -11,7 +11,7 @@ import * as hbs from 'express-handlebars';
 import * as passport from 'passport';
 import * as LocalStrategy from 'passport-local';
 
-import { userRoute } from './routes';
+import { userRoute, studyRoute } from './routes';
 
 class Server {
     public test:string;
@@ -51,6 +51,7 @@ class Server {
             res.render('index.html');
         });
         this.app.use('/user',userRoute);
+        this.app.use('/study',studyRoute);
     }
 
     private start(){

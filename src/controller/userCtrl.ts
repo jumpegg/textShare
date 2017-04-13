@@ -18,9 +18,13 @@ export class UserCtrl{
             }else{
                 let comp = bcrypt.compareSync(req.body.password, data[0].password);
                 if(comp){
-                    req.session.user = data[0].id;
+                    delete data[0].password;
+                    req.session.userData = data[0];
+                    req.session.login = true;
                     res.send(comp);
                     // res.send(req.session.id);
+                }else{
+                    res.send(false);
                 }
             }
         });
@@ -36,10 +40,17 @@ export class UserCtrl{
         res.json({ output : this.usertbl.defaultInfo()});
     }
     public sess: RequestHandler = (req, res) => {
-        if(req.session.user){
-            res.json(req.session.user);
+        if(req.session.login){
+            res.send(req.session.login);
         }else{
-            res.json({})
+            res.send(false);
+        }
+    }
+    public userInfo: RequestHandler = (req, res) => {
+        if(req.session.login){
+            res.json(req.session.userData);
+        }else{
+            res.json({});
         }
     }
 }

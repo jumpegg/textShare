@@ -9,3 +9,9 @@
 .studyList th{
     text-align: center;
 }
+.modal-body{
+    padding: 20px;
+}
+.newBtn{
+    float: right;
+}

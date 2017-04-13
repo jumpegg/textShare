@@ -1,0 +1,34 @@
+<nav class="navbar navbar-inverse border_0">
+    <div class="navbar-header">
+        <a routerLink="index" class="navbar-brand">TEST</a>
+    </div>
+    <ul class="nav navbar-nav">
+        <li class="dropdown">
+            <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expended="false">게시판</a>
+            <ul class="dropdown-menu" role="menu">
+                <li><a routerLink="freetalk">자유게시판</a></li>
+                <li><a routerLink="notice">공지사항</a></li>
+            </ul>
+        </li>
+        <li class="dropdown">
+            <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expended="false">운영</a>
+            <ul class="dropdown-menu" role="menu">
+		  		<li><a routerLink="schedule">스케쥴</a></li>
+		  		<li><a routerLink="account">회계</a></li>
+		  		<li><a routerLink="admin">회원관리</a></li>
+		  	</ul>
+        </li>
+        <li class="dropdown">
+            <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expended="false">자료실</a>
+            <ul class="dropdown-menu" role="menu">
+		  		<li><a routerLink="data">스터디 자료</a></li>
+		  	</ul>
+        </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown right-menu">
+            <a routerLink="/userpage">BACK</a>
+        </li>
+    </ul>
+</nav>
+<router-outlet></router-outlet>

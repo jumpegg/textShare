@@ -30,10 +30,12 @@ export class IndexComponent{
         this.userService.userLogin(input).subscribe(
             data => {
                 if(data.msg == "no_res"){
-                    alert('존재하지 않는 사용자 입니다.');
+                    alert('아이디, 비밀번호를 확인해주세요');
                     return false;
                 }else if(data == true){
                     this.router.navigate(['/userpage']);
+                }else if(data == false){
+                    alert('아이디, 비밀번호를 확인해주세요');
                 }
             },
             error => alert(error)

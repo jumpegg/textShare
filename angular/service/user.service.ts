@@ -24,6 +24,10 @@ export class UserService{
             .map(res => res.json());
     }
     chkSess(){
-        return this.http.get('/user/sess', {headers:this.header})
+        return this.http.get('/user/sess', {headers:this.header});
+    }
+    userInfo(){
+        return this.http.get('/user/user_info', {headers:this.header})
+            .map(res => res.json());
     }
 }

@@ -11,10 +11,22 @@ import { UserSTDJoinComponent } from './component/userpage/userStudyJoin/userSTD
 import { UserSTDAdminComponent } from './component/userpage/userStudyAdmin/userSTDAdmin.component';
 import { UserSTDSearchComponent } from './component/userpage/userStudySearch/userSTDSearch.component';
 
+import { StudyComponent } from './component/study/study.component';
+import { StudyIndex } from './component/study/index/study_index.component';
+import { StudyAcc } from './component/study/account/study_acc.component';
+import { StudyAdmin } from './component/study/admin/study_admin.component';
+import { StudyFlow } from './component/study/flow/study_flow.component';
+import { StudyFreetalk } from './component/study/freetalk/study_freetalk.component';
+import { StudyNotice } from './component/study/notice/study_notice.component';
+import { StudyData } from './component/study/studydata/study_studydata.component';
+import { StudySchedule } from './component/study/schedule/study_schedule.component';
+
 import { AuthGuard } from './service/auth-guard.service';
 import { UserService } from './service/user.service';
+// import { UserInfo } from './service/userinfo.service';
 
 import { userRoutes } from './routing/userpage.routing';
+import { UserResolve } from './service/user-resolve';
 
 const routes: Routes = [
     {path: '', redirectTo: '/index', pathMatch: 'full'},
@@ -23,9 +35,12 @@ const routes: Routes = [
         path: 'userpage',
         component: UserpageComponent,
         canActivate: [AuthGuard],
+        resolve: {
+            userResolve: UserResolve
+        },
         children:[{
             path: '',
-            // canActivateChild: [AuthGuard],
+            canActivateChild: [AuthGuard],
             children: [
                 {path: '', component: UserIndexComponent},
                 {path: 'mypage', component: UserMyPageComponent},
@@ -36,13 +51,31 @@ const routes: Routes = [
                 {path: 'stdSearch', component: UserSTDSearchComponent}
             ]
         }]
+    },
+    {
+        path: 'study',
+        component: StudyComponent,
+        children:[{
+            path:'',
+            children:[
+                {path: '', redirectTo: 'index', pathMatch: 'full'},
+                {path: 'index',component: StudyIndex},
+                {path: 'account',component: StudyAcc},
+                {path: 'admin',component: StudyAdmin},
+                {path: 'flow',component: StudyFlow},
+                {path: 'freetalk',component: StudyFreetalk},
+                {path: 'notice',component: StudyNotice},
+                {path: 'data',component: StudyData},
+                {path: 'schedule',component: StudySchedule},
+            ]
+        }]
     }
 ];
 
 @NgModule({
     imports: [RouterModule.forRoot(routes, {useHash:true})],
     exports: [RouterModule],
-    providers: [AuthGuard,UserService]
+    providers: [AuthGuard, UserService, UserResolve]
 })
 export class AppRoutingModule {
     constructor(){

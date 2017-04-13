@@ -15,10 +15,10 @@ export class AuthGuard implements CanActivate{
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot){
         return this.userService.chkSess().map(
             res => {
-                if(res.json().length){
-                    // console.log(res.json().length);
+                if(res.json()){
                     return true;
                 }else{
+                    alert("잘못된 접근입니다.");
                     this.router.navigate(['/index']);
                     return false;
                 }
@@ -28,8 +28,8 @@ export class AuthGuard implements CanActivate{
             }
         )
     }
-    // canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean{
-    //     return this.canActivate(route, state);
-    // }
+    canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean>{
+        return this.canActivate(route, state);
+    }
 
 }

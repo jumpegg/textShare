@@ -38,7 +38,6 @@ export class Crud{
 
         return this;
     }
-
     /**
      * selectOne
      * 원하는 조건을 충족하는 1개 결과값을 원할 경우
@@ -48,7 +47,7 @@ export class Crud{
         let whereArr:Array<any> = [];
         Object.keys(input).map((data) => {
             whereArr.push(` ${data} = '${input[data]}' `)
-        })
+        });
         this.query += whereArr.join(' AND ');
         this.query += ` limit 1`;
         this.type = true;
@@ -56,6 +55,17 @@ export class Crud{
         return this;
     }
 
+    public selectList(input:Object){
+        this.query = `select * from ${this.table} where `;
+        let whereArr:Array<any> = [];
+        Object.keys(input).map((data) => {
+            whereArr.push(` ${data} = '${input[data]}' `)
+        });
+        this.query += whereArr.join(' AND ');
+        this.type = true;
+
+        return this;
+    }
     /**
      * insert 함수
      * map 형태의 input을 받음
@@ -80,7 +90,6 @@ export class Crud{
 
         return this;
     }
-
     /**
      * queryWork 함수
      * 마지막에 queryWork 을 실행하면 등록된 this.query 를 실행한다.
@@ -88,7 +97,6 @@ export class Crud{
      */
     public go(callback){
         conn.query(this.query, (err, data) => {
-            console.log("data length : "+data.length);
             if(err){
                 callback(err);
             }else if(!data.length){
@@ -98,6 +106,7 @@ export class Crud{
                     callback({msg : 'done'});
                 }
             }else{
+                console.log(data);
                 callback(data);
             }
         });

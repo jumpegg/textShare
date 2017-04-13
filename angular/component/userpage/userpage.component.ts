@@ -1,18 +1,26 @@
-import {Component} from '@angular/core';
-import {UserInfo} from '../../service/userinfo.service';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 import {UserService} from '../../service/user.service';
+
 
 @Component({
     selector: 'userpage',
     templateUrl: 'client/component/userpage/userpage.component.html',
     styleUrls: ['client/component/userpage/userpage.component.css'],
-    providers: [UserInfo, UserService]
+    providers: [UserService]
 })
 export class UserpageComponent {
-    constructor(public user:UserInfo, private userService:UserService){
+    public id:string;
+    public test:Object;
+
+    constructor(private userService:UserService, private route:ActivatedRoute){
         this.userService.chkSess().subscribe(
-            data=>{this.user = data.json();},
-            error=>{}
+            data => {},
+            error => console.log(error)
         )
     }
+    ngOnInit(){
+        this.test = this.route.snapshot.data['userResolve'];
+    }
+
 }

@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
+// import { User } from '../vo/user';
 
 @Injectable()
 export class UserInfo{
-    id:JSON;
+    public userdata:Object;
+
+    constructor(){}
 }
