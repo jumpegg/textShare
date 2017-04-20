@@ -2,12 +2,11 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {UserService} from '../../service/user.service';
 
-
 @Component({
     selector: 'userpage',
     templateUrl: 'client/component/userpage/userpage.component.html',
     styleUrls: ['client/component/userpage/userpage.component.css'],
-    providers: [UserService]
+    providers: [ UserService ]
 })
 export class UserpageComponent {
     public id:string;
@@ -22,5 +21,6 @@ export class UserpageComponent {
     ngOnInit(){
         this.test = this.route.snapshot.data['userResolve'];
     }
+    
 
 }

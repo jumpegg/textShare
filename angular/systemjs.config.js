@@ -14,7 +14,9 @@ System.config({
         '@angular/platform-browser-dynamic':'npm/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js',
         '@angular/router': 'npm/router/bundles/router.umd.js',
         'rxjs': 'node_modules/rxjs',
-        'marked': 'node_modules/marked/index.js'
+        'marked': 'node_modules/marked/index.js',
+        'mydatepicker': 'node_modules/mydatepicker/bundles/mydatepicker.umd.js',
+        'tree-component': 'node_modules/angular-tree-component/dist/angular-tree-component.umd.js'
     },
     packages : {
         app : {

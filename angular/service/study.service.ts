@@ -11,20 +11,8 @@ export class StudyService{
     constructor(private http:Http){
         let header = new Headers({'Content-Type':'application/json'});
     }
-    studyNew(input){
-        return this.http.post('/study/study_new', input, {headers:this.header})
-            .map(res=>res.json());
+    callMap(){
+        return this.http.get('/study/map', {headers: this.header});
     }
-    studyJoin(input){
-        return this.http.post('/study/study_join', input, {headers:this.header})
-            .map(res => res.json());
-    }
-    studyList(input){
-        return this.http.post('/study/study_search', input, {headers:this.header})
-            .map(res => res.json());
-    }
-    studyAdminList(){
-        return this.http.get('/study/study_admin', {headers:this.header})
-            .map(res => res.json());
-    }
+
 }

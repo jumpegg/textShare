@@ -19,10 +19,11 @@ import { StudyFlow } from './component/study/flow/study_flow.component';
 import { StudyFreetalk } from './component/study/freetalk/study_freetalk.component';
 import { StudyNotice } from './component/study/notice/study_notice.component';
 import { StudyData } from './component/study/studydata/study_studydata.component';
-import { StudySchedule } from './component/study/schedule/study_schedule.component';
+import { StudySchedule, StudyNewSchedule } from './component/study/schedule/study_schedule.component';
 
 import { AuthGuard } from './service/auth-guard.service';
 import { UserService } from './service/user.service';
+import { StudyService } from './service/study.service';
 // import { UserInfo } from './service/userinfo.service';
 
 import { userRoutes } from './routing/userpage.routing';
@@ -32,8 +33,7 @@ const routes: Routes = [
     {path: '', redirectTo: '/index', pathMatch: 'full'},
     {path: 'index', component: IndexComponent},
     {
-        path: 'userpage',
-        component: UserpageComponent,
+        path: 'userpage', component: UserpageComponent,
         canActivate: [AuthGuard],
         resolve: {
             userResolve: UserResolve
@@ -53,10 +53,8 @@ const routes: Routes = [
         }]
     },
     {
-        path: 'study',
-        component: StudyComponent,
-        children:[{
-            path:'',
+        path: 'study', component: StudyComponent,
+        children:[{path:'',
             children:[
                 {path: '', redirectTo: 'index', pathMatch: 'full'},
                 {path: 'index',component: StudyIndex},
@@ -67,6 +65,7 @@ const routes: Routes = [
                 {path: 'notice',component: StudyNotice},
                 {path: 'data',component: StudyData},
                 {path: 'schedule',component: StudySchedule},
+                {path: 'schedule_new',component: StudyNewSchedule},
             ]
         }]
     }
@@ -75,7 +74,7 @@ const routes: Routes = [
 @NgModule({
     imports: [RouterModule.forRoot(routes, {useHash:true})],
     exports: [RouterModule],
-    providers: [AuthGuard, UserService, UserResolve]
+    providers: [AuthGuard, UserService, UserResolve, StudyService]
 })
 export class AppRoutingModule {
     constructor(){

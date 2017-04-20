@@ -3,6 +3,7 @@ import { Headers, Http } from '@angular/http';
 import "rxjs/add/operator/map";
 import { Observable } from 'rxjs/Observable';
 import { User } from '../vo/user';
+import { Study } from '../vo/study';
 
 @Injectable()
 export class UserService{
@@ -28,6 +29,22 @@ export class UserService{
     }
     userInfo(){
         return this.http.get('/user/user_info', {headers:this.header})
+            .map(res => res.json());
+    }
+    studyNew(input){
+        return this.http.post('/user/study_new', input, {headers:this.header})
+            .map(res=>res.json());
+    }
+    studyJoin(input){
+        return this.http.post('/user/study_join', input, {headers:this.header})
+            .map(res => res.json());
+    }
+    studyList(input){
+        return this.http.post('/user/study_search', input, {headers:this.header})
+            .map(res => res.json());
+    }
+    studyAdminList(){
+        return this.http.get('/user/study_admin', {headers:this.header})
             .map(res => res.json());
     }
 }
