@@ -10,8 +10,12 @@
     <script src="node_modules/systemjs/dist/system.src.js"></script>
     <script src="client/systemjs.config.js"></script>
     <script src="public/jquery-3.1.1.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="public/bootstrap/css/bootstrap.min.css">
-    <script src="public/bootstrap/js/bootstrap.min.js"></script>
+    <!--<link rel="stylesheet" type="text/css" href="public/bootstrap/css/bootstrap.min.css">-->
+    <link rel="stylesheet" type="text/css" href="public/Material/css/materialize.min.css">
+    <link href="../node_modules/@angular/material/prebuilt-themes/indigo-pink.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--<script src="public/bootstrap/js/bootstrap.min.js"></script>-->
+    <script src="public/Material/js/materialize.min.js"></script>
     <script src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=4YTa1awkt2vPfKrRToJ0"></script>
     <script>
       System.import('applicationStartup').catch(function (err) {
@@ -22,6 +26,13 @@
         html, body{
             height: 100%;
             min-width: 1200px;
+        }
+        #sidenav-overlay{
+            /*display: none;*/
+            background: none;
+        }
+        .drag-target{
+            display: none;
         }
     </style>
     <title>Document</title>

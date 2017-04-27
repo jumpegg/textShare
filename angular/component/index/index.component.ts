@@ -1,17 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+// import { MdDialog } from '@angular/material';
 import { FormControl, FormGroup, Validators, FormBuilder} from '@angular/forms';
 import { User } from '../../vo/user';
 import { UserService } from '../../service/user.service';
 // import { AuthGuard } from '../../service/auth-guard.service';
 
+declare var $ : any;
 @Component({
     selector:'index',
     templateUrl: 'client/component/index/index.component.html',
     styleUrls: ['client/component/index/index.component.css'],
     providers: [UserService]
 })
-export class IndexComponent{
+export class IndexComponent implements OnInit{
     private title:String;
     private user:User;
     private joiner:User;
@@ -25,6 +27,12 @@ export class IndexComponent{
         this.title = "Index Page";
         this.user = new User();
         this.joiner = new User();
+    }
+    ngOnInit(){
+        $(document).ready(function(){
+            $('.collapsible').collapsible();
+            $('#SignUp').modal();
+        }); 
     }
     login(input){
         this.userService.userLogin(input).subscribe(
@@ -57,4 +65,11 @@ export class IndexComponent{
             error => console.log(error)
         )
     }
+    open_modal(){
+        $('#SignUp').modal('open');
+    }
+    close_modal(){
+        $('#SignUp').modal('close');
+    }
+
 }

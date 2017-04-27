@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {UserService} from '../../service/user.service';
 
+declare var $ : any;
 @Component({
     selector: 'userpage',
     templateUrl: 'client/component/userpage/userpage.component.html',
@@ -20,6 +21,10 @@ export class UserpageComponent {
     }
     ngOnInit(){
         this.test = this.route.snapshot.data['userResolve'];
+        $(".button-collapse").sideNav({
+            edge: 'right'
+        });
+        $('ul.tabs').tabs();
     }
     
 

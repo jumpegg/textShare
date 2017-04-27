@@ -4,6 +4,8 @@ import { FormsModule , ReactiveFormsModule} from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { Router } from '@angular/router';
 import { TreeModule } from 'tree-component';
+// import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './module/material.module';
 
 import { AppComponent } from './app.component';
 import { IndexComponent } from './component/index/index.component';
@@ -40,12 +42,13 @@ import { AppRoutingModule } from './app.routing';
       HttpModule,
       AppRoutingModule,
       MyDatePickerModule,
-      TreeModule
-    //   UserModule,
+      TreeModule,
+      MaterialModule,
   ],
   declarations: [
     AppComponent,
     IndexComponent,
+
     UserpageComponent,
     UserIndexComponent,
     UserMyPageComponent,

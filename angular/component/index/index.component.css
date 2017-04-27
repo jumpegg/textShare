@@ -1,16 +1,35 @@
+.tailPic{
+    text-align: center;
+}
 .tailPic img{
-    width: 100%;
-    height: 150px;
-    margin-bottom: 20px;
+    width: 117px;
+    height: 117px;
+}
+.indexTitle{
+    text-align: center;
+    margin-bottom: 40px;
 }
 .loginWrapper{
-    width: 300px;
-    padding: 10px 20px 20px 20px;
-    border: 1px solid black;
+    width: 330px;
     margin: 150px auto;
 }
 .loginWrapper hr{
     border-color: rgb(182, 182, 182);
+}
+.loginWrapper .loginBtn{
+    width: 100%;
+    height: 54px;
+    font-size: 20px;
+}
+.etc{
+    font-size: 12px;
+    margin-top: 20px;
+    overflow: hidden;
+
+}
+.etc .joinBox{
+    /*width: 150px;*/
+    float: right;
 }
 .modal-dialog{
     width: 350px;

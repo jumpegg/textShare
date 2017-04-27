@@ -45,7 +45,7 @@ label{
 }
 .main-view{
     float:left;
-    height: 100%;
+    /*height: 100%;*/
     width: 84%;
     min-width: 1008px;
     overflow: auto;
@@ -62,3 +62,67 @@ label{
     color: #FFF;
     margin-bottom: 50px;
 }
+.menu-list{
+    width: 200px;
+    font-size: 14px;
+    margin: 0 auto;
+}
+.brand-logo{
+    font-size: 20px;
+}
+.nav-wrapper{
+    height: 98px !important;
+}
+nav .button-collapse{
+    float: right;
+}
+.side-toggler{
+    font-size: 24px;
+}
+.side-nav{
+    top: 98px;
+}
+nav a.button-collapse {
+    display: block;
+}
+.side-nav .side-userWrapper{
+    height: 144px;
+    padding: 20px 30px;
+}
+.side-nav .side-userPic{
+    background-color: #000;
+    height: 70px;
+}
+.side-nav .side-userInfo{
+    margin-bottom: 5px;
+    height: 70px;
+}
+.side-nav .side-user{
+    line-height: 25px;
+}
+.side-nav .side-btnBox{
+    text-align: right;
+    height: 20px;
+    font-size: 13px;
+}
+.side-nav .side-btnBox a{
+    /*height: 20px;*/
+    line-height: 17px;
+    display: inline;
+    color: #999;
+}
+.side-nav .side-btnBox a:hover{
+    background: none;
+}
+.side-nav dl {
+    margin: 0px;
+}
+.side-nav dl dd a{
+    color: #666;
+    line-height: 28px;
+    padding-left: 70px;
+    
+}
+/*.side-nav ul a{
+    padding: 0;
+}*/

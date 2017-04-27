@@ -1,6 +1,51 @@
+
 <div class="container-fluid">
-    <div class="row">
-        <div class="tree-list">
+    <nav class="nav-extended yellow accent-4">
+        <div class="nav-wrapper">
+            <a href="" class="brand-logo center">Hello TextShare</a>
+            <a href="" data-activates="list-slide" class="button-collapse"><i class="material-icons side-toggler">menu</i></a>
+            <ul class="side-nav" id="list-slide">
+                <li>
+                    <div class="side-userWrapper grey darken-2">
+                        <div class="side-userInfo row">
+                            <div class="side-userPic col s4">
+
+                            </div>
+                            <div class="side-user col s8">
+                                Lv.1 디자이너 <br>
+                                홍길동
+                            </div>
+                        </div>
+                        <div class="side-btnBox">
+                            <a href="">Logout</a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <a href=""><i class="material-icons">send</i> Hello TextShare</a>
+                    <dl>
+                        <dd><a href="">StudySearch</a></dd>
+                    </dl>
+                </li>
+                <li>
+                    <a href=""><i class="material-icons">group</i> TextShare</a>
+                    <dl>
+                        <dd>
+                            <a href="">TextShare</a>
+                            <a href="">TextBag</a>
+                        </dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+        <div class="nav-content center">
+            <ul class="tabs tabs-transparent menu-list">
+                <li class="tab"><a class="active" href="#test2">Study</a></li>
+                <li class="tab"><a href="#test4">TextBag</a></li>
+            </ul>
+        </div>
+    </nav>
+        <!--<div class="tree-list">
             <h1 class="userLabel">
                 {{test.id}}
             </h1>
@@ -32,9 +77,9 @@
                     </ul>
                 </li>
             </ul>
-        </div>
+        </div>-->
+
         <div class="main-view">
             <router-outlet></router-outlet>
         </div>
-    </div>
 </div>
