@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule , ReactiveFormsModule} from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { Router } from '@angular/router';
-import { TreeModule } from 'tree-component';
+// import { TreeModule } from 'tree-component';
 // import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './module/material.module';
 
@@ -42,7 +42,7 @@ import { AppRoutingModule } from './app.routing';
       HttpModule,
       AppRoutingModule,
       MyDatePickerModule,
-      TreeModule,
+    //   TreeModule,
       MaterialModule,
   ],
   declarations: [
