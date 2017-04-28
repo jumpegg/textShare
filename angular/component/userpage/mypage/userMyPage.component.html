@@ -1,40 +1,16 @@
-<div class="personalInfo">
-    <h1>개인정보</h1>
-    <div class="myInfoWrap">
-        <div class="myInfoLeft">
-            <div class="shortInfo">
-                <img src="" alt="">
-                <div class="shorts">
-                    <h3>
-                        Name
-                    </h3>
-                    <p>test</p>
-                    <h3>
-                        Email
-                    </h3>
-                    <p>test</p>
-                    <h3>
-                        Join Date
-                    </h3>
-                    <p>test</p>
-                </div>
-            </div>
+<div class="container">
+    <div class="basicInfo">
+        <div>
+            <label for="id">User name</label>
+            <input type="text" name="id" readonly [(ngModel)]="userInfo.id">
         </div>
-        <div class="myInfoRight">
-            <div class="detailInfo">
-                <h3>
-                    Phone
-                </h3>
-                <div class="details"></div>
-                <h3>
-                    Address
-                </h3>
-                <div class="details"></div>
-                <h3>
-                    Introduction
-                </h3>
-                <div class="details"></div>
-            </div>
+        <div>
+            <label for="phone">Mobile</label>
+            <input type="text" name="phone" readonly [(ngModel)]="userInfo.phone">
+        </div>
+        <div>
+            <label for="c_date">Create date</label>
+            <input type="text" name="c_date" readonly [ngModel]="userInfo.c_date|date:'y-MM-dd'">
         </div>
     </div>
 </div>

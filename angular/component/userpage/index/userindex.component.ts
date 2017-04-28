@@ -1,4 +1,6 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+
+import {PageInfo} from '../../../service/single_info';
 
 @Component({
     selector: 'index',
@@ -6,7 +8,22 @@ import {Component} from '@angular/core';
 })
 export class UserIndexComponent {
     private title: string;
-    constructor(){
+    constructor(public page:PageInfo){
         this.title = "this is user index";
+    }
+
+    ngOnInit(){
+        this.page.title = "Hello TextShare";
+        this.page.tabList = [
+            {
+                name : 'Study',
+                link : 'stdAdmin'
+            },
+            {
+                name : 'StudySearch',
+                link: 'stdSearch'
+            }
+
+        ]
     }
 }

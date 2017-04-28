@@ -45,10 +45,8 @@ label{
 }
 .main-view{
     float:left;
-    /*height: 100%;*/
-    width: 84%;
-    min-width: 1008px;
     overflow: auto;
+    width: 100%;
 }
 .container-fluid, .row, .tree-list{
     height: 100%;
@@ -63,7 +61,7 @@ label{
     margin-bottom: 50px;
 }
 .menu-list{
-    width: 200px;
+    width: 250px;
     font-size: 14px;
     margin: 0 auto;
 }
@@ -106,7 +104,6 @@ nav a.button-collapse {
     font-size: 13px;
 }
 .side-nav .side-btnBox a{
-    /*height: 20px;*/
     line-height: 17px;
     display: inline;
     color: #999;
@@ -123,6 +120,4 @@ nav a.button-collapse {
     padding-left: 70px;
     
 }
-/*.side-nav ul a{
-    padding: 0;
-}*/
+

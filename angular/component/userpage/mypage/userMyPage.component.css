@@ -1,55 +1,9 @@
-h1{
-    color: rgb(97, 97, 97);
-    font-size: 40px;
-    font-weight: bolder;
-    text-align: center;
-    margin-bottom: 50px;
+.basicInfo{
+    margin: 30px auto;
+    width: 330px;
 }
-div{
-    height: 100%;
-    width: 100%;
-}
-.myInfoWrap{
-    background-color: #FFF;
-    width: 85%;
-    min-width: 800px;
-    height: 700px;
-    margin: 0 auto;
-    padding: 20px;
-    overflow: hidden;
-}
-.personalInfo{
-    background-color: rgb(230, 230, 230);
-    padding-top: 50px;
-}
-.myInfoLeft{
-    width: 40%;
-    padding: 20px;
-    float: left;
-}
-.myInfoLeft .shortInfo img{
-    width: 250px;
-    height: 250px;
-    margin-bottom: 20px;
-}
-.myInfoLeft .shortInfo .shorts{
-    height: 300px;
-}
-.myInfoLeft .shortInfo .shorts h3{
-    border-bottom: 1px solid black;
-}
-.myInfoRight{
-    width: 60%;
-    padding: 20px;
-    float: left;
-}
-.myInfoRight .detailInfo{
-    border: 5px solid rgb(98, 98, 98);
-    padding: 20px;
-}
-.myInfoRight .detailInfo h3{
-    border-bottom: 1px solid black;
-}
-.myInfoRight .detailInfo .details{
-    height: 120px;
+/* label underline focus color */
+.input-field input[type=text]:focus {
+  border-bottom: 1px solid #000;
+  box-shadow: 0 1px 0 0 #000;
 }

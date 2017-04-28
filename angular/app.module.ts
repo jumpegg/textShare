@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 // import { TreeModule } from 'tree-component';
 // import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './module/material.module';
+import { PageInfo } from './service/single_info';
+import { UserInfo } from './service/single_user';
 
 import { AppComponent } from './app.component';
 import { IndexComponent } from './component/index/index.component';
@@ -67,6 +69,10 @@ import { AppRoutingModule } from './app.routing';
     StudyNotice,
     StudyData,
     StudySchedule, StudyNewSchedule
+  ],
+  providers:[
+    PageInfo,
+    UserInfo
   ],
   bootstrap: [
       AppComponent

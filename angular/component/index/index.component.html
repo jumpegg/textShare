@@ -13,14 +13,12 @@
             </div>
             <div class="input-field">
                 <label for="password">Password</label>
-                <input type="text" name="password" [(ngModel)]="user.password" #userPassword="ngModel" class="form-control">
+                <input type="password" name="password" [(ngModel)]="user.password" #userPassword="ngModel" class="form-control">
             </div>
             <button class="btn waves-effect waves-light orange darken-2 z-depth-0 loginBtn">Login</button>
             <div class="etc">
                 <a class="orange-text text-darken-2">비밀번호 찾기</a>
-                <!--<div class="joinBox">TextShare &nbsp; <button type="button" data-target="SignUp" class="btn orange-text text-darken-2">가입하기</button></div>-->
                 <div class="joinBox">TextShare &nbsp; <a [routerLink]="" class="orange-text text-darken-2" (click)="open_modal()">가입하기</a></div>
-                <!--<button class="btn btn-success" type="button" data-toggle="modal" data-target="#SignUp">Sign Up</button>-->
             </div>
         </form>
     </div>

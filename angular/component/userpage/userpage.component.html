@@ -2,7 +2,7 @@
 <div class="container-fluid">
     <nav class="nav-extended yellow accent-4">
         <div class="nav-wrapper">
-            <a href="" class="brand-logo center">Hello TextShare</a>
+            <a href="" class="brand-logo center">{{page.title}}</a>
             <a href="" data-activates="list-slide" class="button-collapse"><i class="material-icons side-toggler">menu</i></a>
             <ul class="side-nav" id="list-slide">
                 <li>
@@ -20,6 +20,9 @@
                             <a href="">Logout</a>
                         </div>
                     </div>
+                </li>
+                <li>
+                    <a routerLink="mypage"><i class="material-icons">group</i> MyPage</a>
                 </li>
                 <li>
                     <a href=""><i class="material-icons">send</i> Hello TextShare</a>
@@ -40,44 +43,22 @@
         </div>
         <div class="nav-content center">
             <ul class="tabs tabs-transparent menu-list">
-                <li class="tab"><a class="active" href="#test2">Study</a></li>
-                <li class="tab"><a href="#test4">TextBag</a></li>
+                <li class="tab" *ngFor="let list of page.tabList"><a routerLink="{{list.link}}">{{list.name}}</a></li>
+                
+                <!--<li class="tab"><a class="active" href="#test2">Study</a></li>
+                <li class="tab"><a href="#test4">TextBag</a></li>-->
             </ul>
         </div>
     </nav>
-        <!--<div class="tree-list">
-            <h1 class="userLabel">
-                {{test.id}}
-            </h1>
-            <ul class="nav nav-list">
-                <li>
-                    <ul class="nav nav-list tree">
-                        <li><a routerLink="/userpage">HOME</a></li>
-                    </ul>
-                </li>
-                <li class="divider"></li>
-                <li><label class="tree-toggler nav-header">My Pages</label>
-                    <ul class="nav nav-list tree">
-                        <li><a routerLink="mypage">개인정보</a></li>
-                    </ul>
-                </li>
-                <li class="divider"></li>
-                <li><label class="tree-toggler nav-header">Text Share</label>
-                    <ul class="nav nav-list tree">
-                        <li><a routerLink="textShare">TextShare</a></li>
-                        <li><a routerLink="textBag">MyText Bag</a></li>
-                    </ul>
-                </li>
-                <li class="divider"></li>
-                <li><label class="tree-toggler nav-header">Study</label>
-                    <ul class="nav nav-list tree">
-                        <li><a routerLink="stdAdmin">관리중인 스터디</a></li>
-                        <li><a routerLink="stdJoin">가입한 스터디</a></li>
-                        <li><a routerLink="stdSearch">스터디 검색</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>-->
+        <!--
+            <li><a routerLink="/userpage">HOME</a></li>
+            <li><a routerLink="mypage">개인정보</a></li>
+            <li><a routerLink="textShare">TextShare</a></li>
+            <li><a routerLink="textBag">MyText Bag</a></li>
+            <li><a routerLink="stdAdmin">관리중인 스터디</a></li>
+            <li><a routerLink="stdJoin">가입한 스터디</a></li> 
+            <li><a routerLink="stdSearch">스터디 검색</a></li>
+        -->
 
         <div class="main-view">
             <router-outlet></router-outlet>
