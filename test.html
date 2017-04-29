@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<script src="public/jquery-3.1.1.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="public/jquery.scrollbar.css">
+	<script src="public/jquery.scrollbar.min.js"></script>
+</head>
+<style>
+	#testWrapper > div{
+		height: 200px;
+	}
+</style>
+<body>
+	<div id="testWrapper">
+
+	<div class="scrollbar-outer">
+    <p class="permanent">
+        Simple outer scrollbar can be used as CSS base for custom outer scrollbars.
+        This example shows nested scrollbars functionality: nested scrollbar styles do not
+        interfere with parent scrollbar styles, i.e. different scrollbars can be safely used
+        inside each other.
+    </p>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a,
+        scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus.
+        Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel
+        hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue,
+        pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam
+        sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare,
+        ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget
+        nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam
+        viverra nisi, in interdum massa nibh nec erat.
+    </p>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a,
+        scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus.
+        Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel
+        hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue,
+        pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam
+        sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare,
+        ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget
+        nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam
+        viverra nisi, in interdum massa nibh nec erat.
+    </p>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a,
+        scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus.
+        Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel
+        hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue,
+        pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam
+        sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare,
+        ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget
+        nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam
+        viverra nisi, in interdum massa nibh nec erat.
+    </p>
+</div>
+	</div>
+
+</body>
+<script>
+$(document).ready(function(){
+    $('.scrollbar-outer').scrollbar();
+});
+</script>
+</html>

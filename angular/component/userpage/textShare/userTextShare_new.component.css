@@ -1,0 +1,20 @@
+.list-tree{
+    padding: 20px;
+}
+.list-tree .tree-wrapper{
+    border: 1px solid black;
+    border-radius: 10px;
+    height: 800px;
+    width: 100%;
+    padding: 20px;
+}
+.content-view{
+    padding: 20px;
+}
+.content-view .text-output{
+    border: 1px solid black;
+    border-radius: 10px;
+    height: 800px;
+    width: 100%;
+    padding: 20px;
+}

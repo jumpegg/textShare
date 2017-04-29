@@ -1,13 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 // import { TreeModule } from 'tree-component';
+import {PageInfo} from '../../../service/single_info';
+import {UserInfo} from '../../../service/single_user';
+
+declare var $ : any;
 
 @Component({
-    styleUrls: ['client/component/userpage/textShare/userTextShare.component.css'],
-    templateUrl: 'client/component/userpage/textShare/userTextShare.component.html'
+	styleUrls: ['client/component/userpage/textShare/userTextShare.component.css'],
+	templateUrl: 'client/component/userpage/textShare/userTextShare.component.html'
 })
 export class UserTextShareComponent{
 
-    private title:string;
+	private title:string;
   //   public nodes = [
   //   {
   //     id: 1,
@@ -32,7 +36,25 @@ export class UserTextShareComponent{
   //     ]
   //   }
   // ];
-    constructor(){
-        this.title = "this is TextShare";
-    }
+	constructor(public page:PageInfo,public userInfo:UserInfo){
+	}
+	ngOnInit(){
+		// $('.scrollbar-outer').scrollbar();
+		// $('.scrollbar-inner').scrollbar();
+		// $('.scroll').optiscroll();
+		$('.scrollbar-outer').scrollbar();
+
+		this.page.setUrl();
+		this.page.title = "TextShare";
+		this.page.tabList =[
+			{
+				name : 'TextShare',
+				link : 'textShare'
+			},
+			{
+				name : 'TextBag',
+				link : 'textBag'
+			}
+		];
+	}
 }

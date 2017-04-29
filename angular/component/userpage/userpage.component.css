@@ -4,120 +4,122 @@
   margin-bottom: 0;
 }
 .nav-list .divider{
-    height: 2px;
-    margin: 9px 1px;
-    overflow: hidden;
-    background-color: #e5e5e5;
-    border-bottom: 1px solid #FFF;
+	height: 2px;
+	margin: 9px 1px;
+	overflow: hidden;
+	background-color: #e5e5e5;
+	border-bottom: 1px solid #FFF;
 }
 .nav-header{
-    display: block;
-    padding: 3px 15px;
-    font-size: 11px;
-    font-weight: bold;
-    line-height: 20px;
-    color: #999999;
-    text-transform: uppercase;
+	display: block;
+	padding: 3px 15px;
+	font-size: 11px;
+	font-weight: bold;
+	line-height: 20px;
+	color: #999999;
+	text-transform: uppercase;
 }
 label{
-    cursor: pointer;
+	cursor: pointer;
 }
 .tree-list{
-    background-color: rgb(0, 0, 0);
-    padding: 8px 0;
-    border-radius: 0px;
-    width: 16%;
-    min-width:192px;
-    float:left;
-    overflow: auto;
-    overflow-x: hidden;
+	background-color: rgb(0, 0, 0);
+	padding: 8px 0;
+	border-radius: 0px;
+	width: 16%;
+	min-width:192px;
+	float:left;
+	overflow: auto;
+	overflow-x: hidden;
 }
 .nav-list a{
-    border-bottom: 1px solid black;
-    color: #FFF;
+	border-bottom: 1px solid black;
+	color: #FFF;
 }
 .nav-list a:hover{
-    background-color: black;
-    border-bottom: 1px solid rgb(255, 0, 0);
+	background-color: black;
+	border-bottom: 1px solid rgb(255, 0, 0);
 }
 .nav-list a:focus{
-    background-color: rgb(62, 62, 62);
+	background-color: rgb(62, 62, 62);
 }
 .main-view{
-    float:left;
-    overflow: auto;
-    width: 100%;
+	float:left;
+	overflow: auto;
+	width: 100%;
 }
 .container-fluid, .row, .tree-list{
-    height: 100%;
+	height: 100%;
 }
 .container-fluid{
-    width: 100%;
-    min-width: 1200px;
+	width: 100%;
+	min-width: 1200px;
 }
 .userLabel{
-    text-align: center;
-    color: #FFF;
-    margin-bottom: 50px;
+	text-align: center;
+	color: #FFF;
+	margin-bottom: 50px;
 }
 .menu-list{
-    width: 250px;
-    font-size: 14px;
-    margin: 0 auto;
+	width: 250px;
+	font-size: 14px;
+	margin: 0 auto;
 }
 .brand-logo{
-    font-size: 20px;
+	font-size: 20px;
 }
 .nav-wrapper{
-    height: 98px !important;
+	height: 98px !important;
 }
 nav .button-collapse{
-    float: right;
+	float: right;
 }
 .side-toggler{
-    font-size: 24px;
+	font-size: 24px;
 }
 .side-nav{
-    top: 98px;
+	top: 98px;
 }
 nav a.button-collapse {
-    display: block;
+	display: block;
 }
 .side-nav .side-userWrapper{
-    height: 144px;
-    padding: 20px 30px;
+	height: 144px;
+	padding: 20px 30px;
 }
 .side-nav .side-userPic{
-    background-color: #000;
-    height: 70px;
+	background-color: #000;
+	height: 70px;
 }
 .side-nav .side-userInfo{
-    margin-bottom: 5px;
-    height: 70px;
+	margin-bottom: 5px;
+	height: 70px;
 }
 .side-nav .side-user{
-    line-height: 25px;
+	line-height: 25px;
 }
 .side-nav .side-btnBox{
-    text-align: right;
-    height: 20px;
-    font-size: 13px;
+	text-align: right;
+	height: 20px;
+	font-size: 13px;
 }
 .side-nav .side-btnBox a{
-    line-height: 17px;
-    display: inline;
-    color: #999;
+	line-height: 17px;
+	display: inline;
+	color: #999;
 }
 .side-nav .side-btnBox a:hover{
-    background: none;
+	background: none;
 }
 .side-nav dl {
-    margin: 0px;
+	margin: 0px;
 }
 .side-nav dl dd a{
-    color: #666;
-    line-height: 28px;
-    padding-left: 70px;
-    
+	color: #666;
+	line-height: 28px;
+	padding-left: 70px;
+}
+.tab .active{
+	border-bottom: 2px solid #FFF;
 }
 

@@ -1,11 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import {PageInfo} from '../../../service/single_info';
+import {UserInfo} from '../../../service/single_user';
 
 @Component({
-    templateUrl: 'client/component/userpage/textBag/userTextBag.component.html'
+	templateUrl: 'client/component/userpage/textBag/userTextBag.component.html'
 })
 export class UserTextBagComponent{
-    private title:string;
-    constructor(){
-        this.title = "this is mypage";
-    }
+	private title:string;
+	constructor(public page:PageInfo,public userInfo:UserInfo){
+		this.title = "this is mypage";
+	}
+	ngOnInit(){
+		this.page.setUrl();
+		this.page.title = "TextShare";
+		this.page.tabList =[
+			{
+				name : 'TextShare',
+				link : 'textShare'
+			},
+			{
+				name : 'TextBag',
+				link : 'textBag'
+			}
+		];
+	}
 }

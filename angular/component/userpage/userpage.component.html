@@ -1,66 +1,67 @@
 
 <div class="container-fluid">
-    <nav class="nav-extended yellow accent-4">
-        <div class="nav-wrapper">
-            <a href="" class="brand-logo center">{{page.title}}</a>
-            <a href="" data-activates="list-slide" class="button-collapse"><i class="material-icons side-toggler">menu</i></a>
-            <ul class="side-nav" id="list-slide">
-                <li>
-                    <div class="side-userWrapper grey darken-2">
-                        <div class="side-userInfo row">
-                            <div class="side-userPic col s4">
+	<nav class="nav-extended yellow accent-4">
+		<div class="nav-wrapper">
+			<a href="" class="brand-logo center">{{page.title}}</a>
+			<a href="" data-activates="list-slide" class="button-collapse"><i class="material-icons side-toggler">menu</i></a>
+			<ul class="side-nav" id="list-slide">
+				<li>
+					<div class="side-userWrapper grey darken-2">
+						<div class="side-userInfo row">
+							<div class="side-userPic col s4">
 
-                            </div>
-                            <div class="side-user col s8">
-                                Lv.1 디자이너 <br>
-                                홍길동
-                            </div>
-                        </div>
-                        <div class="side-btnBox">
-                            <a href="">Logout</a>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <a routerLink="mypage"><i class="material-icons">group</i> MyPage</a>
-                </li>
-                <li>
-                    <a href=""><i class="material-icons">send</i> Hello TextShare</a>
-                    <dl>
-                        <dd><a href="">StudySearch</a></dd>
-                    </dl>
-                </li>
-                <li>
-                    <a href=""><i class="material-icons">group</i> TextShare</a>
-                    <dl>
-                        <dd>
-                            <a href="">TextShare</a>
-                            <a href="">TextBag</a>
-                        </dd>
-                    </dl>
-                </li>
-            </ul>
-        </div>
-        <div class="nav-content center">
-            <ul class="tabs tabs-transparent menu-list">
-                <li class="tab" *ngFor="let list of page.tabList"><a routerLink="{{list.link}}">{{list.name}}</a></li>
-                
-                <!--<li class="tab"><a class="active" href="#test2">Study</a></li>
-                <li class="tab"><a href="#test4">TextBag</a></li>-->
-            </ul>
-        </div>
-    </nav>
-        <!--
-            <li><a routerLink="/userpage">HOME</a></li>
-            <li><a routerLink="mypage">개인정보</a></li>
-            <li><a routerLink="textShare">TextShare</a></li>
-            <li><a routerLink="textBag">MyText Bag</a></li>
-            <li><a routerLink="stdAdmin">관리중인 스터디</a></li>
-            <li><a routerLink="stdJoin">가입한 스터디</a></li> 
-            <li><a routerLink="stdSearch">스터디 검색</a></li>
-        -->
+							</div>
+							<div class="side-user col s8">
+								Lv.1 디자이너 <br>
+								홍길동
+							</div>
+						</div>
+						<div class="side-btnBox">
+							<a href="">Logout</a>
+						</div>
+					</div>
+				</li>
+				<li>
+					<a routerLink="mypage"><i class="material-icons">group</i> MyPage</a>
+				</li>
+				<li>
+					<a href=""><i class="material-icons">send</i> Hello TextShare</a>
+					<dl>
+						<dd><a routerLink="stdSearch">StudySearch</a></dd>
+					</dl>
+				</li>
+				<li>
+					<a href=""><i class="material-icons">group</i> TextShare</a>
+					<dl>
+						<dd>
+							<a routerLink="textShare">TextShare</a>
+							<a routerLink="textBag">TextBag</a>
+						</dd>
+					</dl>
+				</li>
+			</ul>
+		</div>
+		<div class="nav-content center">
+			<ul class="tabs tabs-transparent menu-list">
+				<li class="tab" *ngFor="let list of page.tabList">
+					<a [ngClass]="{'active':page.url == list.link}" routerLink="{{list.link}}">{{list.name}}</a>
+				</li>
+					<!--<li class="tab"><a class="active" href="">Study</a></li>
+					<li class="tab"><a href="">TextBag</a></li>-->
+			</ul>
+		</div>
+	</nav>
+		<!--
+			<li><a routerLink="/userpage">HOME</a></li>
+			<li><a routerLink="mypage">개인정보</a></li>
+			<li><a routerLink="textShare">TextShare</a></li>
+			<li><a routerLink="textBag">MyText Bag</a></li>
+			<li><a routerLink="stdAdmin">관리중인 스터디</a></li>
+			<li><a routerLink="stdJoin">가입한 스터디</a></li> 
+			<li><a routerLink="stdSearch">스터디 검색</a></li>
+		-->
 
-        <div class="main-view">
-            <router-outlet></router-outlet>
-        </div>
+		<div class="main-view">
+			<router-outlet></router-outlet>
+		</div>
 </div>
