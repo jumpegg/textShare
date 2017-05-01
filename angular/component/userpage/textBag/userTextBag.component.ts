@@ -11,17 +11,6 @@ export class UserTextBagComponent{
 		this.title = "this is mypage";
 	}
 	ngOnInit(){
-		this.page.setUrl();
-		this.page.title = "TextShare";
-		this.page.tabList =[
-			{
-				name : 'TextShare',
-				link : 'textShare'
-			},
-			{
-				name : 'TextBag',
-				link : 'textBag'
-			}
-		];
+		this.page.init();
 	}
 }

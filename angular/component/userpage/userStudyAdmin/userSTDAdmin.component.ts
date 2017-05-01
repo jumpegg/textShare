@@ -25,20 +25,7 @@ export class UserSTDAdminComponent{
 		this.study_admin_list();
 	}
 	ngOnInit(){
-		this.page.setUrl();
-		this.page.title = "Hello TextShare";
-		this.page.tabList = [
-			{
-				name : 'Study',
-				link : 'stdAdmin'
-			},
-			{
-				name : 'StudySearch',
-				link: 'stdSearch'
-			}
-
-		]
-		// console.log(this.mydata.idx);
+		this.page.init();
 	}
 	study_create(input){
 		input.admin = this.mydata.idx;

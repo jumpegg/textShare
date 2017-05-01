@@ -4,130 +4,29 @@
 		<div class="col s3 list-tree">
 			<div class="tree-wrapper forTextShareScroll">
 				<div class="scrollbar-outer">
-				<p class="permanent">
-				Google Chrome scrollbar
-				</p>
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a,
-					scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus.
-					Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel
-					hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue,
-					pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam
-					sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare,
-					ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget
-					nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam
-					viverra nisi, in interdum massa nibh nec erat.
-				</p>
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a,
-					scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus.
-					Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel
-					hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue,
-					pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam
-					sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare,
-					ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget
-					nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam
-					viverra nisi, in interdum massa nibh nec erat.
-				</p>
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a,
-					scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus.
-					Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel
-					hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue,
-					pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam
-					sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare,
-					ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget
-					nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam
-					viverra nisi, in interdum massa nibh nec erat.
-				</p>
+					<ul>
+						<li><button class="btn" (click)="aniToggle()">toggle</button>
+							<ul class="testback" [@aniState]="aniStateVal">
+								<li>test</li>
+								<li>test</li>
+								<li>test</li>
+							</ul>	
+						</li>
+						
+					</ul>
 				</div>
 			</div>
 		</div>
 		<div class="col s9 content-view">
 			<div class="text-output forTextShareScroll">
 				<div class="scrollbar-outer">
-				<p class="permanent">
-				Google Chrome scrollbar
-				</p>
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a,
-					scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus.
-					Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel
-					hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue,
-					pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam
-					sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare,
-					ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget
-					nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam
-					viverra nisi, in interdum massa nibh nec erat.
-				</p>
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a,
-					scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus.
-					Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel
-					hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue,
-					pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam
-					sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare,
-					ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget
-					nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam
-					viverra nisi, in interdum massa nibh nec erat.
-				</p>
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a,
-					scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus.
-					Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel
-					hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue,
-					pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam
-					sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare,
-					ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget
-					nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam
-					viverra nisi, in interdum massa nibh nec erat.
-				</p>
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a,
-					scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus.
-					Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel
-					hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue,
-					pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam
-					sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare,
-					ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget
-					nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam
-					viverra nisi, in interdum massa nibh nec erat.
-				</p>
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a,
-					scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus.
-					Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel
-					hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue,
-					pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam
-					sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare,
-					ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget
-					nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam
-					viverra nisi, in interdum massa nibh nec erat.
-				</p>
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a,
-					scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus.
-					Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel
-					hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue,
-					pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam
-					sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare,
-					ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget
-					nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam
-					viverra nisi, in interdum massa nibh nec erat.
-				</p>
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a,
-					scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus.
-					Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel
-					hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue,
-					pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam
-					sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare,
-					ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget
-					nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam
-					viverra nisi, in interdum massa nibh nec erat.
-				</p>
+					<ul>
+						<li *ngFor="let item of items" [@list-toggle]="item.state" (click)="toggle(item)">
+							{{item.name}}
+						</li>
+					</ul>
+				
 				</div>
-
 			</div>
 		</div>
 	</div>

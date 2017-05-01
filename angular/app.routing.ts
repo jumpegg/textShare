@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IndexComponent } from './component/index/index.component';
 import { UserpageComponent } from './component/userpage/userpage.component';
-import { UserIndexComponent } from './component/userpage/index/userindex.component';
 import { UserMyPageComponent } from './component/userpage/mypage/userMyPage.component';
 import { UserTextShareComponent } from './component/userpage/textShare/userTextShare.component';
 import { UserTextBagComponent } from './component/userpage/textBag/userTextBag.component';
@@ -42,7 +41,7 @@ const routes: Routes = [
 			path: '',
 			canActivateChild: [AuthGuard],
 			children: [
-				{path: '', component: UserIndexComponent},
+				{path: '', component: UserSTDAdminComponent},
 				{path: 'mypage', component: UserMyPageComponent},
 				{path: 'textShare', component: UserTextShareComponent},
 				{path: 'textBag', component: UserTextBagComponent},

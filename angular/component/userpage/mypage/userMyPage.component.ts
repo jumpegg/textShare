@@ -12,18 +12,6 @@ export class UserMyPageComponent implements OnInit{
 	}
 
 	ngOnInit(){
-		this.page.setUrl();
-		this.page.title = "My Page";
-		this.page.tabList = [
-			{
-				name : 'Account',
-				link : 'mypage'
-			},
-			{
-				name : 'More',
-				link: 'mypage'
-			}
-
-		]
+		this.page.init();
 	}
 }

@@ -12,18 +12,6 @@ export class UserSTDSearchComponent{
 	}
 
 	ngOnInit(){
-		this.page.setUrl();
-		this.page.title = "Hello TextShare";
-		this.page.tabList = [
-			{
-				name : 'Study',
-				link : 'stdAdmin'
-			},
-			{
-				name : 'StudySearch',
-				link: 'stdSearch'
-			}
-
-		]
+		this.page.init();
 	}
 }

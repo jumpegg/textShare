@@ -18,7 +18,8 @@
 	height: 700px;
 	width: 100%;
 	padding: 20px;
-	/*overflow-y: scroll;*/
-/*color: #fcfdff*/
 }
-
+.testback{
+	overflow: hidden;
+	border: 1px solid black;
+}

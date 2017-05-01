@@ -4,7 +4,7 @@ import { FormsModule , ReactiveFormsModule} from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { Router } from '@angular/router';
 // import { TreeModule } from 'tree-component';
-// import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './module/material.module';
 import { PageInfo } from './service/single_info';
 import { UserInfo } from './service/single_user';
@@ -13,7 +13,6 @@ import { AppComponent } from './app.component';
 import { IndexComponent } from './component/index/index.component';
 
 import { UserpageComponent } from './component/userpage/userpage.component';
-import { UserIndexComponent } from './component/userpage/index/userindex.component';
 import { UserMyPageComponent } from './component/userpage/mypage/userMyPage.component';
 import { UserTextShareComponent } from './component/userpage/textShare/userTextShare.component';
 import { UserTextBagComponent} from './component/userpage/textBag/userTextBag.component';
@@ -44,6 +43,7 @@ import { AppRoutingModule } from './app.routing';
       HttpModule,
       AppRoutingModule,
       MyDatePickerModule,
+	  BrowserAnimationsModule,
     //   TreeModule,
       MaterialModule,
   ],
@@ -52,7 +52,6 @@ import { AppRoutingModule } from './app.routing';
     IndexComponent,
 
     UserpageComponent,
-    UserIndexComponent,
     UserMyPageComponent,
     UserTextShareComponent,
     UserTextBagComponent,
