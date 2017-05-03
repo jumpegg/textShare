@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-// import { MdDialog } from '@angular/material';
 import { FormControl, FormGroup, Validators, FormBuilder} from '@angular/forms';
 import { User } from '../../vo/user';
 import { UserService } from '../../service/user.service';
-// import { AuthGuard } from '../../service/auth-guard.service';
 
 declare var $ : any;
 @Component({
