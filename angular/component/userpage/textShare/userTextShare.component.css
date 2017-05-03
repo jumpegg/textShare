@@ -1,9 +1,45 @@
+.header-area{
+	margin: 0px;
+	margin-top: 20px;
+	padding: 0px 10px;
+	overflow: hidden;
+}
+.header-area a{
+	float:right;
+	background-color: #FFB300;
+	border-radius: 3px;
+	color: white;
+}
+.header-area button{
+	background-color: #FFB300;
+	border-radius: 3px;
+	color: white;
+}
+.header-area .nameBox{
+	width: 400px;
+	margin: 0px;
+	/*display: inline;*/
+	float: left;
+	overflow: hidden;
+}
+.header-area .foldername{
+	margin: 0px;
+	margin-right: 20px;
+	width: 250px;
+	height: 35px;
+}
+.header-area .nameWrapper{
+	width: 410px;
+	overflow: hidden;
+	float: left;
+}
 .list-tree{
 	padding: 20px;
 }
 .list-tree .tree-wrapper{
-	border: 1px solid black;
+	/*border: 1px solid #95989A;*/
 	border-radius: 10px;
+	background-color: #F1F1F1;
 	height: 700px;
 	width: 100%;
 	padding: 20px;
@@ -13,13 +49,39 @@
 	padding: 20px;
 }
 .content-view .text-output{
-	border: 1px solid black;
+	border: 1px solid #FFB300;
 	border-radius: 10px;
+
 	height: 700px;
 	width: 100%;
 	padding: 20px;
 }
-.testback{
+.folder ul{
+	padding-left: 30px;
 	overflow: hidden;
-	border: 1px solid black;
+}
+.folder p{
+	margin: 3px;
+	cursor: pointer;
+}
+.folder .material-icons{
+	font-size: 14px;
+}
+.folder .open{
+	color: #FFB300;
+}
+.folder .open::before{
+	color: #FFB300;
+	font-family: 'Material Icons';
+	content: 'remove';
+}
+.folder .close::before{
+	font-family: 'Material Icons';
+	content: 'add';
+}
+.folder li{
+	cursor: pointer;
+}
+.folder li.active{
+	color: #FFB300;
 }

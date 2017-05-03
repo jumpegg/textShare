@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class UserInfo{
-    public idx:string;
-    public id:string;
+    public idx:number;
+    public id:number;
     public email:string;
     public phone:string;
     public addr:string;

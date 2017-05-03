@@ -14,7 +14,7 @@ import { IndexComponent } from './component/index/index.component';
 
 import { UserpageComponent } from './component/userpage/userpage.component';
 import { UserMyPageComponent } from './component/userpage/mypage/userMyPage.component';
-import { UserTextShareComponent } from './component/userpage/textShare/userTextShare.component';
+import { UserTextShareComponent, UserTextShareNewComponent } from './component/userpage/textShare/userTextShare.component';
 import { UserTextBagComponent} from './component/userpage/textBag/userTextBag.component';
 import { UserSTDJoinComponent } from './component/userpage/userStudyJoin/userSTDJoin.component';
 import { UserSTDAdminComponent } from './component/userpage/userStudyAdmin/userSTDAdmin.component';
@@ -54,6 +54,7 @@ import { AppRoutingModule } from './app.routing';
     UserpageComponent,
     UserMyPageComponent,
     UserTextShareComponent,
+	UserTextShareNewComponent,
     UserTextBagComponent,
     UserSTDJoinComponent,
     UserSTDAdminComponent,

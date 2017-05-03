@@ -11,7 +11,7 @@ export class PageInfo{
 		let params = urlList[urlList.length - 1].split('?');
 		this.url = params[0];
 
-		if(this.url == 'textShare' || this.url == 'textBag'){
+		if(this.url == 'textShare' || this.url == 'textBag' || this.url == 'textShareNew'){
 			this.title = 'TextShare';
 			this.tabList = [
 				{

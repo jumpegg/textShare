@@ -1,20 +1,53 @@
-.list-tree{
-    padding: 20px;
+.ts-submit{
+	float:right;
+	background-color: #FFB300;
+	height:45px;
+	border-radius: 3px;
+	color: white;
 }
-.list-tree .tree-wrapper{
-    border: 1px solid black;
-    border-radius: 10px;
-    height: 800px;
-    width: 100%;
-    padding: 20px;
+.ts-submit::after{
+	clear: both;
+}
+.insert-area{
+	padding: 20px;
+}
+.insert-area .area-wrapper{
+	border-radius: 10px;
+	background-color: #F1F1F1;
+	height: 100%;
+	width: 100%;
+	/*padding: 10px;*/
+}
+.insert-area .ts-title{
+	border: 1px solid black;
+	border-radius: 5px;
+}
+.insert-area .area-wrapper textarea{
+	width: 92%;
+	height: 93%;
+	padding: 20px;
+	/*border: 0 none #FFF;*/
+	/*border-radius: 10px;*/
+	border: none;
+}
+.insert-area .area-wrapper textarea:focus{
+	border: 0 none #FFF;
+    overflow: hidden;
+    outline:none;
 }
 .content-view{
-    padding: 20px;
+	padding: 20px;
+}
+.content-view .ts-folder{
+	width: 70%;
+	display: inline-block;
+	margin-bottom: 20px;
+	border-radius: 5px;
 }
 .content-view .text-output{
-    border: 1px solid black;
-    border-radius: 10px;
-    height: 800px;
-    width: 100%;
-    padding: 20px;
+	border: 1px solid #FFB300;
+	border-radius: 10px;
+	height: 700px;
+	width: 100%;
+	padding: 20px;
 }

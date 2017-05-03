@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IndexComponent } from './component/index/index.component';
 import { UserpageComponent } from './component/userpage/userpage.component';
 import { UserMyPageComponent } from './component/userpage/mypage/userMyPage.component';
-import { UserTextShareComponent } from './component/userpage/textShare/userTextShare.component';
+import { UserTextShareComponent, UserTextShareNewComponent } from './component/userpage/textShare/userTextShare.component';
 import { UserTextBagComponent } from './component/userpage/textBag/userTextBag.component';
 import { UserSTDJoinComponent } from './component/userpage/userStudyJoin/userSTDJoin.component';
 import { UserSTDAdminComponent } from './component/userpage/userStudyAdmin/userSTDAdmin.component';
@@ -44,6 +44,7 @@ const routes: Routes = [
 				{path: '', component: UserSTDAdminComponent},
 				{path: 'mypage', component: UserMyPageComponent},
 				{path: 'textShare', component: UserTextShareComponent},
+				{path: 'textShareNew', component: UserTextShareNewComponent},
 				{path: 'textBag', component: UserTextBagComponent},
 				{path: 'stdJoin', component: UserSTDJoinComponent},
 				{path: 'stdAdmin', component: UserSTDAdminComponent},

@@ -19,7 +19,7 @@ System.config({
         '@angular/material':'npm/material/bundles/material.umd.js',
         'jquery': 'node_modules/jquery/dist/jquery.js',
         'rxjs': 'node_modules/rxjs',
-        'marked': 'node_modules/marked/index.js',
+        'marked': 'node_modules/marked/marked.min.js',
         'mydatepicker': 'node_modules/mydatepicker/bundles/mydatepicker.umd.js'
         // 'tree-component': 'node_modules/angular-tree-component/dist/angular-tree-component.umd.js'
     },
@@ -33,6 +33,9 @@ System.config({
             },
         rxjs :{
             defaultExtension : "js"
-        }
+        },
+		marked : {
+			defaultExtension : "js"
+		}
     }
 });
