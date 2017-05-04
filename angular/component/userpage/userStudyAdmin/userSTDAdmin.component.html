@@ -1,61 +1,104 @@
-<style>
-    .studyList td{
-        text-align: center;
-    }
-</style>
+<div class="container">
 
 <div class="listWrap">
-    <h1>
-        관리중인 스터디
-        <button class="btn btn-primary newBtn" data-toggle="modal" data-target="#newStudy">새로만들기</button>
-    </h1>
-    <table class="table table-striped table-hover studyList">
-        <tr>
-            <th>NO</th>
-            <th>회원수</th>
-            <th>스터디명</th>
-            <th>생성일</th>
-            <th>상세보기</th>
-        </tr>
-        <tr *ngFor="let study of studyList; let i = index">
-            <td>{{i+1}}</td>
-            <td>구현중</td>
-            <td>
-                <a routerLink="/study">{{study.studyname}}</a>
-            </td>
-            <td>{{study.c_date | date:'y.MM.dd hh:mm'}}</td>
-            <td>정보보기</td>
-        </tr>
-    </table>
+	<div class="row adminList">
+		<div class="col s4" *ngFor="let study of studyList">
+			<div class="card horizontal">
+				<div class="card-image">
+					<i class="material-icons">check_circle</i>
+				</div>
+				<div class="card-stacked">
+					<div class="card-content study-info">
+						<p>관리중인 스터디</p>
+						<h5>{{study.studyname}}</h5>
+						<div class="next-info">
+							<p class="next-header">다음 모임일정</p>
+							<span class="next-place">강남 스터디 윙</span><span class="next-time">7:30 PM</span>
+						</div>
+					</div>
+					<div class="card-action">
+						<div class="row">
+							<div class="col s6"><a href="">관리하기</a></div>
+							<div class="col s6"><a routerLink="/study">바로가기</a></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col s4">
+			<div class="card study-add">
+				<div class="card-stacked">
+					<div class="card-content">
+						<i class="material-icons">add_circle</i>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row joinList">
+		<div class="col s4" *ngFor="let study of studyList">
+			<div class="card horizontal">
+				<div class="card-image">
+					<i class="material-icons">check_circle</i>
+				</div>
+				<div class="card-stacked">
+					<div class="card-content study-info">
+						<p>관리중인 스터디</p>
+						<h5>{{study.studyname}}</h5>
+						<div class="next-info">
+							<p class="next-header">다음 모임일정</p>
+							<span class="next-place">강남 스터디 윙</span><span class="next-time">7:30 PM</span>
+						</div>
+					</div>
+					<div class="card-action">
+						<div class="row">
+							<div class="col s6"><a href="">관리하기</a></div>
+							<div class="col s6"><a routerLink="/study">바로가기</a></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col s4">
+			<div class="card study-search">
+				<div class="card-stacked">
+					<div class="card-content">
+						<i class="material-icons">search</i>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 
-<!-- Modal -->
+</div>
+<!-- Modal 
 <div id="newStudy" class="modal fade" role="dialog">
-    <div class="modal-dialog">
+	<div class="modal-dialog">
 
-    <!-- Modal content-->
-    <div class="modal-content">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">스터디 생성</h4>
-        </div>
-        <form [formGroup]="newStudyForm" (ngSubmit)="study_create(newStudy)">
-            <div class="modal-body">
-                <div class="form-group">
-                    <label for="">스터디명</label>
-                    <input type="text" name="newStudyName" class="form-control" [(ngModel)] = "newStudy.studyname" formControlName="newStudyNameVali">
-                </div>
-                <div>
-                    <label for="">간략설명</label>
-                    <textarea class="form-control" name="newStudyInfo" rows="5" [(ngModel)] = "newStudy.info" formControlName="newStudyInfoVali"></textarea>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">생성</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-            </div>
-        </form>
-    </div>
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">스터디 생성</h4>
+			</div>
+			<form [formGroup]="newStudyForm" (ngSubmit)="study_create(newStudy)">
+				<div class="modal-body">
+					<div class="form-group">
+						<label for="">스터디명</label>
+						<input type="text" name="newStudyName" class="form-control" [(ngModel)] = "newStudy.studyname" formControlName="newStudyNameVali">
+					</div>
+					<div>
+						<label for="">간략설명</label>
+						<textarea class="form-control" name="newStudyInfo" rows="5" [(ngModel)] = "newStudy.info" formControlName="newStudyInfoVali"></textarea>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-primary">생성</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+				</div>
+			</form>
+		</div>
 
-  </div>
+	</div>
 </div>
+-->

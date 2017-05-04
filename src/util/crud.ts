@@ -106,7 +106,6 @@ export class Crud{
 					callback({msg : 'done'});
 				}
 			}else{
-				console.log(data);
 				callback(data);
 			}
 		});

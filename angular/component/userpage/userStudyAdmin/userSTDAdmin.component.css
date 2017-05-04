@@ -1,17 +1,69 @@
-.listWrap{
+/*.listWrap{
     width: 85%;
     margin: 20px auto;
     margin-bottom: 0px;
+}*/
+.container{
+	width: 1000px;
+	margin: 0px auto;
+}
+
+.listWrap{
+	margin-top: 40px;
 }
 .listWrap h1{
     margin: 40px 0px;
 }
-.studyList th{
-    text-align: center;
+.listWrap .card-image{
+	padding: 15px;
+	padding-right: 0px;
 }
-.modal-body{
-    padding: 20px;
+.listWrap .study-info{
+	padding: 15px;
 }
-.newBtn{
-    float: right;
+.listWrap .study-info .next-header{
+	font-size: 12px;
+	margin-bottom: 5px;
+	color: #191919;
+}
+.listWrap .study-info .next-time{
+	float:right;
+}
+.listWrap .study-info .next-info span{
+	font-size: 14px;
+}
+.listWrap .study-info h5{
+	margin-top: 0px;
+	margin-bottom: 15px;
+}
+.adminList .material-icons{
+	color: #FFB300;
+	font-size: 60px;
+}
+.adminList .study-add{
+	height: 214px;
+	text-align: center;
+	line-height: 240px;
+	cursor: pointer;
+}
+/*.listWrap .adminList .study-add .material-icons{
+	font-size: 90px;
+}*/
+.listWrap .adminList .study-add .card-content{
+	padding: 0px;
+}
+.joinList .material-icons{
+	color: #80CBC4;
+	font-size: 60px;
+}
+.joinList .study-search{
+	height: 214px;
+	text-align: center;
+	line-height: 210px;
+	cursor: pointer;
+}
+
+
+.card-action{
+	text-align: center;
 }

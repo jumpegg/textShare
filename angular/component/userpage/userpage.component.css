@@ -43,11 +43,6 @@ label{
 .nav-list a:focus{
 	background-color: rgb(62, 62, 62);
 }
-.main-view{
-	float:left;
-	overflow: auto;
-	width: 100%;
-}
 .container-fluid, .row, .tree-list{
 	height: 100%;
 }
