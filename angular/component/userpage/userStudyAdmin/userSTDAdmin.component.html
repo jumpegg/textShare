@@ -18,7 +18,7 @@
 					</div>
 					<div class="card-action">
 						<div class="row">
-							<div class="col s6"><a href="">관리하기</a></div>
+							<div class="col s6"><span class="modiActive" (click)="open_modi_modal()">관리하기</span></div>
 							<div class="col s6"><a routerLink="/study">바로가기</a></div>
 						</div>
 					</div>
@@ -26,7 +26,7 @@
 			</div>
 		</div>
 		<div class="col s4">
-			<div class="card study-add">
+			<div class="card study-add" (click)="open_new_modal()">
 				<div class="card-stacked">
 					<div class="card-content">
 						<i class="material-icons">add_circle</i>
@@ -60,7 +60,7 @@
 			</div>
 		</div>
 		<div class="col s4">
-			<div class="card study-search">
+			<div class="card study-search" (click)="move_search()">
 				<div class="card-stacked">
 					<div class="card-content">
 						<i class="material-icons">search</i>
@@ -72,33 +72,127 @@
 </div>
 
 </div>
-<!-- Modal 
-<div id="newStudy" class="modal fade" role="dialog">
-	<div class="modal-dialog">
 
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title">스터디 생성</h4>
-			</div>
-			<form [formGroup]="newStudyForm" (ngSubmit)="study_create(newStudy)">
-				<div class="modal-body">
-					<div class="form-group">
-						<label for="">스터디명</label>
-						<input type="text" name="newStudyName" class="form-control" [(ngModel)] = "newStudy.studyname" formControlName="newStudyNameVali">
-					</div>
-					<div>
-						<label for="">간략설명</label>
-						<textarea class="form-control" name="newStudyInfo" rows="5" [(ngModel)] = "newStudy.info" formControlName="newStudyInfoVali"></textarea>
-					</div>
-				</div>
-				<div class="modal-footer">
-					<button type="submit" class="btn btn-primary">생성</button>
-					<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-				</div>
-			</form>
+<div class="modal newStudy" id="newStudy" style="height: 800px !important;">
+	<div class="modal-content">
+		<div class="modal-header">
+			새로만들기
 		</div>
+		<div class="modal-body">
+			<div class="row">
+				<div class="left-panel col s5">
+					<ul>
+						<li class="place-header">
+							<i class="material-icons">pin_drop</i>
+							<p>장소 리스트</p>
+							<i class="material-icons mode_edit">location_disabled</i>
+						</li>
+						<li class="place-list">
+							<i class="material-icons">flag</i>
+							<p>강남 스터디 윙</p>
+							<i class="material-icons delete">clear</i>
+						</li>
+						<li class="place-list">
+							<i class="material-icons">flag</i>
+							<p>신도림 카페베네</p>
+							<i class="material-icons delete">clear</i>
+						</li>
+					</ul>
+				</div>
+				<div class="right-panel col s7">
+					<ul>
+						<li class="explain-title">
+							<i class="material-icons">insert_drive_file</i>
+							<p>간략설명</p>
+						</li>
+						<li>
+							<textarea class="explain-area"></textarea>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="row search-map">
+				<div class="col s8">
+					<i class="material-icons">search</i>
+					<input type="text" placeholder="Search people & places">
+				</div>
+				<div class="col s4">
+					<div class="btn-box">
+						<button class="btn-flat">검색</button>
+						<button class="btn-flat">등록</button>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="show-map" id="map">
 
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn-flat create" (click)="close_new_modal()">생성</button>
+			<button type="button" class="btn-flat cancel" (click)="close_new_modal()">취소</button>
+		</div>
 	</div>
 </div>
--->
+
+<div class="modal modiStudy" id="modiStudy">
+	<div class="modal-content">
+		<div class="modal-header">
+			수정하기
+		</div>
+		<div class="modal-body">
+			<div class="row">
+				<div class="left-panel col s5">
+					<ul>
+						<li class="place-header">
+							<i class="material-icons">pin_drop</i>
+							<p>장소 리스트(최대 5개)</p>
+							<i class="material-icons mode_edit">location_disabled</i>
+						</li>
+						<li class="place-list">
+							<i class="material-icons">flag</i>
+							<p>강남 스터디 윙</p>
+							<i class="material-icons delete">clear</i>
+						</li>
+						<li class="place-list">
+							<i class="material-icons">flag</i>
+							<p>신도림 카페베네</p>
+							<i class="material-icons delete">clear</i>
+						</li>
+					</ul>
+				</div>
+				<div class="right-panel col s7">
+					<ul>
+						<li class="explain-title">
+							<i class="material-icons">insert_drive_file</i>
+							<p>간략설명</p>
+						</li>
+						<li>
+							<textarea class="explain-area"></textarea>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="row search-map">
+				<div class="col s8">
+					<i class="material-icons">search</i>
+					<input type="text" placeholder="Search people & places">
+				</div>
+				<div class="col s4">
+					<div class="btn-box">
+						<button class="btn-flat">검색</button>
+						<button class="btn-flat">등록</button>
+					</div>
+				</div>
+			</div>
+			<div class="row show-map" id="map">
+
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn-flat create" (click)="close_modi_modal()">수정</button>
+			<button type="button" class="btn-flat cancel" (click)="close_modi_modal()">취소</button>
+		</div>
+	</div>
+</div>

@@ -6,6 +6,8 @@ import { StudyService } from '../../../service/study.service';
 import { UserService } from '../../../service/user.service';
 import {PageInfo} from '../../../service/single_info';
 
+declare var $ : any;
+declare var naver : any;
 @Component({
 	templateUrl: 'client/component/userpage/userStudyAdmin/userSTDAdmin.component.html',
 	styleUrls: ['client/component/userpage/userStudyAdmin/userSTDAdmin.component.css'],
@@ -15,6 +17,8 @@ export class UserSTDAdminComponent{
 	private newStudy: Study;
 	private studyList: Study[];
 	public mydata:Object;
+	public newMap:any;
+
 	newStudyForm = new FormGroup({
 		newStudyNameVali : new FormControl('', Validators.compose([Validators.required])),
 		newStudyInfoVali : new FormControl('', Validators.compose([Validators.required]))
@@ -26,6 +30,17 @@ export class UserSTDAdminComponent{
 	}
 	ngOnInit(){
 		this.page.init();
+		$('#newStudy').modal();
+		$('#modiStudy').modal();
+
+		this.newMap = new naver.maps.Map('map', {
+			center: new naver.maps.LatLng(37.3595704, 127.105399),
+			zoom: 11
+		});
+		// new naver.maps.Map('map', {
+		// 	center: new naver.maps.LatLng(37.3595704, 127.105399)
+		// });
+	
 	}
 	study_create(input){
 		input.admin = this.mydata.idx;
@@ -42,5 +57,20 @@ export class UserSTDAdminComponent{
 			},
 			error => console.log(error)
 		)
+	}
+	open_new_modal(){
+		$('#newStudy').modal('open');
+	}
+	open_modi_modal(){
+		$('#modiStudy').modal('open');
+	}
+	close_new_modal(){
+		$('#newStudy').modal('close');
+	}
+	close_modi_modal(){
+		$('#modiStudy').modal('close');
+	}
+	move_search(){
+		this.router.navigate(['/userpage/stdSearch']);
 	}
 }
