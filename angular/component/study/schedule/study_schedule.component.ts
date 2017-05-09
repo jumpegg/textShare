@@ -3,7 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import {IMyOptions} from 'mydatepicker';
 import {StudyService} from '../../../service/study.service';
 
-
+declare var naver : any;
 @Component({
 	styleUrls: ['client/component/study/schedule/study_schedule.component.css'],
 	templateUrl: 'client/component/study/schedule/study_schedule.component.html',

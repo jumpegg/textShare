@@ -31,6 +31,12 @@ export class UserService{
 		return this.http.get('/user/user_info', {headers:this.header})
 			.map(res => res.json());
 	}
+	/* study 관련 함수들 
+		studyNew: 스터디 생성
+		studyJoin: 스터디 가입
+		studyList: 스터디 검색 결과 리스트
+		studyAdminList: 현재 관리중인 스터디 리스트
+	*/
 	studyNew(input){
 		return this.http.post('/user/study_new', input, {headers:this.header})
 			.map(res=>res.json());
@@ -45,6 +51,30 @@ export class UserService{
 	}
 	studyAdminList(){
 		return this.http.get('/user/study_admin', {headers:this.header})
+			.map(res => res.json());
+	}
+	/* place 관련 함수들
+		placeSearch: 장소명, 건물명 검색
+		placeInsert: 장소 등록
+		placeList: 등록된 장소 리스트 가져오기
+	 */
+	placeSearch(input){
+		return this.http.get('/user/study_search_place/'+ input, {headers:this.header})
+			.map(res => res.json());
+	}
+	placeInsert(input){
+		return this.http.post('/user/place_new', input, {headers:this.header})
+			.map(res => res.json());
+	}
+	placeList(input){
+		return this.http.get('/user/place_list/'+input, {headers:this.header})
+			.map(res => res.json());
+	}
+	/*
+	 테스트용 함수들
+	*/
+	mapTest(){
+		return this.http.get('/user/study_map_test', {headers:this.header})
 			.map(res => res.json());
 	}
 }

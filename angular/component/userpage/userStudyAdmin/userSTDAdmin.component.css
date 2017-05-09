@@ -10,7 +10,9 @@ p{
 	width: 1000px;
 	margin: 0px auto;
 }
-
+.over-hidden{
+	overflow: hidden;
+}
 .listWrap{
 	margin-top: 40px;
 }
@@ -74,10 +76,10 @@ p{
 
 /*modal*/
 .modal.newStudy{
-	width: 700px;
+	width: 800px;
 }
 .modal.modiStudy{
-	width: 700px;
+	width: 800px;
 }
 .modal .row{
 	margin: 0px;
@@ -118,6 +120,7 @@ p{
 }
 .modal-body .place-header .mode_edit{
 	float:right;
+	margin-left: 10px;
 }
 .modal-body .place-list{
 	font-size: 14px;
@@ -134,11 +137,17 @@ p{
 	float: right;
 	cursor: pointer;
 }
+.modal-body .place-list.deactive{
+	display: none;
+}
 .modal-body ul{
 	list-style: none;
 }
 .modal-body .right-panel{
 	padding: 10px;
+}
+.modal-body .add-place{
+	cursor: pointer;
 }
 
 /*right-panel*/
@@ -160,7 +169,7 @@ p{
 .explain-area{
 	border-radius: 5px;
 	width: 100%;
-	height: 120px;
+	height: 150px;
 }
 
 /*search-map*/
@@ -187,9 +196,24 @@ p{
 	color : #f57f17;
 }
 .show-map{
-	width: 665px;
+	width: 765px;
 	height: 200px;
 	margin: 0px auto;
+}
+.place-close{
+	display: none;
+}
+.place-open{
+	display: block;
+}
+.place-add input{
+	display: inline-block;
+	width: 200px;
+	height: 20px;
+	margin: 0px;
+	position: relative;
+	top: -3px;
+	
 }
 
 /*modal-footer*/
@@ -203,3 +227,4 @@ p{
 	background-color: #999999;
 	color: #FFF;
 }
+

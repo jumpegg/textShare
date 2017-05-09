@@ -14,5 +14,6 @@ export class StudyService{
     callMap(){
         return this.http.get('/study/map', {headers: this.header});
     }
+	
 
 }

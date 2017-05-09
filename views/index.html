@@ -19,7 +19,7 @@
 	<script src="public/Material/js/materialize.min.js"></script>
 	<script src="public/jquery.scrollbar.min.js"></script>
 	
-	<script src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=4YTa1awkt2vPfKrRToJ0"></script>
+	<script src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=4YTa1awkt2vPfKrRToJ0&submodules=geocoder"></script>
 	<script>
 	  System.import('applicationStartup').catch(function (err) {
 		console.error(err);
@@ -77,12 +77,21 @@
 		.forTextShareScroll > div{
 			height: 650px !important;
 		}
-		/*.converter ul{
-			list-style-type: disc !important;
+		.iw_inner{
+			padding: 20px;
 		}
-		.converter li{
-			list-style-type: disc !important;
-		}*/
+		.iw_inner p{
+			margin: 0px;
+			font-size: 12px;
+		}
+		.iw_inner .item_category{
+			font-size: 10px;
+			color: #999999;
+			margin-left: 10px;
+		}
+		.iw_inner hr{
+			border: 1px solid black;
+		}
 		
 	</style>
 	<title>Document</title>
