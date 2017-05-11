@@ -11,7 +11,10 @@ import { UserInfo } from '../service/single_user';
 
 @Injectable()
 export class AuthGuard implements CanActivate{
-	constructor(private userService:UserService, private router: Router, public userInfo:UserInfo){}
+	constructor(
+		private userService:UserService, 
+		private router: Router, 
+		public userInfo:UserInfo){}
 
 	canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot){
 		return this.userService.chkSess().map(

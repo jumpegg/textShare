@@ -3,11 +3,16 @@
     margin: 20px auto;
     margin-bottom: 0px;
 }*/
+p{
+	margin: 0px;
+}
 .container{
 	width: 1000px;
 	margin: 0px auto;
 }
-
+.over-hidden{
+	overflow: hidden;
+}
 .listWrap{
 	margin-top: 40px;
 }
@@ -21,9 +26,13 @@
 .listWrap .study-info{
 	padding: 15px;
 }
+.listWrap .study-info>p{
+	font-size: 12px;
+	color: #999999;
+}
 .listWrap .study-info .next-header{
 	font-size: 12px;
-	margin-bottom: 5px;
+	margin-bottom: 3px;
 	color: #191919;
 }
 .listWrap .study-info .next-time{
@@ -33,15 +42,17 @@
 	font-size: 14px;
 }
 .listWrap .study-info h5{
-	margin-top: 0px;
-	margin-bottom: 15px;
+	margin-top: 5px;
+	margin-bottom: 10px;
+	font-size: 18px;
+	font-weight: bold;
 }
 .adminList .material-icons{
 	color: #FFB300;
 	font-size: 60px;
 }
 .adminList .study-add{
-	height: 214px;
+	height: 200px;
 	text-align: center;
 	line-height: 240px;
 	cursor: pointer;
@@ -57,13 +68,177 @@
 	font-size: 60px;
 }
 .joinList .study-search{
-	height: 214px;
+	height: 200px;
 	text-align: center;
 	line-height: 210px;
 	cursor: pointer;
 }
-
-
 .card-action{
 	text-align: center;
 }
+.card-action .modiActive{
+	cursor: pointer;
+}
+.card-action .go-study{
+	cursor: pointer;
+}
+/*modal*/
+.modal.newStudy{
+	width: 800px;
+}
+.modal.modiStudy{
+	width: 800px;
+}
+.modal .row{
+	margin: 0px;
+}
+.modal-content{
+	padding: 0px;
+}
+.modal-header{
+	height: 70px;
+	background-color: #FFD500;
+	text-align: center;
+	font-size: 24px;
+	color: #FFF;
+	padding: 20px 0px;
+}
+
+/*modal-body*/
+/*left-panel*/
+.modal-body{
+	padding: 10px;
+}
+.modal-body .left-panel{
+	color: #999999;
+	padding: 10px;
+}
+.modal-body .place-header{
+}
+.modal-body .place-header p{
+	font-size: 12px;
+	margin: 0px;
+	padding-bottom: 10px;
+	display: inline-block;
+	position: relative;
+	top: -3px;
+}
+.modal-body .place-header .material-icons{
+	font-size: 20px;
+}
+.modal-body .place-header .mode_edit{
+	float:right;
+	margin-left: 10px;
+}
+.modal-body .place-list{
+	font-size: 14px;
+}
+.modal-body .place-list:hover{
+	color: #f57f17;
+}
+.modal-body .place-list p{
+	display: inline-block;
+	position: relative;
+	cursor: pointer;
+	top: -4px;
+}
+.modal-body .place-list .material-icons{
+	font-size: 20px;
+}
+.modal-body .place-list .delete{
+	float: right;
+	cursor: pointer;
+}
+.modal-body .place-list.deactive{
+	display: none;
+}
+.modal-body ul{
+	list-style: none;
+}
+.modal-body .right-panel{
+	padding: 10px;
+}
+.modal-body .add-place{
+	cursor: pointer;
+}
+
+/*right-panel*/
+
+.explain-title{
+	color: #999999;
+	font-size: 12px;
+	margin: 0px;
+	padding-bottom: 10px;
+}
+.explain-title .material-icons{
+	font-size: 20px;
+}
+.explain-title p{
+	display: inline-block;
+	position: relative;
+	top: -7px;
+}
+.explain-area{
+	border-radius: 5px;
+	border: 1px solid #FFB300;
+	padding: 10px;
+	width: 100%;
+	height: 150px;
+}
+
+/*search-map*/
+.search-map input{
+	display: inline-block;
+	position: relative;
+	top: -10px;
+	width: 85%;
+	height: 35px;
+	margin: 0px;
+	padding-left: 20px;
+}
+.search-map .material-icons{
+	font-size:28px;
+	/*position: relative;
+	top: 10px;*/
+}
+.search-map .btn-box{
+	float: right;
+}
+.search-map .btn-box button{
+	border: 1px solid #f57f17;
+	border-radius: 5px;
+	color : #f57f17;
+}
+.show-map{
+	width: 765px;
+	height: 200px;
+	margin: 0px auto;
+}
+.place-close{
+	display: none;
+}
+.place-open{
+	display: block;
+}
+.place-add input{
+	display: inline-block;
+	width: 200px;
+	height: 20px;
+	margin: 0px;
+	position: relative;
+	top: -3px;
+	
+}
+
+/*modal-footer*/
+.modal-footer .create{
+	margin: 0px 10px;
+	background-color: #FFD500;
+	color: #FFF;
+}
+.modal-footer .cancel{
+	margin: 0px 10px;
+	background-color: #999999;
+	color: #FFF;
+}
+

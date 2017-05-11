@@ -78,9 +78,9 @@ export class Crud{
 		let value:string;
 		this.query = `insert into ${this.table} `;
 
-		Object.keys(input).map((e) => {
-			colArr.push(e);
-			valueArr.push(input[e]);
+		Object.keys(input).map((key) => {
+			colArr.push(key);
+			valueArr.push(input[key]);
 		});
 		col = colArr.join(", ");
 		value = valueArr.join("', '");
@@ -90,12 +90,43 @@ export class Crud{
 
 		return this;
 	}
+	/** 
+	 * update 함수
+	*/
+	public update(input:Object){
+		let colArr:Array<any> = [];
+		let valueArr:Array<any> = [];
+		let setArr:Array<any> = [];
+		let setString:string = "";
+
+		this.query = `update ${this.table} set `;
+		Object.keys(input).map((key) => {
+			if(key != 'idx' && key != 'c_date' && key != 'u_date' && key != 'd_date'){
+				setArr.push(`${key} = '${input[key]}'`);
+			}
+		});
+		setString = setArr.join(", ");
+
+		this.query += setString;
+		this.query += ` where idx = '${input.idx}'`;
+		this.type = false;
+
+		return this;
+	}
+	public delete(input:number){
+		this.query = `delete from ${this.table} where idx = '${input}'`;
+		this.type = false;
+
+		return this;
+	}
+
 	/**
 	 * queryWork 함수
 	 * 마지막에 queryWork 을 실행하면 등록된 this.query 를 실행한다.
 	 * 반환값이 필요한 명령이었는지는 this.type 을 통해 판별
 	 */
 	public go(callback){
+		console.log(this.query);
 		conn.query(this.query, (err, data) => {
 			if(err){
 				callback(err);

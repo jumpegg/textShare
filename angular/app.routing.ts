@@ -21,6 +21,7 @@ import { StudyData } from './component/study/studydata/study_studydata.component
 import { StudySchedule, StudyNewSchedule } from './component/study/schedule/study_schedule.component';
 
 import { AuthGuard } from './service/auth-guard.service';
+import { StudyGuard } from './service/study-guard.service';
 import { UserService } from './service/user.service';
 import { StudyService } from './service/study.service';
 // import { UserInfo } from './service/userinfo.service';
@@ -54,7 +55,10 @@ const routes: Routes = [
 	},
 	{
 		path: 'study', component: StudyComponent,
-		children:[{path:'',
+		canActivate: [StudyGuard],
+		children:[{
+			path:'',
+			canActivateChild:[StudyGuard],
 			children:[
 				{path: '', redirectTo: 'index', pathMatch: 'full'},
 				{path: 'index',component: StudyIndex},
@@ -75,7 +79,7 @@ const routes: Routes = [
 	imports: [RouterModule.forRoot(routes, {useHash:true})],
 	// imports: [RouterModule.forRoot(routes)],
 	exports: [RouterModule],
-	providers: [AuthGuard, UserService, UserResolve, StudyService]
+	providers: [AuthGuard, StudyGuard, UserService, UserResolve, StudyService]
 })
 export class AppRoutingModule {
 	constructor(){

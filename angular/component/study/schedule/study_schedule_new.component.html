@@ -1,48 +1,48 @@
 <div class="container-fluid mainWrapper">
-    <div class="main">
-        <div class="left">
-            <div class="form-group">
-                <label for="">장소명</label>
-                <input type="text" name="place" class="form-control" placeholder="간략한 장소명을 적어주세요">
-            </div>
-            <div class="form-group date">
-                <label for="">날짜</label>
-                <my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="model" required></my-date-picker>
-            </div>
-            <div class="form-group time">
-                <label for="">시간</label>
-                <div>
-                    <input type="text" class="form-control" placeholder="시작시간"> 
-                    ~ <input type="text" class="form-control" placeholder="종료시간">
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-xs-6">
-                    <label for="">1인당 예상비용</label>
-                    <input type="text" class="form-control">
-                </div>
-                <div class="col-xs-6">
-                    <label for="">총 예상비용</label>
-                    <input type="text" class="form-control">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12">
-                    <button class="btn btn-primary">등록하기</button>
-                </div>
-            </div>
-        </div>
-        <div class="right">
-            <div class="form-group search">
-                <label for="">장소찾기</label>
-                <div class="search">
-                    <input type="text" class="form-control">
-                    <button type="button" class="btn btn-primary" (click)="maptest()">검색</button>
-                </div>
-            </div>
-            <div class="map" id="map">
+	<div class="main">
+		<div class="left">
+			<div class="form-group">
+				<label for="">장소명</label>
+				<input type="text" name="place" class="form-control" placeholder="간략한 장소명을 적어주세요">
+			</div>
+			<div class="form-group date">
+				<label for="">날짜</label>
+				<my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="model" required></my-date-picker>
+			</div>
+			<div class="form-group time">
+				<label for="">시간</label>
+				<div>
+					<input type="text" class="form-control" placeholder="시작시간"> 
+					~ <input type="text" class="form-control" placeholder="종료시간">
+				</div>
+			</div>
+			<div class="form-group row">
+				<div class="col-xs-6">
+					<label for="">1인당 예상비용</label>
+					<input type="text" class="form-control">
+				</div>
+				<div class="col-xs-6">
+					<label for="">총 예상비용</label>
+					<input type="text" class="form-control">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<button class="btn btn-primary">등록하기</button>
+				</div>
+			</div>
+		</div>
+		<div class="right">
+			<div class="form-group search">
+				<label for="">장소찾기</label>
+				<div class="search">
+					<input type="text" class="form-control">
+					<button type="button" class="btn btn-primary" (click)="maptest()">검색</button>
+				</div>
+			</div>
+			<div class="map" id="map">
 
-            </div>
-        </div>
-    </div>
+			</div>
+		</div>
+	</div>
 </div>

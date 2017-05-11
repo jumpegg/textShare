@@ -10,7 +10,7 @@ export class UserService{
 	private header:Headers;
 
 	constructor(private http:Http){
-		let header = new Headers({'Content-Type':'application/json'});
+		this.header = new Headers({'Content-Type':'application/json'});
 	}
 	userInsert(input:User){
 		return this.http.post('/user/user_join', input, {headers:this.header})
@@ -31,20 +31,11 @@ export class UserService{
 		return this.http.get('/user/user_info', {headers:this.header})
 			.map(res => res.json());
 	}
-	studyNew(input){
-		return this.http.post('/user/study_new', input, {headers:this.header})
-			.map(res=>res.json());
-	}
-	studyJoin(input){
-		return this.http.post('/user/study_join', input, {headers:this.header})
-			.map(res => res.json());
-	}
-	studyList(input){
-		return this.http.post('/user/study_search', input, {headers:this.header})
-			.map(res => res.json());
-	}
-	studyAdminList(){
-		return this.http.get('/user/study_admin', {headers:this.header})
+	/*
+	 테스트용 함수들
+	*/
+	mapTest(){
+		return this.http.get('/user/study_map_test', {headers:this.header})
 			.map(res => res.json());
 	}
 }

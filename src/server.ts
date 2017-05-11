@@ -14,51 +14,51 @@ import * as LocalStrategy from 'passport-local';
 import { userRoute, studyRoute } from './routes';
 
 class Server {
-    public test:string;
-    public app:express.Application;
+		public test:string;
+		public app:express.Application;
 
-    constructor(){
-        this.app = express();
-        this.init();
-        this.middleware();
-        this.router();
-        this.start();
-    }
+		constructor(){
+				this.app = express();
+				this.init();
+				this.middleware();
+				this.router();
+				this.start();
+		}
 
-    private init() {
-        this.app.engine('html', hbs({ extname: '.html' }));
-        this.app.set('views', path.join(__dirname, '/../views'));
-        this.app.set('view engine', 'html');
-    }
+		private init() {
+				this.app.engine('html', hbs({ extname: '.html' }));
+				this.app.set('views', path.join(__dirname, '/../views'));
+				this.app.set('view engine', 'html');
+		}
 
-    private middleware(){
-        this.app.use(bodyParser.urlencoded({extended: true}));
-        this.app.use(bodyParser.json());
-        this.app.use(cookieParser());
-        this.app.use(session({
-            secret: 'tEsTeD',
-            resave: false,
-            saveUninitialized: true
-        }));
+		private middleware(){
+				this.app.use(bodyParser.urlencoded({extended: true}));
+				this.app.use(bodyParser.json());
+				this.app.use(cookieParser());
+				this.app.use(session({
+						secret: 'tEsTeD',
+						resave: false,
+						saveUninitialized: true
+				}));
 
-        this.app.use('/public', express.static(path.join(__dirname, '/../public')));
-        this.app.use('/node_modules', express.static(path.join(__dirname, '/../node_modules')));
-        this.app.use('/client', express.static(path.join(__dirname, '/../client')));
-    }
+				this.app.use('/public', express.static(path.join(__dirname, '/../public')));
+				this.app.use('/node_modules', express.static(path.join(__dirname, '/../node_modules')));
+				this.app.use('/client', express.static(path.join(__dirname, '/../client')));
+		}
 
-    private router(){
-        this.app.get('/', function(req, res){
-            res.render('index.html');
-        });
-        this.app.use('/user',userRoute);
-        this.app.use('/study',studyRoute);
-    }
+		private router(){
+				this.app.get('/', function(req, res){
+						res.render('index.html');
+				});
+				this.app.use('/user',userRoute);
+				this.app.use('/study',studyRoute);
+		}
 
-    private start(){
-        this.app.listen(3000, function(){
-            console.log('server running');
-        });
-    }
+		private start(){
+				this.app.listen(3000, function(){
+						console.log('server running');
+				});
+		}
 }
 
 export const server = new Server();

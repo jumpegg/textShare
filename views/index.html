@@ -19,7 +19,7 @@
 	<script src="public/Material/js/materialize.min.js"></script>
 	<script src="public/jquery.scrollbar.min.js"></script>
 	
-	<script src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=4YTa1awkt2vPfKrRToJ0"></script>
+	<script src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=4YTa1awkt2vPfKrRToJ0&submodules=geocoder"></script>
 	<script>
 	  System.import('applicationStartup').catch(function (err) {
 		console.error(err);
@@ -38,7 +38,7 @@
 			display: none;
 		}
 		/* label underline focus color */
-		.input-field input[type=text]:focus, 
+		/*.input-field input[type=text]:focus, 
 		.input-field input[type=password]:focus,
 		.input-field input[type=email]:focus,
 		.input-field input[type=url]:focus,
@@ -53,6 +53,22 @@
 		{
 			border-bottom: 1px solid #FFB300;
 			box-shadow: 0 1px 0 0 #FFB300;
+		}*/
+		input[type=text]:focus, 
+		input[type=password]:focus,
+		input[type=email]:focus,
+		input[type=url]:focus,
+		input[type=time]:focus,
+		input[type=date]:focus,
+		input[type=datetime]:focus,
+		input[type=datetime-local]:focus,
+		input[type=tel]:focus,
+		input[type=number]:focus,
+		input[type=search]:focus,
+		textarea.materialize-textarea
+		{
+			border-bottom: 1px solid #FFB300 !important;
+			box-shadow: 0 1px 0 0 #FFB300 !important;
 		}
 
 		.input-field label:not(.label-icon).active{
@@ -61,12 +77,22 @@
 		.forTextShareScroll > div{
 			height: 650px !important;
 		}
-		/*.converter ul{
-			list-style-type: disc !important;
+		.iw_inner{
+			padding: 20px;
 		}
-		.converter li{
-			list-style-type: disc !important;
-		}*/
+		.iw_inner p{
+			margin: 0px;
+			font-size: 12px;
+		}
+		.iw_inner .item_category{
+			font-size: 10px;
+			color: #999999;
+			margin-left: 10px;
+		}
+		.iw_inner hr{
+			border: 1px solid black;
+		}
+		
 	</style>
 	<title>Document</title>
 	<base href="/">
