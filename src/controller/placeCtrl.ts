@@ -24,6 +24,11 @@ export class PlaceCtrl{
 			res.json(data[0]);
 		});
 	}
+	public placeRemove:RequestHandler = (req, res) => {
+		this.placeTbl.delete(req.params.idx).go((data) => {
+			res.json(data);
+		})
+	}
 }
 
 export const placeCtrl = new PlaceCtrl();

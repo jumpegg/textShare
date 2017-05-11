@@ -21,7 +21,7 @@
 					<div class="card-action">
 						<div class="row">
 							<div class="col s6"><span class="modiActive" (click)="open_modi_modal(study.idx)">관리하기</span></div>
-							<div class="col s6"><a routerLink="/study">바로가기</a></div>
+							<div class="col s6"><a class="go-study" (click)="move_study(study.idx)">바로가기</a></div>
 						</div>
 					</div>
 				</div>
@@ -55,7 +55,7 @@
 					<div class="card-action">
 						<div class="row">
 							<div class="col s6"><a href="">관리하기</a></div>
-							<div class="col s6"><a routerLink="/study">바로가기</a></div>
+							<div class="col s6"><a class="go-study" (click)="move_study(study.idx)">바로가기</a></div>
 						</div>
 					</div>
 				</div>
@@ -95,10 +95,11 @@
 							<p>장소 리스트(최대 3개)</p>
 							<i class="material-icons mode_edit">location_disabled</i>
 						</li>
-						<li class="place-list" *ngFor="let place of placeList">
+						<li class="place-list" *ngFor="let place of placeList; let i = index">
 							<i class="material-icons">flag</i>
+							<!--<p (click)="showPlaceInfo(place)">{{place.name}}</p>-->
 							<p>{{place.name}}</p>
-							<i class="material-icons delete">clear</i>
+							<i class="material-icons delete" (click)="place_remove(place, i)">clear</i>
 						</li>
 						<li class="place-list" [ngClass]="{'deactive':placeList.length >= 3}">
 							<i class="material-icons">add</i>
@@ -150,33 +151,28 @@
 <div class="modal modiStudy" id="modiStudy">
 	<div class="modal-content">
 		<div class="modal-header">
-			수정하기
+			{{tempStudy.studyname}}
 		</div>
 		<div class="modal-body">
 			<div class="row">
 				<div class="left-panel col s5">
 					<ul>
-						<!--<li>
-							<div class="input-field">
-								<label for="study_name">스터디명</label>
-								<input type="text" name="study_name" [(ngModel)]="newStudy.studyname">
-							</div>
-						</li>-->
 						<li class="place-header">
 							<i class="material-icons">pin_drop</i>
 							<p>장소 리스트(최대 3개)</p>
 							<i class="material-icons mode_edit">location_disabled</i>
 						</li>
-						<li class="place-list" *ngFor="let place of placeList">
+						<li class="place-list" *ngFor="let place of placeList; let i = index">
 							<i class="material-icons">flag</i>
+							<!--<p (click)="showModiPlaceInfo(place)">{{place.name}}</p>-->
 							<p>{{place.name}}</p>
-							<i class="material-icons delete">clear</i>
+							<i class="material-icons delete" (click)="place_remove(place, i)">clear</i>
 						</li>
 						<li class="place-list" [ngClass]="{'deactive':placeList.length >= 3}">
 							<i class="material-icons">add</i>
-							<p class="add-place" (click)="toggleSearcher()">장소 추가하기</p>
+							<p class="add-place" (click)="toggleModiSearcher()">장소 추가하기</p>
 						</li>
-						<li class="place-list place-add" [@placeToggle]="placeState">
+						<li class="place-list place-add" [@placeModiToggle]="placeModiState">
 							<i class="material-icons">mode_edit</i>
 							<input type="text" placeholder="장소명" [(ngModel)]="placeOne.name">
 						</li>
@@ -189,31 +185,31 @@
 							<p>간략설명</p>
 						</li>
 						<li>
-							<textarea class="explain-area"></textarea>
+							<textarea class="explain-area" [(ngModel)]="tempStudy.info"></textarea>
 						</li>
 					</ul>
 				</div>
 			</div>
-			<div class="row search-map over-hidden" [@placeToggle]="placeState">
+			<div class="row search-map over-hidden" [@placeModiToggle]="placeModiState">
 				<div class="col s8">
 					<i class="material-icons">search</i>
 					<input type="text" placeholder="장소명 & 건물명 검색" [(ngModel)]="search_input">
 				</div>
 				<div class="col s4">
 					<div class="btn-box">
-						<button class="btn-flat" (click)="place_search(search_input)">검색</button>
+						<button class="btn-flat" (click)="place_modi_search(search_input)">검색</button>
 						<button class="btn-flat" (click)="place_insert(placeOne)">장소등록</button>
 					</div>
 				</div>
 			</div>
-			<div class="row over-hidden" [@placeToggle]="placeState">
-				<div class="show-map" id="map">
+			<div class="row over-hidden" [@placeToggle]="placeModiState">
+				<div class="show-map" id="modiMap">
 
 				</div>
 			</div>
 		</div>
 		<div class="modal-footer">
-			<button type="button" class="btn-flat create" (click)="close_modi_modal()">수정</button>
+			<button type="button" class="btn-flat create" (click)="study_modify(tempStudy, placeList)">수정</button>
 			<button type="button" class="btn-flat cancel" (click)="close_modi_modal()">취소</button>
 		</div>
 	</div>

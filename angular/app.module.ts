@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './module/material.module';
 import { PageInfo } from './service/single_info';
 import { UserInfo } from './service/single_user';
+import { StudyInfo } from './service/single_study';
 
 import { AppComponent } from './app.component';
 import { IndexComponent } from './component/index/index.component';
@@ -72,6 +73,7 @@ import { AppRoutingModule } from './app.routing';
   ],
   providers:[
     PageInfo,
+		StudyInfo,
     UserInfo
   ],
   bootstrap: [

@@ -2,9 +2,9 @@ import { Injectable, OnInit } from '@angular/core';
 
 @Injectable()
 export class PageInfo{
-    public tabList: any[];
-	public url:string;
-    public title:string = "title test";
+		public tabList: any[];
+		public url:string;
+		public title:string = "title test";
 
 	init(){
 		let urlList = document.location.hash.split('/');

@@ -11,6 +11,24 @@ export class StudyCtrl{
 		this.studyTbl = new Crud('study');
 		this.placeTbl = new Crud('s_place');
 	}
+	public studyEnter: RequestHandler = (req, res) => {
+		if(req.session.login){
+			req.session.studyIdx = req.params.idx;
+			res.send(true);
+		}else{
+			res.send(false);
+		}
+	}
+	public studyExit: RequestHandler = (req, res) => {
+
+	}
+	public studySet: RequestHandler = (req, res) => {
+		if(req.session.studyIdx){
+			this.studyTbl.selectOne({idx: req.session.studyIdx}).go((data) => {
+				res.json(data);
+			})
+		}
+	}
 	public make: RequestHandler = (req, res) => {
 		this.studyTbl.insert(req.body.study).go((data)=>{
 			if(data.msg == "done"){
@@ -21,7 +39,6 @@ export class StudyCtrl{
 						res.json({msg: 'error'})
 					}
 					let result = true;
-					// data[0]
 					for(let item of req.body.place){
 						item.study_idx = data[0].idx;
 						this.placeTbl.insert(item).go((data)=>{
@@ -32,7 +49,29 @@ export class StudyCtrl{
 				});
 			}
 		});
-		
+	}
+	public modify: RequestHandler = (req, res) => {
+		// console.log(this.studyTbl.update(req.body.study).querychk());
+		this.studyTbl.update(req.body.study).go((data) => {
+			if(data.msg == 'done'){
+				let result = true;
+				for(let placeItem of req.body.place){
+					let getAdmin = req.body.study.idx;
+					if(!placeItem.idx){
+						placeItem.study_idx = req.body.study.idx;
+						this.placeTbl.insert(placeItem).go((data) => {
+							result = (data.msg != 'done') ? false : true;
+						})
+					}else{
+						this.placeTbl.update(placeItem).go((data) => {
+							result = (data.msg != 'done') ? false : true;
+						})
+					}
+				}
+				result ? res.json({msg: "done"}) : res.json({msg:"error"});
+			}
+			// res.json(data);
+		})
 	}
 	public list: RequestHandler = (req, res) => {
 		this.studyTbl.selectList(req.body).go((data)=>{
@@ -42,6 +81,11 @@ export class StudyCtrl{
 	public search: RequestHandler = (req, res) => {
 		this.studyTbl.selectList(req.body).go((data)=>{
 			res.json(data);
+		})
+	}
+	public getOne : RequestHandler = (req, res) => {
+		this.studyTbl.selectOne({idx: req.params.idx}).go((data)=>{
+			res.json(data[0]);
 		})
 	}
 	public adminList: RequestHandler = (req, res) => {

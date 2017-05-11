@@ -1,6 +1,7 @@
 export class Place{
 	idx:number;
 	name:string;
-	map:any;
+	mapx:any;
+	mapy:any;
 	constructor(){}
 }
