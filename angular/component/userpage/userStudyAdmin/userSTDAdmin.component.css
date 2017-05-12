@@ -32,7 +32,7 @@ p{
 }
 .listWrap .study-info .next-header{
 	font-size: 12px;
-	margin-bottom: 3px;
+	margin-bottom: 8px;
 	color: #191919;
 }
 .listWrap .study-info .next-time{
@@ -52,10 +52,14 @@ p{
 	font-size: 60px;
 }
 .adminList .study-add{
-	height: 200px;
+	height: 179px;
 	text-align: center;
-	line-height: 240px;
+	/*line-height: 210px;*/
 	cursor: pointer;
+}
+.adminList .study-add i{
+	position:relative;
+	top:50px;
 }
 /*.listWrap .adminList .study-add .material-icons{
 	font-size: 90px;
@@ -68,10 +72,14 @@ p{
 	font-size: 60px;
 }
 .joinList .study-search{
-	height: 200px;
+	height: 179px;
 	text-align: center;
-	line-height: 210px;
+	/*line-height: 170px;*/
 	cursor: pointer;
+}
+.joinList .study-search i{
+	position:relative;
+	top:30px;
 }
 .card-action{
 	text-align: center;
@@ -81,6 +89,10 @@ p{
 }
 .card-action .go-study{
 	cursor: pointer;
+}
+.card-action .row{
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 /*modal*/
 .modal.newStudy{

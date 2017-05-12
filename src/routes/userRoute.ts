@@ -23,6 +23,7 @@ userRoute.get('/study_map_test', studyCtrl.map);
 userRoute.get('/study_getOne/:idx', studyCtrl.getOne);
 userRoute.get('/study_enter/:idx', studyCtrl.studyEnter);
 userRoute.get('/study_set', studyCtrl.studySet);
+userRoute.get('/isUserStudy', studyCtrl.isUserStudy);
 
 userRoute.post('/folder_create', folderCtrl.make);
 userRoute.get('/folder_list', folderCtrl.list);

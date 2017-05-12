@@ -1,39 +1,79 @@
 .tailPic{
-    text-align: center;
+		text-align: center;
 }
 .tailPic img{
-    width: 117px;
-    height: 117px;
+		width: 117px;
+		height: 117px;
 }
 .indexTitle{
-    text-align: center;
-    margin-bottom: 40px;
+		text-align: center;
+		margin-bottom: 40px;
 }
 .loginWrapper{
-    width: 330px;
-    margin: 150px auto;
+		width: 330px;
+		margin: 150px auto;
 }
 .loginWrapper hr{
-    border-color: rgb(182, 182, 182);
+		border-color: rgb(182, 182, 182);
 }
 .loginWrapper .loginBtn{
-    width: 100%;
-    height: 54px;
-    font-size: 20px;
+		width: 100%;
+		height: 54px;
+		font-size: 20px;
 }
 .etc{
-    font-size: 12px;
-    margin-top: 20px;
-    overflow: hidden;
+		font-size: 12px;
+		margin-top: 20px;
+		overflow: hidden;
 
 }
 .etc .joinBox{
-    /*width: 150px;*/
-    float: right;
+		/*width: 150px;*/
+		float: right;
+}
+
+.modal{
+	width: 410px;
+}
+.modal .modal-content{
+	padding: 0px;
+}
+.modal-header h5{
+	height:50px;
+	text-align: center;
+	font-size: 20px;
+	background-color: #FFD500;
+	color: #FFF;
+	margin: 0px;
+	padding: 15px 0px;
+}
+.modal-header .delete{
+	position: absolute;
+	cursor: pointer;
+	right: 5px;
+	top: 5px;
+}
+.modal-body{
+	padding: 0px 40px;
+}
+.modal-body .lastInput{
+	margin: 0px;
+}
+.modal-footer{
+	padding: 0px 40px;
+}
+.modal-footer .joinBtn{
+	background-color: #FFB300;
+	color: #FFF;
+	height: 54px;
+	width: 100%;
+	font-size: 18px;
+	margin-bottom: 40px;
 }
 .modal-dialog{
-    width: 350px;
+		width: 350px;
 }
 .modal-body input.ng-invalid{
-    border: 1px solid red;
+		/*border-bottom: 1px solid red;*/
 }
+

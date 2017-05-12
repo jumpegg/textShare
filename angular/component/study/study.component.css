@@ -14,6 +14,28 @@
 }
 .routeWrapper{
     padding-top: 52px;
-    height: 100%;
     width: 100%;
+}
+.study-bgcolor{
+	background-color: #AB47BC;
+}
+/*side nav*/
+nav .button-collapse{
+	float: right;
+}
+nav a.button-collapse {
+	display: block;
+}
+/* tab list */
+.menu-list{
+	margin: 0px auto;
+}
+.menu-list.study-manage{
+	width: 440px;
+}
+.menu-list.study-board{
+	width: 240px;
+}
+.menu-list.study-storage{
+	width: 240px;
 }

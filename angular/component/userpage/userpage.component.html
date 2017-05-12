@@ -27,6 +27,7 @@
 				<li>
 					<a href=""><i class="material-icons">send</i> Hello TextShare</a>
 					<dl>
+						<dd><a routerLink="stdAdmin">StudyList</a></dd>
 						<dd><a routerLink="stdSearch">StudySearch</a></dd>
 					</dl>
 				</li>
@@ -42,12 +43,10 @@
 			</ul>
 		</div>
 		<div class="nav-content center">
-			<ul class="tabs tabs-transparent menu-list">
+			<ul class="tabs tabs-transparent menu-list" [ngClass]="{'textshare':page.title == 'TextShare', 'my-page':page.title == 'My Page', 'hello-textshare':page.title == 'Hello TextShare'}">
 				<li class="tab" *ngFor="let list of page.tabList">
 					<a [ngClass]="{'active':page.url == list.link}" routerLink="{{list.link}}">{{list.name}}</a>
 				</li>
-					<!--<li class="tab"><a class="active" href="">Study</a></li>
-					<li class="tab"><a href="">TextBag</a></li>-->
 			</ul>
 		</div>
 	</nav>

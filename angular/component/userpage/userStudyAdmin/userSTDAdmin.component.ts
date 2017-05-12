@@ -110,6 +110,11 @@ export class UserSTDAdminComponent{
 			center: new naver.maps.LatLng(37.3595704, 127.105399),
 			zoom: 11
 		});
+
+		console.log(this.userService.chkSess().map(
+			data=>true
+		).subscribe());
+		console.log(this.userService.chkSess());
 	}
 	study_create(getStudy, getPlace){
 		getStudy.admin = this.userInfo.idx;
@@ -192,6 +197,7 @@ export class UserSTDAdminComponent{
 		this.studyService.studyEnter(input).subscribe(
 			data => console.log(data)
 		)
+		this.studyInfo.idx = input;
 		this.router.navigate(['/study']);
 	}
 	toggleSearcher(){

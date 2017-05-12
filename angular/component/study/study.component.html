@@ -1,62 +1,62 @@
-<!--
-	<nav class="navbar navbar-inverse border_0">
-		<div class="navbar-header">
-				<a routerLink="index" class="navbar-brand">{{studyInfo.studyname}}</a>
-		</div>
-		<ul class="nav navbar-nav">
-				<li class="dropdown">
-						<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expended="false">게시판</a>
-						<ul class="dropdown-menu" role="menu">
-								<li><a routerLink="freetalk">자유게시판</a></li>
-								<li><a routerLink="notice">공지사항</a></li>
-						</ul>
-				</li>
-				<li class="dropdown">
-						<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expended="false">운영</a>
-						<ul class="dropdown-menu" role="menu">
-					<li><a routerLink="schedule">스케쥴</a></li>
-					<li><a routerLink="account">회계</a></li>
-					<li><a routerLink="admin">회원관리</a></li>
-				</ul>
-				</li>
-				<li class="dropdown">
-						<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expended="false">자료실</a>
-						<ul class="dropdown-menu" role="menu">
-					<li><a routerLink="data">스터디 자료</a></li>
-				</ul>
-				</li>
+<nav class="nav-extended study-bgcolor">
+	<div class="nav-wrapper">
+		<a href="" class="brand-logo center">{{studyPage.title}}</a>
+		<a href="" data-activates="list-slide" class="button-collapse"><i class="material-icons side-toggler">menu</i></a>
+		<ul class="side-nav" id="list-slide">
+			<li>
+				<div class="side-userWrapper grey darken-2">
+					<div class="side-userInfo row">
+						<div class="side-userPic col s4">
+
+						</div>
+						<div class="side-user col s8">
+							Lv.1 디자이너 <br>
+							홍길동
+						</div>
+					</div>
+					<div class="side-btnBox">
+						<a href="">Logout</a>
+					</div>
+				</div>
+			</li>
+			<li>
+				<a routerLink="mypage"><i class="material-icons">group</i> 게시판</a>
+			</li>
+			<li>
+				<a href=""><i class="material-icons">send</i> 게시판</a>
+				<dl>
+					<dd><a routerLink="notice">Notice</a></dd>
+					<dd><a routerLink="freetalk">Freetalk</a></dd>
+				</dl>
+			</li>
+			<li>
+				<a routerLink="text"><i class="material-icons">group</i> 운영</a>
+				<dl>
+					<dd>
+						<a routerLink="schedule">Schedule</a>
+						<a routerLink="account">Account</a>
+						<a routerLink="admin">Members</a>
+					</dd>
+				</dl>
+			</li>
+			<li>
+				<a routerLink="text"><i class="material-icons">group</i> 자료실</a>
+				<dl>
+					<dd>
+						<a routerLink="flow">Flow</a>
+						<a routerLink="data">Data</a>
+					</dd>
+				</dl>
+			</li>
 		</ul>
-		<ul class="nav navbar-nav back">
-				<li class="dropdown right-menu">
-						<a routerLink="/userpage">BACK</a>
-				</li>
+	</div>
+	<div class="nav-content">
+		<ul class="tabs tabs-transparent menu-list" [ngClass]="{'study-manage':studyPage.title == '운영', 'study-board':studyPage.title == '게시판', 'study-storage':studyPage.title == '자료실'}">
+			<li class="tab" *ngFor="let list of studyPage.tabList">
+				<a [ngClass]="{'active':studyPage.url == list.link}" routerLink="{{list.link}}">{{list.name}}</a>
+			</li>
 		</ul>
-</nav>
--->
-<!-- Dropdown Structure -->
-<ul id="dropdown1" class="dropdown-content">
-  <li><a href="#!">one</a></li>
-  <li><a href="#!">two</a></li>
-  <li class="divider"></li>
-  <li><a href="#!">three</a></li>
-</ul>
-<ul id="dropdown2" class="dropdown-content">
-  <li><a href="#!">one</a></li>
-  <li><a href="#!">two</a></li>
-  <li class="divider"></li>
-  <li><a href="#!">three</a></li>
-</ul>
-<nav>
-  <div class="nav-wrapper">
-    <a href="#!" class="brand-logo">{{studyInfo.studyname}}</a>
-    <ul class="right hide-on-med-and-down">
-      <li><a href="sass.html">Sass</a></li>
-      <li><a href="badges.html">Components</a></li>
-      <!-- Dropdown Trigger -->
-      <li><a class="dropdown-button" data-activates="dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
-			<li><a class="dropdown-button" data-activates="dropdown2">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
-    </ul>
-  </div>
+	</div>
 </nav>
 <div class="routeWrapper">
 		<router-outlet></router-outlet>

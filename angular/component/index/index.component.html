@@ -26,28 +26,28 @@
 <div class="modal" id="SignUp">
 	<div class="modal-content">
 		<div class="modal-header">
-			<h3>
+			<h5>
 				회원가입
-			</h3>
+				<i class="material-icons delete" (click)="close_modal()">clear</i>
+			</h5>
 		</div>
 		<form [formGroup]="joinForm" (ngSubmit)="join(joiner)">
 			<div class="modal-body">
-				<div class="form-group">
+				<div class="input-field">
 					<label for="">ID</label>
 					<input type="text" class="form-control" [(ngModel)] = "joiner.id" formControlName="joinId">
 				</div>
-				<div class="form-group">
+				<div class="input-field">
 					<label for="">PASS</label>
 					<input type="text" class="form-control" [(ngModel)] = "joiner.password" formControlName="joinPass">
 				</div>
-				<div class="form-group">
+				<div class="input-field">
 					<label for="">E-mail</label>
-					<input type="text" class="form-control" [(ngModel)] = "joiner.email" formControlName="joinEmail">
+					<input type="text" class="form-control lastInput" [(ngModel)] = "joiner.email" formControlName="joinEmail">
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button type="submit" class="btn" *ngIf="joinForm.valid">가입</button>
-				<button type="button" class="btn" (click)="close_modal()">취소</button>
+				<button type="submit" class="btn-flat joinBtn">가입하기</button>
 			</div>
 		</form>
 	</div>

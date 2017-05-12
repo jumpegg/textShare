@@ -14,7 +14,10 @@ export class UserpageComponent {
 	public id:string;
 	public test:Object;
 
-	constructor(private userService:UserService, private route:ActivatedRoute, public page:PageInfo){
+	constructor(
+		private userService:UserService, 
+		private route:ActivatedRoute, 
+		public page:PageInfo){
 		this.userService.chkSess().subscribe(
 			data => {},
 			error => console.log(error)

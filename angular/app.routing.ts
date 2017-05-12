@@ -18,7 +18,8 @@ import { StudyFlow } from './component/study/flow/study_flow.component';
 import { StudyFreetalk } from './component/study/freetalk/study_freetalk.component';
 import { StudyNotice } from './component/study/notice/study_notice.component';
 import { StudyData } from './component/study/studydata/study_studydata.component';
-import { StudySchedule, StudyNewSchedule } from './component/study/schedule/study_schedule.component';
+import { StudySchedule } from './component/study/schedule/study_schedule.component';
+import { StudyNewSchedule } from './component/study/schedule/study_schedule_new.component';
 
 import { AuthGuard } from './service/auth-guard.service';
 import { StudyGuard } from './service/study-guard.service';
@@ -62,14 +63,14 @@ const routes: Routes = [
 			children:[
 				{path: '', redirectTo: 'index', pathMatch: 'full'},
 				{path: 'index',component: StudyIndex},
+				{path: 'freetalk',component: StudyFreetalk},
+				{path: 'notice',component: StudyNotice},
+				{path: 'schedule',component: StudySchedule},
+				{path: 'scheduleNew',component: StudyNewSchedule},
 				{path: 'account',component: StudyAcc},
 				{path: 'admin',component: StudyAdmin},
 				{path: 'flow',component: StudyFlow},
-				{path: 'freetalk',component: StudyFreetalk},
-				{path: 'notice',component: StudyNotice},
 				{path: 'data',component: StudyData},
-				{path: 'schedule',component: StudySchedule},
-				{path: 'schedule_new',component: StudyNewSchedule},
 			]
 		}]
 	}

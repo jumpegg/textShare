@@ -56,10 +56,13 @@ label{
 	margin-bottom: 50px;
 }
 .menu-list{
-	width: 250px;
+	width: 240px;
 	font-size: 14px;
 	margin: 0 auto;
 }
+/*.menu-list li.tab{
+	display: inline-block;
+}*/
 .brand-logo{
 	font-size: 20px;
 }
@@ -78,6 +81,17 @@ nav .button-collapse{
 nav a.button-collapse {
 	display: block;
 }
+/*nav-tab width*/
+.menu-list.textshare{
+	width: 235px;
+}
+.menu-list.my-page{
+	width: 200px;
+}
+.menu-list.hello-textshare{
+	width: 236px;
+}
+/*side nav*/
 .side-nav .side-userWrapper{
 	height: 144px;
 	padding: 20px 30px;
@@ -117,4 +131,5 @@ nav a.button-collapse {
 .tab .active{
 	border-bottom: 2px solid #FFF;
 }
+
 

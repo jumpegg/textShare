@@ -23,46 +23,54 @@ export class StudyGuard implements CanActivate{
 		private pageInfo:PageInfo
 	){}
 	canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot){
-		return this.userService.chkSess().map(
-			res => {
-				let objSave = this;
-				if(res.json()){
-					this.userService.userInfo().subscribe(
-						data => {
-							this.userInfo.id = data.id;
-							this.userInfo.email = data.email;
-							this.userInfo.phone = data.phone;
-							this.userInfo.addr = data.addr;
-							this.userInfo.intro = data.intro;
-							this.userInfo.idx = data.idx;
-							this.userInfo.c_date = data.c_date;
-						},
-						error => console.log(error),
-						() => {
-							objSave.studyService.studySet().subscribe(
-								data2 => {
-									objSave.studyInfo.idx = data2[0].idx;
-									objSave.studyInfo.admin = data2[0].admin;
-									objSave.studyInfo.studyname = data2[0].studyname;
-									objSave.studyInfo.info = data2[0].info;
-									objSave.studyInfo.c_date = data2[0].c_date;
-								}
-							)
-						}
-					);
+		return this.studyService.isUserStudy().map(
+			data => {
+				if(data.json()){
+					this.setUserInfo();
+					this.setStudyInfo();
 					return true;
 				}else{
 					alert("잘못된 접근입니다.");
 					this.router.navigate(['/userpage']);
 					return false;
 				}
-			},
-			error => console.log(error)
+			}
 		)
 	}
+
 	canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | boolean{
-		// return true;
 		return this.canActivate(route, state);
 	}
 
+	setUserInfo(){
+		this.userService.userInfo().subscribe(
+			data => {
+				this.userInfo.id = data.id;
+				this.userInfo.email = data.email;
+				this.userInfo.phone = data.phone;
+				this.userInfo.addr = data.addr;
+				this.userInfo.intro = data.intro;
+				this.userInfo.idx = data.idx;
+				this.userInfo.c_date = data.c_date;
+				this.setStudyInfo();
+			},
+			error => console.log(error),
+		);
+	}
+	setStudyInfo(){
+		this.studyService.studySet().subscribe(
+			data => {
+				if(data[0].idx){
+					this.studyInfo.idx = data[0].idx;
+					this.studyInfo.admin = data[0].admin;
+					this.studyInfo.studyname = data[0].studyname;
+					this.studyInfo.info = data[0].info;
+					this.studyInfo.c_date = data[0].c_date;
+				}else{
+					alert("잘못된 접근입니다.");
+					this.router.navigate(['/userpage']);
+				}
+			}
+		)
+	}
 }

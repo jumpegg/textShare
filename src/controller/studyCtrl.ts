@@ -22,6 +22,13 @@ export class StudyCtrl{
 	public studyExit: RequestHandler = (req, res) => {
 
 	}
+	public isUserStudy: RequestHandler = (req, res) => {
+		if(req.session.studyIdx && req.session.userData.idx){
+			res.json(req.session);
+		}else{
+			res.json(false);
+		}
+	}
 	public studySet: RequestHandler = (req, res) => {
 		if(req.session.studyIdx){
 			this.studyTbl.selectOne({idx: req.session.studyIdx}).go((data) => {

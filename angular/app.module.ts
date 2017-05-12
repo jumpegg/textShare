@@ -9,6 +9,7 @@ import { MaterialModule } from './module/material.module';
 import { PageInfo } from './service/single_info';
 import { UserInfo } from './service/single_user';
 import { StudyInfo } from './service/single_study';
+import { StudyPageInfo } from './service/single_studypage';
 
 import { AppComponent } from './app.component';
 import { IndexComponent } from './component/index/index.component';
@@ -31,57 +32,59 @@ import { StudyFlow } from './component/study/flow/study_flow.component';
 import { StudyFreetalk } from './component/study/freetalk/study_freetalk.component';
 import { StudyNotice } from './component/study/notice/study_notice.component';
 import { StudyData } from './component/study/studydata/study_studydata.component';
-import { StudySchedule, StudyNewSchedule } from './component/study/schedule/study_schedule.component';
+import { StudySchedule } from './component/study/schedule/study_schedule.component';
+import { StudyNewSchedule } from './component/study/schedule/study_schedule_new.component';
 
 import { MyDatePickerModule } from 'mydatepicker';
 
 import { AppRoutingModule } from './app.routing';
 
 @NgModule({
-  imports: [
-      BrowserModule,
-      FormsModule, ReactiveFormsModule,
-      HttpModule,
-      AppRoutingModule,
-      MyDatePickerModule,
-	  BrowserAnimationsModule,
-    //   TreeModule,
-      MaterialModule,
-  ],
-  declarations: [
-    AppComponent,
-    IndexComponent,
+	imports: [
+			BrowserModule,
+			FormsModule, ReactiveFormsModule,
+			HttpModule,
+			AppRoutingModule,
+			MyDatePickerModule,
+			BrowserAnimationsModule,
+		//   TreeModule,
+			MaterialModule,
+	],
+	declarations: [
+		AppComponent,
+		IndexComponent,
 
-    UserpageComponent,
-    UserMyPageComponent,
-    UserTextShareComponent,
-	UserTextShareNewComponent,
-    UserTextBagComponent,
-    UserSTDJoinComponent,
-    UserSTDAdminComponent,
-    UserSTDSearchComponent,   
+		UserpageComponent,
+		UserMyPageComponent,
+		UserTextShareComponent,
+		UserTextShareNewComponent,
+		UserTextBagComponent,
+		UserSTDJoinComponent,
+		UserSTDAdminComponent,
+		UserSTDSearchComponent,   
 
-    StudyComponent,
-    StudyIndex,
-    StudyAcc,
-    StudyAdmin,
-    StudyFlow,
-    StudyFreetalk,
-    StudyNotice,
-    StudyData,
-    StudySchedule, StudyNewSchedule
-  ],
-  providers:[
-    PageInfo,
+		StudyComponent,
+		StudyIndex,
+		StudyAcc,
+		StudyAdmin,
+		StudyFlow,
+		StudyFreetalk,
+		StudyNotice,
+		StudyData,
+		StudySchedule, StudyNewSchedule
+	],
+	providers:[
+		PageInfo,
 		StudyInfo,
-    UserInfo
-  ],
-  bootstrap: [
-      AppComponent
-  ]
+		StudyPageInfo,
+		UserInfo
+	],
+	bootstrap: [
+			AppComponent
+	]
 })
 export class AppModule{
-    constructor(router: Router){
+		constructor(router: Router){
 
-    }
+		}
 }

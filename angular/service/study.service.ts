@@ -52,6 +52,9 @@ export class StudyService{
 		return this.http.get('/user/study_admin', {headers:this.header})
 			.map(res => res.json());
 	}
+	isUserStudy(){
+		return this.http.get('/user/isUserStudy', {headers:this.header})
+	}
 	
 
 }
