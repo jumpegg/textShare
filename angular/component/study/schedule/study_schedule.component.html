@@ -1,4 +1,93 @@
-<h1>{{title}}</h1>
-<button class="btn btn-default">
-    <a routerLink="../schedule_new">new</a>
-</button>
+<!--<button class="btn btn-default">
+	<a routerLink="../schedule_new">new</a>
+</button>-->
+<div class="container">
+	<div class="lastest-scd">
+		<h6>
+			다음 모임 일정
+			<i class="material-icons">edit</i>
+		</h6>
+		<div class="scd-info">
+			<div class="row">
+				<div class="col s6 left">
+					<ul class="info-list">
+						<li class="row">
+							<div class="col s4 label">
+								<i class="material-icons">insert_invitation</i>
+								<span>DATE</span>
+							</div>
+							<div class="col s8 data">
+								2017-06-23
+							</div>
+						</li>
+						<li class="row">
+							<div class="col s4 label">
+								<i class="material-icons">access_time</i>
+								<span>TIME</span>
+							</div>
+							<div class="col s8 data">
+								07:00 PM ~ 09:30 PM
+							</div>
+						</li>
+						<li class="row">
+							<div class="col s4 label">
+								<i class="material-icons">account_balance_wallet</i>
+								<span>COST</span>
+							</div>
+							<div class="col s8 data">
+								15,000 원
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="col s6 right">
+					<ul>
+						<li class="map-title">
+							<i class="material-icons">location_on</i>
+							<span class="label">PLACE</span>
+							<span class="data">강낭 스터디 읭</span>
+						</li>
+						<li id="map"></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="openerBox text-center">
+		<span (click)="tableOpener()" *ngIf="tableState == 'close'">
+			이전 스케쥴 보기<br><i class="material-icons">keyboard_arrow_down</i>
+		</span>
+		<span (click)="tableOpener()" *ngIf="tableState == 'open'">
+			<i class="material-icons">keyboard_arrow_up</i><br>게시판 닫기
+		</span>
+	</div>
+	<div class="listWrapper" [@tableToggle]="tableState">
+		<table class="bordered">
+			<thead>
+				<tr>
+					<th>DATE</th>
+					<th>PLACE</th>
+					<th>COST</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr>
+					<td class="text-center date">2017-06-22</td>
+					<td>강남 스터디 읭</td>
+					<td class="text-center">15000 원</td>
+				</tr>
+				<tr>
+					<td class="text-center date">2017-06-22</td>
+					<td>강남 스터디 읭</td>
+					<td class="text-center">15000 원</td>
+				</tr>
+				<tr>
+					<td class="text-center date">2017-06-22</td>
+					<td>강남 스터디 읭</td>
+					<td class="text-center">15000 원</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

@@ -1,0 +1,104 @@
+.lastest-scd{
+	width: 800px;
+	margin: 0px auto;
+	border: 1px solid #AB47BC;
+}
+.lastest-scd h6{
+	color: #FFF;
+	background-color: #AB47BC;
+	margin: 0px;
+	line-height: 200%;
+	padding: 10px 20px;
+}
+.lastest-scd i{
+	position:relative;
+	top: 5px;
+}
+.lastest-scd .scd-info{
+	padding: 20px 10px;
+	height: 300px;
+}
+.lastest-scd .scd-info i{
+	margin-right: 10px;
+}
+.lastest-scd .row{
+	margin: 0px;
+}
+.lastest-scd .info-list{
+	color: #999;
+}
+/* ul li */
+.info-list{
+	margin-top: 10px;
+}
+.info-list li.row{
+	margin-bottom: 15px;
+}
+.info-list .data{
+	font-size: 14px;
+	color: black;
+	height: 26px;
+	padding-top: 8px;
+}
+.info-list .label span{
+	position:relative;
+	top: -4px;
+}
+.lastest-scd .left{
+	font-size: 12px;
+}
+/* right */
+.right .map-title{
+	color: #999;
+	margin-bottom: 10px;
+}
+.right .map-title .label{
+	font-size: 12px;
+	position: relative;
+	top: -4px;
+}
+.right .map-title .data{
+	font-size: 14px;
+	position: relative;
+	top: -3px;
+	color: black;
+	margin-left: 10px;
+}
+.right #map{
+	height: 230px;
+}
+/* opener */
+.openerBox{
+	width: 800px;
+	height: 100px;
+	padding: 20px;
+	margin: 0 auto;
+	color: #AB47BC;
+	font-size: 14px;
+}
+.openerBox span{
+	cursor: pointer;
+}
+
+/* table */
+.listWrapper{
+	overflow: hidden;
+}
+table{
+	width: 800px;
+	margin: 0 auto;
+	font-size: 12px;
+}
+thead{
+	background-color: #CCCCCC;
+	color: #FFF;
+}
+thead tr th{
+	text-align: center;
+}
+tbody{
+	color: #666666;
+}
+tbody .date{
+	width: 15%;
+}

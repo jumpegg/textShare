@@ -31,11 +31,14 @@ nav a.button-collapse {
 	margin: 0px auto;
 }
 .menu-list.study-manage{
-	width: 440px;
+	width: 345px;
 }
 .menu-list.study-board{
 	width: 240px;
 }
 .menu-list.study-storage{
 	width: 240px;
+}
+.tab a.active{
+	border-bottom: 1px solid #FFF;
 }
