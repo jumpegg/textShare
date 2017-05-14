@@ -31,11 +31,11 @@ export class StudyPageInfo{
 			this.title = '게시판';
 			this.tabList = [
 				{
-					name : 'Notice',
+					name : '공지사항',
 					link : 'notice'
 				},
 				{
-					name : 'Freetalk',
+					name : '자유게시판',
 					link: 'freetalk'
 				}
 			]

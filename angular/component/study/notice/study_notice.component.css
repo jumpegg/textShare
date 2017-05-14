@@ -1,0 +1,30 @@
+.container{
+	width: 800px;
+}
+.paging-wrap{
+	text-align: center;
+	margin-top: 20px;
+}
+.pagination{
+	display: inline-block;
+}
+
+/* table */
+table{
+	width: 800px;
+	margin: 0 auto;
+	font-size: 12px;
+}
+thead{
+	background-color: #CCCCCC;
+	color: #FFF;
+}
+thead tr th{
+	text-align: center;
+}
+tbody{
+	color: #666666;
+}
+tbody .date{
+	width: 15%;
+}

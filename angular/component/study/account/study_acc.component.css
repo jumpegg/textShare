@@ -1,0 +1,207 @@
+.acc-wrap{
+	width: 800px;
+	margin: 0 auto;
+}
+.acc-wrap .row, .acc-wrap .input-field, .acc-wrap input{
+	margin: 0px;
+}
+.card-panel{
+	padding: 0px;
+}
+.clearfix:after{
+	clear: both;
+}
+/* left */
+.acc-listBox h6{
+	background-color: #AB47BC;
+	height: 50px;
+	margin: 0px;
+	padding: 8px 20px;
+	color: #FFF;
+}
+.acc-listBox h6 i{
+	position:relative;
+	top:5px;
+	margin-left: 10px;
+}
+.acc-memList{
+	padding: 30px;
+}
+.acc-memList hr{
+	margin: 30px 0px;
+	border: 1px solid #DDDDDD;
+}
+.acc-label{
+	text-align: right;
+}
+.acc-label i{
+	color: #999;
+	position: relative;
+	top: 7px;
+}
+.acc-label span{
+	color: #999;
+	font-size: 12px;
+	margin-right: 15px;
+}
+.acc-label input{
+	width: 80px;
+	display: inline-block;
+	font-size: 14px;
+	margin: 0px;
+	padding-left: 10px;
+	height: 24px;
+}
+.acc-insert{
+	margin-top:20px;
+	height: 36px;
+}
+.acc-insert .input-field{
+	width: 170px;
+	display: inline-block;
+}
+.acc-insert input{
+	height: 36px;
+}
+.acc-insert button{
+	background-color: #FFF;
+	border: 1px solid #AB47BC;
+	border-radius: 5px;
+	color: #AB47BC;
+	float:right;
+}
+.acc-costList{
+	margin-top: 20px;
+}
+.acc-costList li{
+	padding-left:60px;
+}
+.acc-costList .costList-label{
+	padding:0px;
+	margin-bottom: 30px;
+	color: #999999;
+}
+.costList-label i{
+	position: relative;
+	top: 5px;
+}
+.costList-label .mem-total{
+	font-size: 12px;
+	margin-left: 3px;
+}
+.costList-label .mem-num{
+	margin-left: 5px;
+	font-size: 14px;
+	color: black;
+}
+.acc-costList li{
+	margin-top:10px;
+}
+.acc-costList li .check-wrap{
+	display: inline-block;
+	margin-right: 30px;
+}
+.acc-costList li input[type='text']{
+	width: 110px;
+	height: 24px;
+	text-align: right;
+	padding-right: 10px;
+	display: inline-block;
+}
+/* right */
+
+/* acc-totalBox */
+.acc-totalBox h6{
+	height: 50px;
+	padding: 15px;
+	font-size: 14px;
+}
+
+/* total */
+.total{
+	padding: 40px;
+}
+.total-list li{
+	overflow: hidden;
+	color: #999;
+	font-size: 12px;
+	border-bottom: 1px solid #999;
+	padding-bottom: 15px;
+	margin-bottom: 15px;
+}
+.total-left{
+	width: 50%;
+	float:left;
+}
+.total-right{
+	width: 50%;
+	float:left;
+	text-align: right;
+}
+
+/* cal-res */
+.cal-res{
+	padding: 40px;
+	padding-top: 20px;
+}
+.cal-res ul{
+	background-color: #999;
+	color: #FFF;
+	padding-bottom: 20px;
+}
+.cal-res li{
+	overflow: hidden;
+	padding: 20px 20px 0px 20px;
+}
+.cal-res .cal-line{
+	padding: 0px 20px;
+	padding-top: 10px;
+}
+.cal-left{
+	width: 50%;
+	float:left;
+}
+.cal-right{
+	width: 50%;
+	float:left;
+	text-align: right;
+}
+
+/* opener */
+.openerBox{
+	width: 800px;
+	height: 100px;
+	padding: 20px;
+	margin: 0 auto;
+	color: #AB47BC;
+	font-size: 14px;
+}
+.openerBox span{
+	cursor: pointer;
+}
+
+/* table */
+.joiner-wrap{
+	overflow: hidden;
+}
+.listWrapper{
+	overflow: hidden;
+}
+table{
+	width: 800px;
+	margin: 0 auto;
+	font-size: 12px;
+}
+thead{
+	background-color: #CCCCCC;
+	color: #FFF;
+}
+thead tr th{
+	text-align: center;
+}
+tbody{
+	color: #666666;
+}
+tbody .date{
+	width: 15%;
+}

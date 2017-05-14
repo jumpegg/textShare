@@ -1,6 +1,10 @@
 <nav class="nav-extended study-bgcolor">
 	<div class="nav-wrapper">
-		<a href="" class="brand-logo center">{{studyPage.title}}</a>
+		<a routerLink="/userpage" class="link-mypage">
+			<img class="logo_wh" src="public/icon/logo_wh.svg" alt="">
+			<span>< 이전 페이지로</span>
+		</a>
+		<a href="" class="brand-logo center study-title">{{studyPage.title}}</a>
 		<a href="" data-activates="list-slide" class="button-collapse"><i class="material-icons side-toggler">menu</i></a>
 		<ul class="side-nav" id="list-slide">
 			<li>
@@ -18,9 +22,6 @@
 						<a href="">Logout</a>
 					</div>
 				</div>
-			</li>
-			<li>
-				<a routerLink="mypage"><i class="material-icons">group</i> 게시판</a>
 			</li>
 			<li>
 				<a href=""><i class="material-icons">send</i> 게시판</a>

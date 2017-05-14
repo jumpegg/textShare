@@ -29,15 +29,13 @@ export class StudySchedule implements OnInit{
 
 	constructor(
 		public studyPage:StudyPageInfo
-	){
-		this.title = "this is study schedule";
-	}
+	){}
 	ngOnInit(){
 		this.studyPage.init();
-			this.map = new naver.maps.Map('map', {
-				center: new naver.maps.LatLng(37.3595704, 127.105399),
-				zoom: 5
-			});
+		this.map = new naver.maps.Map('map', {
+			center: new naver.maps.LatLng(37.3595704, 127.105399),
+			zoom: 5
+		});
 	}
 	tableOpener(){
 		this.tableState = (this.tableState == 'close') ? 'open' : 'close';

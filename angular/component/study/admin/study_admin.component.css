@@ -1,0 +1,33 @@
+.container{
+	width: 900px;
+}
+h6{
+	text-align: center;
+	margin-bottom: 20px;
+}
+/* joiner-card */
+.joiner-card{
+	padding: 15px 20px;
+	display: inline-block;
+	overflow: hidden;
+	width: 220px;
+	height: 50px;
+}
+.joiner-card .btnWrap{
+	float:right;
+	text-align: right;
+}
+.joiner-card button{
+	width: 50px;
+	height: 25px;
+	padding: 3px 10px;
+	font-size: 12px;
+	color: #FFF;
+	line-height: 12px;
+}
+.joiner-card .reject{
+	background-color: #999;
+}
+.joiner-card .ok{
+	background-color: #FFB300;
+}

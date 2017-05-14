@@ -1,20 +1,37 @@
 .border_0{
-    border-radius: 0px;
+		border-radius: 0px;
 }
 .right-menu{
-    padding: 0px 20px;
+		padding: 0px 20px;
 }
 .navbar{
-    margin-bottom: 0px;
-    width: 100%;
-    position: absolute;
+		margin-bottom: 0px;
+		width: 100%;
+		position: absolute;
+}
+/* link-mypage */
+
+.logo_wh{
+	width: 30px;
+	height: 33px;
+	position: relative;
+	top: 3px;
+	left: 10px;
+}
+.link-mypage span{
+	margin-left: 20px;
+	position: relative;
+	top: -6px;
+}
+.study-title{
+	font-size: 20px;
 }
 .back{
-    float: right;
+		float: right;
 }
 .routeWrapper{
-    padding-top: 52px;
-    width: 100%;
+		padding-top: 52px;
+		width: 100%;
 }
 .study-bgcolor{
 	background-color: #AB47BC;
@@ -34,10 +51,10 @@ nav a.button-collapse {
 	width: 345px;
 }
 .menu-list.study-board{
-	width: 240px;
+	width: 225px;
 }
 .menu-list.study-storage{
-	width: 240px;
+	width: 170px;
 }
 .tab a.active{
 	border-bottom: 1px solid #FFF;
