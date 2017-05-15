@@ -1,11 +1,22 @@
 .lastest-scd{
 	width: 800px;
 	margin: 0px auto;
-	border: 1px solid #AB47BC;
+	border: 1px solid #DDD;
 	box-shadow: 2px #CCCCCC;
 }
 .lastest-scd.card-panel{
 	padding: 0px;
+}
+.add-icon{
+	position: absolute !important;
+	background-image: url('public/icon/ic_add_circle_black_24px.svg');
+	background-repeat: no-repeat;
+	background-size: contain;
+	right: 0px;
+	top: -30px !important;
+	width: 60px;
+	height: 60px;
+	color: #FFB300;
 }
 .lastest-scd h6{
 	color: #FFF;
@@ -13,6 +24,7 @@
 	margin: 0px;
 	line-height: 200%;
 	padding: 10px 20px;
+	position: relative;
 }
 .lastest-scd i{
 	position:relative;

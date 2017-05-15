@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { StudyService } from '../../../service/study.service';
 import { StudyPageInfo } from '../../../service/single_studypage';
@@ -28,7 +28,8 @@ export class StudySchedule implements OnInit{
 	public tableState:string = 'close';
 
 	constructor(
-		public studyPage:StudyPageInfo
+		public studyPage:StudyPageInfo,
+		public router:Router
 	){}
 	ngOnInit(){
 		this.studyPage.init();
@@ -40,4 +41,5 @@ export class StudySchedule implements OnInit{
 	tableOpener(){
 		this.tableState = (this.tableState == 'close') ? 'open' : 'close';
 	}
+
 }

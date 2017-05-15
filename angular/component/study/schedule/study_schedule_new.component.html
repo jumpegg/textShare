@@ -1,48 +1,25 @@
-<div class="container-fluid mainWrapper">
-	<div class="main">
-		<div class="left">
-			<div class="form-group">
-				<label for="">장소명</label>
-				<input type="text" name="place" class="form-control" placeholder="간략한 장소명을 적어주세요">
+<div class="container">
+	<ul class="schedule-new">
+		<li>
+			<i class="material-icons">insert_invitation</i>
+			<div class="input-field">
+				<label for="">DATE</label>
+				<input type="date" class="datepicker">
 			</div>
-			<div class="form-group date">
-				<label for="">날짜</label>
-				<my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="model" required></my-date-picker>
+		</li>
+		<li>
+			<i class="material-icons">access_time</i>
+			<div class="input-field">
+				<label for="timepicker">Time</label>
+				<input id="timepicker" data-default="14:20:00" class="timepicker" type="time">
 			</div>
-			<div class="form-group time">
-				<label for="">시간</label>
-				<div>
-					<input type="text" class="form-control" placeholder="시작시간"> 
-					~ <input type="text" class="form-control" placeholder="종료시간">
-				</div>
-			</div>
-			<div class="form-group row">
-				<div class="col-xs-6">
-					<label for="">1인당 예상비용</label>
-					<input type="text" class="form-control">
-				</div>
-				<div class="col-xs-6">
-					<label for="">총 예상비용</label>
-					<input type="text" class="form-control">
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-xs-12">
-					<button class="btn btn-primary">등록하기</button>
-				</div>
-			</div>
-		</div>
-		<div class="right">
-			<div class="form-group search">
-				<label for="">장소찾기</label>
-				<div class="search">
-					<input type="text" class="form-control">
-					<button type="button" class="btn btn-primary" (click)="maptest()">검색</button>
-				</div>
-			</div>
-			<div class="map" id="map">
-
-			</div>
-		</div>
-	</div>
+		</li>
+		<li>
+			<i class="material-icons">account_balance_wallet</i>
+		</li>
+		<li>
+			<i class="material-icons">location_on</i>
+		</li>
+		<li></li>
+	</ul>
 </div>

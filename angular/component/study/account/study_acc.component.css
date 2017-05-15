@@ -11,6 +11,17 @@
 .clearfix:after{
 	clear: both;
 }
+.add-icon{
+	position: absolute !important;
+	background-image: url('public/icon/ic_add_circle_black_24px.svg');
+	background-repeat: no-repeat;
+	background-size: contain;
+	right: 0px;
+	top: -30px !important;
+	width: 60px;
+	height: 60px;
+	color: #FFB300;
+}
 /* left */
 .acc-listBox h6{
 	background-color: #AB47BC;
@@ -18,6 +29,7 @@
 	margin: 0px;
 	padding: 8px 20px;
 	color: #FFF;
+	position: relative;
 }
 .acc-listBox h6 i{
 	position:relative;

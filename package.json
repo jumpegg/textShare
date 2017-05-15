@@ -32,6 +32,7 @@
     "express-session": "^1.15.1",
     "jQuery": "^1.7.4",
     "marked": "^0.3.6",
+    "materialize-clockpicker": "^1.0.1",
     "materialize-css": "^0.98.2",
     "mydatepicker": "^1.9.2",
     "mysql": "^2.13.0",

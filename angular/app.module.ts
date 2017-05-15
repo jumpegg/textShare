@@ -27,11 +27,13 @@ import { UserSTDSearchComponent } from './component/userpage/userStudySearch/use
 import { StudyComponent } from './component/study/study.component';
 import { StudyIndex } from './component/study/index/study_index.component';
 import { StudyAcc } from './component/study/account/study_acc.component';
+import { StudyNewAcc } from './component/study/account/study_acc_new.component';
 import { StudyAdmin } from './component/study/admin/study_admin.component';
 import { StudyFlow } from './component/study/flow/study_flow.component';
 import { StudyFreetalk } from './component/study/freetalk/study_freetalk.component';
 import { StudyNotice } from './component/study/notice/study_notice.component';
 import { StudyData } from './component/study/studydata/study_studydata.component';
+import { StudyNewData } from './component/study/studydata/study_studydata_new.component';
 import { StudySchedule } from './component/study/schedule/study_schedule.component';
 import { StudyNewSchedule } from './component/study/schedule/study_schedule_new.component';
 
@@ -47,7 +49,6 @@ import { AppRoutingModule } from './app.routing';
 			AppRoutingModule,
 			MyDatePickerModule,
 			BrowserAnimationsModule,
-		//   TreeModule,
 			MaterialModule,
 	],
 	declarations: [
@@ -65,12 +66,12 @@ import { AppRoutingModule } from './app.routing';
 
 		StudyComponent,
 		StudyIndex,
-		StudyAcc,
+		StudyAcc, StudyNewAcc,
 		StudyAdmin,
 		StudyFlow,
 		StudyFreetalk,
 		StudyNotice,
-		StudyData,
+		StudyData, StudyNewData,
 		StudySchedule, StudyNewSchedule
 	],
 	providers:[

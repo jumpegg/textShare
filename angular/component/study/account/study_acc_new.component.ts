@@ -5,19 +5,16 @@ import { StudyService } from '../../../service/study.service';
 import { StudyPageInfo } from '../../../service/single_studypage';
 
 @Component({
-		styleUrls: ['client/component/study/studydata/study_studydata.component.css'],
-		templateUrl: 'client/component/study/studydata/study_studydata.component.html',
+		styleUrls: ['client/component/study/account/study_acc_new.component.css'],
+		templateUrl: 'client/component/study/account/study_acc_new.component.html',
 		providers: [StudyService]
 })
-export class StudyData {
+export class StudyNewAcc {
 		constructor(
 			public studyPage:StudyPageInfo,
 			public router:Router
 		){}
 		ngOnInit(){
 			this.studyPage.init();
-		}
-		moveDataFolder(input){
-			this.router.navigate(['/study/dataNew']);
 		}
 }

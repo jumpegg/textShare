@@ -13,11 +13,13 @@ import { UserSTDSearchComponent } from './component/userpage/userStudySearch/use
 import { StudyComponent } from './component/study/study.component';
 import { StudyIndex } from './component/study/index/study_index.component';
 import { StudyAcc } from './component/study/account/study_acc.component';
+import { StudyNewAcc } from './component/study/account/study_acc_new.component';
 import { StudyAdmin } from './component/study/admin/study_admin.component';
 import { StudyFlow } from './component/study/flow/study_flow.component';
 import { StudyFreetalk } from './component/study/freetalk/study_freetalk.component';
 import { StudyNotice } from './component/study/notice/study_notice.component';
 import { StudyData } from './component/study/studydata/study_studydata.component';
+import { StudyNewData } from './component/study/studydata/study_studydata_new.component';
 import { StudySchedule } from './component/study/schedule/study_schedule.component';
 import { StudyNewSchedule } from './component/study/schedule/study_schedule_new.component';
 
@@ -68,9 +70,11 @@ const routes: Routes = [
 				{path: 'schedule',component: StudySchedule},
 				{path: 'scheduleNew',component: StudyNewSchedule},
 				{path: 'account',component: StudyAcc},
+				{path: 'accountNew',component: StudyNewAcc},
 				{path: 'admin',component: StudyAdmin},
 				{path: 'flow',component: StudyFlow},
 				{path: 'data',component: StudyData},
+				{path: 'dataNew',component: StudyNewData},
 			]
 		}]
 	}

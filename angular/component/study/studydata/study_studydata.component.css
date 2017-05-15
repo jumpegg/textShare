@@ -1,0 +1,35 @@
+.container{
+	width: 800px;
+}
+.default-folder{
+	color: black;
+}
+
+.data-folder{
+	background-image:url('public/icon/folder.svg');
+	background-repeat: no-repeat;
+	background-size: contain;
+	cursor: pointer;
+	float: left;
+	word-break: break-all;
+	width: 100px;
+	height: 80px;
+	margin: 10px;
+	padding: 20px;
+}
+.data-folder:hover{
+	background-image:url('public/icon/folder_hover.svg');
+	word-break:break-all;
+	color: #FFF;
+}
+.data-add-folder{
+	background-image:url('public/icon/folder_add.svg');
+	background-repeat: no-repeat;
+	background-size: contain;
+	cursor: pointer;
+	float: left;
+	width: 100px;
+	height: 80px;
+	margin: 10px;
+	padding: 20px;
+}

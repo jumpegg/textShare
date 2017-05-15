@@ -28,9 +28,18 @@ export class StudyNewSchedule implements OnInit {
 		
 	}
 	ngOnInit(){
-	this.map = new naver.maps.Map('map', {
-			center: new naver.maps.LatLng(37.3595704, 127.105399)
-		});
+		// this.map = new naver.maps.Map('map', {
+		// 	center: new naver.maps.LatLng(37.3595704, 127.105399)
+		// });
+		 $('.datepicker').pickadate({
+				selectMonths: true, // Creates a dropdown to control month
+				selectYears: 15 // Creates a dropdown of 15 years to control year
+			});
+			$('#timepicker').pickatime({
+				autoclose: false,
+				twelvehour: false,
+				default: '14:20:00'
+			});
 	}
 	
 	maptest(){
