@@ -3,7 +3,47 @@
 }
 .schedule-new{
 	padding: 0px;
+	width: 400px;
+	margin: 0px auto;
+}
+.schedule-new i{
+	color:#999999;
+	position: relative;
+	top: 8px;
+	margin-right: 10px;
 }
 .schedule-new li{
 	padding: 10px;
+	margin-bottom: 15px;
+}
+.schedule-new .input-field{
+	display: inline-block;
+}
+.schedule-new input{
+	margin: 0px;
+	height: 30px;
+}
+.dateBox .input-field{
+	width: 337px;
+}
+.timeBox .input-field{
+	width: 150px;
+}
+.timeBox span{
+	margin: 0px 10px;
+}
+.costBox .input-field{
+	width: 337px;
+}
+.placeBox .placeSelect{
+	width: 337px;
+	display: inline-block;
+}
+.submitBtn{
+	width: 100%;
+	height: 54px;
+	font-size: 20px;
+	font-weight: bold;
+	background-color: #AB47BC;
+	color: #FFF;
 }

@@ -33,5 +33,12 @@ export class PlaceService{
 		return this.http.get('/user/place_list/'+input, {headers:this.header})
 			.map(res => res.json());
 	}
-	
+	getStudyPlaces(){
+		return this.http.get('/study/list_place', {headers:this.header})
+			.map(res => res.json());
+	}
+	getStudyPlace(input){
+		return this.http.get('/study/getOne_place/'+input, {headers:this.header})
+			.map(res=>res.json());
+	}
 }

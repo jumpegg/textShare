@@ -6,10 +6,12 @@ import { Crud } from '../util/crud';
 export class StudyCtrl{
 	public studyTbl:any;
 	public placeTbl:any;
+	public memberTbl:any;
 
 	constructor(){
 		this.studyTbl = new Crud('study');
 		this.placeTbl = new Crud('s_place');
+		this.memberTbl = new Crud('s_member');
 	}
 	public studyEnter: RequestHandler = (req, res) => {
 		if(req.session.login){
@@ -52,7 +54,17 @@ export class StudyCtrl{
 							result = (data.msg != "done") ? false : true;
 						})
 					}
-					result ? res.json({msg: "done"}) : res.json({msg:"error"});
+					if(result){
+						let temp:any = new Object();
+						temp.study_idx = data[0].idx;
+						temp.user_idx = req.session.userData.idx;
+						temp.permission = 1;
+						this.memberTbl.insert(temp).go((data)=>{
+							(data.msg == 'done') ? res.json({msg: 'done'}) : res.json({msg:'error1111'});
+						})
+					}else{
+						res.json({msg:"error2222"});
+					}
 				});
 			}
 		});

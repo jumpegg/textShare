@@ -111,10 +111,6 @@ export class UserSTDAdminComponent{
 			zoom: 11
 		});
 
-		console.log(this.userService.chkSess().map(
-			data=>true
-		).subscribe());
-		console.log(this.userService.chkSess());
 	}
 	study_create(getStudy, getPlace){
 		getStudy.admin = this.userInfo.idx;
@@ -124,6 +120,7 @@ export class UserSTDAdminComponent{
 		}
 		this.studyService.studyNew(input).subscribe(
 			data =>{
+				console.log(data.msg);
 				(data.msg == 'done') ? alert('등록되었습니다.') : alert('등록중 문제가 생겼습니다.')
 				this.close_new_modal();
 				this.study_admin_list();

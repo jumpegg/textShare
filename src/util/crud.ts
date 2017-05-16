@@ -82,6 +82,7 @@ export class Crud{
 			colArr.push(key);
 			valueArr.push(input[key]);
 		});
+		
 		col = colArr.join(", ");
 		value = valueArr.join("', '");
 
@@ -116,6 +117,20 @@ export class Crud{
 	public delete(input:number){
 		this.query = `delete from ${this.table} where idx = '${input}'`;
 		this.type = false;
+
+		return this;
+	}
+
+	public order(input:Object){
+		Object.keys(input).map((key) => {
+			this.query += ` order by ${key} ${input[key]}`;
+		});
+
+		return this;
+	}
+
+	public limit(input:number){
+		this.query += ` limit ${input}`;
 
 		return this;
 	}

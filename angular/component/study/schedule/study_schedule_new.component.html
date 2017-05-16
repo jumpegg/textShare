@@ -1,25 +1,40 @@
 <div class="container">
 	<ul class="schedule-new">
-		<li>
+		<li class="dateBox">
 			<i class="material-icons">insert_invitation</i>
 			<div class="input-field">
-				<label for="">DATE</label>
-				<input type="date" class="datepicker">
+				<label for="date">DATE</label>
+				<input id="date" type="date" class="datepicker" [(ngModel)]="newSchedule.gathering">
 			</div>
 		</li>
-		<li>
+		<li class="timeBox">
 			<i class="material-icons">access_time</i>
 			<div class="input-field">
-				<label for="timepicker">Time</label>
-				<input id="timepicker" data-default="14:20:00" class="timepicker" type="time">
+				<input id="start" data-default="14:20:00" class="timepicker" type="time" placeholder="start" [(ngModel)]="newSchedule.start">
+			</div>
+			<span>~</span> 
+			<div class="input-field">
+				<input id="end" data-default="14:20:00" class="timepicker" type="time" placeholder="end" [(ngModel)]="newSchedule.end">
+			</div>
+		</li>
+		<li class="costBox">
+			<i class="material-icons">account_balance_wallet</i>
+			<div class="input-field">
+				<label for="cost">COST</label>
+				<input id="cost" type="text" [(ngModel)]="newSchedule.cost">
+			</div>
+		</li>
+		<li class="placeBox">
+			<i class="material-icons">location_on</i>
+			<div class="placeSelect">
+				<label>PLACE</label>
+				<select name="list" id="" class="browser-default" [(ngModel)]="newSchedule.place_idx">
+					<option *ngFor="let place of placeList" value="{{place.idx}}">{{place.name}}</option>
+				</select>
 			</div>
 		</li>
 		<li>
-			<i class="material-icons">account_balance_wallet</i>
+			<button class="btn-flat submitBtn" (click)="scheduleSubmit(newSchedule)">등록</button>
 		</li>
-		<li>
-			<i class="material-icons">location_on</i>
-		</li>
-		<li></li>
 	</ul>
 </div>

@@ -19,6 +19,11 @@ export class PlaceCtrl{
 			res.json(data);
 		});
 	}
+	public getPlaces:RequestHandler = (req, res) => {
+		this.placeTbl.selectList({study_idx : req.session.studyIdx}).go((data) => {
+			res.json(data);
+		});
+	}
 	public getPlace:RequestHandler = (req, res) => {
 		this.placeTbl.selectOne({idx : req.params.idx}).go((data) => {
 			res.json(data[0]);
