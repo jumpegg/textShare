@@ -1,14 +1,14 @@
 <div class="container">
 	<h6>가입되어 있는 회원</h6>
 	<div class="joiner">
-		<div class="card-panel joiner-card member">
-			<span>홍길동</span>
-			<img src="public/icon/crown.svg" alt="왕관이당">
+		<div class="card-panel joiner-card member" *ngFor="let joiner of joinerList">
+			<span>{{joiner.id}}</span>
+			<img src="public/icon/crown.svg" alt="왕관이당" *ngIf="joiner.permission == 1">
 		</div>
 	</div>
 	<h6>가입 요청</h6>
 	<div class="with-us">
-		<div class="card-panel joiner-card hoper">
+		<div class="card-panel joiner-card hoper" *ngFor="let hoper of hoperList">
 			<span>홍길동</span>
 			<div class="btnWrap">
 				<button class="btn-flat reject">거부</button>

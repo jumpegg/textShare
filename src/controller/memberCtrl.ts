@@ -20,8 +20,12 @@ export class MemberCtrl{
 		});
 	}
 	public joinerList:RequestHandler = (req, res) => {
-		let getQuery = this.memberTbl.selectList({study_idx : req.session.studyIdx}).querychk();
-		getQuery += " AND permission < 10";
+		let getQuery = 
+			`select * from s_member a 
+			inner join User b
+			on a.user_idx = b.idx
+			where a.study_idx = ${req.session.studyIdx}
+			and permission < 10`;
 		conn.query(getQuery, (err, data) => {
 			if(err){
 				res.json({msg: 'error'})
@@ -31,8 +35,12 @@ export class MemberCtrl{
 		})
 	}
 	public hoperList:RequestHandler = (req, res) => {
-		let getQuery = this.memberTbl.selectList({study_idx : req.session.studyIdx}).querychk();
-		getQuery += " AND permission > 10";
+		let getQuery = 
+			`select * from s_member a 
+			inner join User b
+			on a.user_idx = b.idx
+			where a.study_idx = ${req.session.studyIdx}
+			and permission > 10`;
 		conn.query(getQuery, (err, data) => {
 			if(err){
 				res.json({msg: 'error'})

@@ -40,12 +40,10 @@
 	padding: 30px;
 }
 .acc-memList hr{
-	margin: 30px 0px;
+	margin: 10px 0px 30px 0px;
 	border: 1px solid #DDDDDD;
 }
-.acc-label{
-	text-align: right;
-}
+
 .acc-label i{
 	color: #999;
 	position: relative;
@@ -53,35 +51,14 @@
 }
 .acc-label span{
 	color: #999;
-	font-size: 12px;
+	font-size: 14px;
 	margin-right: 15px;
 }
-.acc-label input{
-	width: 80px;
-	display: inline-block;
-	font-size: 14px;
-	margin: 0px;
-	padding-left: 10px;
-	height: 24px;
+.acc-label span.date{
+	color: black;
 }
-.acc-insert{
-	margin-top:20px;
-	height: 36px;
-}
-.acc-insert .input-field{
-	width: 170px;
-	display: inline-block;
-}
-.acc-insert input{
-	height: 36px;
-}
-.acc-insert button{
-	background-color: #FFF;
-	border: 1px solid #AB47BC;
-	border-radius: 5px;
-	color: #AB47BC;
-	float:right;
-}
+
+/* cost list*/
 .acc-costList{
 	margin-top: 20px;
 }
@@ -106,6 +83,30 @@
 	font-size: 14px;
 	color: black;
 }
+.costList-label button{
+	border: 1px solid #AB47BC;
+	color: #AB47BC;
+	background-color: #FFFFFF;
+	float:right;
+	line-height: 30px;
+	height: 30px;
+	width: 80px;
+	padding: 0px 10px;
+	position: relative;
+	top: 3px;
+}
+.costList-label button:hover{
+	background-color: #FFFFFF;
+}
+.costList-label button:focus{
+	background-color: #FFFFFF;
+}
+.acc-costList .ispay span{
+	position: relative;
+	left: -25px;
+	font-size: 12px;
+	color: #999999;
+}
 .acc-costList li{
 	margin-top:10px;
 }
@@ -120,6 +121,9 @@
 	padding-right: 10px;
 	display: inline-block;
 }
+.acc-costList .user-cost{
+	float:right;
+}
 /* right */
 
 /* acc-totalBox */
@@ -127,6 +131,17 @@
 	height: 50px;
 	padding: 15px;
 	font-size: 14px;
+}
+.acc-totalBox button{
+	border: 1px solid #AB47BC;
+	border-radius: 5px;
+	color: #AB47BC;
+	position:relative;
+	left: 150px;
+}
+.acc-totalBox button:hover,
+.acc-totalBox button:focus{
+	background-color: #FFFFFF;
 }
 
 /* total */
@@ -138,19 +153,44 @@
 	color: #999;
 	font-size: 12px;
 	border-bottom: 1px solid #999;
-	padding-bottom: 15px;
 	margin-bottom: 15px;
 }
+.total-list i{
+	font-size: 20px;
+	float: right;
+	position:relative;
+	cursor: pointer;
+	top: -5px;
+}
 .total-left{
-	width: 50%;
+	width: 45%;
 	float:left;
 }
 .total-right{
-	width: 50%;
+	width: 45%;
 	float:left;
 	text-align: right;
 }
-
+.total-list li.infoAdd{
+	border: none;
+	margin:0px;
+	padding:0px;
+}
+.total-list li.infoAdd input{
+	height: 30px;
+}
+.total-list li.infoAdd .total-left{
+	width: 40%;
+	margin-right: 20px;
+}
+.total-list li.infoAdd .total-right{
+	width: 40%;
+	margin-right: 10px;
+}
+.total-list li.infoAdd i{
+	cursor: pointer;
+	top: 5px;
+}
 /* cal-res */
 .cal-res{
 	padding: 40px;
@@ -202,6 +242,7 @@
 table{
 	width: 800px;
 	margin: 0 auto;
+	margin-bottom: 40px;
 	font-size: 12px;
 }
 thead{

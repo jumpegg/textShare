@@ -13,46 +13,28 @@
 							<li class="acc-label">
 								<i class="material-icons">insert_invitation</i>
 								<span>DATE</span>
-								<input type="text" value="2017-06-23" readonly>
-							</li>
-							<li class="acc-insert">
-								<div class="input-field">
-									<label for="">COST</label>
-									<input type="text">
-								</div>
-								<button class="btn-flat clearfix">일괄적용</button>
+								<span class="date" *ngIf="isAccLatest">{{accLatest.gathering|date:"yyyy-MM-dd"}}</span>
+								<span class="date" *ngIf="!isAccLatest">등록된 다음 모임이 없습니다</span>
 							</li>
 							<hr>
-							<li class="acc-costList">
+							<li class="acc-costList" *ngIf="isAccLatest">
 								<ul>
 									<li class="costList-label">
 										<i class="material-icons">group</i>
 										<span class="mem-total">총 인원</span>
-										<span class="mem-num">7 명</span>
+										<span class="mem-num" *ngIf="isAccLatest">{{accLatest.total_num}} 명</span>
+										<span class="mem-num" *ngIf="!isAccLatest">0 명</span>
+										<button class="btn-flat" (click)="userIsPayUpdate()">저장</button>
 									</li>
-									<li>
-										<div class="check-wrap">
-											<input type="checkbox" class="filled-in" id="filled-in-box" checked="checked" />
-											<label for="filled-in-box">홍길동</label>
-										</div>
-										<input type="text" value="0">
-										<span>원</span>
+									<li class="ispay">
+										<span>입금상태</span>
 									</li>
-									<li>
+									<li *ngFor="let user of userList; let i = index">
 										<div class="check-wrap">
-											<input type="checkbox" class="filled-in" id="filled-in-box" checked="checked" />
-											<label for="filled-in-box">홍길동</label>
+											<input type="checkbox" class="filled-in" id="user{{i}}" [(ngModel)]="user.is_pay"/>
+											<label for="user{{i}}">{{user.id}}</label>
 										</div>
-										<input type="text" value="0">
-										<span>원</span>
-									</li>
-									<li>
-										<div class="check-wrap">
-											<input type="checkbox" class="filled-in" id="filled-in-box" checked="checked" />
-											<label for="filled-in-box">홍길동</label>
-										</div>
-										<input type="text" value="0">
-										<span>원</span>
+										<span class="user-cost">{{user.cost}} 원</span>
 									</li>
 								</ul>
 							</li>
@@ -63,33 +45,30 @@
 			<div class="right col s6">
 				<div class="acc-totalBox card-panel">
 					<h6>
-						<span>회비 사용 내역(예상)</span>
+						<span>회비 사용 내역</span>
+						<button class="btn-flat" (click)="infoAddOpener()">추가</button>
 					</h6>
 					<div class="total">
 						<ul class="total-list">
-							<li>
+							<div *ngIf="isInfoList">
+								<li *ngFor="let info of infoList">
+									<div class="total-left">
+										{{info.detail}}
+									</div>
+									<div class="total-right">
+										{{info.cost}} 원
+									</div>
+									<i class="material-icons" (click)="infoRemove(info.idx)">clear</i>
+								</li>
+							</div>
+							<li class="infoAdd" [@infoToggle]="infoState">
 								<div class="total-left">
-									장소 대여비
+									<input type="text" placeholder="사용내역" [(ngModel)]="newInfo.detail">
 								</div>
 								<div class="total-right">
-									15,000 원
+									<input type="text" placeholder="비용" [(ngModel)]="newInfo.cost">
 								</div>
-							</li>
-							<li>
-								<div class="total-left">
-									음료
-								</div>
-								<div class="total-right">
-									30,000 원
-								</div>
-							</li>
-							<li>
-								<div class="total-left">
-									저녁 식사비
-								</div>
-								<div class="total-right">
-									50,000 원
-								</div>
+								<i class="material-icons" (click)="infoSubmit()">add</i>
 							</li>
 						</ul>
 					</div>
@@ -97,18 +76,19 @@
 						<ul>
 							<li>
 								<div class="cal-left">총 회비</div>
-								<div class="cal-right">100,000 원</div>
+								<div class="cal-right" *ngIf="isAccLatest">{{accLatest.total_cost}} 원</div>
+								<div class="cal-right" *ngIf="!isAccLatest">0 원</div>
 							</li>
 							<li>
 								<div class="cal-left">지출</div>
-								<div class="cal-right">95,000 원</div>
+								<div class="cal-right">{{totalCost}} 원</div>
 							</li>
 							<li class="cal-line">
 								<hr>
 							</li>
 							<li>
 								<div class="cal-left">남은 회비</div>
-								<div class="cal-right">5,000 원</div>
+								<div class="cal-right">{{resCost}} 원</div>
 							</li>
 						</ul>
 					</div>
@@ -117,7 +97,7 @@
 		</div>
 		<div class="openerBox text-center">
 			<span (click)="tableOpener()" *ngIf="tableState == 'close'">
-				이전 스케쥴 보기<br><i class="material-icons">keyboard_arrow_down</i>
+				이전 회계 보기<br><i class="material-icons">keyboard_arrow_down</i>
 			</span>
 			<span (click)="tableOpener()" *ngIf="tableState == 'open'">
 				<i class="material-icons">keyboard_arrow_up</i><br>게시판 닫기
@@ -134,20 +114,10 @@
 			</thead>
 
 			<tbody>
-				<tr>
-					<td class="text-center date">2017-06-22</td>
-					<td>7 명</td>
-					<td class="text-center">15000 원</td>
-				</tr>
-				<tr>
-					<td class="text-center date">2017-06-22</td>
-					<td>7 명</td>
-					<td class="text-center">15000 원</td>
-				</tr>
-				<tr>
-					<td class="text-center date">2017-06-22</td>
-					<td>7 명</td>
-					<td class="text-center">15000 원</td>
+				<tr *ngFor="let acc of accList">
+					<td class="text-center date">{{acc.gathering|date:"yyyy-MM-dd"}}</td>
+					<td>{{acc.total_num}} 명</td>
+					<td class="text-center">{{acc.total_cost}} 원</td>
 				</tr>
 			</tbody>
 		</table>

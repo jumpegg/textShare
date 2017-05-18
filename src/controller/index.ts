@@ -5,3 +5,4 @@ export * from './tshareCtrl';
 export * from './placeCtrl';
 export * from './scheduleCtrl';
 export * from './memberCtrl';
+export * from './accountCtrl';

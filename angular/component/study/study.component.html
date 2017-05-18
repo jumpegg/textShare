@@ -51,7 +51,7 @@
 			</li>
 		</ul>
 	</div>
-	<div class="nav-content">
+	<div class="nav-content" *ngIf="studyPage.need">
 		<ul class="tabs tabs-transparent menu-list" [ngClass]="{'study-manage':studyPage.title == '운영', 'study-board':studyPage.title == '게시판', 'study-storage':studyPage.title == '자료실'}">
 			<li class="tab" *ngFor="let list of studyPage.tabList">
 				<a [ngClass]="{'active':studyPage.url == list.link}" routerLink="{{list.link}}">{{list.name}}</a>

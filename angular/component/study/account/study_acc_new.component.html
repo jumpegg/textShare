@@ -1,1 +1,60 @@
-<h1>Acc new page</h1>
+<div class="container">
+	<ul class="acc_new">
+		<li class="titleBox">
+			<i class="material-icons default-icon">edit</i>
+			<div class="input-field">
+				<label for="">TITLE</label>
+				<input type="text" [(ngModel)]="newAccount.title">
+			</div>
+		</li>
+		<li class="dateBox">
+			<i class="material-icons default-icon">event</i>
+			<div class="input-field">
+				<label for="">DATE</label>
+				<input type="date" class="datepicker" [(ngModel)]="newAccount.gathering">
+			</div>
+		</li>
+		<li class="costBox">
+			<i class="material-icons default-icon">account_balance_wallet</i>
+			<div class="input-field cost-field">
+				<label for="">COST</label>
+				<input type="text" [(ngModel)]="allCost">
+			</div>
+			<span>원</span>
+			<button class="btn-flat costBtn" (click)="all_cost()">일괄적용</button>
+		</li>
+		<li class="memberBox">
+			<div class="member-label">
+				<i class="material-icons">group</i> <span>MEMBERS</span>
+			</div>
+			<div class="member-list-wrap">
+				<div class="member-before">
+					<ul>
+						<li *ngFor="let user of userList; let i = index">
+							<input type="checkbox" class="filled-in" id="user{{i}}" checked="checked" [(ngModel)]="user.state" />
+							<label for="user{{i}}">{{user.id}}</label>
+						</li>
+					</ul>
+				</div>
+				<div class="member-gap">
+					<button class="btn-flat" (click)="move_to_after()">></button>
+					<button class="btn-flat" (click)="move_to_before()"><</button>
+				</div>
+				<div class="member-after">
+					<ul>
+						<li *ngFor="let attendee of attendeeList; let j = index">
+							<input type="checkbox" class="filled-in" id="user{{j}}" checked="checked" [(ngModel)]="attendee.state"/>
+							<label for="user{{j}}">{{attendee.id}}</label>
+							<div class="attendee-cost">
+								<input type="text" [(ngModel)]="attendee.cost">
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</li>
+		<li class="submitBox">
+			<button class="btn-flat submitBtn" (click)="account_submit(newAccount)">등록</button>
+		</li>
+	</ul>
+</div>
