@@ -1,0 +1,169 @@
+.container{
+	width: 800px;
+}
+h6, li, ul, .card-panel, .row, p{
+	margin: 0px;
+	padding: 0px;
+}
+hr{
+	border: none;
+	border-bottom:1px solid #DDDDDD;
+}
+.padding20{
+	padding:20px;
+}
+.padding30{
+	padding: 30px;
+}
+/* schedule */
+.scheduleBox{
+	margin-bottom: 20px;
+}
+.scheduleWrap h6{
+	background-color: #AB47BC;
+	color: #FFFFFF;
+	padding: 17px 20px;
+}
+.infoWrapper{
+	/*padding-bottom: 10px;*/
+}
+.infoWrapper li{
+	color: #999999;
+	margin-bottom: 10px;
+}
+.infoWrapper li i{
+	margin-right: 10px;
+	position:relative;
+	top: 8px;
+}
+.infoWrapper li p{
+	width: 70px;
+	display: inline-block;
+}
+.infoWrapper li .info-data{
+	color: black;
+}
+.info-item{
+	width: 50%;
+}
+.mapWrapper li i{
+	margin-right: 10px;
+	color: #999999;
+	position:relative;
+	top: 8px;
+}
+.mapWrapper .map-info-box{
+	margin-bottom: 20px;
+}
+.mapWrapper li p{
+	width: 70px;
+	color: #999999;
+	display: inline-block;
+}
+.mapWrapper li .map-data{
+	color: black;
+}
+#map{
+	height: 250px;
+}
+/* boardWrapper */
+.boardWrapper>div{
+	width: 250px;
+	height: 311px;
+	float:left;
+}
+.boardWrapper>div>h6{
+	background-color: #AB47BC;
+	color: #FFFFFF;
+	padding: 17px 20px;
+}
+.freetalk{
+	margin: 0px 25px;
+}
+.storages > div{
+	height: 100px;
+}
+.study{
+	margin: 4px 0px;
+}
+/* notice */
+.notice-list li{
+	padding: 15px 20px 0px 20px;
+}
+.n-date{
+	width: 70%;
+	color: #999999;
+	font-size: 12px;
+	display: inline-block;
+}
+.n-user{
+	width: 27%;
+	color: #999999;
+	font-size: 12px;
+	text-align: right;
+	display: inline-block;
+}
+.n-title{
+	padding-top: 5px;
+	padding-bottom: 10px;
+	font-size: 14px;
+	border-bottom: 1px solid #DDDDDD;
+}
+.n-title.last{
+	border:none;
+}
+
+/* freetalk */
+.freetalk-list li{
+	padding: 15px 20px 0px 20px;
+}
+.f-date{
+	width: 70%;
+	color: #999999;
+	font-size: 12px;
+	display: inline-block;
+}
+.f-user{
+	width: 27%;
+	color: #999999;
+	font-size: 12px;
+	text-align: right;
+	display: inline-block;
+}
+.f-title{
+	padding-top: 5px;
+	padding-bottom: 10px;
+	font-size: 14px;
+	border-bottom: 1px solid #DDDDDD;
+}
+.f-title.last{
+	border:none;
+}
+/* storage */
+.storages>a{
+	padding: 29px 30px;
+	/*cursor: pointer;*/
+	display: block;
+	color: black;
+
+}
+.storages img{
+	width:40px;
+	height:40px;
+}
+.storages i{
+	font-size: 40px;
+	color: #FFB300;
+}
+.storages .detail{
+	display: inline-block;
+	margin-left: 10px;
+	position: relative;
+	top: -5px;
+}
+.storages .detail .title{
+	font-size: 16px;
+}
+.storages .detail .content{
+	font-size: 14px;
+}

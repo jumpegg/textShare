@@ -134,6 +134,11 @@ export class Crud{
 
 		return this;
 	}
+	public limitFromTo(from:number, to:number){
+		this.query += ` limit ${from}, ${to}`;
+
+		return this;
+	}
 
 	/**
 	 * queryWork 함수

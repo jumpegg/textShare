@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { UserInfo } from '../../service/single_user';
 import { PageInfo } from '../../service/single_info';
 import { StudyInfo } from '../../service/single_study';
@@ -17,9 +17,8 @@ export class StudyComponent {
 			public userInfo:UserInfo,
 			public pageInfo:PageInfo,
 			public studyPage:StudyPageInfo,
-			public studyInfo:StudyInfo){
-			this.title = "this is study";
-		}
+			public studyInfo:StudyInfo
+			){}
 		ngOnInit(){
 			this.studyPage.init();
 			

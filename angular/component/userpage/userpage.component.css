@@ -76,7 +76,7 @@ nav .button-collapse{
 	font-size: 24px;
 }
 .side-nav{
-	top: 98px;
+	top: 64px;
 }
 nav a.button-collapse {
 	display: block;
@@ -125,8 +125,9 @@ nav a.button-collapse {
 }
 .side-nav dl dd a{
 	color: #666;
-	line-height: 28px;
-	padding-left: 70px;
+	line-height: 40px;
+	padding-left: 100px;
+	height: 40px;
 }
 .tab .active{
 	border-bottom: 2px solid #FFF;

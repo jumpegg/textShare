@@ -8,33 +8,31 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<td class="text-center date">2017-06-22</td>
-				<td>공지사항을 적어보자</td>
-				<td class="text-center">홍길동</td>
-			</tr>
-			<tr>
-				<td class="text-center date">2017-06-22</td>
-				<td>공지사항을 적어보자</td>
-				<td class="text-center">홍길동</td>
-			</tr>
-			<tr>
-				<td class="text-center date">2017-06-22</td>
-				<td>공지사항을 적어보자</td>
-				<td class="text-center">홍길동</td>
+			<tr *ngFor="let notice of nList">
+				<td class="text-center date">{{notice.c_date|date:"yyyy-MM-dd"}}</td>
+				<td>{{notice.title}}</td>
+				<td class="text-center">{{notice.id}}</td>
 			</tr>
 		</tbody>
 	</table>
-
+	<div class="btnBox">
+		<a routerLink="../noticeNew" class="btn-flat">새 글 작성</a>
+	</div>
 	<div class="paging-wrap">
 		<ul class="pagination">
-			<li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-			<li class="active"><a href="#!">1</a></li>
-			<li class="waves-effect"><a href="#!">2</a></li>
-			<li class="waves-effect"><a href="#!">3</a></li>
-			<li class="waves-effect"><a href="#!">4</a></li>
-			<li class="waves-effect"><a href="#!">5</a></li>
-			<li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+			<li class="waves-effect" (click)="subNum()">
+				<a>
+					<i class="material-icons">chevron_left</i>
+				</a>
+			</li>
+			<li [ngClass]="{'active':i==curNum}" (click)="move_page(i)" *ngFor="let i of listNum">
+				<a>{{i}}</a>
+			</li>
+			<li class="waves-effect" (click)="addNum()">
+				<a>
+					<i class="material-icons">chevron_right</i>
+				</a>
+			</li>
 		</ul>
 	</div>
 </div>

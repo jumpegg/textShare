@@ -10,7 +10,7 @@
 			<li>
 				<div class="side-userWrapper grey darken-2">
 					<div class="side-userInfo row">
-						<div class="side-userPic col s4">
+						<div class="side-userPic col s4 circle">
 
 						</div>
 						<div class="side-user col s8">
@@ -24,14 +24,17 @@
 				</div>
 			</li>
 			<li>
-				<a href=""><i class="material-icons">send</i> 게시판</a>
+				<a routerLink="index"><i class="material-icons">send</i> 첫 페이지로</a>
+			</li>
+			<li>
+				<a routerLink="notice"><i class="material-icons">send</i> 게시판</a>
 				<dl>
 					<dd><a routerLink="notice">Notice</a></dd>
 					<dd><a routerLink="freetalk">Freetalk</a></dd>
 				</dl>
 			</li>
 			<li>
-				<a routerLink="text"><i class="material-icons">group</i> 운영</a>
+				<a routerLink="schedule"><i class="material-icons">group</i> 운영</a>
 				<dl>
 					<dd>
 						<a routerLink="schedule">Schedule</a>
@@ -41,7 +44,7 @@
 				</dl>
 			</li>
 			<li>
-				<a routerLink="text"><i class="material-icons">group</i> 자료실</a>
+				<a routerLink="flow"><i class="material-icons">group</i> 자료실</a>
 				<dl>
 					<dd>
 						<a routerLink="flow">Flow</a>
@@ -51,7 +54,7 @@
 			</li>
 		</ul>
 	</div>
-	<div class="nav-content" *ngIf="studyPage.need">
+	<div class="nav-content" [ngClass]="{'dis_none':studyPage.need}">
 		<ul class="tabs tabs-transparent menu-list" [ngClass]="{'study-manage':studyPage.title == '운영', 'study-board':studyPage.title == '게시판', 'study-storage':studyPage.title == '자료실'}">
 			<li class="tab" *ngFor="let list of studyPage.tabList">
 				<a [ngClass]="{'active':studyPage.url == list.link}" routerLink="{{list.link}}">{{list.name}}</a>

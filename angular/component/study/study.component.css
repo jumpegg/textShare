@@ -30,7 +30,7 @@
 		float: right;
 }
 .routeWrapper{
-		padding-top: 52px;
+		padding-top: 25px;
 		width: 100%;
 }
 .study-bgcolor{
@@ -43,6 +43,50 @@ nav .button-collapse{
 nav a.button-collapse {
 	display: block;
 }
+
+/*side nav*/
+.side-nav{
+	top: 64px;
+}
+.side-nav .side-userWrapper{
+	height: 144px;
+	padding: 20px 30px;
+}
+.side-nav .side-userPic{
+	background-color: #000;
+	height: 70px;
+}
+.side-nav .side-userInfo{
+	margin-bottom: 5px;
+	height: 70px;
+}
+.side-nav .side-user{
+	line-height: 25px;
+}
+.side-nav .side-btnBox{
+	text-align: right;
+	height: 20px;
+	font-size: 13px;
+}
+.side-nav .side-btnBox a{
+	line-height: 17px;
+	display: inline;
+	color: #999;
+}
+.side-nav .side-btnBox a:hover{
+	background: none;
+}
+.side-nav dl {
+	margin: 0px;
+}
+.side-nav dl dd a{
+	color: #666;
+	line-height: 40px;
+	padding-left: 100px;
+	height: 40px;
+}
+
+
 /* tab list */
 .menu-list{
 	margin: 0px auto;
@@ -58,4 +102,8 @@ nav a.button-collapse {
 }
 .tab a.active{
 	border-bottom: 1px solid #FFF;
+}
+/* display none*/
+.dis_none{
+	display: none;
 }

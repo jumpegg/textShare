@@ -7,6 +7,8 @@ import {
 		scheduleCtrl,
 		memberCtrl,
 		accountCtrl,
+		freetalkCtrl,
+		noticeCtrl,
 		placeCtrl } from '../controller';
 
 const studyRoute: Router = Router();
@@ -30,6 +32,20 @@ studyRoute.get('/list_acc_get_last', accountCtrl.accGetLastOne);
 studyRoute.post('/update_account', accountCtrl.accUpdate);
 studyRoute.post('/update_acc_user', accountCtrl.userUpdate);
 studyRoute.get('/delete_acc_info/:idx', accountCtrl.infoDelete);
+
+studyRoute.post('/new_notice',noticeCtrl.make);
+studyRoute.get('/paging_notice/:idx',noticeCtrl.limitFTList);
+studyRoute.get('/getCnt_notice', noticeCtrl.listCnt);
+studyRoute.get('/getOne_notice/:idx',noticeCtrl.getOne);
+studyRoute.post('/update_notice',noticeCtrl.update);
+studyRoute.get('/delete_notice/:idx',noticeCtrl.delete);
+
+studyRoute.post('/new_freetalk',freetalkCtrl.make);
+studyRoute.get('/paging_freetalk/:idx',freetalkCtrl.limitFTList);
+studyRoute.get('/getCnt_freetalk',freetalkCtrl.listCnt);
+studyRoute.get('/getOne_freetalk/:idx',freetalkCtrl.getOne);
+studyRoute.post('/update_freetalk',freetalkCtrl.update);
+studyRoute.get('/delete_freetalk/:idx',freetalkCtrl.delete);
 
 studyRoute.get('/list_place', placeCtrl.getPlaces);
 studyRoute.get('/getOne_place/:idx', placeCtrl.getPlace);

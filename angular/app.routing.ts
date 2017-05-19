@@ -17,7 +17,9 @@ import { StudyNewAcc } from './component/study/account/study_acc_new.component';
 import { StudyAdmin } from './component/study/admin/study_admin.component';
 import { StudyFlow } from './component/study/flow/study_flow.component';
 import { StudyFreetalk } from './component/study/freetalk/study_freetalk.component';
+import { StudyNewFreetalk } from './component/study/freetalk/study_freetalk_new.component';
 import { StudyNotice } from './component/study/notice/study_notice.component';
+import { StudyNewNotice } from './component/study/notice/study_notice_new.component';
 import { StudyData } from './component/study/studydata/study_studydata.component';
 import { StudyNewData } from './component/study/studydata/study_studydata_new.component';
 import { StudySchedule } from './component/study/schedule/study_schedule.component';
@@ -66,7 +68,9 @@ const routes: Routes = [
 				{path: '', redirectTo: 'index', pathMatch: 'full'},
 				{path: 'index',component: StudyIndex},
 				{path: 'freetalk',component: StudyFreetalk},
+				{path: 'freetalkNew',component: StudyNewFreetalk},
 				{path: 'notice',component: StudyNotice},
+				{path: 'noticeNew',component: StudyNewNotice},
 				{path: 'schedule',component: StudySchedule},
 				{path: 'scheduleNew',component: StudyNewSchedule},
 				{path: 'account',component: StudyAcc},

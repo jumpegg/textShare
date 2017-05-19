@@ -8,6 +8,9 @@
 .pagination{
 	display: inline-block;
 }
+.pagination li{
+	cursor: pointer;
+}
 
 /* table */
 table{
@@ -27,4 +30,20 @@ tbody{
 }
 tbody .date{
 	width: 15%;
+}
+
+/* btnBox */
+.btnBox{
+	text-align: right;
+}
+.btnBox a{
+	border: 1px solid #AB47BC;
+	border-radius: 5px;
+	background-color: #FFFFFF;
+	color: #AB47BC;
+	font-size: 14px;
+	text-align: center;
+	margin-top: 5px;
+	width: 100px;
+	padding: 0px;
 }

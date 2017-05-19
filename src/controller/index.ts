@@ -6,3 +6,5 @@ export * from './placeCtrl';
 export * from './scheduleCtrl';
 export * from './memberCtrl';
 export * from './accountCtrl';
+export * from './noticeCtrl';
+export * from './freetalkCtrl';

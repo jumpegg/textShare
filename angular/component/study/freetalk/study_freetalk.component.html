@@ -8,33 +8,31 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<td class="text-center date">2017-06-22</td>
-				<td>자유게시판에 글을 적어보자</td>
-				<td class="text-center">홍길동</td>
-			</tr>
-			<tr>
-				<td class="text-center date">2017-06-22</td>
-				<td>자유게시판에 글을 적어보자</td>
-				<td class="text-center">홍길동</td>
-			</tr>
-			<tr>
-				<td class="text-center date">2017-06-22</td>
-				<td>자유게시판에 글을 적어보자</td>
-				<td class="text-center">홍길동</td>
+			<tr *ngFor="let freetalk of fList">
+				<td class="text-center date">{{freetalk.c_date|date:"yyyy-MM-dd"}}</td>
+				<td>{{freetalk.title}}</td>
+				<td class="text-center">{{freetalk.id}}</td>
 			</tr>
 		</tbody>
 	</table>
-
+	<div class="btnBox">
+		<a routerLink="../freetalkNew" class="btn-flat">새 글 작성</a>
+	</div>
 	<div class="paging-wrap">
 		<ul class="pagination">
-			<li class="disabled"><a><i class="material-icons">chevron_left</i></a></li>
-			<li class="active"><a>1</a></li>
-			<li class="waves-effect"><a>2</a></li>
-			<li class="waves-effect"><a>3</a></li>
-			<li class="waves-effect"><a>4</a></li>
-			<li class="waves-effect"><a>5</a></li>
-			<li class="waves-effect"><a><i class="material-icons">chevron_right</i></a></li>
+			<li class="waves-effect" (click)="subNum()">
+				<a>
+					<i class="material-icons">chevron_left</i>
+				</a>
+			</li>
+			<li [ngClass]="{'active':i==curNum}" (click)="move_page(i)" *ngFor="let i of listNum">
+				<a>{{i}}</a>
+			</li>
+			<li class="waves-effect" (click)="addNum()">
+				<a>
+					<i class="material-icons">chevron_right</i>
+				</a>
+			</li>
 		</ul>
 	</div>
 </div>

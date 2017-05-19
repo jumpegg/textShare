@@ -1,1 +1,119 @@
-<h1>{{title}}</h1>
+<div class="container">
+	<div class="scheduleBox row">
+		<div class="col s12 scheduleWrap card-panel">
+			<h6>
+				다음 모임 일정
+			</h6>
+			<div class="padding20">
+				<ul class="infoWrapper row">
+					<li class="col s6">
+						<i class="material-icons">today</i>
+						<p>DATE</p>
+						<span class="info-data">2017-05-19</span>
+					</li>
+					<li class="col s6">
+						<i class="material-icons">group</i>
+						<p>총 인원</p>
+						<span class="info-data">7 명</span>
+					</li>
+					<li class="col s6">
+						<i class="material-icons">access_time</i>
+						<p>TIME</p>
+						<span class="info-data">7:30 ~ 9:30</span>
+					</li>
+					<li class="col s6">
+						<i class="material-icons">account_balance_wallet</i>
+						<p>COST</p>
+						<span class="info-data">3000 원</span>
+					</li>
+				</ul>
+				<hr>
+				<ul class="mapWrapper row">
+					<li class="col s12 map-info-box">
+						<i class="material-icons">pin_drop</i>
+						<p>PLACE</p>
+						<span class="map-data">강남 스터디 윙</span>
+					</li>
+					<li class="col s12" id="map">
+
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="boardWrapper">
+		<div class="card-panel notice">
+			<h6>공지사항</h6>
+			<ul class="notice-list">
+				<li>
+					<p class="n-date">2017-05-19</p>
+					<p class="n-user">글쓴이</p>
+					<p class="n-title">공지사항 입니다</p>
+				</li>
+				<li>
+					<p class="n-date">2017-05-19</p>
+					<p class="n-user">글쓴이</p>
+					<p class="n-title">공지사항 입니다</p>
+				</li>
+				<li>
+					<p class="n-date">2017-05-19</p>
+					<p class="n-user">글쓴이</p>
+					<p class="n-title">공지사항 입니다</p>
+				</li>
+				<li>
+					<p class="n-date">2017-05-19</p>
+					<p class="n-user">글쓴이</p>
+					<p class="n-title last">공지사항 입니다</p>
+				</li>
+			</ul>
+		</div>
+		<div class="card-panel freetalk">
+			<h6>자유게시판</h6>
+			<ul class="freetalk-list">
+				<li>
+					<p class="f-date">2017-05-19</p>
+					<p class="f-user">글쓴이</p>
+					<p class="f-title">자유게시판 입니다</p>
+				</li>
+				<li>
+					<p class="f-date">2017-05-19</p>
+					<p class="f-user">글쓴이</p>
+					<p class="f-title">자유게시판 입니다</p>
+				</li>
+				<li>
+					<p class="f-date">2017-05-19</p>
+					<p class="f-user">글쓴이</p>
+					<p class="f-title">자유게시판 입니다</p>
+				</li>
+				<li>
+					<p class="f-date">2017-05-19</p>
+					<p class="f-user">글쓴이</p>
+					<p class="f-title last">자유게시판 입니다</p>
+				</li>
+			</ul>
+		</div>
+		<div class="storages">
+			<a routerLink="/study/flow" class="card-panel flow">
+				<i class="material-icons">dns</i>
+				<div class="detail">
+					<span class="title">FLOW</span><br>
+					<span class="content">지난스터디 후기</span>
+				</div>
+			</a>
+			<a routerLink="/study/data" class="card-panel study">
+				<img src="public/icon/folder_hover.svg" alt="">
+				<div class="detail">
+					<span class="title">자료실</span><br>
+					<span class="content">스터디 자료 모음</span>
+				</div>
+			</a>
+			<a class="card-panel textshare">
+				<img src="public/icon/logo_or.svg" alt="">
+				<div class="detail">
+					<span class="title">TextShare</span><br>
+					<span class="content">바로가기</span>
+				</div>
+			</a>
+		</div>
+	</div>
+</div>

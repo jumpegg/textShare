@@ -1,0 +1,31 @@
+.container{
+	width: 800px;
+}
+.layerBox{
+	width: 640px;
+	margin: 0 auto;
+}
+.layerBox li{
+	margin-bottom: 10px;
+}
+textarea{
+	margin-top: 10px;
+	border-radius: 5px;
+	padding: 20px;
+	height: 300px;
+}
+.btnBox{
+	position: relative;
+}
+button.del{
+	background-color: #999999;
+	color: #FFFFFF;
+	border-radius: 5px;
+}
+button.submit{
+	background-color: #AB47BC;
+	color: #FFFFFF;
+	position:absolute;
+	border-radius: 5px;
+	right: 0px;
+}

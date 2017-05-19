@@ -1,0 +1,18 @@
+<div class="container">
+	<ul class="layerBox">
+		<li>
+			<div class="input-field">
+				<label for="">제목</label>
+				<input type="text" [(ngModel)]="newNotice.title">
+			</div>
+		</li>
+		<li>
+			<label for="">내용</label>
+			<textarea [(ngModel)]="newNotice.content"></textarea>
+		</li>
+		<li class="btnBox">
+			<button class="btn-flat del" (click)="backNotice()">취소</button>
+			<button class="btn-flat submit" (click)="noticeSubmit(newNotice)">등록</button>
+		</li>
+	</ul>
+</div>
