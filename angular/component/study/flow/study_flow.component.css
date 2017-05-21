@@ -1,0 +1,173 @@
+.history{
+	margin-bottom: 10px;
+}
+h6{
+	margin: 0px;
+}
+.list-wrap{
+	background-color: #f1f1f1;
+	padding: 20px;
+	overflow: auto;
+	height: 700px;
+}
+.card-panel{
+	margin: 0px;
+	padding: 10px;
+}
+.list-wrap .card-panel{
+	height:80px;
+}
+.list-line{
+	border-right: 2px solid #AB47BC;
+	width: 50%;
+	height: 10px;
+}
+.card-click{
+	background-color: #AB47BC;
+	color: #FFFFFF;
+}
+.disnone{
+	display: none;
+}
+/* add card */
+.add-flow{
+	text-align: center;
+	padding: 20px !important;
+}
+.add-flow i{
+	font-size:40px;
+	color: #AB47BC;
+}
+
+
+/* simple card*/
+.simple-label{
+	color: #999999;
+	font-size: 12px;
+	margin-bottom:10px;
+}
+.simple-speaker{
+	float:right;
+}
+.simple-title{
+	padding:5px;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+/* detail */
+
+.detail-wrap .card-panel{
+	padding: 0px;
+}
+.detail-card h6{
+	background-color: #AB47BC;
+	padding: 17px 20px;
+	color: #FFF;
+	font-size: 12px;
+}
+.detail-card .speaker{
+	float:right;
+}
+.detail-info{
+	padding: 15px;
+}
+.detail-info .icon-box{
+	text-align: right;
+}
+.detail-info .icon-box i{
+	color: #999999;
+}
+.detail-info .title{
+	padding: 10px;
+	font-size: 16px;
+	font-weight: bold;
+}
+.detail-info .content{
+	font-size: 14px;
+	padding: 10px;
+}
+
+/* new-wrap */
+.new-wrap{
+	overflow: hidden;
+}
+.new-wrap i{
+	color: #999999;
+	position: relative;
+	top: 8px;
+}
+/* date */
+.new-wrap .date{
+	width: 50%;
+	float:left;
+	padding: 10px 20px;
+}
+.new-wrap .date .input-field{
+	margin-left: 10px;
+	display: inline-block;
+	width: 350px;
+}
+.new-wrap .date input{
+	height: 30px;
+	margin-bottom: 0px;
+}
+/* select */
+.new-wrap .user-select{
+	width: 50%;
+	float:left;
+	padding: 10px 20px;
+}
+.new-wrap .user-select select{
+	display: inline-block;
+	width: 350px;
+	margin-left:10px;
+}
+/* new-flow-title */
+.new-flow-title{
+	width: 100%;
+	float:left;
+	padding: 10px 20px;
+}
+.new-flow-title .input-field{
+	width: 830px;
+	display: inline-block;
+	margin-left: 10px;
+}
+.new-flow-title input{
+	margin: 0px;
+	height: 30px;
+}
+/* new-flow-content */
+.new-flow-content{
+	padding: 10px 55px;
+	float:left;
+	width: 100%;
+}
+.new-flow-content label{
+	margin-bottom: 10px;
+}
+.new-flow-content textarea{
+	width: 100%;
+	height: 300px;
+	border-radius: 5px;
+	margin-top:10px;
+	padding: 15px;
+}
+/*flow-btn-box*/
+.flow-btn-box{
+	float:left;
+	width: 100%;
+	padding: 10px 55px;
+}
+.flow-btn-box button{
+	color: #FFFFFF;
+	border-radius: 3px;
+}
+.flow-btn-box .del{
+	background-color: #999999;
+}
+.flow-btn-box .submit{
+	background-color: #AB47BC;
+	float:right;
+}

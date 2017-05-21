@@ -1,1 +1,86 @@
-<h1>{{title}}</h1>
+<div class="container">
+	<div class="history">
+		History
+	</div>
+	<div class="row">
+		<div class="col s3">
+			<div class="list-wrap">
+				<ul>
+					<li>
+						<div class="card-panel add-flow">
+							<i class="material-icons">add_circle</i>
+						</div>
+					</li>
+					<li>
+						<div class="list-line"></div>
+						<div class="card-panel">
+							<div class="simple-label">
+								<span>2017-06-23</span>
+								<span class="simple-speaker">발표자</span>
+							</div>
+							<div class="simple-title">
+								주제입니다.
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="col s9">
+			<div class="detail-wrap disnone">
+				<div class="card-panel detail-card">
+					<h6>
+						<span>2017-06-23</span>
+						<span class="speaker">발표자</span>
+					</h6>
+					<div class="detail-info">
+						<ul>
+							<li class="icon-box">
+								<i class="material-icons">edit</i>
+								<i class="material-icons">clear</i>
+							</li>
+							<li class="title">
+								주제입니다
+							</li>
+							<li class="content">
+								각종 내용을 적는 부분입니다!!각종 내용을 적는 부분입니다!!각종 내용을 적는 부분입니다!!각종 내용을 적는 부분입니다!!각종 내용을 적는 부분입니다!!각종 내용을 적는 부분입니다!!각종 내용을 적는 부분입니다!!
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="new-wrap">
+				<div class="date">
+					<i class="material-icons">event</i>
+					<div class="input-field">
+						<label for="">DATE</label>
+						<input type="date" class="datepicker">
+					</div>
+				</div>
+				<div class="user-select">
+					<i class="material-icons">person</i>
+					<select class="browser-default">
+						<option value="">발표자1</option>
+						<option value="">발표자2</option>
+						<option value="">발표자3</option>
+					</select>
+				</div>
+				<div class="new-flow-title">
+					<i class="material-icons">description</i>
+					<div class="input-field">
+						<label for="">주제</label>
+						<input type="text" [(ngModel)]="newFlow.title">
+					</div>
+				</div>
+				<div class="new-flow-content">
+					<label for="">간단내용</label>
+					<textarea [(ngModel)]="newFlow.content"></textarea>
+				</div>
+				<div class="flow-btn-box">
+					<button class="btn-flat del">취소</button>
+					<button class="btn-flat submit" (click)="flowSubmit(newFlow)">등록</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
