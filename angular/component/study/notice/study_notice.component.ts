@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { StudyService } from '../../../service/study.service';
 import { NoticeService } from '../../../service/notice.service';
@@ -17,7 +17,8 @@ export class StudyNotice {
 		public endNum:number;
 		constructor(
 			public studyPage:StudyPageInfo,
-			public noticeService:NoticeService
+			public noticeService:NoticeService,
+			public router:Router
 		){}
 		ngOnInit(){
 			this.studyPage.init();
@@ -37,6 +38,9 @@ export class StudyNotice {
 			this.curNum = input;
 			this.getList(input);
 			this.calCnt(this.curNum);
+		}
+		move_read(input){
+			this.router.navigate(['/study/noticeRead/'+input]);
 		}
 		calCnt(input){
 			this.listNum = [];

@@ -55,6 +55,4 @@ export class StudyService{
 	isUserStudy(){
 		return this.http.get('/user/isUserStudy', {headers:this.header})
 	}
-	
-
 }

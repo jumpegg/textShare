@@ -10,7 +10,7 @@
 		<tbody>
 			<tr *ngFor="let notice of nList">
 				<td class="text-center date">{{notice.c_date|date:"yyyy-MM-dd"}}</td>
-				<td>{{notice.title}}</td>
+				<td class="cursor" (click)="move_read(notice.idx)">{{notice.title}}</td>
 				<td class="text-center">{{notice.id}}</td>
 			</tr>
 		</tbody>

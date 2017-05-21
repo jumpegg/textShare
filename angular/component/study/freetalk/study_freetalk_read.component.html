@@ -1,0 +1,51 @@
+<div class="container">
+	<div class="read">
+		<h6 class="writer">{{freetalk.c_date|date:"yyyy-MM-dd"}} 
+			<span>{{freetalk.id}}</span>
+		</h6>
+		<h6 class="title">{{freetalk.title}}</h6>
+		<hr>
+		<div class="action-btn">
+			<i class="material-icons">edit</i>
+			<i class="material-icons">clear</i>
+		</div>
+		<div class="content">
+			{{freetalk.content}}
+		</div>
+		<hr class="comment-divider">
+		<div class="comment-label">
+			Comment
+		</div>
+		<ul class="comment">
+			<li *ngFor="let cmt of list_comment">
+				<div class="imgBox">
+					<img src="public/icon/logo_or.svg" alt="">
+				</div>
+				<div class="comment-wrap">
+					<div class="comment-user">
+						<span class="comment-id">{{cmt.id}}</span>
+						<span class="width100p spacer"></span>
+					</div>
+					<div class="comment-content">
+						{{cmt.comment}}
+					</div>
+				</div>
+			</li>
+			<li class="comment-submit-box">
+				<div class="imgBox">
+					<img src="public/icon/logo_or.svg" alt="">
+				</div>
+				<div class="comment-wrap">
+					<div class="comment-content">
+						<div class="input-field">
+							<label for="">댓글쓰기</label>
+							<input type="text" [(ngModel)]="new_comment.comment">
+						</div>
+						<button class="btn-flat" (click)="comment_submit(new_comment)">저장</button>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+
+</div>

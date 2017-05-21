@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { StudyService } from '../../../service/study.service';
 import { FreetalkService } from '../../../service/freetalk.service';
@@ -17,7 +17,8 @@ export class StudyFreetalk {
 		public endNum:number;
 		constructor(
 			public studyPage:StudyPageInfo,
-			public freetalkService:FreetalkService
+			public freetalkService:FreetalkService,
+			public router:Router
 		){}
 		ngOnInit(){
 			this.studyPage.init();
@@ -62,5 +63,8 @@ export class StudyFreetalk {
 		subNum(){
 			this.curNum = (this.curNum == 1) ? 1 : this.curNum - 1;
 			this.move_page(this.curNum);
+		}
+		move_read(input){
+			this.router.navigate(['/study/freetalkRead/'+input]);
 		}
 }

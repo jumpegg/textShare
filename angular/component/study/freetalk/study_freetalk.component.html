@@ -10,7 +10,11 @@
 		<tbody>
 			<tr *ngFor="let freetalk of fList">
 				<td class="text-center date">{{freetalk.c_date|date:"yyyy-MM-dd"}}</td>
-				<td>{{freetalk.title}}</td>
+				<td>
+					<span class="cursor" (click)="move_read(freetalk.idx)">
+						{{freetalk.title}}
+					</span>
+				</td>
 				<td class="text-center">{{freetalk.id}}</td>
 			</tr>
 		</tbody>

@@ -40,8 +40,9 @@ class Server {
 						resave: false,
 						saveUninitialized: true
 				}));
-
+				
 				this.app.use('/public', express.static(path.join(__dirname, '/../public')));
+				this.app.use('/data', express.static(path.join(__dirname, '/../data')));
 				this.app.use('/node_modules', express.static(path.join(__dirname, '/../node_modules')));
 				this.app.use('/client', express.static(path.join(__dirname, '/../client')));
 		}
@@ -62,3 +63,37 @@ class Server {
 }
 
 export const server = new Server();
+
+
+		// form.keepExtensions = true;
+
+		// var dir = './studydata/'+req.session.board_id;
+		// var subdir = './studydata/'+req.session.board_id+'/'+y;
+		// if(!fs.existsSync(dir)){
+		// 	fs.mkdirSync(dir);
+		// };
+		// if(!fs.existsSync(subdir)){
+		// 	fs.mkdirSync(subdir);
+		// };
+
+		// form.uploadDir = subdir;
+
+		// form.on('field', function(field, value){
+		// 	fields.push([field, value]);
+		// })
+		// .on('file', function(field, file){
+		// 	fs.rename(file.path, form.uploadDir + '/' + file.name);
+		// 	mysqlClient.query('update studydata set filename = ? where url = ?',[file.name, y],function(error, result){
+		// 		if(error){
+		// 			console.log(error);
+		// 		}
+		// 	});
+		// 	files.push([field, file]);
+		// })
+		// .on('end', function(){
+		// 	res.end('success');
+		// })
+		// .on('error', function(error){
+		// 	console.log('[error] error : '+ error);
+		// });
+		// form.parse(req);

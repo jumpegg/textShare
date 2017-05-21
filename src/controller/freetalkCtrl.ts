@@ -36,7 +36,8 @@ export class FreetalkCtrl{
 		`select b.id, a.* from freetalk a
 		inner join User b
 		on a.user_idx = b.idx
-		where a.idx = ${req.params.idx}`;
+		where a.idx = ${req.params.idx}
+		and a.study_idx = ${req.session.studyIdx}`;
 
 		conn.query(getQuery, (err, data)=>{
 			if(err){

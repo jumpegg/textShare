@@ -1,0 +1,80 @@
+.container{
+	width: 1000px;
+}
+.hidden{
+	display: none;
+}
+.data-folder{
+	background-image:url('public/icon/folder.svg');
+	background-repeat: no-repeat;
+	background-size: contain;
+	cursor: pointer;
+	word-break: break-all;
+	font-size: 12px;
+	width: 100px;
+	height: 80px;
+	margin: 10px;
+	padding: 10px;
+	padding-top: 50px;
+}
+ul.file{
+	overflow: hidden;
+	margin: 0 auto;
+}
+.file li{
+	width: 230px;
+	height: 50px;
+	float:left;
+	position:relative;
+	color: #666666;
+	margin-right: 20px;
+	padding: 5px 10px;
+}
+.file li span{
+	font-size:12px;
+	max-width: 130px;
+}
+.file i{
+	font-size:24px;
+}
+.file i.file{
+	position:relative;
+	top: 8px;
+}
+
+.file i.down{
+	color: #DDDDDD;
+	position:absolute;
+	right: 0px;
+	top: 13px;
+	cursor: pointer;
+}
+
+.file li.add{
+	text-align: center;
+	cursor: pointer;
+}
+.file li.add i{
+	color:#AB47BC;
+	position: relative;
+	top: 8px;
+}
+
+/* fileBox */
+.fileBox{
+	overflow: hidden;
+	margin-top: 10px;
+}
+.fileBox .input-field{
+	width: 600px;
+	float:left;
+	margin: 0px;
+}
+.fileBox input{
+	margin: 0px;
+}
+
+.fileBox .btn.submit{
+	float:left;
+	margin-left: 20px;
+}

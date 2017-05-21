@@ -93,22 +93,37 @@ export class StudyCtrl{
 		})
 	}
 	public list: RequestHandler = (req, res) => {
-		this.studyTbl.selectList(req.body).go((data)=>{
+		this.studyTbl
+		.selectList(req.body)
+		.go((data)=>{
 			res.json(data);
 		})
 	}
 	public search: RequestHandler = (req, res) => {
-		this.studyTbl.selectList(req.body).go((data)=>{
+		this.studyTbl
+		.selectList(req.body)
+		.go((data)=>{
 			res.json(data);
 		})
 	}
 	public getOne : RequestHandler = (req, res) => {
-		this.studyTbl.selectOne({idx: req.params.idx}).go((data)=>{
+		this.studyTbl
+		.selectOne({idx: req.params.idx})
+		.go((data)=>{
+			res.json(data[0]);
+		})
+	}
+	public getStudyInfo:RequestHandler = (req,res)=>{
+		this.studyTbl
+		.selectOne({idx: req.session.studyIdx})
+		.go((data)=>{
 			res.json(data[0]);
 		})
 	}
 	public adminList: RequestHandler = (req, res) => {
-		this.studyTbl.selectList({admin: req.session.userData.idx}).go((data)=>{
+		this.studyTbl
+		.selectList({admin: req.session.userData.idx})
+		.go((data)=>{
 			res.json(data);
 		})
 	}
@@ -153,11 +168,6 @@ export class StudyCtrl{
 		});
 	}
 
-	public doPromise(input:StudyCtrl){
-		return new Promise(function(resolve, reject){
-			resolve(input);
-		});
-	}
 }
 
 export const studyCtrl = new StudyCtrl();

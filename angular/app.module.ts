@@ -32,8 +32,10 @@ import { StudyAdmin } from './component/study/admin/study_admin.component';
 import { StudyFlow } from './component/study/flow/study_flow.component';
 import { StudyFreetalk } from './component/study/freetalk/study_freetalk.component';
 import { StudyNewFreetalk } from './component/study/freetalk/study_freetalk_new.component';
+import { StudyReadFreetalk } from './component/study/freetalk/study_freetalk_read.component';
 import { StudyNotice } from './component/study/notice/study_notice.component';
 import { StudyNewNotice } from './component/study/notice/study_notice_new.component';
+import { StudyReadNotice } from './component/study/notice/study_notice_read.component';
 import { StudyData } from './component/study/studydata/study_studydata.component';
 import { StudyNewData } from './component/study/studydata/study_studydata_new.component';
 import { StudySchedule } from './component/study/schedule/study_schedule.component';
@@ -72,10 +74,8 @@ import { AppRoutingModule } from './app.routing';
 		StudyAcc, StudyNewAcc,
 		StudyAdmin,
 		StudyFlow,
-		StudyFreetalk, 
-		StudyNewFreetalk,
-		StudyNotice, 
-		StudyNewNotice,
+		StudyFreetalk, StudyNewFreetalk,StudyReadFreetalk,
+		StudyNotice, StudyNewNotice, StudyReadNotice,
 		StudyData, 
 		StudyNewData,
 		StudySchedule, 

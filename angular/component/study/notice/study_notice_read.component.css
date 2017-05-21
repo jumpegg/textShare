@@ -1,0 +1,58 @@
+/* common */
+.container{
+	width: 800px;
+}
+h6, hr, ul, li{
+	margin: 0px;
+	padding: 0px;
+}
+
+/* read */
+.read{
+	width:640px;
+	margin: 0 auto;
+}
+.read .writer{
+	background-color: #CCC;
+	color: #FFF;
+	padding: 12px 10px;
+	font-size: 12px;
+}
+.read .writer span{
+	float: right;
+}
+.title{
+	padding: 12px 0px;
+	font-size: 16px;
+}
+/* action btn */
+.action-btn{
+	padding: 5px 0px;
+	text-align: right;
+}
+.action-btn i{
+	color: #999999;
+	margin-right: 5px;
+}
+/* content */
+.content{
+	padding:10px 0px 20px 0px;
+	font-size: 14px;
+}
+
+/* line */
+span.spacer {
+	display:table-cell;
+}
+span.spacer:after {
+	display:inline-block;
+	width:100%;
+	content:".";
+	font-size:0;
+	color:transparent;
+	height:2px;
+	background:#CCC;
+	vertical-align:middle;
+	position:relative;
+	top:-1px;
+}

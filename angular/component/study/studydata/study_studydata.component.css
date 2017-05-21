@@ -4,7 +4,9 @@
 .default-folder{
 	color: black;
 }
-
+.data-list{
+	overflow: hidden;
+}
 .data-folder{
 	background-image:url('public/icon/folder.svg');
 	background-repeat: no-repeat;
@@ -32,4 +34,22 @@
 	height: 80px;
 	margin: 10px;
 	padding: 20px;
+}
+
+.folder-wrap{
+	overflow: hidden;
+}
+.folder-wrap .input-field{
+	width: 300px;
+	margin-right: 10px;
+	display: inline-block;
+}
+.folder-wrap input{
+	height: 36px;
+	margin: 0px;
+}
+.folder-wrap button{
+	border: 1px solid #AB47BC;
+	border-radius: 5px;
+	color: #AB47BC;
 }

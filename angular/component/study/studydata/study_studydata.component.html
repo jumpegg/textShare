@@ -1,20 +1,15 @@
 <div class="container">
 	<ul class="data-list">
-		<li class="data-folder" (click)="moveDataFolder(1)">
-			일이삼사오육칠팔구십일이
+		<li class="data-folder" *ngFor="let folder of folderList" (click)="moveDataFolder(folder.idx)">
+			{{folder.folder_name}}
 		</li>
-		<li class="data-folder">2</li>
-		<li class="data-folder">3</li>
-		<li class="data-folder">4</li>
-		<li class="data-folder">5</li>
-		<li class="data-folder">2</li>
-		<li class="data-folder">3</li>
-		<li class="data-folder">4</li>
-		<li class="data-folder">5</li>
-		<li class="data-folder">2</li>
-		<li class="data-folder">3</li>
-		<li class="data-folder">4</li>
-		<li class="data-folder">5</li>
-		<li class="data-add-folder"></li>
+		<li class="data-add-folder" (click)="toggleInput()"></li>
 	</ul>
+	<div class="folder-wrap" [@folderToggle]="inputState">
+		<div class="input-field">
+			<label for="">폴더명</label>
+			<input type="text" [(ngModel)]="folder_name">
+		</div>
+		<button class="btn-flat" (click)="makeFolder(folder_name)">폴더생성</button>
+	</div>
 </div>

@@ -9,10 +9,13 @@ import {
 		accountCtrl,
 		freetalkCtrl,
 		noticeCtrl,
+		commentCtrl,
+		dataCtrl,
 		placeCtrl } from '../controller';
 
 const studyRoute: Router = Router();
 studyRoute.get('/map', studyCtrl.map);
+studyRoute.get('/getOne_study', studyCtrl.getStudyInfo);
 
 studyRoute.post('/new_schedule', scheduleCtrl.make);
 studyRoute.get('/list_schedule', scheduleCtrl.list);
@@ -47,7 +50,14 @@ studyRoute.get('/getOne_freetalk/:idx',freetalkCtrl.getOne);
 studyRoute.post('/update_freetalk',freetalkCtrl.update);
 studyRoute.get('/delete_freetalk/:idx',freetalkCtrl.delete);
 
+studyRoute.post('/new_comment', commentCtrl.make);
+studyRoute.post('/list_comment', commentCtrl.list);
+studyRoute.get('/del_comment/:idx', commentCtrl.del);
+
 studyRoute.get('/list_place', placeCtrl.getPlaces);
 studyRoute.get('/getOne_place/:idx', placeCtrl.getPlace);
+
+studyRoute.post('/new_folder_data', dataCtrl.folderMake);
+studyRoute.get('/list_folder_data', dataCtrl.folderList);
 
 export { studyRoute };

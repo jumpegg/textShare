@@ -8,3 +8,5 @@ export * from './memberCtrl';
 export * from './accountCtrl';
 export * from './noticeCtrl';
 export * from './freetalkCtrl';
+export * from './commentCtrl';
+export * from './dataCtrl';

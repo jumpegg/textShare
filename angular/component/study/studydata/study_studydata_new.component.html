@@ -1,1 +1,34 @@
-<h1>studydata new</h1>
+<div class="container">
+	<div class="data-folder">
+		자료실로 이동
+	</div>
+	<ul class="file">
+		<li class="card-panel">
+			<i class="material-icons file">
+				insert_drive_file
+			</i>
+			<span>file name</span>
+			<i class="material-icons down">get_app</i>
+		</li>
+		<li class="card-panel"></li>
+		<li class="card-panel"></li>
+		<li class="card-panel"></li>
+		<li class="card-panel"></li>
+		<li class="card-panel"></li>
+		<li class="card-panel"></li>
+		<li class="card-panel add" (click)="fileInputToggle()">
+			<i class="material-icons">add</i>
+		</li>
+	</ul>
+	<div class="fileBox" [@fileToggle]="fileState">
+		<div class="file-field input-field">
+      <div>
+        <input type="file" multiple (change)="fileChange($event)">
+      </div>
+      <div class="file-path-wrapper">
+        <input class="file-path validate" type="text" placeholder="Upload one or more files">
+      </div>
+    </div>
+		<button class="btn submit" (click)="fileSubmit(fileTest)">전송</button>
+	</div>
+</div>

@@ -11,7 +11,9 @@
 .pagination li{
 	cursor: pointer;
 }
-
+.cursor{
+	cursor: pointer;
+}
 /* table */
 table{
 	width: 800px;
