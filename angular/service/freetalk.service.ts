@@ -40,4 +40,8 @@ export class FreetalkService{
 		return this.http.get('/study/delete_freetalk/'+input, {headers:this.header})
 			.map(res=>res.json());
 	}
+	forIndex(){
+		return this.http.get('/study/getIndex_freetalk', {headers:this.header})
+			.map(res=>res.json());
+	}
 }

@@ -9,22 +9,22 @@
 					<li class="col s6">
 						<i class="material-icons">today</i>
 						<p>DATE</p>
-						<span class="info-data">2017-05-19</span>
+						<span class="info-data">{{schedule.gathering|date:"yyyy-MM-dd"}}</span>
 					</li>
-					<li class="col s6">
+					<!--<li class="col s6">
 						<i class="material-icons">group</i>
 						<p>총 인원</p>
 						<span class="info-data">7 명</span>
-					</li>
+					</li>-->
 					<li class="col s6">
 						<i class="material-icons">access_time</i>
 						<p>TIME</p>
-						<span class="info-data">7:30 ~ 9:30</span>
+						<span class="info-data">{{schedule.start}} ~ {{schedule.end}}</span>
 					</li>
 					<li class="col s6">
 						<i class="material-icons">account_balance_wallet</i>
 						<p>COST</p>
-						<span class="info-data">3000 원</span>
+						<span class="info-data">{{schedule.cost}}</span>
 					</li>
 				</ul>
 				<hr>
@@ -32,7 +32,7 @@
 					<li class="col s12 map-info-box">
 						<i class="material-icons">pin_drop</i>
 						<p>PLACE</p>
-						<span class="map-data">강남 스터디 윙</span>
+						<span class="map-data">{{schedule.place_name}}</span>
 					</li>
 					<li class="col s12" id="map">
 
@@ -45,50 +45,20 @@
 		<div class="card-panel notice">
 			<h6>공지사항</h6>
 			<ul class="notice-list">
-				<li>
-					<p class="n-date">2017-05-19</p>
-					<p class="n-user">글쓴이</p>
-					<p class="n-title">공지사항 입니다</p>
-				</li>
-				<li>
-					<p class="n-date">2017-05-19</p>
-					<p class="n-user">글쓴이</p>
-					<p class="n-title">공지사항 입니다</p>
-				</li>
-				<li>
-					<p class="n-date">2017-05-19</p>
-					<p class="n-user">글쓴이</p>
-					<p class="n-title">공지사항 입니다</p>
-				</li>
-				<li>
-					<p class="n-date">2017-05-19</p>
-					<p class="n-user">글쓴이</p>
-					<p class="n-title last">공지사항 입니다</p>
+				<li *ngFor="let notice of noticeList; let i = index">
+					<p class="n-date">{{notice.c_date|date:"yyyy-MM-dd"}}</p>
+					<p class="n-user">{{notice.id}}</p>
+					<p class="n-title" [ngClass]="{'last':i==3}">{{notice.title}}</p>
 				</li>
 			</ul>
 		</div>
 		<div class="card-panel freetalk">
 			<h6>자유게시판</h6>
 			<ul class="freetalk-list">
-				<li>
-					<p class="f-date">2017-05-19</p>
-					<p class="f-user">글쓴이</p>
-					<p class="f-title">자유게시판 입니다</p>
-				</li>
-				<li>
-					<p class="f-date">2017-05-19</p>
-					<p class="f-user">글쓴이</p>
-					<p class="f-title">자유게시판 입니다</p>
-				</li>
-				<li>
-					<p class="f-date">2017-05-19</p>
-					<p class="f-user">글쓴이</p>
-					<p class="f-title">자유게시판 입니다</p>
-				</li>
-				<li>
-					<p class="f-date">2017-05-19</p>
-					<p class="f-user">글쓴이</p>
-					<p class="f-title last">자유게시판 입니다</p>
+				<li *ngFor="let freetalk of freetalkList; let j = index">
+					<p class="f-date">{{freetalk.c_date|date:"yyyy-MM-dd"}}</p>
+					<p class="f-user">{{freetalk.id}}</p>
+					<p class="f-title" [ngClass]="{'last':j==3}">{{freetalk.title}}</p>
 				</li>
 			</ul>
 		</div>

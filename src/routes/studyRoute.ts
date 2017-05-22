@@ -11,6 +11,7 @@ import {
 		noticeCtrl,
 		commentCtrl,
 		dataCtrl,
+		flowCtrl,
 		placeCtrl } from '../controller';
 
 const studyRoute: Router = Router();
@@ -20,6 +21,7 @@ studyRoute.get('/getOne_study', studyCtrl.getStudyInfo);
 studyRoute.post('/new_schedule', scheduleCtrl.make);
 studyRoute.get('/list_schedule', scheduleCtrl.list);
 studyRoute.get('/one_schedule/:idx', scheduleCtrl.getSchedule);
+studyRoute.get('/getIndex_schedule', scheduleCtrl.index);
 
 studyRoute.get('/new_member', memberCtrl.make);
 studyRoute.get('/joiner_list_member', memberCtrl.joinerList);
@@ -42,6 +44,7 @@ studyRoute.get('/getCnt_notice', noticeCtrl.listCnt);
 studyRoute.get('/getOne_notice/:idx',noticeCtrl.getOne);
 studyRoute.post('/update_notice',noticeCtrl.update);
 studyRoute.get('/delete_notice/:idx',noticeCtrl.delete);
+studyRoute.get('/getIndex_notice', noticeCtrl.index);
 
 studyRoute.post('/new_freetalk',freetalkCtrl.make);
 studyRoute.get('/paging_freetalk/:idx',freetalkCtrl.limitFTList);
@@ -49,6 +52,7 @@ studyRoute.get('/getCnt_freetalk',freetalkCtrl.listCnt);
 studyRoute.get('/getOne_freetalk/:idx',freetalkCtrl.getOne);
 studyRoute.post('/update_freetalk',freetalkCtrl.update);
 studyRoute.get('/delete_freetalk/:idx',freetalkCtrl.delete);
+studyRoute.get('/getIndex_freetalk',freetalkCtrl.index);
 
 studyRoute.post('/new_comment', commentCtrl.make);
 studyRoute.post('/list_comment', commentCtrl.list);
@@ -59,5 +63,11 @@ studyRoute.get('/getOne_place/:idx', placeCtrl.getPlace);
 
 studyRoute.post('/new_folder_data', dataCtrl.folderMake);
 studyRoute.get('/list_folder_data', dataCtrl.folderList);
+
+studyRoute.post('/new_flow', flowCtrl.make);
+studyRoute.get('/list_flow', flowCtrl.list);
+studyRoute.get('/getOne_flow/:idx', flowCtrl.getOne);
+studyRoute.post('/update_flow', flowCtrl.update);
+studyRoute.get('/delete_flow/:idx', flowCtrl.delete);
 
 export { studyRoute };

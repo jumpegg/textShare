@@ -24,4 +24,8 @@ export class ScheduleService{
 		return this.http.get('/study/one_schedule/'+input, {headers:this.header})
 			.map(res=>res.json());
 	}
+	forIndex(){
+		return this.http.get('/study/getIndex_schedule', {headers:this.header})
+			.map(res=>res.json());
+	}
 }

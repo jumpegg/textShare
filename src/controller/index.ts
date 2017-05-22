@@ -10,3 +10,4 @@ export * from './noticeCtrl';
 export * from './freetalkCtrl';
 export * from './commentCtrl';
 export * from './dataCtrl';
+export * from './flowCtrl';

@@ -40,4 +40,8 @@ export class NoticeService{
 		return this.http.get('/study/delete_notice/'+input, {headers:this.header})
 			.map(res=>res.json());
 	}
+	forIndex(){
+		return this.http.get('/study/getIndex_notice', {headers:this.header})
+			.map(res=>res.json());
+	}
 }

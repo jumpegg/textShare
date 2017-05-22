@@ -76,6 +76,15 @@ export class NoticeCtrl{
 			res.json(data);
 		})
 	}
+	public index:RequestHandler = (req,res)=>{
+		this.noticeTbl
+		.selectList({study_idx : req.session.studyIdx})
+		.order({idx : 'desc'})
+		.limitFromTo(0 , 4)
+		.go((data)=>{
+			res.json(data);
+		})
+	}
 }
 
 export const noticeCtrl = new NoticeCtrl();
