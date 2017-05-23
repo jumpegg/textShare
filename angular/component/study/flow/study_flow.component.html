@@ -39,8 +39,8 @@
 					<div class="detail-info">
 						<ul>
 							<li class="icon-box">
-								<i class="material-icons">edit</i>
-								<i class="material-icons">clear</i>
+								<i class="material-icons" (click)="editFlow(getFlow.idx)">edit</i>
+								<i class="material-icons" (click)="deleteFlow(getFlow.idx)">clear</i>
 							</li>
 							<li class="title">
 								{{getFlow.title}}
@@ -56,8 +56,7 @@
 				<div class="date">
 					<i class="material-icons">event</i>
 					<div class="input-field">
-						<label for="">DATE</label>
-						<input type="date" class="datepicker">
+						<input type="date" class="datepicker" placeholder="발표일">
 					</div>
 				</div>
 				<div class="user-select">
@@ -69,8 +68,7 @@
 				<div class="new-flow-title">
 					<i class="material-icons">description</i>
 					<div class="input-field">
-						<label for="">주제</label>
-						<input type="text" [(ngModel)]="newFlow.title">
+						<input type="text" [(ngModel)]="newFlow.title" placeholder="주제">
 					</div>
 				</div>
 				<div class="new-flow-content">

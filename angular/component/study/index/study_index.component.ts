@@ -23,6 +23,7 @@ declare var naver : any;
 export class StudyIndex {
 		public title:string;
 		public map: any;
+		public marker: any;
 		public noticeList:any[] = [];
 		public freetalkList:any[] = [];
 		public schedule:any = new Schedule();
@@ -87,13 +88,35 @@ export class StudyIndex {
 			.subscribe(
 				data=>{
 					if(!data.msg){
+						let obj = this;
 						this.schedule = data[0];
+						console.log(this.schedule);
 						this.map = new naver.maps.Map('map', {
 							center: new naver.maps.LatLng(Number(this.schedule.mapy), Number(this.schedule.mapx)),
 							zoom: 11
 						});
+
+						this.marker = new naver.maps.Marker({
+								position: new naver.maps.LatLng(Number(this.schedule.mapy), Number(this.schedule.mapx)),
+								map: this.map
+						});
+						let infoWindow = new naver.maps.InfoWindow({
+							content: `
+								<div class="iw_inner">
+								<h5>${this.schedule.place_name}</h5>
+								</div>
+								`
+						});
+						naver.maps.Event.addListener(this.marker, "click", function(e) {
+								if (infoWindow.getMap()) {
+										infoWindow.close();
+								} else {
+										infoWindow.open(obj.map, obj.marker);
+								}
+						});
+
+						infoWindow.open(this.map, this.marker);
 					}
-					console.log(data);
 				}
 			)
 		}

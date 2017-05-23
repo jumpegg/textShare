@@ -13,10 +13,10 @@ h6{
 .card-panel{
 	margin: 0px;
 	padding: 10px;
-	cursor: pointer;
 }
 .list-wrap .card-panel{
 	height:80px;
+	cursor: pointer;
 }
 .list-line{
 	border-right: 2px solid #AB47BC;
@@ -78,6 +78,7 @@ h6{
 }
 .detail-info .icon-box i{
 	color: #999999;
+	cursor: pointer;
 }
 .detail-info .title{
 	padding: 10px;

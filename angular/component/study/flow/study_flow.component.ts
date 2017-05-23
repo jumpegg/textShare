@@ -70,25 +70,40 @@ export class StudyFlow {
 				data=>{
 					if(!data.msg){
 						this.getFlow = data[0];
+						console.log(this.getFlow);
 					}
 				}
 			)
 		}
 		flowSubmit(input){
 			input.speak_date = $('.datepicker').val();
-			console.log(input);
-			this.flowService
-			.create(input)
-			.subscribe(
-				data=>{
-					if(data.msg=="done"){
-						alert('등록되었습니다.');
-						this.detailClose();
-						this.getFlowList();
-						this.newFlow = new Flow();
+			if(!input.idx){
+				this.flowService
+				.create(input)
+				.subscribe(
+					data=>{
+						if(data.msg=="done"){
+							alert('등록되었습니다.');
+							this.detailClose();
+							this.getFlowList();
+							this.newFlow = new Flow();
+						}
 					}
-				}
-			)
+				)
+			}else{
+				this.flowService
+				.update(input)
+				.subscribe(
+					data=>{
+						if(data.msg=="done"){
+							alert('등록되었습니다.');
+							this.detailClose();
+							this.getFlowList();
+							this.newFlow = new Flow();
+						}
+					}
+				)
+			}
 		}
 		detailOpen(){
 			this.detailState = 'open';
@@ -99,5 +114,22 @@ export class StudyFlow {
 		detailInfo(input){
 			this.detailClose();
 			this.getFlowOne(input);
+		}
+		editFlow(input){
+			this.flowService
+			.getOne(input)
+			.subscribe(
+				data=>{
+					if(!data.msg){
+						this.newFlow = data[0];
+						let dateTemp = new Date(this.newFlow.speak_date);
+						$('.datepicker').val(new Date(this.newFlow.speak_date));
+						this.detailOpen();
+					}
+				}
+			)
+		}
+		deleteFlow(input){
+
 		}
 }
