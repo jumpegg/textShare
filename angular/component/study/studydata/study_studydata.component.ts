@@ -56,6 +56,7 @@ export class StudyData {
 				data=>{
 					if(data.msg == 'done'){
 						alert('폴더를 생성했습니다.');
+						this.inputState = 'close';
 					}else{
 						alert('폴더 생성 중 문제가 생겼습니다.');
 					}

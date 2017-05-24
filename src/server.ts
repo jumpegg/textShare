@@ -63,37 +63,3 @@ class Server {
 }
 
 export const server = new Server();
-
-
-		// form.keepExtensions = true;
-
-		// var dir = './studydata/'+req.session.board_id;
-		// var subdir = './studydata/'+req.session.board_id+'/'+y;
-		// if(!fs.existsSync(dir)){
-		// 	fs.mkdirSync(dir);
-		// };
-		// if(!fs.existsSync(subdir)){
-		// 	fs.mkdirSync(subdir);
-		// };
-
-		// form.uploadDir = subdir;
-
-		// form.on('field', function(field, value){
-		// 	fields.push([field, value]);
-		// })
-		// .on('file', function(field, file){
-		// 	fs.rename(file.path, form.uploadDir + '/' + file.name);
-		// 	mysqlClient.query('update studydata set filename = ? where url = ?',[file.name, y],function(error, result){
-		// 		if(error){
-		// 			console.log(error);
-		// 		}
-		// 	});
-		// 	files.push([field, file]);
-		// })
-		// .on('end', function(){
-		// 	res.end('success');
-		// })
-		// .on('error', function(error){
-		// 	console.log('[error] error : '+ error);
-		// });
-		// form.parse(req);

@@ -8,7 +8,7 @@
 			<div class="list-wrap">
 				<ul>
 					<li>
-						<div class="card-panel add-flow" (click)="detailOpen()">
+						<div class="card-panel add-flow" (click)="detailClose()">
 							<i class="material-icons">add_circle</i>
 						</div>
 					</li>
@@ -25,12 +25,11 @@
 							</div>
 						</div>
 					</li>
-
 				</ul>
 			</div>
 		</div>
 		<div class="col s9">
-			<div class="detail-wrap" [ngClass]="{'disnone':detailState=='open'}">
+			<div class="detail-wrap" [ngClass]="{'disnone':detailState=='close'}">
 				<div class="card-panel detail-card">
 					<h6>
 						<span>{{getFlow.speak_date|date:"yyyy-MM-dd"}}</span>
@@ -39,8 +38,8 @@
 					<div class="detail-info">
 						<ul>
 							<li class="icon-box">
-								<i class="material-icons" (click)="editFlow(getFlow.idx)">edit</i>
-								<i class="material-icons" (click)="deleteFlow(getFlow.idx)">clear</i>
+								<i class="material-icons" [ngClass]="{'disnone':iconState=='close'}" (click)="editFlow(getFlow.idx)">edit</i>
+								<i class="material-icons" [ngClass]="{'disnone':iconState=='close'}" (click)="deleteFlow(getFlow.idx)">clear</i>
 							</li>
 							<li class="title">
 								{{getFlow.title}}
@@ -52,7 +51,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="new-wrap" [ngClass]="{'disnone':detailState=='close'}">
+			<div class="new-wrap" [ngClass]="{'disnone':detailState=='open'}">
 				<div class="date">
 					<i class="material-icons">event</i>
 					<div class="input-field">
@@ -76,7 +75,7 @@
 					<textarea [(ngModel)]="newFlow.content"></textarea>
 				</div>
 				<div class="flow-btn-box">
-					<button class="btn-flat del">취소</button>
+					<button class="btn-flat del" (click)="flowCancel()">취소</button>
 					<button class="btn-flat submit" (click)="flowSubmit(newFlow)">등록</button>
 				</div>
 			</div>

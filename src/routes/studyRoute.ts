@@ -63,6 +63,9 @@ studyRoute.get('/getOne_place/:idx', placeCtrl.getPlace);
 
 studyRoute.post('/new_folder_data', dataCtrl.folderMake);
 studyRoute.get('/list_folder_data', dataCtrl.folderList);
+studyRoute.post('/new_file_data/:idx', dataCtrl.fileMake);
+studyRoute.get('/list_file_data/:idx', dataCtrl.fileList);
+studyRoute.post('/is_file_data',dataCtrl.isFile);
 
 studyRoute.post('/new_flow', flowCtrl.make);
 studyRoute.get('/list_flow', flowCtrl.list);

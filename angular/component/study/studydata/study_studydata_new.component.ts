@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Headers, Http, RequestOptions } from '@angular/http';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { StudyService } from '../../../service/study.service';
+import { DataService } from '../../../service/data.service';
 import { StudyPageInfo } from '../../../service/single_studypage';
 
 @Component({
 		styleUrls: ['client/component/study/studydata/study_studydata_new.component.css'],
 		templateUrl: 'client/component/study/studydata/study_studydata_new.component.html',
-		providers: [StudyService],
+		providers: [StudyService, DataService],
 		animations:[
 			trigger('fileToggle',[
 				state('open', style({})),
@@ -24,45 +26,64 @@ export class StudyNewData {
 		public idx:number;
 		public fileState:string = "close";
 		public fileTest:any;
+		public fileList:FileList;
+		public getfileList:any[] = [];
+		
 
 		constructor(
 			public studyPage:StudyPageInfo,
+			public dataService:DataService,
 			public router:Router,
+			private http:Http,
 			public route:ActivatedRoute
 		){}
 		ngOnInit(){
 			this.studyPage.init();
 			this.idx = +this.route.snapshot.params['idx'];
-			console.log(this.idx);
+			this.initFileList();
 		}
 		fileInputToggle(){
 			this.fileState = (this.fileState == "close") ? "open" : "close";
 		}
 		fileSubmit(input){
-			console.log(input);
-		}
+			if(input.length > 0){
+				console.log(input);
+				let formData:FormData = new FormData();
 
-
-
-		fileChange(event) {
-			console.log('event call');
-				let fileList: FileList = event.target.files;
-				if(fileList.length > 0) {
-					console.log(fileList);
-						// let file: File = fileList[0];
-						// let formData:FormData = new FormData();
-						// formData.append('uploadFile', file, file.name);
-						// let headers = new Headers();
-						// headers.append('Content-Type', 'multipart/form-data');
-						// headers.append('Accept', 'application/json');
-						// let options = new RequestOptions({ headers: headers });
-						// this.http.post(`${this.apiEndPoint}`, formData, options)
-						// 		.map(res => res.json())
-						// 		.catch(error => Observable.throw(error))
-						// 		.subscribe(
-						// 				data => console.log('success'),
-						// 				error => console.log(error)
-						// 		)
+				for(let i=0; i<this.fileList.length; i++){
+					console.log(this.fileList[i]);
+					let file: File = this.fileList[i];
+					formData.append('uploadFile'+i , file, file.name);
 				}
+
+				this.http.post('/study/new_file_data/'+this.idx, formData)
+					.map(res => res.json())
+					.subscribe(
+						data => {
+							console.log(data);
+							this.initFileList();
+						}
+					)
+			}else{
+				alert('파일을 선택해주세요');
+			}
+		}
+		fileChange(event) {
+				this.fileList = event.target.files;
+		}
+		initFileList(){
+			this.dataService
+			.getFileList(this.idx)
+			.subscribe(
+				data=>{
+					if(!data.msg){
+						this.getfileList = data;
+					}else{
+						this.getfileList = [{
+							file_name : '등록된 파일이 없습니다.'
+						}]
+					}
+				}
+			)
 		}
 }

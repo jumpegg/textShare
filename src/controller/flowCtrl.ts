@@ -29,7 +29,10 @@ export class FlowCtrl{
 	}
 	public getOne:RequestHandler = (req,res)=>{
 		this.flowTbl
-		.selectOne({idx : req.params.idx})
+		.selectOne({
+			idx : req.params.idx,
+			study_idx : req.session.studyIdx
+		})
 		.go((data)=>{
 			res.json(data);
 		})

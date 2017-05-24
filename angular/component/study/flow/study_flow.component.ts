@@ -17,7 +17,8 @@ declare var $ : any;
 })
 export class StudyFlow {
 		public title:string;
-		public detailState:string = "close";
+		public detailState:string = "open";
+		public iconState:string = "open";
 		public newFlow:Flow = new Flow();
 		public getFlow:Flow = new Flow();
 		public userList:any[] = [];
@@ -58,7 +59,10 @@ export class StudyFlow {
 						this.flowList = data;
 						this.getFlow = data[0];
 					}else{
-						this.getFlowOne(1);
+						this.getFlow = new Flow();
+						this.getFlow.id = '작성자';
+						this.getFlow.title = '등록된 글이 없습니다.';
+						this.getFlow.content = '진행사항을 기록해 보세요!';
 					}
 				}
 			)
@@ -112,7 +116,7 @@ export class StudyFlow {
 			this.detailState = 'close';
 		}
 		detailInfo(input){
-			this.detailClose();
+			this.detailOpen();
 			this.getFlowOne(input);
 		}
 		editFlow(input){
@@ -122,14 +126,32 @@ export class StudyFlow {
 				data=>{
 					if(!data.msg){
 						this.newFlow = data[0];
-						let dateTemp = new Date(this.newFlow.speak_date);
-						$('.datepicker').val(new Date(this.newFlow.speak_date));
-						this.detailOpen();
+						let dateTemp = new Date(this.newFlow.speak_date).toLocaleDateString();
+						let dateA = dateTemp.replace(/. /g,'-').replace('.','');
+						$('.datepicker').val(dateA);
+						this.detailClose();
 					}
 				}
 			)
 		}
 		deleteFlow(input){
-
+			if(confirm('삭제하시겠습니까?')){
+				this.flowService
+				.delete(input)
+				.subscribe(
+					data=>{
+						if(data.msg=='done'){
+							alert('삭제되었습니다.');
+							this.getFlowList();
+						}else{
+							alert('문제가 생겼습니다.');
+						}
+					}
+				)
+			}
+		}
+		flowCancel(){
+			this.detailOpen();
+			this.newFlow = new Flow();
 		}
 }

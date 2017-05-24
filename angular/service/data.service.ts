@@ -22,4 +22,12 @@ export class DataService{
 		return this.http.get('/study/list_folder_data', {headers:this.header})
 			.map(res=>res.json());
 	}
+	isFile(input){
+		return this.http.post('/study/is_file_data', input, {headers:this.header})
+			.map(res=>res.json());
+	}
+	getFileList(input){
+		return this.http.get('/study/list_file_data/'+input , {headers:this.header})
+			.map(res=>res.json());
+	}
 }

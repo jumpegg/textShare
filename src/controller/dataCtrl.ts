@@ -13,16 +13,6 @@ export class DataCtrl{
 		this.datafileTbl = new Crud('data_file');
 	}
 
-	// fs.mkdir('./newdir', 0666, function(err) {
-	//   if(err) throw err;
-	//   console.log('Created newdir');
-	//   fs.rmdir('./newdir', function(err) {
-	//     if(err) throw err;
-	//     console.log('Removed newdir');
-	//   });
-	// });
-
-
 	public folderMake:RequestHandler = (req,res)=>{
 		let isStudy = __dirname+`/../../data/${req.session.studyIdx}`;
 		let dir = isStudy+`/${req.body.folder_name}`;
@@ -51,15 +41,75 @@ export class DataCtrl{
 	}
 	
 	public fileMake:RequestHandler = (req,res)=>{
+		// let files = [];
 		let form = new formidable.IncomingForm();
+		let obj = this;
 		form.keepExtensions = true;
-		let dir = __dirname+`/../../data/${req.session.studyIdx}`;
+		form.multiples = true;
+		
+		this.datafolderTbl
+		.selectOne({
+			idx : req.params.idx,
+			study_idx : req.session.studyIdx
+		})
+		.go(data=>{
+			if(!data.msg){
+				let folderInfo = data[0];
+				let dir = __dirname + `/../../data/${req.session.studyIdx}/${folderInfo.folder_name}`;
+				let shortDir = `/data/${req.session.studyIdx}/${folderInfo.folder_name}`;
+				// formidable start
+				form.uploadDir = dir;
+				
+				form.on('fileBegin', function (name, file){
+					obj.datafileTbl.insert({
+						study_idx : req.session.studyIdx,
+						folder_idx : req.params.idx,
+						folder_name : folderInfo.folder_name,
+						file_name : file.name,
+						file_url : shortDir + '/' + file.name
+					}).go(data=>{
+						console.log(data);
+					})
+				});
+				form.on('file', (field, file)=>{
+					fs.rename(file.path, form.uploadDir + '/' + file.name);
+				}).on('end', ()=>{
+					res.json({msg:'done'});
+				}).on('error', error=>{
+					console.log('file upload error : ' + error);
+				});
+				console.log(form);
+				form.parse(req);
+			}else{
+				res.json({msg:'error'});
+			}
+		})
 	}
-
+	public isFile:RequestHandler = (req,res)=>{
+		this.datafileTbl
+		.selectOne({
+			study_idx: req.session.studyIdx,
+			folder_idx: req.body.folder_idx,
+			file_name: req.body.file_name
+		})
+		.go(data=>{
+			res.json(data);
+		})
+	}
 	public folderList:RequestHandler = (req,res)=>{
 		this.datafolderTbl
 		.selectList({study_idx:req.session.studyIdx})
 		.go((data)=>{
+			res.json(data);
+		});
+	}
+	public fileList:RequestHandler = (req,res)=>{
+		this.datafileTbl
+		.selectList({
+			study_idx:req.session.studyIdx,
+			folder_idx: req.params.idx
+		})
+		.go(data=>{
 			res.json(data);
 		});
 	}
