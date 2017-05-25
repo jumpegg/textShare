@@ -20,8 +20,8 @@ export class UserService{
 		return this.http.post('/user/user_login', input, {headers:this.header})
 			.map(res => res.json());
 	}
-	userTest(){
-		return this.http.get('/user/user_test', {headers:this.header})
+	userTest(input){
+		return this.http.post('/user/user_test', input, {headers:this.header})
 			.map(res => res.json());
 	}
 	chkSess(){

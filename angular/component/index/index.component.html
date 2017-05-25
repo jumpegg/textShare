@@ -1,6 +1,10 @@
 <div class="container">
 	<div class="loginWrapper">
-		<form (submit)="login(user)">
+		<form 
+		(submit)="login({
+			isId : userId.valid,
+			isPass : userPassword.valid
+		})">
 			<div class="tailPic">
 				<img src="public/img/Cat-typing.gif" class="circle" alt="판사님 이건 저희집 고양이가 한것 입니다.">
 			</div>
@@ -9,11 +13,11 @@
 			</div>
 			<div class="input-field">
 				<label for="id">User name</label>
-				<input type="text" name="id" [(ngModel)]="user.id" #userId="ngModel" class="form-control">
+				<input type="text" name="id" [(ngModel)]="user.id" #userId="ngModel" required minlength="3" maxlength="15">
 			</div>
 			<div class="input-field">
 				<label for="password">Password</label>
-				<input type="password" name="password" [(ngModel)]="user.password" #userPassword="ngModel" class="form-control">
+				<input type="password" name="password" [(ngModel)]="user.password" #userPassword="ngModel" required minlength="6" maxlength="20">
 			</div>
 			<button class="btn waves-effect waves-light orange darken-2 z-depth-0 loginBtn">Login</button>
 			<div class="etc">
@@ -32,21 +36,27 @@
 			</h5>
 		</div>
 			<div class="modal-body">
-				<div class="input-field">
-					<label for="">ID</label>
-					<input type="text" [formControl]="control" class="form-control" [(ngModel)]="joiner.id">
+				<div class="idBox">
+					<div class="input-field id-field">
+						<label for="">ID (3자 이상, 15자 이하)</label>
+						<input type="text" [(ngModel)]="joiner.id" #jId="ngModel" minlength="3" maxlength="15" required>
+					</div>
+					<button class="btn-flat" (click)="user_chk()">중복확인</button>
 				</div>
 				<div class="input-field">
-					<label for="">PASS</label>
-					<input type="text" class="form-control" [(ngModel)]="joiner.password">
+					<label for="">PASS (6자 이상, 20자 이하)</label>
+					<input type="password" [(ngModel)]="joiner.password" #jPass="ngModel" minlength="6" maxlength="20" required>
 				</div>
 				<div class="input-field">
 					<label for="">E-mail</label>
-					<input type="text" class="form-control lastInput" [(ngModel)]="joiner.email">
+					<input type="text" class="lastInput" [(ngModel)]="joiner.email" #jEmail="ngModel" required pattern="^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$">
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn-flat joinBtn" (click)="join(joiner)">가입하기</button>
+				<button type="button" class="btn-flat joinBtn" 
+				(click)="join({isId : jId.valid,
+											isPass : jPass.valid,
+											isEmail : jEmail.valid})">가입하기</button>
 			</div>
 	</div>
 </div>

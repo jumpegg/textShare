@@ -38,7 +38,15 @@ export class UserCtrl{
 		});
 	}
 	public test: RequestHandler = (req, res) =>{
-		res.json({ output : this.usertbl.defaultInfo()});
+		this.usertbl
+		.selectOne({id:req.body.id})
+		.go(data => {
+			if(data.msg == 'no_res'){
+				res.json(data);
+			}else{
+				res.json({msg: 'using_id'});
+			}
+		});
 	}
 	public sess: RequestHandler = (req, res) => {
 		if(req.session.login){

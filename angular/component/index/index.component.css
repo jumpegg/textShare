@@ -32,6 +32,8 @@
 		float: right;
 }
 
+
+/* modal */
 .modal{
 	width: 410px;
 }
@@ -73,7 +75,16 @@
 .modal-dialog{
 		width: 350px;
 }
-.modal-body input.ng-invalid{
-		/*border-bottom: 1px solid red;*/
+.idBox .id-field{
+	width: 240px;
+	display: inline-block;
+}
+.idBox button{
+	width: 80px;
+	height: 30px;
+	line-height: 30px;
+	background-color: #FFB300;
+	color: #FFFFFF;
+	padding: 0px;
 }
 
