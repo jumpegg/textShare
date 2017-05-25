@@ -45,25 +45,40 @@ export class StudyNewData {
 		fileInputToggle(){
 			this.fileState = (this.fileState == "close") ? "open" : "close";
 		}
-		fileSubmit(input){
-			if(input.length > 0){
-				console.log(input);
-				let formData:FormData = new FormData();
-
+		fileSubmit(){
+			let chk_dupl = false;
+			if(this.fileList.length > 0){
 				for(let i=0; i<this.fileList.length; i++){
-					console.log(this.fileList[i]);
-					let file: File = this.fileList[i];
-					formData.append('uploadFile'+i , file, file.name);
+					if(this.getfileList.find(item=>{
+						return (item.file_name == this.fileList[i].name);
+					})){
+						chk_dupl = true;
+					}
 				}
+				if(chk_dupl){
+					alert('중복되는 파일명이 있습니다.');
+				}else{
+					let formData:FormData = new FormData();
 
-				this.http.post('/study/new_file_data/'+this.idx, formData)
-					.map(res => res.json())
-					.subscribe(
-						data => {
-							console.log(data);
-							this.initFileList();
-						}
-					)
+					for(let i=0; i<this.fileList.length; i++){
+						let file: File = this.fileList[i];
+						formData.append('uploadFile'+i , file, file.name);
+					}
+
+					this.http.post('/study/new_file_data/'+this.idx, formData)
+						.map(res => res.json())
+						.subscribe(
+							data => {
+								if(data.msg=='done'){
+									alert('등록되었습니다.');
+									this.initFileList();
+								}else{
+									alert('문제가 생겼습니다.');
+									this.initFileList();
+								}
+							}
+						)
+				}
 			}else{
 				alert('파일을 선택해주세요');
 			}
@@ -85,5 +100,8 @@ export class StudyNewData {
 					}
 				}
 			)
+		}
+		backToStorage(){
+			this.router.navigate(['/study/data']);
 		}
 }

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators, FormBuilder} from '@angular/forms';
 import { User } from '../../vo/user';
 import { UserService } from '../../service/user.service';
+import { Vali } from '../../service/single_vali';
 
 declare var $ : any;
 @Component({
@@ -15,16 +16,16 @@ export class IndexComponent implements OnInit{
 	private title:String;
 	private user:User;
 	private joiner:User;
-	joinForm = new FormGroup({
-		joinId : new FormControl('',Validators.compose([Validators.required])),
-		joinPass : new FormControl('',Validators.compose([Validators.required])),
-		joinEmail : new FormControl('',Validators.compose([Validators.required]))
-	});
+	private control:FormControl;
 
-	constructor(private userService:UserService, private router:Router){
+	constructor(
+		private userService:UserService,
+		private vali:Vali,
+		private router:Router){
 		this.title = "Index Page";
 		this.user = new User();
 		this.joiner = new User();
+		this.control = new FormControl('', [Validators.required]);
 	}
 	ngOnInit(){
 		$('.collapsible').collapsible();
@@ -46,14 +47,27 @@ export class IndexComponent implements OnInit{
 		);
 	}
 	join(input){
-		this.userService.userInsert(input).subscribe(
-			data => {
-				(data.msg == 'done') ? alert('가입되었습니다!') : alert('가입도중 문제가 발생했습니다.');
-			},
-			error => {
-				alert('가입도중 문제가 발생했습니다.');
-			}
-		)
+		if(this.vali.isNull(input.id)){
+			alert('아이디를 입력해주세요');
+		}else if(this.vali.limitLen(10, input.id)){
+			alert('아이디는 10자 까지 가능합니다.');
+		}else{
+			this.userService
+			.userInsert(input)
+			.subscribe(
+				data => {
+					if(data.msg=='done'){
+						alert('가입되었습니다.');
+						this.joiner = new User();
+					}else{
+						alert('가입도중 문제가 발생했습니다.');
+					}
+				},
+				error => {
+					alert('가입도중 문제가 발생했습니다.');
+				}
+			)
+		}
 	}
 	user_test(){
 		this.userService.userTest().subscribe(

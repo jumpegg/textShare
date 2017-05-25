@@ -4,6 +4,7 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 import { StudyService } from '../../../service/study.service';
 import { MemberService } from '../../../service/member.service';
 import { FlowService } from '../../../service/flow.service';
+import { DataService } from '../../../service/data.service';
 import { StudyPageInfo } from '../../../service/single_studypage';
 
 import { Flow } from '../../../vo/flow';
@@ -13,7 +14,7 @@ declare var $ : any;
 @Component({
 		styleUrls: ['client/component/study/flow/study_flow.component.css'],
 		templateUrl: 'client/component/study/flow/study_flow.component.html',
-		providers: [StudyService, MemberService, FlowService]
+		providers: [StudyService, MemberService, FlowService, DataService]
 })
 export class StudyFlow {
 		public title:string;
@@ -23,9 +24,13 @@ export class StudyFlow {
 		public getFlow:Flow = new Flow();
 		public userList:any[] = [];
 		public flowList:any[] = [];
+		public folderList:any[] = [];
+		public dataList:any[] = [];
+		public fileList:FileList;
 		constructor(
 			public studyPage:StudyPageInfo,
 			public memberService:MemberService,
+			public dataService:DataService,
 			public flowService:FlowService,
 			public router:Router
 		){
@@ -35,6 +40,7 @@ export class StudyFlow {
 			this.studyPage.init();
 			this.getUserList();
 			this.getFlowList();
+			this.getFolderList();
 			$('.datepicker').pickadate({
 				selectMonths: true,
 				selectYears: 17,
@@ -154,4 +160,63 @@ export class StudyFlow {
 			this.detailOpen();
 			this.newFlow = new Flow();
 		}
+		getFolderList(){
+			this.dataService
+			.getFolderList()
+			.subscribe(
+				data=>{
+					if(!data.msg){
+						this.folderList = data;
+						console.log(this.folderList);
+					}else{
+						this.folderList = [{}];
+					}
+				}
+			)
+		}
+		// fileChange(event) {
+		// 		this.fileList = event.target.files;
+		// 		this.dataList = [];
+		// 		for(let i=0; i<this.fileList.length; i++){
+		// 			this.dataList.push(this.fileList[i]);
+		// 		}
+		// }
+		// fileSubmit(){
+		// 	let chk_dupl = false;
+		// 	if(this.fileList.length > 0){
+		// 		for(let i=0; i<this.fileList.length; i++){
+		// 			if(this.getfileList.find(item=>{
+		// 				return (item.file_name == this.fileList[i].name);
+		// 			})){
+		// 				chk_dupl = true;
+		// 			}
+		// 		}
+		// 		if(chk_dupl){
+		// 			alert('중복되는 파일명이 있습니다.');
+		// 		}else{
+		// 			let formData:FormData = new FormData();
+
+		// 			for(let i=0; i<this.fileList.length; i++){
+		// 				let file: File = this.fileList[i];
+		// 				formData.append('uploadFile'+i , file, file.name);
+		// 			}
+
+		// 			this.http.post('/study/new_file_data/'+this.idx, formData)
+		// 				.map(res => res.json())
+		// 				.subscribe(
+		// 					data => {
+		// 						if(data.msg=='done'){
+		// 							alert('등록되었습니다.');
+		// 							this.initFileList();
+		// 						}else{
+		// 							alert('문제가 생겼습니다.');
+		// 							this.initFileList();
+		// 						}
+		// 					}
+		// 				)
+		// 		}
+		// 	}else{
+		// 		alert('파일을 선택해주세요');
+		// 	}
+		// }
 }

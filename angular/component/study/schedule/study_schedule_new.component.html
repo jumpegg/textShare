@@ -29,6 +29,7 @@
 			<div class="placeSelect">
 				<label>PLACE</label>
 				<select name="list" id="" class="browser-default" [(ngModel)]="newSchedule.place_idx">
+					<option value="" disabled selected>장소선택</option>
 					<option *ngFor="let place of placeList" value="{{place.idx}}">{{place.name}}</option>
 				</select>
 			</div>

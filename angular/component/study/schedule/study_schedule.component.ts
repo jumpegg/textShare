@@ -48,12 +48,14 @@ export class StudySchedule implements OnInit{
 	){
 		this.studyPage.init();
 		this.tempSch = {
-			place_name : '스케쥴이 등록되지 않았습니다.',
+			gathering : new Date(),
+			place_name : '다음 모임을 등록해보세요.',
 			start : '00:00',
 			end : '00:00',
 			cost: 0
 		}
-		this.scheduleService.list()
+		this.scheduleService
+		.list()
 		.map(
 			data=>{
 				this.continue = true;
@@ -62,9 +64,15 @@ export class StudySchedule implements OnInit{
 					this.lastSch = this.tempSch;
 					this.continue = false;
 				}else{
-					console.log(data);
+					console.log(this.tempSch);
 					this.schList = data;
-					this.lastSch = data[0];
+					if(new Date(data[0].gathering) < new Date()){
+						this.lastSch = this.tempSch;
+						this.continue = false;
+					}else{
+						this.lastSch = data[0];
+					}
+					
 				}
 				return this.continue;
 			}
@@ -77,7 +85,7 @@ export class StudySchedule implements OnInit{
 							this.lastPlc = data;
 					})
 				}else{
-					this.lastPlc.name = '스케쥴이 등록되지 않았습니다.';
+					this.lastPlc.name = '다음 모임을 등록해보세요.';
 				}
 			}
 		);

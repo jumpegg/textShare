@@ -31,25 +31,23 @@
 				<i class="material-icons delete" (click)="close_modal()">clear</i>
 			</h5>
 		</div>
-		<form [formGroup]="joinForm" (ngSubmit)="join(joiner)">
 			<div class="modal-body">
 				<div class="input-field">
 					<label for="">ID</label>
-					<input type="text" class="form-control" [(ngModel)] = "joiner.id" formControlName="joinId">
+					<input type="text" [formControl]="control" class="form-control" [(ngModel)]="joiner.id">
 				</div>
 				<div class="input-field">
 					<label for="">PASS</label>
-					<input type="text" class="form-control" [(ngModel)] = "joiner.password" formControlName="joinPass">
+					<input type="text" class="form-control" [(ngModel)]="joiner.password">
 				</div>
 				<div class="input-field">
 					<label for="">E-mail</label>
-					<input type="text" class="form-control lastInput" [(ngModel)] = "joiner.email" formControlName="joinEmail">
+					<input type="text" class="form-control lastInput" [(ngModel)]="joiner.email">
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button type="submit" class="btn-flat joinBtn">가입하기</button>
+				<button type="button" class="btn-flat joinBtn" (click)="join(joiner)">가입하기</button>
 			</div>
-		</form>
 	</div>
 </div>
 

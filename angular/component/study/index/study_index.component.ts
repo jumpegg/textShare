@@ -90,7 +90,6 @@ export class StudyIndex {
 					if(!data.msg){
 						let obj = this;
 						this.schedule = data[0];
-						console.log(this.schedule);
 						this.map = new naver.maps.Map('map', {
 							center: new naver.maps.LatLng(Number(this.schedule.mapy), Number(this.schedule.mapx)),
 							zoom: 11
@@ -116,6 +115,15 @@ export class StudyIndex {
 						});
 
 						infoWindow.open(this.map, this.marker);
+					}else{
+						this.schedule.start = "00:00";
+						this.schedule.end = "00:00";
+						this.schedule.gathering = new Date();
+						this.schedule.cost = "등록된 다음 모임이 없습니다.";
+						this.schedule.place_name = "다음 모임을 등록해보세요!";
+						this.map = new naver.maps.Map('map', {
+							zoom: 11
+						});
 					}
 				}
 			)

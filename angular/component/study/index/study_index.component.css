@@ -77,6 +77,9 @@ hr{
 	color: #FFFFFF;
 	padding: 17px 20px;
 }
+.boardWrapper>div>h6>a{
+	color: #FFFFFF;
+}
 .freetalk{
 	margin: 0px 25px;
 }

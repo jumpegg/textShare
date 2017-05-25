@@ -1,5 +1,5 @@
 <div class="container">
-	<div class="data-folder">
+	<div class="data-folder" (click)="backToStorage()">
 		자료실로 이동
 	</div>
 	<ul class="file">
@@ -7,7 +7,7 @@
 			<i class="material-icons file">
 				insert_drive_file
 			</i>
-			<span>{{item.file_name}}</span>
+			<p>{{item.file_name}}</p>
 			<a href="{{item.file_url}}" download>
 				<i class="material-icons down">get_app</i>
 			</a>
@@ -18,13 +18,13 @@
 	</ul>
 	<div class="fileBox" [@fileToggle]="fileState">
 		<div class="file-field input-field">
-      <div>
-        <input type="file" multiple (change)="fileChange($event)">
-      </div>
-      <div class="file-path-wrapper">
-        <input class="file-path validate" type="text" placeholder="Upload one or more files">
-      </div>
-    </div>
-		<button class="btn submit" (click)="fileSubmit(fileList)">전송</button>
+			<div>
+				<input type="file" multiple (change)="fileChange($event)">
+			</div>
+			<div class="file-path-wrapper">
+				<input class="file-path validate" type="text" placeholder="Upload one or more files">
+			</div>
+		</div>
+		<button class="btn submit" (click)="fileSubmit()">전송</button>
 	</div>
 </div>

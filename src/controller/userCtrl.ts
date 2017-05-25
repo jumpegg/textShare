@@ -31,10 +31,11 @@ export class UserCtrl{
 	}
 	public join: RequestHandler = (req, res) => {
 		req.body.password = bcrypt.hashSync(req.body.password, this.salt);
-		this.usertbl.insert(req.body).go((data) => {
-			console.log(data);
+		this.usertbl
+		.insert(req.body)
+		.go((data) => {
+			res.json(data);
 		});
-		// console.log(this.usertbl.insert(req.body).querychk());
 	}
 	public test: RequestHandler = (req, res) =>{
 		res.json({ output : this.usertbl.defaultInfo()});

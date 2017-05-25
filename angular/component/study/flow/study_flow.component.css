@@ -1,3 +1,6 @@
+.container{
+	width: 1280px;
+}
 .history{
 	margin-bottom: 10px;
 }
@@ -155,6 +158,42 @@ h6{
 	border-radius: 5px;
 	margin-top:10px;
 	padding: 15px;
+}
+/* fileBox */
+.fileBox{
+	width: 850px;
+	padding:0px;
+	margin-left: 53px;
+	float:left;
+	overflow: hidden;
+	/*background-color: #f1f1f1;*/
+}
+.file-input-wrap{
+	width:510px;
+	overflow: hidden;
+	float:right;
+}
+.file-input-wrap .file-field{
+	float:left;
+	width: 380px;
+	margin: 0px;
+	background-color: #ffffff;
+	border: 1px solid #999999;
+}
+.file-input-wrap button{
+	background-color: #004d40;
+	color: #FFFFFF;
+	height: 45px;
+	margin-left: 10px;
+}
+.file-path-wrapper input{
+	margin: 0px;
+	border: none;
+}
+
+.folder-select{
+	width: 330px;
+	float:left;
 }
 /*flow-btn-box*/
 .flow-btn-box{

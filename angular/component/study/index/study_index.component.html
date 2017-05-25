@@ -43,7 +43,7 @@
 	</div>
 	<div class="boardWrapper">
 		<div class="card-panel notice">
-			<h6>공지사항</h6>
+			<h6><a routerLink="/study/notice">공지사항</a></h6>
 			<ul class="notice-list">
 				<li *ngFor="let notice of noticeList; let i = index">
 					<p class="n-date">{{notice.c_date|date:"yyyy-MM-dd"}}</p>
@@ -53,7 +53,7 @@
 			</ul>
 		</div>
 		<div class="card-panel freetalk">
-			<h6>자유게시판</h6>
+			<h6><a routerLink="/study/freetalk">자유게시판</a></h6>
 			<ul class="freetalk-list">
 				<li *ngFor="let freetalk of freetalkList; let j = index">
 					<p class="f-date">{{freetalk.c_date|date:"yyyy-MM-dd"}}</p>

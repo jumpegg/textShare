@@ -74,6 +74,25 @@
 					<label for="">간단내용</label>
 					<textarea [(ngModel)]="newFlow.content"></textarea>
 				</div>
+				<!--<div class="fileBox">
+					<div class="folder-select">
+						<select class="browser-default">
+							<option value="" disabled selected>자료를 넣을 폴더</option>
+							<option *ngFor="let folder of folderList" value="{{folder.idx}}">{{folder.folder_name}}</option>
+						</select>
+					</div>
+					<div class="file-input-wrap">
+						<div class="file-field input-field">
+							<div>
+								<input type="file" multiple (change)="fileChange($event)">
+							</div>
+							<div class="file-path-wrapper">
+								<input class="file-path validate" type="text" placeholder="Upload one or more files">
+							</div>
+						</div>
+						<button class="btn-flat submit" (click)="fileSubmit()">파일등록</button>
+					</div>
+				</div>-->
 				<div class="flow-btn-box">
 					<button class="btn-flat del" (click)="flowCancel()">취소</button>
 					<button class="btn-flat submit" (click)="flowSubmit(newFlow)">등록</button>

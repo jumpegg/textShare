@@ -42,15 +42,14 @@ export class ScheduleCtrl{
 			if(err){
 				res.json({msg:err});
 			}else{
-				res.json(data);
+				if(data.length == 0){
+					res.json({msg:'no_res'});
+				}else{
+					res.json(data);
+				}
 			}
 		})
-		// this.scheduleTbl.selectList({study_idx : req.session.studyIdx})
-		// .order({idx : 'desc'})
-		// .limit(1)
-		// .go((data) => {
-		// 	res.json(data);
-		// });
+
 	}
 }
 

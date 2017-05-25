@@ -10,6 +10,7 @@ import { PageInfo } from './service/single_info';
 import { UserInfo } from './service/single_user';
 import { StudyInfo } from './service/single_study';
 import { StudyPageInfo } from './service/single_studypage';
+import { Vali } from './service/single_vali';
 
 import { AppComponent } from './app.component';
 import { IndexComponent } from './component/index/index.component';
@@ -85,7 +86,8 @@ import { AppRoutingModule } from './app.routing';
 		PageInfo,
 		StudyInfo,
 		StudyPageInfo,
-		UserInfo
+		UserInfo,
+		Vali
 	],
 	bootstrap: [
 			AppComponent
