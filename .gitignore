@@ -2,3 +2,4 @@ node_modules
 client
 server
 data/**/*.*
+src/util/connector.ts
