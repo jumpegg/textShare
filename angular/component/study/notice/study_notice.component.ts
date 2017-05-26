@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { StudyService } from '../../../service/study.service';
 import { NoticeService } from '../../../service/notice.service';
-import { StudyPageInfo } from '../../../service/single_studypage';
+import { StudyPageInfo } from '../../../global/single_studypage';
 
 @Component({
 		styleUrls: ['client/component/study/notice/study_notice.component.css'],

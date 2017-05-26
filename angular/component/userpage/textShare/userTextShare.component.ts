@@ -4,8 +4,8 @@ import { FormControl, FormGroup, Validators, FormBuilder} from '@angular/forms';
 import {trigger, state, style, animate, transition} from '@angular/animations';
 import * as marked from 'marked';
 
-import {PageInfo} from '../../../service/single_info';
-import {UserInfo} from '../../../service/single_user';
+import {PageInfo} from '../../../global/single_info';
+import {UserInfo} from '../../../global/single_user';
 
 import {TextShare} from '../../../vo/textshare';
 import {Folder} from '../../../vo/folder';

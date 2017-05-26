@@ -6,11 +6,11 @@ import { Router } from '@angular/router';
 // import { TreeModule } from 'tree-component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './module/material.module';
-import { PageInfo } from './service/single_info';
-import { UserInfo } from './service/single_user';
-import { StudyInfo } from './service/single_study';
-import { StudyPageInfo } from './service/single_studypage';
-import { Vali } from './service/single_vali';
+import { PageInfo } from './global/single_info';
+import { UserInfo } from './global/single_user';
+import { StudyInfo } from './global/single_study';
+import { StudyPageInfo } from './global/single_studypage';
+import { Vali } from './global/single_vali';
 
 import { AppComponent } from './app.component';
 import { IndexComponent } from './component/index/index.component';

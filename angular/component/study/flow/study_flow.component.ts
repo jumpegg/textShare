@@ -5,7 +5,7 @@ import { StudyService } from '../../../service/study.service';
 import { MemberService } from '../../../service/member.service';
 import { FlowService } from '../../../service/flow.service';
 import { DataService } from '../../../service/data.service';
-import { StudyPageInfo } from '../../../service/single_studypage';
+import { StudyPageInfo } from '../../../global/single_studypage';
 
 import { Flow } from '../../../vo/flow';
 

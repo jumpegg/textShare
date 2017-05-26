@@ -99,11 +99,41 @@ export class StudyCtrl{
 			res.json(data);
 		})
 	}
+	public latestList:RequestHandler = (req,res)=>{
+		this.studyTbl
+		.selectAll()
+		.order({idx : 'desc'})
+		.limit(9)
+		.go(data=>{
+			res.json(data);
+		});
+	}
 	public search: RequestHandler = (req, res) => {
 		this.studyTbl
 		.selectList(req.body)
 		.go((data)=>{
 			res.json(data);
+		})
+	}
+	public textSearch: RequestHandler = (req,res)=>{
+		console.log(req.body.search);
+		let getQuery = `
+		select * from study
+		where studyname like '%${req.body.search}%'
+		order by c_date desc
+		`;
+		console.log(getQuery);
+
+		conn.query(getQuery, (err, data)=>{
+			if(err){
+				console.log(err);
+			}else{
+				if(data.length == 0){
+					res.json({msg: 'no_res'});
+				}else{
+					res.json(data);
+				}
+			}
 		})
 	}
 	public getOne : RequestHandler = (req, res) => {

@@ -24,4 +24,8 @@ export class MemberService{
 		return this.http.get('/study/hoper_list_member', {headers:this.header})
 			.map(res=>res.json());
 	}
+	isMember(){
+		return this.http.get('/study/is_member', {headers:this.header})
+			.map(res=>res.json());
+	}
 }

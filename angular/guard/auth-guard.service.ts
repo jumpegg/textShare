@@ -5,9 +5,9 @@ import {
 	RouterStateSnapshot
 } from '@angular/router';
 import "rxjs/add/operator/map";
-import { UserService } from './user.service';
+import { UserService } from '../service/user.service';
 import { Observable } from 'rxjs/Observable';
-import { UserInfo } from '../service/single_user';
+import { UserInfo } from '../global/single_user';
 
 @Injectable()
 export class AuthGuard implements CanActivate{

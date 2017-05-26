@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators, FormBuilder} from '@angular/forms';
 import { User } from '../../vo/user';
 import { UserService } from '../../service/user.service';
-import { Vali } from '../../service/single_vali';
+import { Vali } from '../../global/single_vali';
 
 declare var $ : any;
 @Component({

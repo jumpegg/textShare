@@ -3,8 +3,8 @@ import { ActivatedRoute} from '@angular/router';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { StudyService } from '../../../service/study.service';
 import { AccountService } from '../../../service/account.service';
-import { StudyPageInfo } from '../../../service/single_studypage';
-import { StudyInfo } from '../../../service/single_study';
+import { StudyPageInfo } from '../../../global/single_studypage';
+import { StudyInfo } from '../../../global/single_study';
 
 import { Acc_user } from '../../../vo/acc_user';
 import { Acc_info } from '../../../vo/acc_info';

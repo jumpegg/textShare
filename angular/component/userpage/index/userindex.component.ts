@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 
-import {PageInfo} from '../../../service/single_info';
+import {PageInfo} from '../../../global/single_info';
 
 @Component({
 	selector: 'index',

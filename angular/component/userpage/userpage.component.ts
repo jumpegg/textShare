@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {UserService} from '../../service/user.service';
-import {PageInfo} from '../../service/single_info';
+import {PageInfo} from '../../global/single_info';
 
 declare var $ : any;
 @Component({

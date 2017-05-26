@@ -6,7 +6,7 @@ import { StudyService } from '../../../service/study.service';
 import { PlaceService } from '../../../service/place.service';
 import { ScheduleService } from '../../../service/schedule.service';
 
-import { StudyPageInfo } from '../../../service/single_studypage';
+import { StudyPageInfo } from '../../../global/single_studypage';
 
 import { Schedule } from '../../../vo/schedule';
 import { Place } from '../../../vo/place';

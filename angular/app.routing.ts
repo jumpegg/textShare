@@ -27,14 +27,15 @@ import { StudyNewData } from './component/study/studydata/study_studydata_new.co
 import { StudySchedule } from './component/study/schedule/study_schedule.component';
 import { StudyNewSchedule } from './component/study/schedule/study_schedule_new.component';
 
-import { AuthGuard } from './service/auth-guard.service';
-import { StudyGuard } from './service/study-guard.service';
+import { AuthGuard } from './guard/auth-guard.service';
+import { StudyGuard } from './guard/study-guard.service';
 import { UserService } from './service/user.service';
 import { StudyService } from './service/study.service';
+import { MemberService } from './service/member.service';
 // import { UserInfo } from './service/userinfo.service';
 
 import { userRoutes } from './routing/userpage.routing';
-import { UserResolve } from './service/user-resolve';
+import { UserResolve } from './guard/user-resolve';
 
 const routes: Routes = [
 	{path: '', redirectTo: '/index', pathMatch: 'full'},
@@ -65,7 +66,7 @@ const routes: Routes = [
 		canActivate: [StudyGuard],
 		children:[{
 			path:'',
-			canActivateChild:[StudyGuard],
+			canActivateChild: [StudyGuard],
 			children:[
 				{path: '', redirectTo: 'index', pathMatch: 'full'},
 				{path: 'index',component: StudyIndex},
@@ -92,7 +93,7 @@ const routes: Routes = [
 	imports: [RouterModule.forRoot(routes, {useHash:true})],
 	// imports: [RouterModule.forRoot(routes)],
 	exports: [RouterModule],
-	providers: [AuthGuard, StudyGuard, UserService, UserResolve, StudyService]
+	providers: [AuthGuard, StudyGuard, UserService, UserResolve, StudyService, MemberService]
 })
 export class AppRoutingModule {
 	constructor(){

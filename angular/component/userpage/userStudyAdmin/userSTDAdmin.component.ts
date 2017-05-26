@@ -8,9 +8,9 @@ import { Place } from '../../../vo/place';
 import { StudyService } from '../../../service/study.service';
 import { UserService } from '../../../service/user.service';
 import { PlaceService } from '../../../service/place.service';
-import { PageInfo } from '../../../service/single_info';
-import { UserInfo } from '../../../service/single_user';
-import { StudyInfo } from '../../../service/single_study';
+import { PageInfo } from '../../../global/single_info';
+import { UserInfo } from '../../../global/single_user';
+import { StudyInfo } from '../../../global/single_study';
 
 declare var $ : any;
 declare var naver : any;

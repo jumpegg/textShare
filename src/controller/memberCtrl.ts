@@ -9,7 +9,7 @@ export class MemberCtrl{
 	constructor(){
 		this.memberTbl = new Crud('s_member');
 	}
-	public make:RequestHandler = (req, res) =>{
+	public make:RequestHandler = (req,res) =>{
 		let temp = {
 			user_idx : req.session.userData.idx,
 			study_idx : req.session.studyIdx,
@@ -19,7 +19,25 @@ export class MemberCtrl{
 			res.json(data);
 		});
 	}
-	public joinerList:RequestHandler = (req, res) => {
+	public isMember:RequestHandler = (req,res)=>{
+		this.memberTbl.selectOne({
+			user_idx : req.session.userData.idx,
+			study_idx : req.session.studyIdx,
+		}).go(data=>{
+			if(!data.msg){
+				if(data[0].permission > 10){
+					res.json({msg:'hoper'});
+				}else if(data[0].permission < 10){
+					res.json({msg:'member'});
+				}else{
+					res.json({msg:'error'});
+				}
+			}else{
+				res.json({msg:'guest'});
+			}
+		})
+	}
+	public joinerList:RequestHandler = (req,res) => {
 		let getQuery = 
 			`select * from s_member a 
 			inner join User b
@@ -34,7 +52,7 @@ export class MemberCtrl{
 			}
 		})
 	}
-	public hoperList:RequestHandler = (req, res) => {
+	public hoperList:RequestHandler = (req,res) => {
 		let getQuery = 
 			`select * from s_member a 
 			inner join User b

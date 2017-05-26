@@ -4,7 +4,7 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 import { StudyService } from '../../../service/study.service';
 import { FreetalkService } from '../../../service/freetalk.service';
 import { CommentService } from '../../../service/comment.service';
-import { StudyPageInfo } from '../../../service/single_studypage';
+import { StudyPageInfo } from '../../../global/single_studypage';
 
 import { Freetalk } from '../../../vo/freetalk';
 import { Comment } from '../../../vo/comment';

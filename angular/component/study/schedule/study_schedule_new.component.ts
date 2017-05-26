@@ -4,8 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { StudyService } from '../../../service/study.service';
 import { PlaceService } from '../../../service/place.service';
 import { ScheduleService } from '../../../service/schedule.service';
-import { StudyPageInfo } from '../../../service/single_studypage';
-import { StudyInfo } from '../../../service/single_study';
+import { StudyPageInfo } from '../../../global/single_studypage';
+import { StudyInfo } from '../../../global/single_study';
 
 import { Schedule } from '../../../vo/schedule';
 

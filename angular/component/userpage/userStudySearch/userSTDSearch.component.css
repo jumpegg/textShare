@@ -1,11 +1,68 @@
+h5{
+	margin: 0px;
+}
 .listWrap{
-    width: 85%;
-    margin: 20px auto;
-    margin-bottom: 0px;
+	width: 1000px;
+	margin: 20px auto;
+	margin-bottom: 0px;
 }
-.listWrap h1{
-    margin: 40px 0px;
+.search-box{
+	margin: 0 auto;
+	text-align: center;
 }
-.searchList th{
-    text-align: center;
+.search-box .input-field{
+	display: inline-block;
+	width: 600px;
+}
+.search-box button{
+	margin-left: 10px;
+	background-color: #FFD500;
+	border-radius: 5px;
+	color: #FFFFFF;
+}
+/* study-list */
+.study-list{
+	overflow: hidden;
+}
+.study-list .card{
+	padding: 10px;
+	margin-right:33px;
+	width: 300px;
+	height: 150px;
+	float: left;
+}
+.card-image i{
+	color: #FFB300;
+	font-size: 60px;
+}
+.card-content{
+	padding: 0px 10px;
+}
+.card-content>p{
+	font-size: 12px;
+	color: #999999;
+}
+.card-content>h5{
+	font-size:16px;
+	font-weight: bold;
+	margin: 10px 0px;
+}
+.next-info .next-header{
+	font-size: 12px;
+	margin: 5px 0px;
+}
+.next-info span{
+	font-size: 14px;
+}
+.next-info .next-time{
+	float: right;
+}
+.card-action{
+	padding: 10px;
+	padding-top: 20px;
+	text-align: right;
+	border: none;
+}
+.card-action a{
+	cursor: pointer;
 }

@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { StudyService } from '../../../service/study.service';
 import { FreetalkService } from '../../../service/freetalk.service';
-import { StudyPageInfo } from '../../../service/single_studypage';
+import { StudyPageInfo } from '../../../global/single_studypage';
 
 @Component({
 		styleUrls: ['client/component/study/freetalk/study_freetalk.component.css'],

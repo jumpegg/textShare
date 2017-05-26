@@ -1,5 +1,5 @@
 import { Injectable, OnInit } from '@angular/core';
-import { StudyInfo } from '../service/single_study';
+import { StudyInfo } from '../global/single_study';
 
 @Injectable()
 export class StudyPageInfo{

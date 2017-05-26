@@ -4,7 +4,7 @@ import { Headers, Http, RequestOptions } from '@angular/http';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { StudyService } from '../../../service/study.service';
 import { DataService } from '../../../service/data.service';
-import { StudyPageInfo } from '../../../service/single_studypage';
+import { StudyPageInfo } from '../../../global/single_studypage';
 
 @Component({
 		styleUrls: ['client/component/study/studydata/study_studydata_new.component.css'],

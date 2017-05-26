@@ -52,7 +52,15 @@ export class StudyService{
 		return this.http.get('/user/study_admin', {headers:this.header})
 			.map(res => res.json());
 	}
+	studyLatest(){
+		return this.http.get('/user/latest', {headers:this.header})
+			.map(res => res.json());
+	}
 	isUserStudy(){
 		return this.http.get('/user/isUserStudy', {headers:this.header})
+	}
+	studyTextSearch(input){
+		return this.http.post('/user/text_search', input, {headers:this.header})
+			.map(res => res.json());
 	}
 }

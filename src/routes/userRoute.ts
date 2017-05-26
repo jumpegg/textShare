@@ -25,6 +25,8 @@ userRoute.get('/study_getOne/:idx', studyCtrl.getOne);
 userRoute.get('/study_enter/:idx', studyCtrl.studyEnter);
 userRoute.get('/study_set', studyCtrl.studySet);
 userRoute.get('/isUserStudy', studyCtrl.isUserStudy);
+userRoute.get('/latest', studyCtrl.latestList);
+userRoute.post('/text_search', studyCtrl.textSearch);
 
 userRoute.post('/folder_create', folderCtrl.make);
 userRoute.get('/folder_list', folderCtrl.list);
