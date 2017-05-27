@@ -3,7 +3,8 @@ import {
 		userCtrl,
 		studyCtrl, 
 		folderCtrl, 
-		textShareCtrl, 
+		textShareCtrl,
+		memberCtrl,
 		placeCtrl } from '../controller';
 
 const userRoute: Router = Router();

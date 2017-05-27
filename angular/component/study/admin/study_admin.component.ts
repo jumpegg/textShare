@@ -18,21 +18,76 @@ export class StudyAdmin {
 		public title:string;
 		public joinerList:Member[];
 		public hoperList:Member[];
+		public user:any = {};
 		constructor(
 			public studyPage:StudyPageInfo,
 			public memberService:MemberService
 		){}
 		ngOnInit(){
 			this.studyPage.init();
-			this.memberService.hoperList().subscribe(
-				data => {
-					this.hoperList = data;
+			this.callThisUser();
+			this.callHoper();
+			this.callJoiner();
+		}
+		callThisUser(){
+			this.memberService.getPermission()
+			.subscribe(
+				data=>{
+					this.user = data[0];
+					console.log(this.user);
 				}
 			)
+		}
+		callJoiner(){
 			this.memberService.joinerList().subscribe(
 				data => {
-					this.joinerList = data;
+					if(!data.msg){
+						this.joinerList = data;
+					}else{
+						this.joinerList = [];
+					}
 				}
 			)
+		}
+		callHoper(){
+			this.memberService.hoperList().subscribe(
+				data => {
+					if(!data.msg){
+						this.hoperList = data;
+						console.log(this.hoperList);
+					}else{
+						this.hoperList = [];
+					}
+				}
+			)
+		}
+		reject(input){
+			if(this.user.permission == 1){
+				this.memberService.rejectMember({idx : input})
+				.subscribe(
+					data=>{
+						alert('거절 되었습니다.');
+						this.callHoper();
+						this.callJoiner();
+					}
+				)
+			}else{
+				alert('권한이 없습니다.');
+			}
+		}
+		allow(input){
+			
+			if(this.user.permission == 1){
+				this.memberService.allowMember({idx : input})
+				.subscribe(
+					data=>{
+						alert('승인 되었습니다.');
+						this.callHoper();
+						this.callJoiner();
+					}
+				)
+			}else{
+				alert('권한이 없습니다.');
+			}
 		}
 }

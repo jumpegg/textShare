@@ -37,6 +37,17 @@
 	background-color: #AB47BC;
 }
 /*side nav*/
+nav .joinBtn{
+	float: right;
+	color: #AB47BC;
+	font-weight: bold;
+	/*border: 1px solid #FFFFFF;*/
+	border-radius: 5px;
+	background: #FFFFFF;
+	position: relative;
+	top: 13px;
+	right: 20px;
+}
 nav .button-collapse{
 	float: right;
 }
@@ -105,5 +116,52 @@ nav a.button-collapse {
 }
 /* display none*/
 .dis_none{
-	display: none;
+	display: none !important;
+}
+
+/* modal */
+.modal{
+	width: 500px;
+}
+.modal-content{
+	padding: 0px;
+}
+.modal-header{
+	background-color: #AB47BC;
+	padding: 15px;
+	font-size: 20px;
+	text-align: center;
+	color: #FFFFFF;
+}
+.modal-body{
+	padding: 20px;
+}
+.modal-body .study-name{
+	font-size: 24px;
+	font-weight: bold;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.modal-body .leader{
+	font-size: 12px;
+	color: #999;
+	margin-bottom: 30px;
+}
+.modal-body .study-info{
+	font-size: 14px;
+}
+.modal-footer{
+	padding: 0px 20px;
+	margin-bottom: 20px;
+	text-align: center;
+}
+.modal-footer .btn-flat{
+	background-color: #AB47BC;
+	color: #FFFFFF;
+	border-radius: 5px;
+	font-size: 18px;
+	width: 100%;
+	height: 50px;
+	float: none;
+	
 }

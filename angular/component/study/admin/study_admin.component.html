@@ -9,10 +9,10 @@
 	<h6>가입 요청</h6>
 	<div class="with-us">
 		<div class="card-panel joiner-card hoper" *ngFor="let hoper of hoperList">
-			<span>홍길동</span>
+			<span>{{hoper.id}}</span>
 			<div class="btnWrap">
-				<button class="btn-flat reject">거부</button>
-				<button class="btn-flat ok">승락</button>
+				<button class="btn-flat reject" (click)="reject(hoper.idx)">거부</button>
+				<button class="btn-flat ok" (click)="allow(hoper.idx)">승락</button>
 			</div>
 		</div>
 	</div>

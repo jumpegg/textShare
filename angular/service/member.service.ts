@@ -12,8 +12,12 @@ export class MemberService{
 		this.header = new Headers({'Content-Type':'application/json'});
 	}
 
-	create(input){
+	create(){
 		return this.http.get('/study/new_member', {headers:this.header})
+			.map(res=>res.json());
+	}
+	getPermission(){
+		return this.http.get('/study/get_permission', {headers:this.header})
 			.map(res=>res.json());
 	}
 	joinerList(){
@@ -26,6 +30,14 @@ export class MemberService{
 	}
 	isMember(){
 		return this.http.get('/study/is_member', {headers:this.header})
+			.map(res=>res.json());
+	}
+	allowMember(input){
+		return this.http.post('/study/allow_member', input, {headers:this.header})
+			.map(res=>res.json());
+	}
+	rejectMember(input){
+		return this.http.post('/study/reject_member', input, {headers:this.header})
 			.map(res=>res.json());
 	}
 }

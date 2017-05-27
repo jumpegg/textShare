@@ -35,29 +35,29 @@
 				<i class="material-icons delete" (click)="close_modal()">clear</i>
 			</h5>
 		</div>
-			<div class="modal-body">
-				<div class="idBox">
-					<div class="input-field id-field">
-						<label for="">ID (3자 이상, 15자 이하)</label>
-						<input type="text" [(ngModel)]="joiner.id" #jId="ngModel" minlength="3" maxlength="15" required>
-					</div>
-					<button class="btn-flat" (click)="user_chk()">중복확인</button>
+		<div class="modal-body">
+			<div class="idBox">
+				<div class="input-field id-field">
+					<label for="">ID (3자 이상, 15자 이하)</label>
+					<input type="text" [(ngModel)]="joiner.id" #jId="ngModel" minlength="3" maxlength="15" required>
 				</div>
-				<div class="input-field">
-					<label for="">PASS (6자 이상, 20자 이하)</label>
-					<input type="password" [(ngModel)]="joiner.password" #jPass="ngModel" minlength="6" maxlength="20" required>
-				</div>
-				<div class="input-field">
-					<label for="">E-mail</label>
-					<input type="text" class="lastInput" [(ngModel)]="joiner.email" #jEmail="ngModel" required pattern="^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$">
-				</div>
+				<button class="btn-flat" (click)="user_chk()">중복확인</button>
 			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn-flat joinBtn" 
-				(click)="join({isId : jId.valid,
-											isPass : jPass.valid,
-											isEmail : jEmail.valid})">가입하기</button>
+			<div class="input-field">
+				<label for="">PASS (6자 이상, 20자 이하)</label>
+				<input type="password" [(ngModel)]="joiner.password" #jPass="ngModel" minlength="6" maxlength="20" required>
 			</div>
+			<div class="input-field">
+				<label for="">E-mail</label>
+				<input type="text" class="lastInput" [(ngModel)]="joiner.email" #jEmail="ngModel" required pattern="^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$">
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn-flat joinBtn" 
+			(click)="join({isId : jId.valid,
+										isPass : jPass.valid,
+										isEmail : jEmail.valid})">가입하기</button>
+		</div>
 	</div>
 </div>
 

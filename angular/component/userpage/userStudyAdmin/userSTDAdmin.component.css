@@ -254,3 +254,6 @@ p{
 	color: #FFF;
 }
 
+.dis-none{
+	display: none !important;
+}

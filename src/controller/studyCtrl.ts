@@ -116,13 +116,11 @@ export class StudyCtrl{
 		})
 	}
 	public textSearch: RequestHandler = (req,res)=>{
-		console.log(req.body.search);
 		let getQuery = `
 		select * from study
 		where studyname like '%${req.body.search}%'
 		order by c_date desc
 		`;
-		console.log(getQuery);
 
 		conn.query(getQuery, (err, data)=>{
 			if(err){
@@ -144,10 +142,24 @@ export class StudyCtrl{
 		})
 	}
 	public getStudyInfo:RequestHandler = (req,res)=>{
-		this.studyTbl
-		.selectOne({idx: req.session.studyIdx})
-		.go((data)=>{
-			res.json(data[0]);
+		let getQuery = 
+		`select a.*, b.id, b.email
+		from study a
+		inner join User b
+		on a.admin = b.idx
+		where a.idx = '${req.session.studyIdx}'
+		`;
+
+		conn.query(getQuery, (err, data)=>{
+			if(err){
+				console.log(err);
+			}else{
+				if(data.length == 0){
+					res.json({msg: 'no_res'});
+				}else{
+					res.json(data[0]);
+				}
+			}
 		})
 	}
 	public adminList: RequestHandler = (req, res) => {
@@ -155,6 +167,27 @@ export class StudyCtrl{
 		.selectList({admin: req.session.userData.idx})
 		.go((data)=>{
 			res.json(data);
+		})
+	}
+	public joinList: RequestHandler = (req,res) => {
+		let getQuery = 
+		`select b.*
+		from member a
+		inner join study b
+		on a.study_idx = b.idx
+		where a.user_idx = ${req.session.userData.idx}
+		and a.permission < 10`;
+
+		conn.query(getQuery, (err, data)=>{
+			if(err){
+				console.log(err);
+			}else{
+				if(data.length == 0){
+					res.json({msg: 'no_res'});
+				}else{
+					res.json(data[0]);
+				}
+			}
 		})
 	}
 	public map: RequestHandler = (req, res) => {

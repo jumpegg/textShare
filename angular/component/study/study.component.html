@@ -5,8 +5,8 @@
 			<span>< 이전 페이지로</span>
 		</a>
 		<a href="" class="brand-logo center study-title">{{studyPage.title}}</a>
-		<a class="btn-flat">가입하기</a>
-		<a href="" data-activates="list-slide" class="button-collapse">
+		<a class="btn-flat joinBtn" (click)="modalOpen()" [ngClass]="{'dis_none':member_chk}">가입하기</a>
+		<a href="" data-activates="list-slide" class="button-collapse" [ngClass]="{'dis_none':!member_chk}">
 			<i class="material-icons side-toggler">menu</i>
 		</a>
 		<ul class="side-nav" id="list-slide">
@@ -69,3 +69,21 @@
 		<router-outlet></router-outlet>
 </div>
 <!--[ngClass]="{'dis_none':member_chk}"-->
+<div class="modal" id="join">
+	<div class="modal-content">
+		<div class="modal-header">
+			가입하기
+		</div>
+		<div class="modal-body">
+			<p class="study-name">{{studyDetail.studyname}}</p>
+			<p class="leader">스터디장 : {{studyDetail.id}} ({{studyDetail.email}})</p>
+
+			<p class="study-info">{{studyDetail.info}}</p>
+		</div>
+		<div class="modal-footer">
+			<button class="btn-flat" (click)="joinReq()">
+				가입하기
+			</button>
+		</div>
+	</div>
+</div>

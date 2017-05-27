@@ -9,15 +9,36 @@ export class MemberCtrl{
 	constructor(){
 		this.memberTbl = new Crud('s_member');
 	}
+	public getPermission:RequestHandler = (req,res) => {
+		this.memberTbl.selectOne({
+			user_idx : req.session.userData.idx,
+			study_idx : req.session.studyIdx
+		}).go(data=>{
+			if(!data.msg){
+				res.json(data);
+			}else{
+				console.log(data.msg);
+			}
+		})
+	}
 	public make:RequestHandler = (req,res) =>{
 		let temp = {
 			user_idx : req.session.userData.idx,
 			study_idx : req.session.studyIdx,
 			permission : 11
 		}
-		this.memberTbl.insert(temp).go((data) => {
-			res.json(data);
-		});
+		this.memberTbl.selectOne({
+			user_idx : req.session.userData.idx,
+			study_idx : req.session.studyIdx
+		}).go(data=>{
+			if(data.msg == 'no_res'){
+				this.memberTbl.insert(temp).go((data) => {
+					res.json(data);
+				});
+			}else{
+				res.json({msg:'already'});
+			}
+		})
 	}
 	public isMember:RequestHandler = (req,res)=>{
 		this.memberTbl.selectOne({
@@ -39,11 +60,11 @@ export class MemberCtrl{
 	}
 	public joinerList:RequestHandler = (req,res) => {
 		let getQuery = 
-			`select * from s_member a 
+			`select a.*, b.id from s_member a 
 			inner join User b
 			on a.user_idx = b.idx
 			where a.study_idx = ${req.session.studyIdx}
-			and permission < 10`;
+			and a.permission < 10`;
 		conn.query(getQuery, (err, data) => {
 			if(err){
 				res.json({msg: 'error'})
@@ -54,17 +75,37 @@ export class MemberCtrl{
 	}
 	public hoperList:RequestHandler = (req,res) => {
 		let getQuery = 
-			`select * from s_member a 
+			`select a.*, b.id from s_member a 
 			inner join User b
 			on a.user_idx = b.idx
 			where a.study_idx = ${req.session.studyIdx}
-			and permission > 10`;
+			and a.permission > 10`;
 		conn.query(getQuery, (err, data) => {
 			if(err){
 				res.json({msg: 'error'})
 			}else{
 				res.json(data);
 			}
+		})
+	}
+	public allow:RequestHandler = (req,res) => {
+		this.memberTbl
+		.update({
+			idx : req.body.idx,
+			permission : 9
+		})
+		.go(data=>{
+			res.json(data);
+		})
+	}
+	public reject:RequestHandler = (req,res) => {
+		this.memberTbl
+		.update({
+			idx : req.body.idx,
+			permission : 13
+		})
+		.go(data=>{
+			res.json(data);
 		})
 	}
 }

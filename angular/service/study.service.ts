@@ -52,6 +52,10 @@ export class StudyService{
 		return this.http.get('/user/study_admin', {headers:this.header})
 			.map(res => res.json());
 	}
+	studyJoinList(){
+		return this.http.get('/user/study_joinList', {headers:this.header})
+			.map(res => res.json());
+	}
 	studyLatest(){
 		return this.http.get('/user/latest', {headers:this.header})
 			.map(res => res.json());
@@ -63,4 +67,11 @@ export class StudyService{
 		return this.http.post('/user/text_search', input, {headers:this.header})
 			.map(res => res.json());
 	}
+	
+	// route in study
+	getThisStudy(){
+		return this.http.get('/study/getOne_study', {headers:this.header})
+			.map(res => res.json());
+	}
+
 }

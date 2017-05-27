@@ -46,8 +46,8 @@ declare var naver : any;
 export class UserSTDAdminComponent{
 	private newStudy:Study;
 	private tempStudy:Study;
-	private studyList:Study[];
-	private joinList:Study[];
+	private studyList:Study[] = [];
+	private joinList:Study[] = [];
 	private placeState:string = 'close';
 	private placeModiState:string = 'close';
 	private search_input:string;
@@ -146,13 +146,26 @@ export class UserSTDAdminComponent{
 	study_admin_list(){
 		this.studyService.studyAdminList().subscribe(
 			data =>{
-				(data.msg == 'no_res') ? this.studyList = [] : this.studyList = data;
+				if(!data.msg){
+					this.studyList = data;
+				}else{
+					this.studyList = [];
+				}
 			},
 			error => console.log(error)
 		)
 	}
 	study_join_list(){
-		
+		this.studyService.studyJoinList()
+		.subscribe(
+			data=>{
+				if(!data.msg){
+					this.joinList = data;
+				}else{
+					this.joinList = [];
+				}
+			}
+		)
 	}
 	open_new_modal(){
 		$('#newStudy').modal('open');

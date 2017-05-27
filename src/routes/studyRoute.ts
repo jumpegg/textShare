@@ -15,6 +15,7 @@ import {
 		placeCtrl } from '../controller';
 
 const studyRoute: Router = Router();
+// study
 studyRoute.get('/map', studyCtrl.map);
 studyRoute.get('/getOne_study', studyCtrl.getStudyInfo);
 
@@ -25,10 +26,13 @@ studyRoute.get('/one_schedule/:idx', scheduleCtrl.getSchedule);
 studyRoute.get('/getIndex_schedule', scheduleCtrl.index);
 
 // member
+studyRoute.get('/get_permission', memberCtrl.getPermission);
 studyRoute.get('/new_member', memberCtrl.make);
 studyRoute.get('/joiner_list_member', memberCtrl.joinerList);
 studyRoute.get('/hoper_list_member', memberCtrl.hoperList);
 studyRoute.get('/is_member', memberCtrl.isMember);
+studyRoute.post('/allow_member', memberCtrl.allow);
+studyRoute.post('/reject_member', memberCtrl.reject);
 
 // account
 studyRoute.post('/new_account', accountCtrl.accMake);

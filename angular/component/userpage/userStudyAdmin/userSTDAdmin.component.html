@@ -2,6 +2,28 @@
 
 <div class="listWrap">
 	<div class="row adminList">
+		<div class="col s4" [ngClass]="{'dis-none':studyList.length != 0}">
+			<div class="card horizontal">
+				<div class="card-image">
+					<i class="material-icons">check_circle</i>
+				</div>
+				<div class="card-stacked">
+					<div class="card-content study-info">
+						<p>관리중인 스터디</p>
+						<h5>생성한 스터디가 없습니다</h5>
+						<div class="next-info">
+							<p class="next-header">다음 모임일정</p>
+							<span class="next-place">스터디를 만들어 보세요!!</span>
+						</div>
+					</div>
+					<div class="card-action">
+						<div class="row">
+							<div class="col s12"><span>관리중인 스터디가 없습니다</span></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 		<div class="col s4" *ngFor="let study of studyList">
 			<div class="card horizontal">
 				<div class="card-image">
@@ -36,15 +58,38 @@
 		</div>
 	</div>
 	<div class="row joinList">
-		<div class="col s4" *ngFor="let study of studyList">
+		<div class="col s4" [ngClass]="{'dis-none':joinList.length != 0}">
 			<div class="card horizontal">
 				<div class="card-image">
 					<i class="material-icons">check_circle</i>
 				</div>
 				<div class="card-stacked">
 					<div class="card-content study-info">
-						<p>관리중인 스터디</p>
-						<h5>{{study.studyname}}</h5>
+						<p>가입한 스터디</p>
+						<h5>가입한 스터디가 없습니다</h5>
+						<div class="next-info">
+							<p class="next-header">다음 모임일정</p>
+							<span class="next-place">스터디를 찾아보세요!!</span>
+						</div>
+					</div>
+					<div class="card-action">
+						<div class="row">
+							<div class="col s6"></div>
+							<div class="col s12"><a routerLink="/userpage/stdSearch" class="go-study">스터디 찾아보기</a></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col s4" *ngFor="let joinstudy of joinList">
+			<div class="card horizontal">
+				<div class="card-image">
+					<i class="material-icons">check_circle</i>
+				</div>
+				<div class="card-stacked">
+					<div class="card-content study-info">
+						<p>가입한 스터디</p>
+						<h5>{{joinstudy.studyname}}</h5>
 						<div class="next-info">
 							<p class="next-header">다음 모임일정</p>
 							<span class="next-place">강남 스터디 윙</span><span class="next-time">7:30 PM</span>
@@ -52,8 +97,8 @@
 					</div>
 					<div class="card-action">
 						<div class="row">
-							<div class="col s6"><a href="">관리하기</a></div>
-							<div class="col s6"><a class="go-study" (click)="move_study(study.idx)">바로가기</a></div>
+							<div class="col s6"></div>
+							<div class="col s6"><a class="go-study" (click)="move_study(joinstudy.idx)">바로가기</a></div>
 						</div>
 					</div>
 				</div>
