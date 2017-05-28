@@ -92,7 +92,40 @@ h6{
 	font-size: 14px;
 	padding: 10px;
 }
+.file-content{
+	margin-top: 20px;
+	overflow: hidden;
+}
 
+.file-item{
+	background-color: #F1F1F1;
+	float: left;
+	width: 298px;
+	height: 50px;
+	padding: 10px;
+	margin: 5px 5px;
+}
+.file-item p{
+	width: 200px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	display: inline-block;
+}
+.file-item .file-icon{
+	color: #999999;
+	position: relative;
+	top: 3px;
+}
+.file-item .file-name{
+	color: #666666;
+}
+.file-item .down{
+	color: #DDDDDD;
+	float: right;
+	position: relative;
+	top: 3px;
+}
 /* new-wrap */
 .new-wrap{
 	overflow: hidden;
@@ -162,38 +195,64 @@ h6{
 /* fileBox */
 .fileBox{
 	width: 850px;
-	padding:0px;
+	height: 50px;
+	padding: 5px;
 	margin-left: 53px;
 	float:left;
 	overflow: hidden;
-	/*background-color: #f1f1f1;*/
+	background-color: #f1f1f1;
+}
+.file-label{
+	padding: 13px;
+	height: 40px;
+	font-size: 16px;
+	font-weight: 500;
+	color: #999999;
+	float:left;
+	margin-right: 10px;
 }
 .file-input-wrap{
-	width:510px;
+	width:420px;
 	overflow: hidden;
 	float:right;
 }
 .file-input-wrap .file-field{
 	float:left;
-	width: 380px;
+	width: 420px;
+	height: 40px;
+	line-height: 40px;
 	margin: 0px;
 	background-color: #ffffff;
 	border: 1px solid #999999;
-}
-.file-input-wrap button{
-	background-color: #004d40;
-	color: #FFFFFF;
-	height: 45px;
-	margin-left: 10px;
+	border-radius: 3px;
 }
 .file-path-wrapper input{
 	margin: 0px;
 	border: none;
 }
-
-.folder-select{
-	width: 330px;
+.update-files{
 	float:left;
+	overflow: hidden;
+	margin-left: 48px;
+	margin-bottom: 20px;
+	width: 844px;
+}
+.update-files .file-item{
+	width: 270px;
+}
+.update-files p{
+	width: 180px;
+}
+.update-files .down{
+	cursor: pointer;
+}
+.folder-select{
+	width: 300px;
+	float:left;
+}
+.folder-select select{
+	height: 40px;
+	border-radius: 3px;
 }
 /*flow-btn-box*/
 .flow-btn-box{

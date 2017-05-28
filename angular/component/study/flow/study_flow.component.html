@@ -47,6 +47,15 @@
 							<li class="content">
 								{{getFlow.content}}
 							</li>
+							<li class="file-content">
+								<div class="file-item" *ngFor="let fileItem of getFileList">
+									<i class="material-icons file-icon">insert_drive_file</i>
+									<p class="file-name">{{fileItem.file_name}}</p>
+									<a href="{{fileItem.file_url}}" download>
+										<i class="material-icons down">get_app</i>
+									</a>
+								</div>
+							</li>
 						</ul>
 					</div>
 				</div>
@@ -74,9 +83,19 @@
 					<label for="">간단내용</label>
 					<textarea [(ngModel)]="newFlow.content"></textarea>
 				</div>
-				<!--<div class="fileBox">
+				<div class="update-files">
+					<div class="file-item" *ngFor="let fileItem of getFileList">
+						<i class="material-icons file-icon">insert_drive_file</i>
+						<p class="file-name">{{fileItem.file_name}}</p>	
+						<i class="material-icons down" (click)="deleteFile(fileItem)">clear</i>
+					</div>
+				</div>
+				<div class="fileBox">
+					<div class="file-label">
+						파일등록
+					</div>
 					<div class="folder-select">
-						<select class="browser-default">
+						<select class="browser-default" (change)="setFileList($event)">
 							<option value="" disabled selected>자료를 넣을 폴더</option>
 							<option *ngFor="let folder of folderList" value="{{folder.idx}}">{{folder.folder_name}}</option>
 						</select>
@@ -87,12 +106,11 @@
 								<input type="file" multiple (change)="fileChange($event)">
 							</div>
 							<div class="file-path-wrapper">
-								<input class="file-path validate" type="text" placeholder="Upload one or more files">
+								<input class="file-path validate" type="text" placeholder="최대 5개의 파일이 등록 가능합니다.">
 							</div>
 						</div>
-						<button class="btn-flat submit" (click)="fileSubmit()">파일등록</button>
 					</div>
-				</div>-->
+				</div>
 				<div class="flow-btn-box">
 					<button class="btn-flat del" (click)="flowCancel()">취소</button>
 					<button class="btn-flat submit" (click)="flowSubmit(newFlow)">등록</button>

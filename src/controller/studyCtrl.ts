@@ -172,11 +172,12 @@ export class StudyCtrl{
 	public joinList: RequestHandler = (req,res) => {
 		let getQuery = 
 		`select b.*
-		from member a
+		from s_member a
 		inner join study b
 		on a.study_idx = b.idx
-		where a.user_idx = ${req.session.userData.idx}
+		where a.user_idx = '${req.session.userData.idx}'
 		and a.permission < 10`;
+		console.log(getQuery);
 
 		conn.query(getQuery, (err, data)=>{
 			if(err){
@@ -185,7 +186,7 @@ export class StudyCtrl{
 				if(data.length == 0){
 					res.json({msg: 'no_res'});
 				}else{
-					res.json(data[0]);
+					res.json(data);
 				}
 			}
 		})

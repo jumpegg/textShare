@@ -20,6 +20,7 @@ userRoute.post('/study_new', studyCtrl.make);
 userRoute.post('/study_modify', studyCtrl.modify);
 userRoute.post('/study_search', studyCtrl.search);
 userRoute.get('/study_admin', studyCtrl.adminList);
+userRoute.get('/study_joinList', studyCtrl.joinList);
 userRoute.get('/study_search_place/:input', studyCtrl.place_search);
 userRoute.get('/study_map_test', studyCtrl.map);
 userRoute.get('/study_getOne/:idx', studyCtrl.getOne);

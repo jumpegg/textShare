@@ -77,8 +77,11 @@ studyRoute.get('/getOne_place/:idx', placeCtrl.getPlace);
 studyRoute.post('/new_folder_data', dataCtrl.folderMake);
 studyRoute.get('/list_folder_data', dataCtrl.folderList);
 studyRoute.post('/new_file_data/:idx', dataCtrl.fileMake);
+studyRoute.post('/new_flow_file_data/:folder_idx/:flow_idx', dataCtrl.flowFileMake);
 studyRoute.get('/list_file_data/:idx', dataCtrl.fileList);
+studyRoute.get('/list_flow_file_data/:idx', dataCtrl.flowFileList);
 studyRoute.post('/is_file_data',dataCtrl.isFile);
+studyRoute.post('/del_file_data', dataCtrl.delFile);
 
 // flow
 studyRoute.post('/new_flow', flowCtrl.make);

@@ -30,4 +30,12 @@ export class DataService{
 		return this.http.get('/study/list_file_data/'+input , {headers:this.header})
 			.map(res=>res.json());
 	}
+	getFlowFileList(input){
+		return this.http.get('/study/list_flow_file_data/'+input, {headers:this.header})
+			.map(res=>res.json());
+	}
+	deleteFile(input){
+		return this.http.post('/study/del_file_data', input, {headers:this.header})
+			.map(res=>res.json());
+	}
 }

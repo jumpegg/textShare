@@ -80,6 +80,7 @@ export class UserSTDAdminComponent{
 		this.tempStudy = new Study();
 		this.placeOne = new Place();
 		this.study_admin_list();
+		this.study_join_list();
 	}
 
 	ngOnInit(){
@@ -144,7 +145,8 @@ export class UserSTDAdminComponent{
 		)
 	}
 	study_admin_list(){
-		this.studyService.studyAdminList().subscribe(
+		this.studyService.studyAdminList()
+		.subscribe(
 			data =>{
 				if(!data.msg){
 					this.studyList = data;
@@ -156,11 +158,14 @@ export class UserSTDAdminComponent{
 		)
 	}
 	study_join_list(){
-		this.studyService.studyJoinList()
+		this.studyService
+		.studyJoinList()
 		.subscribe(
 			data=>{
+				console.log(data);
 				if(!data.msg){
 					this.joinList = data;
+					console.log(this.joinList.length);
 				}else{
 					this.joinList = [];
 				}

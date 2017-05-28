@@ -85,6 +85,52 @@ export class DataCtrl{
 			}
 		})
 	}
+	public flowFileMake:RequestHandler = (req,res)=>{
+		// let files = [];
+		let form = new formidable.IncomingForm();
+		let obj = this;
+		form.keepExtensions = true;
+		form.multiples = true;
+		
+		this.datafolderTbl
+		.selectOne({
+			idx : req.params.folder_idx,
+			study_idx : req.session.studyIdx
+		})
+		.go(data=>{
+			if(!data.msg){
+				let folderInfo = data[0];
+				let dir = __dirname + `/../../data/${req.session.studyIdx}/${folderInfo.folder_name}`;
+				let shortDir = `/data/${req.session.studyIdx}/${folderInfo.folder_name}`;
+				// formidable start
+				form.uploadDir = dir;
+				
+				form.on('fileBegin', function (name, file){
+					obj.datafileTbl.insert({
+						study_idx : req.session.studyIdx,
+						folder_idx : req.params.folder_idx,
+						folder_name : folderInfo.folder_name,
+						flow_idx : req.params.flow_idx,
+						file_name : file.name,
+						file_url : shortDir + '/' + file.name
+					}).go(data=>{
+						console.log(data);
+					})
+				});
+				form.on('file', (field, file)=>{
+					fs.rename(file.path, form.uploadDir + '/' + file.name);
+				}).on('end', ()=>{
+					res.json({msg:'done'});
+				}).on('error', error=>{
+					console.log('file upload error : ' + error);
+				});
+				form.parse(req);
+			}else{
+				res.json({msg:'error'});
+			}
+		})
+
+	}
 	public isFile:RequestHandler = (req,res)=>{
 		this.datafileTbl
 		.selectOne({
@@ -112,6 +158,28 @@ export class DataCtrl{
 		.go(data=>{
 			res.json(data);
 		});
+	}
+	public flowFileList:RequestHandler = (req,res)=>{
+		this.datafileTbl
+		.selectList({
+			study_idx:req.session.studyIdx,
+			flow_idx: req.params.idx
+		})
+		.go(data=>{
+			res.json(data);
+		});
+	}
+	public delFile:RequestHandler = (req,res)=>{
+		this.datafileTbl
+		.delete(req.body.idx)
+		.go(data=>{
+			if(data.msg == 'done'){
+				fs.unlink(__dirname + `/../..${req.body.file_url}`, (err) => {
+					if(err) throw err;
+					res.json(data);
+				})
+			}
+		})
 	}
 }
 
