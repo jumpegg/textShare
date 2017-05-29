@@ -14,27 +14,54 @@ import { Notice } from '../../../vo/notice';
 })
 export class StudyNewNotice {
 		public newNotice:Notice = new Notice();
+		private idx:number;
 		constructor(
 			public studyPage:StudyPageInfo,
 			public noticeService:NoticeService,
-			public router:Router
-		){
+			public router:Router,
+			public route:ActivatedRoute
+		){}
+
+		ngOnInit(){
 			this.studyPage.init();
-		}
-		
-		noticeSubmit(input){
-			this.noticeService
-			.create(input)
-			.subscribe(
-				data=>{
-					if(data.msg == "done"){
-						alert('등록되었습니다.');
-						this.router.navigate(['/study/notice']);
+			this.idx = +this.route.snapshot.params['idx'];
+			if(this.idx){
+				this.noticeService
+				.getOne(this.idx)
+				.subscribe(
+					data=>{
+						this.newNotice = data[0];
 					}
-				}
-			)
+				)
+			}
+		}
+		noticeSubmit(input){
+			if(input.idx){
+				this.noticeService
+				.update(input)
+				.subscribe(
+					data=>{
+						if(data.msg == "done"){
+							alert('등록되었습니다.');
+							this.router.navigate(['/study/notice']);
+						}
+					}
+				)
+			}else{
+				this.noticeService
+				.create(input)
+				.subscribe(
+					data=>{
+						if(data.msg == "done"){
+							alert('등록되었습니다.');
+							this.router.navigate(['/study/notice']);
+						}
+					}
+				)
+			}
 		}
 		backNotice(){
 			this.router.navigate(['/study/notice']);
 		}
+
 }

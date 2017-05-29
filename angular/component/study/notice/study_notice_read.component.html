@@ -6,8 +6,10 @@
 		<h6 class="title">{{notice.title}}</h6>
 		<hr>
 		<div class="action-btn">
-			<i class="material-icons">edit</i>
-			<i class="material-icons">clear</i>
+			<a routerLink="/study/noticeUpdate/{{notice.idx}}">
+				<i class="material-icons">edit</i>
+			</a>
+			<i class="material-icons cursor-p" (click)="deleteNotice(notice.idx)">clear</i>
 		</div>
 		<div class="content">
 			{{notice.content}}

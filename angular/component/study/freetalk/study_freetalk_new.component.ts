@@ -14,27 +14,51 @@ import { Freetalk } from '../../../vo/freetalk';
 })
 export class StudyNewFreetalk {
 	public newFreetalk:Freetalk = new Freetalk();
-	
+	private idx:number;
 	constructor(
 		public studyPage:StudyPageInfo,
 		public freetalkService:FreetalkService,
-		public router:Router
+		public router:Router,
+		public route:ActivatedRoute
 	){}
 	ngOnInit(){
 		this.studyPage.init();
+		this.idx = +this.route.snapshot.params['idx'];
+			if(this.idx){
+				this.freetalkService
+				.getOne(this.idx)
+				.subscribe(
+					data=>{
+						this.newFreetalk = data[0];
+					}
+				)
+			}
 	}
 
 	freetalkSubmit(input){
-		this.freetalkService
-		.create(input)
-		.subscribe(
-			data=>{
-				if(data.msg == "done"){
-					alert('등록되었습니다.');
-					this.router.navigate(['/study/freetalk']);
+		if(input.idx){
+			this.freetalkService
+			.update(input)
+			.subscribe(
+				data=>{
+					if(data.msg == "done"){
+						alert('등록되었습니다.');
+						this.router.navigate(['/study/freetalk']);
+					}
 				}
-			}
-		)
+			)
+		}else{
+			this.freetalkService
+			.create(input)
+			.subscribe(
+				data=>{
+					if(data.msg == "done"){
+						alert('등록되었습니다.');
+						this.router.navigate(['/study/freetalk']);
+					}
+				}
+			)
+		}
 	}
 	backFreetalk(){
 		this.router.navigate(['/study/freetalk']);

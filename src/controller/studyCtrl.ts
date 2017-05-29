@@ -176,7 +176,8 @@ export class StudyCtrl{
 		inner join study b
 		on a.study_idx = b.idx
 		where a.user_idx = '${req.session.userData.idx}'
-		and a.permission < 10`;
+		and a.permission < 10
+		and a.permission > 5`;
 		console.log(getQuery);
 
 		conn.query(getQuery, (err, data)=>{

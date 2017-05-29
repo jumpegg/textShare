@@ -73,4 +73,18 @@ export class StudyReadFreetalk{
 			}
 		)
 	}
+	deleteFreetalk(input){
+		if(confirm('삭제하시겠습니까?')){
+			this.freetalkService
+			.delete(input)
+			.subscribe(
+				data=>{
+					if(data.msg == "done"){
+						alert('삭제되었습니다.');
+						this.router.navigate(['/study/freetalk']);
+					}
+				}
+			)
+		}
+	}
 }

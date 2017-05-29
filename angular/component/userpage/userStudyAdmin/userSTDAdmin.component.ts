@@ -21,7 +21,6 @@ declare var naver : any;
 	animations: [
 		trigger('placeToggle',[
 			state('open', style({
-
 			})),
 			state('close', style({
 				height: '0px',
@@ -32,7 +31,6 @@ declare var naver : any;
 		]),
 		trigger('placeModiToggle', [
 			state('open', style({
-
 			})),
 			state('close', style({
 				height: '0px',
