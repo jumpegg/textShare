@@ -5,7 +5,9 @@
 				<div class="acc-listBox card-panel">
 					<h6>
 						<span>다음 모임 회비</span>
-						<i class="material-icons">edit</i>
+						<a routerLink="/study/accountUpdate/{{accLatest.idx}}">
+							<i class="material-icons">edit</i>
+						</a>
 						<a routerLink="/study/accountNew" class="add-icon"></a>
 					</h6>
 					<div class="acc-memList">
@@ -108,6 +110,7 @@
 			<thead>
 				<tr>
 					<th>DATE</th>
+					<th>회계이름</th>
 					<th>참석자 수</th>
 					<th>COST</th>
 				</tr>
@@ -116,7 +119,8 @@
 			<tbody>
 				<tr *ngFor="let acc of accList">
 					<td class="text-center date">{{acc.gathering|date:"yyyy-MM-dd"}}</td>
-					<td>{{acc.total_num}} 명</td>
+					<td class="text-center">{{acc.title}}</td>
+					<td class="text-center">{{acc.total_num}} 명</td>
 					<td class="text-center">{{acc.total_cost}} 원</td>
 				</tr>
 			</tbody>

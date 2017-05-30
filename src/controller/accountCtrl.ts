@@ -72,7 +72,7 @@ export class AccountCtrl{
 		this.accountTbl
 			.selectOne({idx : req.params.idx})
 			.go((data)=>{
-				res.json(data);
+				res.json(data[0]);
 			})
 	}
 	public infoGetOne:RequestHandler = (req, res)=>{
@@ -118,6 +118,13 @@ export class AccountCtrl{
 		this.acc_infoTbl
 			.delete(req.params.idx)
 			.go((data)=>{
+				res.json(data);
+			})
+	}
+	public userDelete:RequestHandler = (req, res)=>{
+		this.acc_userTbl
+			.delete(req.params.idx)
+			.go(data=>{
 				res.json(data);
 			})
 	}

@@ -5,7 +5,7 @@ export class Schedule{
 	start:string;
 	end:string;
 	cost:number;
-	gathering:Date;
+	gathering:any;
 	c_date:Date;
 	
 	constructor(){}

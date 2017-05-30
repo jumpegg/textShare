@@ -40,6 +40,10 @@ export class AccountService{
 		return this.http.get('/study/list_acc_user/'+input, {headers:this.header})
 			.map(res=>res.json());
 	}
+	accGetOne(input){
+		return this.http.get('/study/getOne_account/'+input, {headers:this.header})
+			.map(res=>res.json());
+	}
 	memberList(input){
 		
 	}
@@ -60,6 +64,10 @@ export class AccountService{
 	// delete
 	infoDelete(input){
 		return this.http.get('/study/delete_acc_info/'+input, {headers:this.header})
+			.map(res=>res.json());
+	}
+	userDelete(input){
+		return this.http.get('/study/delete_acc_user/'+input, {headers:this.header})
 			.map(res=>res.json());
 	}
 }

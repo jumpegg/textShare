@@ -34,7 +34,6 @@ export class StudyNewFreetalk {
 				)
 			}
 	}
-
 	freetalkSubmit(input){
 		if(input.idx){
 			this.freetalkService

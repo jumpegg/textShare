@@ -2,7 +2,9 @@
 	<div class="lastest-scd card-panel">
 		<h6>
 			다음 모임 일정
-			<i class="material-icons">edit</i>
+			<a routerLink="/study/scheduleUpdate/{{lastSch.idx}}">
+				<i class="material-icons title-edit">edit</i>
+			</a>
 			<a routerLink="/study/scheduleNew" class="add-icon"></a>
 		</h6>
 		<div class="scd-info">
@@ -45,7 +47,7 @@
 							<span class="label">PLACE</span>
 							<span class="data">{{lastPlc.name}}</span>
 						</li>
-						<li id="map"></li>
+						<li id="map" class="StudySchedule"></li>
 					</ul>
 				</div>
 			</div>
@@ -72,7 +74,7 @@
 			<tbody>
 				<tr *ngFor="let sch of schList">
 					<td class="text-center date">{{sch.gathering|date:"yyyy-MM-dd"}}</td>
-					<td>{{sch.place_name}}</td>
+					<td><span class="cursor-p" (click)="setSchedule(sch.idx)">{{sch.place_name}}</span></td>
 					<td class="text-center">{{sch.cost}} 원</td>
 				</tr>
 			</tbody>

@@ -3,8 +3,7 @@
 		<li class="dateBox">
 			<i class="material-icons">insert_invitation</i>
 			<div class="input-field">
-				<label for="date">DATE</label>
-				<input id="date" type="date" class="datepicker" [(ngModel)]="newSchedule.gathering">
+				<input id="date" type="date" class="datepicker" [(ngModel)]="newSchedule.gathering" placeholder="DATE">
 			</div>
 		</li>
 		<li class="timeBox">
@@ -20,22 +19,26 @@
 		<li class="costBox">
 			<i class="material-icons">account_balance_wallet</i>
 			<div class="input-field">
-				<label for="cost">COST</label>
-				<input id="cost" type="text" [(ngModel)]="newSchedule.cost">
+				<input id="cost" type="text" [(ngModel)]="newSchedule.cost" placeholder="COST" #cost="ngModel" required>
 			</div>
 		</li>
 		<li class="placeBox">
 			<i class="material-icons">location_on</i>
 			<div class="placeSelect">
 				<label>PLACE</label>
-				<select name="list" id="" class="browser-default" [(ngModel)]="newSchedule.place_idx">
+				<select name="list" id="" class="browser-default" [(ngModel)]="newSchedule.place_idx" #place="ngModel" required>
 					<option value="" disabled selected>장소선택</option>
 					<option *ngFor="let place of placeList" value="{{place.idx}}">{{place.name}}</option>
 				</select>
 			</div>
 		</li>
 		<li>
-			<button class="btn-flat submitBtn" (click)="scheduleSubmit(newSchedule)">등록</button>
+			<button class="btn-flat submitBtn" 
+			(click)="submit({
+				isCost : cost.valid,
+				isLocation : place.valid
+			})">
+			등록</button>
 		</li>
 	</ul>
 </div>

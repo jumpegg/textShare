@@ -20,18 +20,43 @@ declare var $ : any;
 export class StudyNewAcc {
 	public userList:any[];
 	public attendeeList:any[] = [];
+	public getAttendeeList:any[] = [];
+	public tempAttendeeList:any[] = [];
 	public newAccount:Account = new Account();
 	public allCost:number;
+	public idx:number;
 
 	constructor(
 		public studyPage:StudyPageInfo,
 		public studyInfo:StudyInfo,
 		public accountService:AccountService,
 		public memberService:MemberService,
-		public router:Router
+		public router:Router,
+		public route:ActivatedRoute
 	){}
 	ngOnInit(){
 		this.studyPage.init();
+		this.idx = this.route.snapshot.params['idx'];
+		if(this.idx){
+			this.accountService
+			.accGetOne(this.idx)
+			.flatMap(
+				data=>{
+					console.log(data);
+					this.newAccount = data;
+					let dateTemp = new Date(data.gathering).toLocaleDateString();
+					let dateA = dateTemp.replace(/. /g,'-').replace('.','');
+					this.newAccount.gathering = dateA;
+					return this.accountService.userList(this.idx);
+				}
+			).subscribe(
+				data=>{
+					this.attendeeList = data;
+					this.getAttendeeList = data;
+					console.log(data);
+				}
+			)
+		}
 		this.memberService.joinerList().subscribe(
 			data => {
 				if(data.msg == 'no_res'){
@@ -79,9 +104,63 @@ export class StudyNewAcc {
 		this.attendeeList = tempArr;
 	}
 	account_submit(input){
+		if(input.idx){
+			this.account_update(input);
+		}else{
+			this.account_create(input);
+		}
+	}
+	account_update(input){
+		input.gathering = $('.datepicker').val();
+		this.accountService.accUpdate(input)
+		.subscribe(
+			data => {
+				let obj = this;
+				if(data.msg == 'done'){
+					this.tempAttendeeList =	
+					this.getAttendeeList.map(item => {
+						let chk = true;
+						this.attendeeList.map(jtem => {
+							if(jtem.idx && (item.idx == jtem.idx)){
+								chk = false;
+							}
+						})
+						if(chk){
+							return item;
+						}
+					})
+				}
+				console.log(this.tempAttendeeList);
+				this.attendeeList.map(item=>{
+					if(item.idx){
+						this.accountService
+						.userUpdate(item)
+						.subscribe(data=>{
+							console.log(data);
+						})
+					}else{
+						this.accountService
+						.userCreate(item)
+						.subscribe(data=>{
+							console.log(data);
+						})
+					}
+				})
+				this.tempAttendeeList.map(temp=>{
+					this.accountService
+					.userDelete(temp.idx)
+					.subscribe(data=>{
+						console.log(data);
+					})
+				})
+			}
+		)
+	}
+	account_create(input){
 		input.gathering = $('.datepicker').val();
 		input.study_idx = this.studyInfo.idx;
-		this.accountService.accCreate(input)
+		this.accountService
+		.accCreate(input)
 		.flatMap(
 			data => {
 				console.log(data);
@@ -89,8 +168,7 @@ export class StudyNewAcc {
 					return this.accountService.accGetLastOne();
 				}
 			}
-		)
-		.flatMap(
+		).flatMap(
 			data => {
 				let obj = this;
 				let userTemp:Acc_user = new Acc_user();
@@ -115,8 +193,7 @@ export class StudyNewAcc {
 				console.log(accountTemp);
 				return this.accountService.accUpdate(accountTemp);
 			}
-		)
-		.subscribe(
+		).subscribe(
 			data=>{
 				console.log(data);
 			}

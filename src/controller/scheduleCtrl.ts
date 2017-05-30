@@ -11,13 +11,22 @@ export class ScheduleCtrl{
 	}
 	public make:RequestHandler = (req, res) => {
 		req.body.study_idx = req.session.studyIdx;
-		this.scheduleTbl.insert(req.body).go((data) => {
+		this.scheduleTbl
+		.insert(req.body)
+		.go((data) => {
 			res.json(data);
 		});
 	}
+	public update:RequestHandler = (req,res) => {
+		this.scheduleTbl
+		.update(req.body)
+		.go(data => {
+			res.json(data);
+		})
+	}
 	public list:RequestHandler = (req, res) => {
 		this.scheduleTbl.selectList({study_idx : req.session.studyIdx})
-		.order({idx : 'desc'})
+		.order({gathering : 'desc'})
 		.limit(3)
 		.go((data) => {
 			res.json(data);

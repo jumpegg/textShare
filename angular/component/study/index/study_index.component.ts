@@ -54,7 +54,7 @@ export class StudyIndex {
 					}else{
 						this.noticeList=[
 							{
-								c_date: "2017-05-20T01:11:04.000Z",
+								c_date: new Date(),
 								id: "작성자",
 								title: "등록된 공지사항이 없습니다."
 							}
@@ -73,7 +73,7 @@ export class StudyIndex {
 					}else{
 						this.freetalkList=[
 							{
-								c_date: "2017-05-20T01:11:04.000Z",
+								c_date: new Date(),
 								id: "작성자",
 								title: "등록된 게시글이 없습니다."
 							}
@@ -90,22 +90,10 @@ export class StudyIndex {
 					if(!data.msg){
 						let obj = this;
 						this.schedule = data[0];
-						this.map = new naver.maps.Map('map', {
-							center: new naver.maps.LatLng(Number(this.schedule.mapy), Number(this.schedule.mapx)),
-							zoom: 11
-						});
-
-						this.marker = new naver.maps.Marker({
-								position: new naver.maps.LatLng(Number(this.schedule.mapy), Number(this.schedule.mapx)),
-								map: this.map
-						});
-						let infoWindow = new naver.maps.InfoWindow({
-							content: `
-								<div class="iw_inner">
-								<h5>${this.schedule.place_name}</h5>
-								</div>
-								`
-						});
+						this.map = this.makeMap('map', this.schedule.mapy, this.schedule.mapx, 11);
+						this.marker = this.makeMarker(this.schedule.mapy, this.schedule.mapx);
+						let infoWindow = this.makeInfoWindow(this.schedule.place_name);
+						
 						naver.maps.Event.addListener(this.marker, "click", function(e) {
 								if (infoWindow.getMap()) {
 										infoWindow.close();
@@ -127,6 +115,27 @@ export class StudyIndex {
 					}
 				}
 			)
+		}
+		makeMap(map, mapy, mapx, zoomLv:number){
+			return new naver.maps.Map(map, {
+							center: new naver.maps.LatLng(Number(mapy), Number(mapx)),
+							zoom: zoomLv
+						});
+		}
+		makeMarker(mapy, mapx){
+			return new naver.maps.Marker({
+								position: new naver.maps.LatLng(Number(mapy), Number(mapx)),
+								map: this.map
+						});
+		}
+		makeInfoWindow(input){
+			return new naver.maps.InfoWindow({
+							content: `
+								<div class="iw_inner">
+								<h5>${input}</h5>
+								</div>
+								`
+						});
 		}
 
 }

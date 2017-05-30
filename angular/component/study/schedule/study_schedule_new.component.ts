@@ -20,16 +20,18 @@ declare var naver : any;
 export class StudyNewSchedule implements OnInit {
 	public map: any;
 	public placeList:any[] = [];
-	public newSchedule:any;
+	public newSchedule:Schedule = new Schedule();
+	private idx:number;
 	constructor(
 		public studyService:StudyService,
 		public placeService:PlaceService,
 		public scheduleService:ScheduleService,
 		public studyInfo:StudyInfo,
 		public studyPage:StudyPageInfo,
-		public router:Router){}
+		public router:Router,
+		public route:ActivatedRoute
+	){}
 	ngOnInit(){
-		this.newSchedule = new Schedule();
 		this.placeService.getStudyPlaces().subscribe(
 			data => {
 				this.placeList = data;
@@ -41,35 +43,86 @@ export class StudyNewSchedule implements OnInit {
 			format: 'yyyy-mm-dd'
 		});
 		$('#start').pickatime({
-			autoclose: false,
+			autoclose: true,
 			twelvehour: false,
 			default: '12:00:00'
 		});
 		$('#end').pickatime({
-			autoclose: false,
+			autoclose: true,
 			twelvehour: false,
 			default: '12:00:00'
 		});
+		
+		this.idx = this.route.snapshot.params['idx'];
+		if(this.idx){
+			this.scheduleService
+			.getOne(this.idx)
+			.subscribe(
+				data=>{
+					this.newSchedule = data;
+					let dateTemp = new Date(data.gathering).toLocaleDateString();
+					let dateA = dateTemp.replace(/. /g,'-').replace('.','');
+					this.newSchedule.gathering = dateA;
+				}
+			)
+		}
+	}
+	submit(input){
+		let isTrue = true;
+		Object.keys(input).map(key=>{
+			isTrue = isTrue && input[key];
+		});
+		if(isTrue){
+			this.scheduleSubmit(this.newSchedule);
+		}else{
+			alert('올바른 값을 입력해주세요.');
+		}
 	}
 	scheduleSubmit(input){
-		input.gathering = $('.datepicker').val();
-		input.start = $('#start').val();
-		input.end = $('#end').val();
-		this.placeList.map(function(obj){
-			if(obj.idx == input.place_idx){
-				input.place_name = obj.name;
-			}
-		})
-		this.scheduleService.create(input).subscribe(
-			data=>{
-				if(data.msg == 'done'){
-					alert('등록되었습니다.');
-					this.router.navigate(['/study/schedule']);
-				}else{
-					alert('오류가 발생했습니다.');
-					this.router.navigate(['/study/schedule']);
+		if(input.idx){
+			input.gathering = $('.datepicker').val();
+			input.start = $('#start').val();
+			input.end = $('#end').val();
+			this.placeList.map(function(obj){
+				if(obj.idx == input.place_idx){
+					input.place_name = obj.name;
 				}
-			}
-		)
+			})
+			this.scheduleService
+			.update(input)
+			.subscribe(
+				data=>{
+					if(data.msg == 'done'){
+						alert('등록되었습니다.');
+						this.router.navigate(['/study/schedule']);
+					}else{
+						alert('오류가 발생했습니다.');
+						this.router.navigate(['/study/schedule']);
+					}
+				}
+			)
+		}else{
+			input.gathering = $('.datepicker').val();
+			input.start = $('#start').val();
+			input.end = $('#end').val();
+			this.placeList.map(function(obj){
+				if(obj.idx == input.place_idx){
+					input.place_name = obj.name;
+				}
+			})
+			this.scheduleService
+			.create(input)
+			.subscribe(
+				data=>{
+					if(data.msg == 'done'){
+						alert('등록되었습니다.');
+						this.router.navigate(['/study/schedule']);
+					}else{
+						alert('오류가 발생했습니다.');
+						this.router.navigate(['/study/schedule']);
+					}
+				}
+			)
+		}
 	}
 }

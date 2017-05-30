@@ -32,6 +32,7 @@ declare var naver : any;
 export class StudySchedule implements OnInit{
 	public title: string;
 	public map: any;
+	public marker: any;
 	public tableState:string = 'close';
 	public schList:Schedule[] = [];
 	public lastSch:Schedule = new Schedule();
@@ -45,7 +46,8 @@ export class StudySchedule implements OnInit{
 		public placeService:PlaceService,
 		public scheduleService:ScheduleService,
 		public router:Router
-	){
+	){}
+	ngOnInit(){
 		this.studyPage.init();
 		this.tempSch = {
 			gathering : new Date(),
@@ -54,8 +56,7 @@ export class StudySchedule implements OnInit{
 			end : '00:00',
 			cost: 0
 		}
-		this.scheduleService
-		.list()
+		this.scheduleService.list()
 		.map(
 			data=>{
 				this.continue = true;
@@ -63,16 +64,16 @@ export class StudySchedule implements OnInit{
 					this.schList = [];
 					this.lastSch = this.tempSch;
 					this.continue = false;
+					this.mapDefault();
 				}else{
-					console.log(this.tempSch);
 					this.schList = data;
 					if(new Date(data[0].gathering) < new Date()){
 						this.lastSch = this.tempSch;
+						this.mapDefault();
 						this.continue = false;
 					}else{
 						this.lastSch = data[0];
 					}
-					
 				}
 				return this.continue;
 			}
@@ -83,22 +84,84 @@ export class StudySchedule implements OnInit{
 						.getStudyPlace(this.lastSch.place_idx)
 						.subscribe((data)=>{
 							this.lastPlc = data;
+							let obj = this;
+							this.map = this.makeMap('map', this.lastPlc.mapy, this.lastPlc.mapx, 11);
+							this.marker = this.makeMarker(this.lastPlc.mapy, this.lastPlc.mapx);
+							let infoWindow = this.makeInfoWindow(this.lastPlc.name);
+
+							naver.maps.Event.addListener(this.marker, "click", function(e) {
+									if (infoWindow.getMap()) {
+											infoWindow.close();
+									} else {
+											infoWindow.open(obj.map, obj.marker);
+									}
+							});
+
+							infoWindow.open(this.map, this.marker);
 					})
 				}else{
 					this.lastPlc.name = '다음 모임을 등록해보세요.';
 				}
 			}
 		);
-
 	}
-	ngOnInit(){
+
+	setSchedule(input){
+		this.scheduleService.getOne(input)
+		.flatMap(
+			data=>{
+				this.lastSch = data;
+				return this.placeService.getStudyPlace(this.lastSch.place_idx)
+			}
+		).subscribe(
+			data=>{
+				this.lastPlc = data;
+				let obj = this;
+				this.map = this.makeMap('map', this.lastPlc.mapy, this.lastPlc.mapx, 11);
+				this.marker = this.makeMarker(this.lastPlc.mapy, this.lastPlc.mapx);
+				let infoWindow = this.makeInfoWindow(this.lastPlc.name);
+
+				naver.maps.Event.addListener(this.marker, "click", function(e) {
+						if (infoWindow.getMap()) {
+								infoWindow.close();
+						} else {
+								infoWindow.open(obj.map, obj.marker);
+						}
+				});
+
+				infoWindow.open(this.map, this.marker);
+			}
+		)
+	}
+	tableOpener(){
+		this.tableState = (this.tableState == 'close') ? 'open' : 'close';
+	}
+	mapDefault(){
 		this.map = new naver.maps.Map('map', {
 			center: new naver.maps.LatLng(37.3595704, 127.105399),
 			zoom: 5
 		});
 	}
-	tableOpener(){
-		this.tableState = (this.tableState == 'close') ? 'open' : 'close';
+	makeMap(map, mapy, mapx, zoomLv:number){
+		return new naver.maps.Map(map, {
+						center: new naver.maps.LatLng(Number(mapy), Number(mapx)),
+						zoom: zoomLv
+					});
+	}
+	makeMarker(mapy, mapx){
+		return new naver.maps.Marker({
+							position: new naver.maps.LatLng(Number(mapy), Number(mapx)),
+							map: this.map
+					});
+	}
+	makeInfoWindow(input){
+		return new naver.maps.InfoWindow({
+						content: `
+							<div class="iw_inner">
+							<h5>${input}</h5>
+							</div>
+							`
+					});
 	}
 
 }

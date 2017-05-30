@@ -51,7 +51,6 @@ export class StudyComponent {
 			.subscribe(
 				data=>{
 					this.studyDetail = data;
-					console.log(data);
 				}
 			)
 		}

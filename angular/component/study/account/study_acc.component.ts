@@ -40,7 +40,7 @@ declare var naver : any;
 })
 export class StudyAcc {
 		public title:string;
-		public accLatest;
+		public accLatest:Account = new Account();
 		public newInfo:Acc_info = new Acc_info();
 		public upUser:Acc_user = new Acc_user();
 		public totalCost:number = 0;

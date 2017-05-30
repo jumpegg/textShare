@@ -19,12 +19,6 @@ const studyRoute: Router = Router();
 studyRoute.get('/map', studyCtrl.map);
 studyRoute.get('/getOne_study', studyCtrl.getStudyInfo);
 
-// schedule
-studyRoute.post('/new_schedule', scheduleCtrl.make);
-studyRoute.get('/list_schedule', scheduleCtrl.list);
-studyRoute.get('/one_schedule/:idx', scheduleCtrl.getSchedule);
-studyRoute.get('/getIndex_schedule', scheduleCtrl.index);
-
 // member
 studyRoute.get('/get_permission', memberCtrl.getPermission);
 studyRoute.get('/new_member', memberCtrl.make);
@@ -34,10 +28,18 @@ studyRoute.get('/is_member', memberCtrl.isMember);
 studyRoute.post('/allow_member', memberCtrl.allow);
 studyRoute.post('/reject_member', memberCtrl.reject);
 
+// schedule
+studyRoute.post('/new_schedule', scheduleCtrl.make);
+studyRoute.post('/update_schedule', scheduleCtrl.update);
+studyRoute.get('/list_schedule', scheduleCtrl.list);
+studyRoute.get('/one_schedule/:idx', scheduleCtrl.getSchedule);
+studyRoute.get('/getIndex_schedule', scheduleCtrl.index);
+
 // account
 studyRoute.post('/new_account', accountCtrl.accMake);
 studyRoute.post('/new_acc_info', accountCtrl.infoMake);
 studyRoute.post('/new_acc_user', accountCtrl.userMake);
+studyRoute.get('/getOne_account/:idx', accountCtrl.accGetOne);
 studyRoute.get('/list_account', accountCtrl.accList);
 studyRoute.get('/list_acc_info/:idx', accountCtrl.infoList);
 studyRoute.get('/list_acc_user/:idx', accountCtrl.userList);
@@ -45,6 +47,7 @@ studyRoute.get('/list_acc_get_last', accountCtrl.accGetLastOne);
 studyRoute.post('/update_account', accountCtrl.accUpdate);
 studyRoute.post('/update_acc_user', accountCtrl.userUpdate);
 studyRoute.get('/delete_acc_info/:idx', accountCtrl.infoDelete);
+studyRoute.get('/delete_acc_user/:idx', accountCtrl.userDelete);
 
 // notice
 studyRoute.post('/new_notice',noticeCtrl.make);

@@ -5,7 +5,7 @@ export class Account{
 	title:string;
 	total_num:number;
 	total_cost:number;
-	gathering:Date;
+	gathering:any;
 	c_date:Date;
 	constructor(){}
 }

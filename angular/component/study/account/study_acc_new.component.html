@@ -3,22 +3,19 @@
 		<li class="titleBox">
 			<i class="material-icons default-icon">edit</i>
 			<div class="input-field">
-				<label for="">TITLE</label>
-				<input type="text" [(ngModel)]="newAccount.title">
+				<input type="text" [(ngModel)]="newAccount.title" placeholder="TITLE">
 			</div>
 		</li>
 		<li class="dateBox">
 			<i class="material-icons default-icon">event</i>
 			<div class="input-field">
-				<label for="">DATE</label>
-				<input type="date" class="datepicker" [(ngModel)]="newAccount.gathering">
+				<input type="date" class="datepicker" [(ngModel)]="newAccount.gathering" placeholder="DATE">
 			</div>
 		</li>
 		<li class="costBox">
 			<i class="material-icons default-icon">account_balance_wallet</i>
 			<div class="input-field cost-field">
-				<label for="">COST</label>
-				<input type="text" [(ngModel)]="allCost">
+				<input type="text" [(ngModel)]="allCost" placeholder="COST">
 			</div>
 			<span>원</span>
 			<button class="btn-flat costBtn" (click)="all_cost()">일괄적용</button>
@@ -43,8 +40,8 @@
 				<div class="member-after">
 					<ul>
 						<li *ngFor="let attendee of attendeeList; let j = index">
-							<input type="checkbox" class="filled-in" id="user{{j}}" checked="checked" [(ngModel)]="attendee.state"/>
-							<label for="user{{j}}">{{attendee.id}}</label>
+							<input type="checkbox" class="filled-in" id="attender{{j}}" checked="checked" [(ngModel)]="attendee.state"/>
+							<label for="attender{{j}}">{{attendee.id}}</label>
 							<div class="attendee-cost">
 								<input type="text" [(ngModel)]="attendee.cost">
 							</div>

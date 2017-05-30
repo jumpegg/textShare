@@ -12,6 +12,7 @@ import { Observable } from 'rxjs/Observable';
 import { UserInfo } from '../global/single_user';
 import { PageInfo } from '../global/single_info';
 import { StudyInfo } from '../global/single_study';
+import { StudyPageInfo } from '../global/single_studypage';
 
 @Injectable()
 export class StudyGuard implements CanActivate{
@@ -22,7 +23,8 @@ export class StudyGuard implements CanActivate{
 		private router: Router,
 		private userInfo:UserInfo,
 		private studyInfo:StudyInfo,
-		private pageInfo:PageInfo
+		private pageInfo:PageInfo,
+		private studyPageInfo:StudyPageInfo
 	){}
 	canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot){
 		return this.studyService.isUserStudy().map(
@@ -39,7 +41,7 @@ export class StudyGuard implements CanActivate{
 	}
 
 	canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean>|boolean{
-		console.log(route.url[0].path);
+		this.studyPageInfo.url = route.url[0].path;
 		if(route.url[0].path == 'index'){
 			return true;
 		}else{

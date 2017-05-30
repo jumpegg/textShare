@@ -1,4 +1,5 @@
 import { Injectable, OnInit } from '@angular/core';
+import { ActivatedRouteSnapshot } from '@angular/router';
 import { StudyInfo } from '../global/single_study';
 
 @Injectable()
@@ -7,11 +8,9 @@ export class StudyPageInfo{
 		public url:string;
 		public title:string = "title test";
 		public need:boolean;
-
+		public geturl:string;
+		
 	init(){
-		let urlList = document.location.hash.split('/');
-		let params = urlList[urlList.length - 1].split('?');
-		this.url = params[0];
 		if(this.url == 'schedule' || this.url == 'scheduleNew' || this.url == 'account' || this.url == 'admin'){
 			this.need = false;
 			this.title = '운영';
@@ -56,7 +55,7 @@ export class StudyPageInfo{
 				}
 			];
 		}else{
-			console.log('else called');
+			// console.log('else called');
 			this.need = true;
 			this.title = this.url.toUpperCase();
 			this.tabList = [
