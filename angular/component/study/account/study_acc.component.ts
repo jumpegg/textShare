@@ -111,6 +111,7 @@ export class StudyAcc {
 		}
 		infoAddOpener(){
 			this.infoState = (this.infoState == 'close') ? 'open' : 'close';
+			this.newInfo = new Acc_info();
 		}
 		infoSubmit(){
 			this.newInfo.acc_idx = this.accLatest.idx;
@@ -135,6 +136,7 @@ export class StudyAcc {
 				)
 		}
 		infoRemove(input){
+			if(confirm('삭제하시겠습니까?')){
 			this.accountService
 				.infoDelete(input)
 				.flatMap(
@@ -155,6 +157,7 @@ export class StudyAcc {
 							})
 							this.resCost =this.accLatest.total_cost - this.totalCost;
 							this.isInfoList = true;
+							alert('삭제되었습니다.');
 						}else{
 							this.totalCost = 0;
 							this.resCost =this.accLatest.total_cost - this.totalCost;
@@ -162,22 +165,33 @@ export class StudyAcc {
 						}
 					}
 				)
+			}
 		}
 		userIsPayUpdate(){
 			let obj = this;
-			this.userList.map(function(input){
-				console.log(input);
-				let upUser = new Acc_user();
-				upUser.idx = input.idx;
-				upUser.is_pay = input.is_pay;
-				obj.accountService
-				.userUpdate(upUser)
-				.subscribe(
-					data =>{
-						console.log(data);
-					}
-				)
-			})
+			let res = true;
+			if(confirm('변경하시겠습니까?')){
+				this.userList.map(function(input){
+					console.log(input);
+					let upUser = new Acc_user();
+					upUser.idx = input.idx;
+					upUser.is_pay = input.is_pay;
+					obj.accountService
+					.userUpdate(upUser)
+					.subscribe(
+						data =>{
+							if(data.msg != 'done'){
+								res = false;
+							}
+						}
+					)
+				})
+				if(res){
+					alert('변경되었습니다.');
+				}else{
+					alert('오류가 발생했습니다.');
+				}
+			}
 		}
 		
 }

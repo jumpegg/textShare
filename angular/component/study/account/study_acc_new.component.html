@@ -41,7 +41,7 @@
 					<ul>
 						<li *ngFor="let attendee of attendeeList; let j = index">
 							<input type="checkbox" class="filled-in" id="attender{{j}}" checked="checked" [(ngModel)]="attendee.state"/>
-							<label for="attender{{j}}">{{attendee.id}}</label>
+							<label class="labelwidth" for="attender{{j}}">{{attendee.id}}</label>
 							<div class="attendee-cost">
 								<input type="text" [(ngModel)]="attendee.cost">
 							</div>

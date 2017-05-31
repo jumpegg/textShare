@@ -91,10 +91,17 @@
 	color: #666666;
 }
 .member-after .attendee-cost{
-	width: 150px;
+	width: 100px;
 	height: 24px;
 	margin-left: 10px;
+	float: right;
 	display: inline-block;
+}
+.labelwidth{
+	width:140px;
+	overflow:hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 .member-after .attendee-cost input{
 	height:24px;

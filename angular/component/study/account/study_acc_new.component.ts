@@ -52,12 +52,17 @@ export class StudyNewAcc {
 			).subscribe(
 				data=>{
 					this.attendeeList = data;
-					this.getAttendeeList = data;
-					console.log(data);
+					this.attendeeList.map(input=>{
+						input.state = false;
+					})
+					this.attendeeList.map(input =>{
+						this.getAttendeeList.push(Object.assign({}, input));
+					})
 				}
 			)
 		}
-		this.memberService.joinerList().subscribe(
+		this.memberService.joinerList()
+		.subscribe(
 			data => {
 				if(data.msg == 'no_res'){
 					this.userList = [];
@@ -66,6 +71,7 @@ export class StudyNewAcc {
 					this.userList.map(function(input){
 						input.state = false;
 					})
+					console.log(this.userList);
 				}
 			}
 		)
@@ -82,14 +88,18 @@ export class StudyNewAcc {
 			input.cost = obj.allCost;
 		})
 	}
+
 	move_to_after(){
 		let obj = this;
 		this.userList.map(function(input){
 			if(input.state){
 				input.state = false;
-				if(!obj.attendeeList.find(x => x.idx === input.idx)){
-					let copy = Object.assign({}, input);
-					obj.attendeeList.push(copy);
+				if(!obj.attendeeList.find(x => x.user_idx === input.user_idx)){
+					let tempUser:Acc_user = new Acc_user();
+					tempUser.user_idx = input.user_idx;
+					tempUser.is_pay = 0;
+					tempUser.id = input.id;
+					obj.attendeeList.push(tempUser);
 				}
 			}
 		})
@@ -111,50 +121,90 @@ export class StudyNewAcc {
 		}
 	}
 	account_update(input){
+		let final = true;
 		input.gathering = $('.datepicker').val();
-		this.accountService.accUpdate(input)
+		this.accountService
+		.accUpdate(input)
 		.subscribe(
 			data => {
 				let obj = this;
+				// 삭제된 리스트를 tempAttendeeList 에 저장
 				if(data.msg == 'done'){
-					this.tempAttendeeList =	
 					this.getAttendeeList.map(item => {
 						let chk = true;
 						this.attendeeList.map(jtem => {
-							if(jtem.idx && (item.idx == jtem.idx)){
-								chk = false;
-							}
+							if(jtem.idx){
+								if(item.idx == jtem.idx){
+									chk = false;
+								}
+							} 
 						})
 						if(chk){
-							return item;
+							this.tempAttendeeList.push(item);
 						}
 					})
 				}
-				console.log(this.tempAttendeeList);
+				// 삭제후 다시 등록한 유저의 경우 idx를 다시 넣어주는 로직
 				this.attendeeList.map(item=>{
+					if(!item.idx){
+						this.getAttendeeList.map(jtem=>{
+							if(item.user_idx == jtem.user_idx){
+								item.idx = jtem.idx;
+							}
+						})
+					}
+				})
+				// attendeeList 에서 idx 의 유무에 따라 
+				// create,update 로직을 수행
+				this.attendeeList.map(item=>{
+					delete item.state;
 					if(item.idx){
 						this.accountService
 						.userUpdate(item)
 						.subscribe(data=>{
-							console.log(data);
+							if(data.msg != 'done'){
+								alert('오류가 발생했습니다.');
+								final = false;	
+							}
 						})
 					}else{
+						item.acc_idx = input.idx;
 						this.accountService
 						.userCreate(item)
 						.subscribe(data=>{
-							console.log(data);
+							if(data.msg != 'done'){
+								alert('오류가 발생했습니다.');
+								final = false;
+							}else{
+							}
 						})
 					}
 				})
-				this.tempAttendeeList.map(temp=>{
-					this.accountService
-					.userDelete(temp.idx)
-					.subscribe(data=>{
-						console.log(data);
+				// tempAttendeeList 는 삭제해야할 유저를 담고있다.
+				// delete 로직을 수행한다.
+				if(this.tempAttendeeList.length != 0){
+					this.tempAttendeeList.map(temp=>{
+						this.accountService
+						.userDelete(temp.idx)
+						.subscribe(data=>{
+							if(data.msg != "done"){
+								alert('오류가 발생했습니다.');
+								final = false;
+							}
+							this.tempAttendeeList = [];
+						})
 					})
-				})
+				}
+				if(final){
+					alert('등록되었습니다.');
+					this.router.navigate(['/study/account']);
+				}else{
+					alert('오류가 발생했습니다.');
+					this.router.navigate(['/study/account']);
+				}
 			}
 		)
+
 	}
 	account_create(input){
 		input.gathering = $('.datepicker').val();

@@ -31,6 +31,8 @@
     "express": "^4.15.2",
     "express-session": "^1.15.1",
     "formidable": "^1.1.1",
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-minify-css": "^1.2.4",
     "jQuery": "^1.7.4",
     "marked": "^0.3.6",
     "materialize-clockpicker": "^1.0.1",

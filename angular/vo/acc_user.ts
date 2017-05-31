@@ -3,6 +3,8 @@ export class Acc_user{
 	user_idx:number;
 	acc_idx:number
 	cost:number;
+	id:string;
 	is_pay:number;
+
 	constructor(){}
 }
