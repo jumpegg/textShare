@@ -7,15 +7,15 @@ import { Router } from '@angular/router';
 import { userRouting } from './userpage.routing';
 
 import { UserpageComponent } from './userpage.component';
-import { UserMyPageComponent } from './mypage/UserMyPage.component';
-import { UserTextBagComponent } from './textBag/UserTextBag.component';
+import { UserMyPageComponent } from './mypage/userMyPage.component';
+import { UserTextBagComponent } from './textBag/userTextBag.component';
 import { UserSTDAdminComponent } from './userStudyAdmin/userSTDAdmin.component';
 import { UserSTDJoinComponent } from './userStudyJoin/userSTDJoin.component';
 import { UserSTDSearchComponent } from './userStudySearch/userSTDSearch.component';
 import { 
 	UserTextShareComponent, 
 	UserTextShareNewComponent
-} from './textShare/UserTextShare.component';
+} from './textShare/userTextShare.component';
 
 @NgModule({
 	imports : [
