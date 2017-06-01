@@ -44,9 +44,6 @@ export class AccountService{
 		return this.http.get('/study/getOne_account/'+input, {headers:this.header})
 			.map(res=>res.json());
 	}
-	memberList(input){
-		
-	}
 
 	accGetLastOne(){
 		return this.http.get('/study/list_acc_get_last', {headers:this.header})

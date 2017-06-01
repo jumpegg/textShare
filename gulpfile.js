@@ -22,22 +22,6 @@ var tsProject = ts.createProject({
 		'types' : ['core-js']
 });
 
-// var tsProject = ts.createProject({
-// 		"target": "es5",
-//     "module": "system",
-// 		'noImplicitAny': false,
-// 		'sourceMap': true,
-// 		'experimentalDecorators': true,
-// 		'emitDecoratorMetadata': true,
-// 	 "moduleResolution": "node",
-//     "removeComments": true,
-//     "declaration": true,
-// 		'typeRoots' : ['../node_modules/@types'],
-// 		'types' : ['core-js']
-// });
-
-
-
 gulp.task('clean_server', function(){
 		return del(['server/*']);
 });

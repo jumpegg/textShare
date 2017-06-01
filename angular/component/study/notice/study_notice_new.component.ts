@@ -43,8 +43,12 @@ export class StudyNewNotice {
 					data=>{
 						if(data.msg == "done"){
 							alert('등록되었습니다.');
-							this.router.navigate(['/study/notice']);
+						}else if(data.msg == "no_permission"){
+							alert('권한이 없습니다.');
+						}else{
+							alert('오류가 발생했습니다.');
 						}
+						this.router.navigate(['/study/notice']);
 					}
 				)
 			}else{
@@ -54,8 +58,12 @@ export class StudyNewNotice {
 					data=>{
 						if(data.msg == "done"){
 							alert('등록되었습니다.');
-							this.router.navigate(['/study/notice']);
+						}else if(data.msg == "no_permission"){
+							alert('권한이 없습니다.');
+						}else{
+							alert('오류가 발생했습니다.');
 						}
+						this.router.navigate(['/study/notice']);
 					}
 				)
 			}

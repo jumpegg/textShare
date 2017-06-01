@@ -18,6 +18,7 @@ const studyRoute: Router = Router();
 // study
 studyRoute.get('/map', studyCtrl.map);
 studyRoute.get('/getOne_study', studyCtrl.getStudyInfo);
+studyRoute.get('/get_auth', studyCtrl.getPermission);
 
 // member
 studyRoute.get('/get_permission', memberCtrl.getPermission);

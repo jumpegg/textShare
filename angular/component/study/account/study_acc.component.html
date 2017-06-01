@@ -119,7 +119,7 @@
 			<tbody>
 				<tr *ngFor="let acc of accList">
 					<td class="text-center date">{{acc.gathering|date:"yyyy-MM-dd"}}</td>
-					<td class="text-center">{{acc.title}}</td>
+					<td class="text-center cursor-p" (click)="getAccOne(acc.idx)">{{acc.title}}</td>
 					<td class="text-center">{{acc.total_num}} 명</td>
 					<td class="text-center">{{acc.total_cost}} 원</td>
 				</tr>

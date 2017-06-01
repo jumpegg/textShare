@@ -10,14 +10,18 @@ export class NoticeCtrl{
 		this.noticeTbl = new Crud('notice');
 	}
 	public make:RequestHandler = (req, res)=>{
-		req.body.study_idx = req.session.studyIdx;
-		req.body.user_idx = req.session.userData.idx;
-		req.body.id = req.session.userData.id;
-		this.noticeTbl
-		.insert(req.body)
-		.go((data)=>{
-			res.json(data);
-		})
+		if(req.session.studyAuth < 5){
+			req.body.study_idx = req.session.studyIdx;
+			req.body.user_idx = req.session.userData.idx;
+			req.body.id = req.session.userData.id;
+			this.noticeTbl
+			.insert(req.body)
+			.go((data)=>{
+				res.json(data);
+			})
+		}else{
+			res.json({msg: 'no_permission'});
+		}
 	}
 
 	public limitFTList:RequestHandler = (req, res)=>{
@@ -62,11 +66,15 @@ export class NoticeCtrl{
 	}
 
 	public update:RequestHandler = (req,res)=>{
-		this.noticeTbl
-		.update(req.body)
-		.go((data)=>{
-			res.json(data);
-		})
+		if(req.session.studyAuth < 5){
+			this.noticeTbl
+			.update(req.body)
+			.go((data)=>{
+				res.json(data);
+			})
+		}else{
+			res.json({msg:"no_permission"});
+		}
 	}
 
 	public delete:RequestHandler = (req,res)=>{

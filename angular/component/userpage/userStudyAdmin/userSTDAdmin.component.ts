@@ -207,11 +207,14 @@ export class UserSTDAdminComponent{
 		this.router.navigate(['/userpage/stdSearch']);
 	}
 	move_study(input){
-		this.studyService.studyEnter(input).subscribe(
-			data => console.log(data)
+		this.studyService
+		.studyEnter(input)
+		.subscribe(
+			data => {
+				this.studyInfo.idx = input;
+				this.router.navigate(['/study']);
+			}
 		)
-		this.studyInfo.idx = input;
-		this.router.navigate(['/study']);
 	}
 	toggleSearcher(){
 		this.placeState = this.placeState == 'open' ? 'close' : 'open';

@@ -29,6 +29,7 @@ import { StudyNewSchedule } from './component/study/schedule/study_schedule_new.
 
 import { AuthGuard } from './guard/auth-guard.service';
 import { StudyGuard } from './guard/study-guard.service';
+import { PermissionGuard } from './guard/permission-guard.service';
 import { UserService } from './service/user.service';
 import { StudyService } from './service/study.service';
 import { MemberService } from './service/member.service';
@@ -42,6 +43,7 @@ const routes: Routes = [
 	{path: 'index', component: IndexComponent},
 	{
 		path: 'userpage', component: UserpageComponent,
+		// path: 'userpage', loadChildren: './component/userpage/userpage.component#LazyModule',
 		canActivate: [AuthGuard],
 		resolve: {
 			userResolve: UserResolve
@@ -51,7 +53,7 @@ const routes: Routes = [
 			canActivateChild: [AuthGuard],
 			children: [
 				{path: '', component: UserSTDAdminComponent},
-				{path: 'mypage', component: UserMyPageComponent},
+				{path: 'mypage', loadChildren: './client/component/userpage/mypage/userMyPage.component#UserMyPageComponent'},
 				{path: 'textShare', component: UserTextShareComponent},
 				{path: 'textShareNew', component: UserTextShareNewComponent},
 				{path: 'textBag', component: UserTextBagComponent},
@@ -75,15 +77,39 @@ const routes: Routes = [
 				{path: 'freetalkUpdate/:idx',component: StudyNewFreetalk},
 				{path: 'freetalkRead/:idx',component: StudyReadFreetalk},
 				{path: 'notice',component: StudyNotice},
-				{path: 'noticeNew',component: StudyNewNotice},
-				{path: 'noticeUpdate/:idx',component: StudyNewNotice},
+				{
+					path: 'noticeNew',
+					canActivate: [PermissionGuard],
+					component: StudyNewNotice
+				},
+				{
+					path: 'noticeUpdate/:idx',
+					canActivate: [PermissionGuard] ,
+					component: StudyNewNotice
+				},
 				{path: 'noticeRead/:idx',component: StudyReadNotice},
 				{path: 'schedule',component: StudySchedule},
-				{path: 'scheduleNew',component: StudyNewSchedule},
-				{path: 'scheduleUpdate/:idx',component: StudyNewSchedule},
+				{
+					path: 'scheduleNew',
+					canActivate: [PermissionGuard],
+					component: StudyNewSchedule
+				},
+				{
+					path: 'scheduleUpdate/:idx',
+					canActivate: [PermissionGuard],
+					component: StudyNewSchedule
+				},
 				{path: 'account',component: StudyAcc},
-				{path: 'accountNew',component: StudyNewAcc},
-				{path: 'accountUpdate/:idx',component: StudyNewAcc},
+				{
+					path: 'accountNew',
+					canActivate: [PermissionGuard],
+					component: StudyNewAcc
+				},
+				{
+					path: 'accountUpdate/:idx',
+					canActivate: [PermissionGuard],
+					component: StudyNewAcc
+				},
 				{path: 'admin',component: StudyAdmin},
 				{path: 'flow',component: StudyFlow},
 				{path: 'data',component: StudyData},
@@ -97,7 +123,10 @@ const routes: Routes = [
 	imports: [RouterModule.forRoot(routes, {useHash:true})],
 	// imports: [RouterModule.forRoot(routes)],
 	exports: [RouterModule],
-	providers: [AuthGuard, StudyGuard, UserService, UserResolve, StudyService, MemberService]
+	providers: [
+		AuthGuard, StudyGuard, PermissionGuard, 
+		UserService, UserResolve, StudyService, MemberService
+	]
 })
 export class AppRoutingModule {
 	constructor(){

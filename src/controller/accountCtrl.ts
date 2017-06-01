@@ -15,6 +15,7 @@ export class AccountCtrl{
 	}
 	// create row
 	public accMake:RequestHandler = (req, res)=>{
+		req.body.study_idx = req.session.studyIdx;
 		this.accountTbl
 			.insert(req.body)
 			.go((data)=>{
@@ -39,7 +40,7 @@ export class AccountCtrl{
 	public accList:RequestHandler = (req, res)=>{
 		this.accountTbl
 			.selectList({study_idx : req.session.studyIdx})
-			.order({idx : 'desc'})
+			.order({gathering : 'desc'})
 			.limit(5)
 			.go((data)=>{
 				res.json(data);
@@ -92,7 +93,7 @@ export class AccountCtrl{
 	public accGetLastOne:RequestHandler = (req, res)=>{
 		this.accountTbl
 			.selectList({study_idx : req.session.studyIdx})
-			.order({idx : 'desc'})
+			.order({gathering : 'desc'})
 			.limit(1)
 			.go((data)=>{
 				res.json(data);

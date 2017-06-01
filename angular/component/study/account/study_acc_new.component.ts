@@ -80,6 +80,7 @@ export class StudyNewAcc {
 			selectYears: 17,
 			format: 'yyyy-mm-dd'
 		});
+		console.log(this.newAccount);
 	}
 	all_cost(){
 		let obj = this;
@@ -103,6 +104,7 @@ export class StudyNewAcc {
 				}
 			}
 		})
+		console.log(this.attendeeList);
 	}
 	move_to_before(){
 		let tempArr = [];
@@ -122,6 +124,11 @@ export class StudyNewAcc {
 	}
 	account_update(input){
 		let final = true;
+		let total_cost = 0;
+		this.attendeeList.map(item => {
+			total_cost += Number(item.cost);
+		})
+		input.total_cost = total_cost;
 		input.gathering = $('.datepicker').val();
 		this.accountService
 		.accUpdate(input)
@@ -134,7 +141,7 @@ export class StudyNewAcc {
 						let chk = true;
 						this.attendeeList.map(jtem => {
 							if(jtem.idx){
-								if(item.idx == jtem.idx){
+								if(item.user_idx == jtem.user_idx){
 									chk = false;
 								}
 							} 
@@ -208,7 +215,6 @@ export class StudyNewAcc {
 	}
 	account_create(input){
 		input.gathering = $('.datepicker').val();
-		input.study_idx = this.studyInfo.idx;
 		this.accountService
 		.accCreate(input)
 		.flatMap(
@@ -225,12 +231,9 @@ export class StudyNewAcc {
 				let total_cost:number = 0;
 				this.attendeeList.map(function(input){
 					delete input.state;
-					userTemp.is_pay = 0;
-					userTemp.user_idx = input.user_idx;
-					userTemp.acc_idx = data[0].idx;
-					userTemp.cost = input.cost;
+					input.acc_idx = data[0].idx;
 					total_cost += Number(input.cost);
-					obj.accountService.userCreate(userTemp).subscribe(
+					obj.accountService.userCreate(input).subscribe(
 						data=>{
 							console.log(data);
 						}
@@ -240,12 +243,18 @@ export class StudyNewAcc {
 				accountTemp.idx = data[0].idx;
 				accountTemp.total_cost = total_cost;
 				accountTemp.total_num = this.attendeeList.length;
-				console.log(accountTemp);
 				return this.accountService.accUpdate(accountTemp);
 			}
 		).subscribe(
 			data=>{
 				console.log(data);
+				if(data.msg == "done"){
+					alert('등록되었습니다.');
+					this.router.navigate(['/study/account']);
+				}else{
+					alert('오류가 발생했습니다.');
+					this.router.navigate(['/study/account']);
+				}
 			}
 		)
 	}

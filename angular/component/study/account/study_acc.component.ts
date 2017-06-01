@@ -106,6 +106,52 @@ export class StudyAcc {
 				}
 			)
 		}
+		getAccOne(input){
+			this.accountService.accGetOne(input)
+			.flatMap(
+				data=>{
+					if(!data.msg){
+						this.accLatest = data;
+						this.isAccLatest = true;
+					}else{
+						this.isAccLatest = false;
+					}
+					return this.accountService.userList(this.accLatest.idx);
+				}
+			)
+			.flatMap(
+				data=>{
+					if(!data.msg){
+						this.userList = data;
+						this.userList.map(function(input){
+							input.is_pay = input.is_pay == "true";
+						})
+						this.isUserList = true;
+					}else{
+						this.isUserList = false;
+					}
+					return this.accountService.infoList(this.accLatest.idx);
+				}
+			)
+			.subscribe(
+				data=>{
+					this.infoList = [];
+					this.totalCost = 0;
+					if(!data.msg){
+						let obj = this;
+						this.infoList = data;
+						this.infoList.map(function(input){
+							obj.totalCost += Number(input.cost);
+						})
+						this.resCost = this.accLatest.total_cost - this.totalCost;
+						this.isInfoList = true;
+					}else{
+						this.resCost = this.accLatest.total_cost;
+						this.isInfoList = false;
+					}
+				}
+			)
+		}
 		tableOpener(){
 			this.tableState = (this.tableState == 'close') ? 'open' : 'close';
 		}

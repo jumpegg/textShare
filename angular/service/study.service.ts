@@ -24,6 +24,7 @@ export class StudyService{
 		return this.http.get('/user/study_enter/'+input, {headers:this.header})
 			.map(res=>res.json());
 	}
+	
 	studySet(){
 		return this.http.get('/user/study_set', {headers:this.header})
 			.map(res=>res.json());
@@ -73,5 +74,8 @@ export class StudyService{
 		return this.http.get('/study/getOne_study', {headers:this.header})
 			.map(res => res.json());
 	}
-
+	studyPermissionChk(){
+		return this.http.get('/study/get_auth', {headers:this.header})
+			.map(res => res.json());
+	}
 }

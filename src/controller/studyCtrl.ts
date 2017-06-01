@@ -16,17 +16,28 @@ export class StudyCtrl{
 	public studyEnter: RequestHandler = (req, res) => {
 		if(req.session.login){
 			req.session.studyIdx = req.params.idx;
-			res.send(true);
+			this.memberTbl
+			.selectOne({
+				study_idx : req.session.studyIdx,
+				user_idx : req.session.userData.idx
+			}).go(data=>{
+				req.session.studyAuth = data[0].permission;
+				res.send(true);
+			})
 		}else{
 			res.send(false);
 		}
+	}
+	public getPermission: RequestHandler = (req,res) =>{
+		res.json({msg: req.session.studyAuth});
 	}
 	public studyExit: RequestHandler = (req, res) => {
 
 	}
 	public isUserStudy: RequestHandler = (req, res) => {
 		if(req.session.studyIdx && req.session.userData.idx){
-			res.json(req.session);
+			// res.json(req.session);
+			res.json(true);
 		}else{
 			res.json(false);
 		}
