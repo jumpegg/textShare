@@ -44,6 +44,7 @@ const routes: Routes = [
 	{
 		path: 'userpage', component: UserpageComponent,
 		// path: 'userpage', loadChildren: './component/userpage/userpage.component#LazyModule',
+		// lazy branch test;
 		canActivate: [AuthGuard],
 		resolve: {
 			userResolve: UserResolve
