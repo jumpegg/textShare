@@ -21,8 +21,15 @@ export class StudyCtrl{
 				study_idx : req.session.studyIdx,
 				user_idx : req.session.userData.idx
 			}).go(data=>{
-				req.session.studyAuth = data[0].permission;
-				res.send(true);
+				if(!data.msg){
+					req.session.studyAuth = data[0].permission;
+					res.send(true);
+				}else if(data.msg == 'no_res'){
+					req.session.studyAuth = 13;
+					res.send(true);
+				}else{
+					console.log('error studyCtrl.studyEnter');
+				}
 			})
 		}else{
 			res.send(false);

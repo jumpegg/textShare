@@ -8,7 +8,7 @@ import {UserInfo} from '../../../global/single_user';
 export class UserTextBagComponent{
 	private title:string;
 	constructor(public page:PageInfo,public userInfo:UserInfo){
-		this.title = "this is textBag";
+		this.title = "준비중 입니다";
 	}
 	ngOnInit(){
 		this.page.init();
