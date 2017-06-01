@@ -10,12 +10,18 @@ export class PlaceCtrl{
 		this.placeTbl = new Crud('s_place');
 	}
 	public make:RequestHandler = (req, res) => {
+		req.body.use = 1;
 		this.placeTbl.insert(req.body).go((data) => {
 			res.json(data);
 		});
 	}
 	public placeList:RequestHandler = (req, res) => {
-		this.placeTbl.selectList({study_idx : req.params.idx}).go((data) => {
+		this.placeTbl
+		.selectList({
+			study_idx : req.params.idx,
+			able : 1
+		})
+		.go((data) => {
 			res.json(data);
 		});
 	}
@@ -30,7 +36,11 @@ export class PlaceCtrl{
 		});
 	}
 	public placeRemove:RequestHandler = (req, res) => {
-		this.placeTbl.delete(req.params.idx).go((data) => {
+		this.placeTbl
+		.update({
+			idx : req.params.idx,
+			able : 0
+		}).go(data=>{
 			res.json(data);
 		})
 	}

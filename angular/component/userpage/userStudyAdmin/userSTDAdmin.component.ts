@@ -80,7 +80,6 @@ export class UserSTDAdminComponent{
 		this.study_admin_list();
 		this.study_join_list();
 	}
-
 	ngOnInit(){
 		this.page.init();
 		let objSave = this;
@@ -109,7 +108,6 @@ export class UserSTDAdminComponent{
 			center: new naver.maps.LatLng(37.3595704, 127.105399),
 			zoom: 11
 		});
-
 	}
 	study_create(getStudy, getPlace){
 		getStudy.admin = this.userInfo.idx;
@@ -119,7 +117,6 @@ export class UserSTDAdminComponent{
 		}
 		this.studyService.studyNew(input).subscribe(
 			data =>{
-				console.log(data.msg);
 				(data.msg == 'done') ? alert('등록되었습니다.') : alert('등록중 문제가 생겼습니다.')
 				this.close_new_modal();
 				this.study_admin_list();
@@ -160,10 +157,8 @@ export class UserSTDAdminComponent{
 		.studyJoinList()
 		.subscribe(
 			data=>{
-				console.log(data);
 				if(!data.msg){
 					this.joinList = data;
-					console.log(this.joinList.length);
 				}else{
 					this.joinList = [];
 				}
@@ -175,6 +170,10 @@ export class UserSTDAdminComponent{
 	}
 	open_modi_modal(input){
 		$('#modiStudy').modal('open');
+		this.getStudyOne(input);
+		this.getPlaceList(input);
+	}
+	getStudyOne(input){
 		this.studyService.studyOne(input).subscribe(
 			data => {
 				this.tempStudy = {
@@ -186,6 +185,8 @@ export class UserSTDAdminComponent{
 				}
 			}
 		)
+	}
+	getPlaceList(input){
 		this.placeService.getPlaceList(input).subscribe(
 			data => {
 				if(data.msg != 'no_res'){
@@ -327,18 +328,21 @@ export class UserSTDAdminComponent{
 		}
 	}
 	place_remove(input, num){
-		console.log(input);
 		if(input.idx){
 			this.placeService.placeRemove(input.idx).subscribe(
 				data => {
 					if(data.msg != 'done'){
-						console.log(data);
 						alert('서버 오류가 생겼습니다.');
+					}else{
+						alert('삭제되었습니다.');
+						this.getPlaceList(this.tempStudy.idx);
 					}
 				}
 			)
+		}else{
+			this.placeList.splice(num, 1);
 		}
-		this.placeList.splice(num, 1);
+		
 	}
 	// showPlaceInfo(input){
 	// 	console.log(input);
@@ -366,10 +370,5 @@ export class UserSTDAdminComponent{
 			
 	// }
 
-	doPromise(input:any){
-		return new Promise(function(resolve, reject){
-			resolve(input);
-		});
-	}
 
 }

@@ -15,33 +15,6 @@ import { Vali } from './global/single_vali';
 import { AppComponent } from './app.component';
 import { IndexComponent } from './component/index/index.component';
 
-import { UserpageComponent } from './component/userpage/userpage.component';
-import { UserMyPageComponent } from './component/userpage/mypage/userMyPage.component';
-import { UserTextShareComponent, UserTextShareNewComponent } from './component/userpage/textShare/userTextShare.component';
-import { UserTextBagComponent} from './component/userpage/textBag/userTextBag.component';
-import { UserSTDJoinComponent } from './component/userpage/userStudyJoin/userSTDJoin.component';
-import { UserSTDAdminComponent } from './component/userpage/userStudyAdmin/userSTDAdmin.component';
-import { UserSTDSearchComponent } from './component/userpage/userStudySearch/userSTDSearch.component';
-
-// import { UserModule } from './user.module';
-
-import { StudyComponent } from './component/study/study.component';
-import { StudyIndex } from './component/study/index/study_index.component';
-import { StudyAcc } from './component/study/account/study_acc.component';
-import { StudyNewAcc } from './component/study/account/study_acc_new.component';
-import { StudyAdmin } from './component/study/admin/study_admin.component';
-import { StudyFlow } from './component/study/flow/study_flow.component';
-import { StudyFreetalk } from './component/study/freetalk/study_freetalk.component';
-import { StudyNewFreetalk } from './component/study/freetalk/study_freetalk_new.component';
-import { StudyReadFreetalk } from './component/study/freetalk/study_freetalk_read.component';
-import { StudyNotice } from './component/study/notice/study_notice.component';
-import { StudyNewNotice } from './component/study/notice/study_notice_new.component';
-import { StudyReadNotice } from './component/study/notice/study_notice_read.component';
-import { StudyData } from './component/study/studydata/study_studydata.component';
-import { StudyNewData } from './component/study/studydata/study_studydata_new.component';
-import { StudySchedule } from './component/study/schedule/study_schedule.component';
-import { StudyNewSchedule } from './component/study/schedule/study_schedule_new.component';
-
 import { MyDatePickerModule } from 'mydatepicker';
 
 import { AppRoutingModule } from './app.routing';
@@ -59,28 +32,7 @@ import { AppRoutingModule } from './app.routing';
 	],
 	declarations: [
 		AppComponent,
-		IndexComponent,
-
-		UserpageComponent,
-		UserMyPageComponent,
-		UserTextShareComponent,
-		UserTextShareNewComponent,
-		UserTextBagComponent,
-		UserSTDJoinComponent,
-		UserSTDAdminComponent,
-		UserSTDSearchComponent,   
-
-		StudyComponent,
-		StudyIndex,
-		StudyAcc, StudyNewAcc,
-		StudyAdmin,
-		StudyFlow,
-		StudyFreetalk, StudyNewFreetalk,StudyReadFreetalk,
-		StudyNotice, StudyNewNotice, StudyReadNotice,
-		StudyData, 
-		StudyNewData,
-		StudySchedule, 
-		StudyNewSchedule
+		IndexComponent, 
 	],
 	providers:[
 		PageInfo,
@@ -94,7 +46,5 @@ import { AppRoutingModule } from './app.routing';
 	]
 })
 export class AppModule{
-		constructor(router: Router){
-
-		}
+		constructor(router: Router){}
 }
