@@ -42,7 +42,6 @@ export class StudyNewAcc {
 			.accGetOne(this.idx)
 			.flatMap(
 				data=>{
-					console.log(data);
 					this.newAccount = data;
 					let dateTemp = new Date(data.gathering).toLocaleDateString();
 					let dateA = dateTemp.replace(/. /g,'-').replace('.','');
@@ -80,12 +79,10 @@ export class StudyNewAcc {
 			selectYears: 17,
 			format: 'yyyy-mm-dd'
 		});
-		console.log(this.newAccount);
 	}
 	all_cost(){
 		let obj = this;
 		this.attendeeList.map(function(input){
-			console.log(input);
 			input.cost = obj.allCost;
 		})
 	}
@@ -104,7 +101,6 @@ export class StudyNewAcc {
 				}
 			}
 		})
-		console.log(this.attendeeList);
 	}
 	move_to_before(){
 		let tempArr = [];

@@ -11,15 +11,13 @@
 	<script src="client/systemjs.config.js"></script>
 	<script src="public/jquery-3.1.1.min.js"></script>
 	
-	<!--<link rel="stylesheet" type="text/css" href="public/bootstrap/css/bootstrap.min.css">-->
 	<link rel="stylesheet" type="text/css" href="public/css/reset.css">
 	<link rel="stylesheet" type="text/css" href="public/Material/css/materialize.min.css">
 	<link href="../node_modules/@angular/material/prebuilt-themes/indigo-pink.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="public/jquery.scrollbar.css">
+	<!--<link rel="stylesheet" type="text/css" href="public/jquery.scrollbar.css">-->
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<!--<script src="public/bootstrap/js/bootstrap.min.js"></script>-->
 	<script src="public/Material/js/materialize.min.js"></script>
-	<script src="public/jquery.scrollbar.min.js"></script>
+	<!--<script src="public/jquery.scrollbar.min.js"></script>-->
 	
 	<script src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=4YTa1awkt2vPfKrRToJ0&submodules=geocoder"></script>
 	<script src="public/js/materialize.clockpicker.js"></script>
@@ -36,11 +34,29 @@
 			min-width: 1200px;
 		}
 		#sidenav-overlay{
-			/*display: none;*/
 			background: none;
 		}
 		.drag-target{
 			display: none;
+		}
+
+		.content-view .text-output .converter ul li,
+		.help-box .code ul li{
+			list-style: disc outside none !important;
+		}
+		.content-view .text-output .converter ol li,
+		.help-box .code ol li{
+			list-style: decimal outside none !important;
+		}
+		.content-view .text-output .converter li,
+		.help-box .code li{
+			margin-left: 20px;
+		}
+		.content-view .text-output .converter pre{
+			padding: 10px;
+			background-color: #EEEEEE;
+			border-radius: 3px;
+			font-weight: 600;
 		}
 
 		input[type=text]:focus, 
@@ -87,9 +103,6 @@
 		.cursor-p{
 			cursor:pointer;
 		}
-		.forTextShareScroll > div{
-			height: 650px !important;
-		}
 		.iw_inner{
 			padding: 20px;
 		}
@@ -116,8 +129,10 @@
 			font-weight: bold;
 			margin: 0px;
 		}
-
-
+		
+		.margin-b0{
+			margin-bottom: 0px;
+		}
 		.menu-list li{
 			display: inline !important;
 		}

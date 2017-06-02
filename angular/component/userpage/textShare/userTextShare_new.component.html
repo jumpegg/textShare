@@ -1,26 +1,102 @@
 <div class="container">
 	<div class="row">
 		<div class="col s6 insert-area">
-			<input type="text" class="ts-title" [(ngModel)]="tshare.title">
-			<div class="area-wrapper forTextShareScroll">
-				<div class="scrollbar-outer">
-					<textarea tabindex="-1" (keyup)="converter()" [(ngModel)]="beforeCon"></textarea>
-				</div>
+			<input type="text" class="ts-title" [(ngModel)]="tshare.title" placeholder="제목(3~20자 이내)" #tsTitle="ngModel" required minlength="3" maxlength="20">
+			<div class="area-wrapper">
+				<textarea tabindex="-1"(keydown)="tabcancle($event)" (keyup)="converter()" [(ngModel)]="beforeCon" resize="none" #tsContent="ngModel" required></textarea>
 			</div>
 		</div>
 		<div class="col s6 content-view">
-			<select name="folder" class="ts-folder browser-default" [(ngModel)]="tshare.folder_idx">
+			<select name="folder" class="ts-folder browser-default" (change)="selectChange($event)">
+				<option value="" disabled selected>폴더 선택하기</option>
 				<option *ngFor="let folder of folderList" value="{{folder.idx}}">{{folder.name}}</option>
 			</select>
-			<button class="waves-effect waves-light btn-flat ts-submit" (click)="newTShare()">등록</button>
-			<div class="text-output forTextShareScroll">
-				<div class="scrollbar-outer">
-					<div class="converter" [innerHTML]="converted"></div>
-				</div>
+			<div class="btnBox">
+				<button class="waves-effect waves-light btn-flat ts-submit" (click)="newTShare({
+					isTitle : tsTitle.valid,
+					isContent : tsContent.valid
+				})">저장</button>
+				<button class="btn-flat ts-help" (click)="helpToggle()">
+					사용법
+				</button>
+			</div>
+			<div class="text-output">
+				<div class="converter" [innerHTML]="converted"></div>
 			</div>
 		</div>
 	</div>
-	<div class="row header-area">
-		
+</div>
+<div class="help-box card-panel" [@helpToggle]="helpState">
+	<div class="help-title">
+		TextShare 사용법
+	</div>
+	<div class="help-content">
+		<div class="help-con-wrap">
+			<p>TextShare 는 기본적으로</p>
+			<p>markdown 문법을 사용합니다.</p>
+			<h6>Header 사용법</h6>
+			<p> # 은 header 태그를 사용할때 씁니다.</p>
+			<p class="label">입력</p>
+			<div class="code">
+				# H1 <br>## H2 <br>### H3 <br>#### H4 <br>##### H5 <br>###### H6 <br>
+			</div>
+			<p class="label">결과</p>
+			<div class="code">
+				<h1>H1</h1>
+				<h2>H2</h2>
+				<h3>H3</h3>
+				<h4>H4</h4>
+				<h5>H5</h5>
+				<h6>H6</h6>
+			</div>
+
+			<h6>BlockQuote 사용법</h6>
+			<p> > 은 BlockQuote 태그를 사용할때 씁니다.</p>
+			<p class="label">입력</p>
+			<div class="code">
+				> test1
+			</div>
+			<p class="label">결과</p>
+			<div class="code">
+				<blockquote>
+					test1
+				</blockquote>
+			</div>
+
+			<h6>목록 사용법</h6>
+			<p> * 은 순서가 없는 목록을 사용할때 씁니다.</p>
+			<p class="label">입력</p>
+			<div class="code">
+				* test1 <br>
+				* test2 <br>
+				* test3 <br>
+
+			</div>
+			<p class="label">결과</p>
+			<div class="code">
+				<ul>
+					<li>test1</li>
+					<li>test2</li>
+					<li>test3</li>
+				</ul>
+			</div>
+
+			<p> 숫자. 은 순서가 있는 목록을 사용할때 씁니다.</p>
+			<p class="label">입력</p>
+			<div class="code">
+				1. test1 <br>
+				2. test2 <br>
+				3. test3 <br>
+
+			</div>
+			<p class="label">결과</p>
+			<div class="code">
+				<ol>
+					<li>test1</li>
+					<li>test2</li>
+					<li>test3</li>
+				</ol>
+			</div>
+		</div>
 	</div>
 </div>

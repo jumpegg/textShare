@@ -1,6 +1,8 @@
 import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
 import { trigger, state, style, animate, transition } from '@angular/animations';
+import 'rxjs/add/operator/mergeMap';
+
 import { StudyService } from '../../../service/study.service';
 import { AccountService } from '../../../service/account.service';
 import { StudyPageInfo } from '../../../global/single_studypage';

@@ -11,7 +11,6 @@ export class TextShareCtrl{
 	}
 	public make:RequestHandler = (req, res) => {
 		this.tsharetbl.insert(req.body).go((data) => {
-			console.log(data);
 			res.json(data);
 		});
 	}

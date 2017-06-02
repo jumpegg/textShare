@@ -3,10 +3,10 @@ import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators, FormBuilder} from '@angular/forms';
 import {trigger, state, style, animate, transition} from '@angular/animations';
 import * as marked from 'marked';
+import 'rxjs/add/operator/mergeMap';
 
 import {PageInfo} from '../../../global/single_info';
 import {UserInfo} from '../../../global/single_user';
-
 import {TextShare} from '../../../vo/textshare';
 import {Folder} from '../../../vo/folder';
 
@@ -67,7 +67,6 @@ export class UserTextShareComponent implements OnInit{
 	}
 	ngOnInit(){
 		let tempFolder = new Folder();
-		$('.scrollbar-outer').scrollbar();
 		this.page.init();
 		this.makeTree();
 	}
@@ -83,18 +82,23 @@ export class UserTextShareComponent implements OnInit{
 	}
 	newFolder(){
 		this.folderVo.user_idx = this.userInfo.idx;
-		this.folderService.folderInsert(this.folderVo).subscribe(
-			data => {
-				if(data.msg == 'done'){
-					this.makeTree();
-				}else{
-					alert('폴더 생성중 에러발생');
+		
+		if(!this.folderVo.name){
+			this.folderService.folderInsert(this.folderVo).subscribe(
+				data => {
+					if(data.msg == 'done'){
+						this.makeTree();
+					}else{
+						alert('폴더 생성중 에러발생');
+					}
+				},
+				error => {
+					console.log(error);
 				}
-			},
-			error => {
-				console.log(error);
-			}
-		)
+			)
+		}else{
+			alert("폴더명을 입력해주세요");
+		}
 	}
 	contentShow(input){
 		this.textShareService.tsRead(input.itemIdx).subscribe(
@@ -107,46 +111,32 @@ export class UserTextShareComponent implements OnInit{
 	}
 	makeTree(){
 		this.folders = [];
-		this.doPromise(this)
-		.then(function(param:UserTextShareComponent){
-			param.folderService.folderList().subscribe(
-				data => {
-					for(let i=0; i<data.length; i++){
-						param.folders.push({
-							idx : data[i].idx,
-							name : data[i].name,
-							items : [],
-							state : 'close'
-						});
-					}
-				},
-				error => console.log(error)
-			)
-			return param;
-		})
-		.then(function(param:UserTextShareComponent){
-			param.folderService.folderTreeList().subscribe(
-				data => {
-					for(let i=0; i < param.folders.length; i++){
-						for(let j=0; j<data.length; j++){
-							if(param.folders[i].idx == data[j].folder_idx){
-								param.folders[i].items.push({
-									itemName : data[j].title,
-									itemIdx : data[j].idx,
-									itemState : 'deactive'
-								});
-							}
+		this.folderService
+		.folderList()
+		.flatMap(
+			data => {
+				this.folders = data;
+				this.folders.map(folder=>{
+					folder.items = [];
+					folder.state = 'close';
+				})
+				return this.folderService.folderTreeList()
+			}
+		).subscribe(
+			data => {
+				this.folders.map(folder=>{
+					data.map(item=>{
+						if(folder.idx == item.folder_idx){
+							folder.items.push({
+								itemName : item.title,
+								itemIdx : item.idx,
+								itemState : 'deactive'
+							});
 						}
-					}
-				},
-				error => console.log(error)
-			)
-		})
-	}
-	doPromise(input:UserTextShareComponent){
-		return new Promise(function(resolve, reject){
-			resolve(input);
-		});
+					})
+				})
+			}
+		)
 	}
 
 }
@@ -154,13 +144,25 @@ export class UserTextShareComponent implements OnInit{
 @Component({
 	styleUrls: ['client/component/userpage/textShare/userTextShare_new.component.css'],
 	templateUrl: 'client/component/userpage/textShare/userTextShare_new.component.html',
-	providers: [FolderService, TextShareService]
+	providers: [FolderService, TextShareService],
+	animations: [
+		trigger('helpToggle',[
+			state('close', style({
+			})),
+			state('open',style({
+				marginRight: '0px'
+			})),
+			transition('open => close', animate('300ms ease-in')),
+			transition('close => open', animate('300ms ease-out'))
+		]),
+	]
 })
 export class UserTextShareNewComponent implements OnInit{
 	public tshare:TextShare;
 	public converted:any;
 	public beforeCon:any;
 	public folderList:Array<any>;
+	public helpState:string = 'close';
 
 	constructor(public page:PageInfo,public userInfo:UserInfo, public tshareService:TextShareService, public folderService:FolderService, public router:Router){
 		this.tshare = new TextShare();
@@ -178,7 +180,6 @@ export class UserTextShareNewComponent implements OnInit{
 	}
 
 	ngOnInit(){
-		$('.scrollbar-outer').scrollbar();
 		this.page.init();
 		$('select').material_select();
 		this.folderService.folderList().subscribe(
@@ -190,25 +191,52 @@ export class UserTextShareNewComponent implements OnInit{
 			}
 		);
 	}
+	helpToggle(){
+		this.helpState = (this.helpState == 'close') ? 'open' : 'close';
+	}
+	tabcancle(input){
+		console.log(input.keyCode);
+		if(input.keyCode == 9){
+			this.beforeCon += "\t";
+			if(input.preventDefault){
+				input.preventDefault();
+			}
+			return false;
+		}
+	}
+	selectChange(input){
+		this.tshare.folder_idx = input.target.value;
+	}
 	converter(){
 		if(this.beforeCon != ""){
 			this.converted = marked(this.beforeCon);
 		}
 	}
-	newTShare(){
-		this.tshare.content = encodeURI(this.beforeCon);
-		this.tshareService.tsInsert(this.tshare).subscribe(
-			data => {
-				console.log(data);
-				if(data.msg == "done"){
-					alert("등록되었습니다.");
-					this.router.navigate(['/userpage/textShare']);
+	newTShare(input){
+		let isTrue = true;
+		if(!this.tshare.folder_idx){
+			alert('폴더를 선택해주세요');
+		}
+		Object.keys(input).map(key=>{
+			isTrue = isTrue && input[key];
+		});
+		if(isTrue){
+			this.tshare.content = encodeURI(this.beforeCon);
+			this.tshareService.tsInsert(this.tshare).subscribe(
+				data => {
+					console.log(data);
+					if(data.msg == "done"){
+						alert("등록되었습니다.");
+						this.router.navigate(['/userpage/textShare']);
+					}
+				},
+				error => {
+					console.log(error);
 				}
-			},
-			error => {
-				console.log(error);
-			}
-		)
+			)
+		}else{
+			alert('올바른 값을 입력해주세요');
+		}
 	}
 }
 

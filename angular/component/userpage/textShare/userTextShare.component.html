@@ -1,4 +1,3 @@
-
 <div class="container">
 	<div class="row header-area">
 		<div class="nameWrapper" [@nameToggle]="aniStateVal">
@@ -10,27 +9,23 @@
 		<button class="btn-flat" (click)="stateChange()">폴더생성</button>
 		<a routerLink="../textShareNew" class="waves-effect waves-light btn-flat">새 글작성</a>
 	</div>
-	<div class="row">
+	<div class="row margin-b0">
 		<div class="col s4 list-tree">
-			<div class="tree-wrapper forTextShareScroll">
-				<div class="scrollbar-outer">
-					<ul>
-						<li class="folder" *ngFor="let folder of folders"><p [ngClass]="{'open':folder.state == 'open', 'close':folder.state == 'close'}" (click)="folderToggle(folder)"> {{folder.name}}</p>
-							<ul [@folderToggle]="folder.state">
-								<li *ngFor="let item of folder.items" [ngClass]="{'active':item.itemState == 'active'}" (click)="contentShow(item)">
-									{{item.itemName}}
-								</li>
-							</ul>
-						</li>
-					</ul>
-				</div>
+			<div class="tree-wrapper">
+				<ul class="tree-scroll">
+					<li class="folder" *ngFor="let folder of folders"><p [ngClass]="{'open':folder.state == 'open', 'close':folder.state == 'close'}" (click)="folderToggle(folder)"> {{folder.name}}</p>
+						<ul [@folderToggle]="folder.state">
+							<li *ngFor="let item of folder.items" [ngClass]="{'active':item.itemState == 'active'}" (click)="contentShow(item)">
+								{{item.itemName}}
+							</li>
+						</ul>
+					</li>
+				</ul>
 			</div>
 		</div>
 		<div class="col s8 content-view">
-			<div class="text-output forTextShareScroll">
-				<div class="scrollbar-outer">
-					<div class="show-area" [innerHTML]="content"></div>
-				</div>
+			<div class="text-output">
+				<div class="show-area" [innerHTML]="content"></div>
 			</div>
 		</div>
 	</div>
