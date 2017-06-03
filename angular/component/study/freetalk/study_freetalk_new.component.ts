@@ -35,6 +35,21 @@ export class StudyNewFreetalk {
 			}
 	}
 	freetalkSubmit(input){
+		if(!input.title){
+			alert('제목을 입력해주세요');
+		}else if(input.title.trim().length == 0){
+			alert('제목을 입력해주세요');
+		}else if(input.title.trim().length > 30){
+			alert('제목의 길이는 30자 이하로 정해주세요');
+		}else if(!input.content){
+			alert('내용을 입력해주세요');
+		}else if(input.content.trim().length == 0){
+			alert('내용을 입력해주세요');
+		}else{
+			this.freetalkCreate(input);
+		}
+	}
+	freetalkCreate(input){
 		if(input.idx){
 			this.freetalkService
 			.update(input)

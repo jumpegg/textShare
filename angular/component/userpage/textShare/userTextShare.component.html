@@ -3,7 +3,7 @@
 		<div class="nameWrapper" [@nameToggle]="aniStateVal">
 			<div class="nameBox">
 				<input type="text" name="foldername" class='foldername' placeholder="폴더이름" [(ngModel)] = "folderVo.name">
-				<button class="btn-flat" (click)="newFolder()">등록</button>
+				<button class="btn-flat" (click)="newFolder_submit()">등록</button>
 			</div>
 		</div>
 		<button class="btn-flat" (click)="stateChange()">폴더생성</button>

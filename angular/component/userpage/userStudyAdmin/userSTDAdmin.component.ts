@@ -109,6 +109,20 @@ export class UserSTDAdminComponent{
 			zoom: 11
 		});
 	}
+	study_submit(getStudy, getPlace){
+		console.log(getStudy.studyname.trim().length);
+		if(!getStudy.studyname || getStudy.studyname.trim().length == 0){
+			alert('스터디명을 입력해주세요');
+		}else if((getStudy.studyname.trim().length < 3) || (getStudy.studyname.trim().length > 20)){
+			alert('스터디명은 3~20자 사이로 정해주세요');
+		}else if(!getStudy.info){
+			alert('스터디 설명을 적어주세요');
+		}else if(getPlace.length == 0){
+			alert('모임장소를 하나 이상 등록해주세요');
+		}else{
+			this.study_create(getStudy, getPlace);
+		}
+	}
 	study_create(getStudy, getPlace){
 		getStudy.admin = this.userInfo.idx;
 		let input = {
@@ -124,6 +138,19 @@ export class UserSTDAdminComponent{
 			},
 			error => console.log(error)
 		)
+	}
+	study_modi_submit(getStudy, getPlace){
+		if(!getStudy.studyname || getStudy.studyname.trim().length == 0){
+			alert('스터디명을 입력해주세요');
+		}else if((getStudy.studyname.trim().length < 3) || (getStudy.studyname.trim().length > 20)){
+			alert('스터디명은 3~20자 사이로 정해주세요');
+		}else if(!getStudy.info){
+			alert('스터디 설명을 적어주세요');
+		}else if(getPlace.length == 0){
+			alert('모임장소를 하나 이상 등록해주세요');
+		}else{
+			this.study_modify(getStudy, getPlace);
+		}
 	}
 	study_modify(getStudy, getPlace){
 		let input = {
@@ -344,31 +371,40 @@ export class UserSTDAdminComponent{
 		}
 		
 	}
-	// showPlaceInfo(input){
-	// 	console.log(input);
-	// 	this.placeOne = input;
-
-	// }
-	// showModiPlaceInfo(input){
-	// 	console.log(input);
-	// 	this.placeOne = input;
-	// 	console.log(this.placeOne);
+	showPlaceInfo(input){
+		console.log(input);
+		// this.placeOne = input;
+	}
+	showModiPlaceInfo(input){
+		this.placeModiState = 'open';
+		let obj = this;
+		let modiMarker;
+		let infoWindow;
 		
-	// 	for(let mark of this.markerList){
-	// 		mark.setMap(null);
-	// 	}
-	// 	this.markerList = [];
+		for(let mark of this.markerList){
+			mark.setMap(null);
+		}
+		this.markerList = [];
 
-	// 	this.markerList.push(
-	// 		new naver.maps.Marker({
-	// 			position: naver.maps.TransCoord.fromTM128ToLatLng({x : this.placeOne.mapx, y: this.placeOne.mapy}),
-	// 			map: this.modiMap
-	// 	}));
+		// this.markerList.push(
+		// 	new naver.maps.Marker({
+		// 		position : new naver.maps.LatLng(Number(this.placeOne.mapy), Number(this.placeOne.mapx)),
+		// 		map: this.modiMap
+		// }));
 		
-	// 	this.modiMap.setCenter(naver.maps.TransCoord.fromTM128ToLatLng({x : this.placeOne.mapx,y : this.placeOne.mapy}));
-	// 	this.placeModiState = 'open';
-			
-	// }
+		this.modiMap.setCenter(
+			new naver.maps.LatLng(input.mapy,input.mapx)
+		);
+		modiMarker = new naver.maps.Marker({
+			position : new naver.maps.LatLng(Number(input.mapy), Number(input.mapx)),
+			map: this.modiMap
+		})
+	}
 
-
+		makeMap(map, mapy, mapx, zoomLv:number){
+			return new naver.maps.Map(map, {
+				center: new naver.maps.LatLng(Number(mapy), Number(mapx)),
+				zoom: zoomLv
+			});
+		}
 }

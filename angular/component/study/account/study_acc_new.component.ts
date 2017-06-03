@@ -112,10 +112,32 @@ export class StudyNewAcc {
 		this.attendeeList = tempArr;
 	}
 	account_submit(input){
-		if(input.idx){
-			this.account_update(input);
+		input.gathering = $('.datepicker').val()
+		let costChk = false;
+		let numChk = /^\d+$/;
+		this.attendeeList.map(item =>{
+			if(!numChk.test(item.cost)){
+				costChk = true;
+			}
+		})
+		if(!input.title){
+			alert('회계명을 입력해주세요');
+		}else if(input.title.trim().length == 0){
+			alert('회계명을 입력해주세요');
+		}else if(input.title.trim().length > 20){
+			alert('회계명은 20자 이하로 정해주세요');
+		}else if(!input.gathering){
+			alert('날짜를 정해주세요');
+		}else if(this.attendeeList.length == 0){
+			alert('회계에 등록할 인원을 정해주세요');
+		}else if(costChk){
+			alert('금액 입력이 잘못되었습니다.');
 		}else{
-			this.account_create(input);
+			if(input.idx){
+				this.account_update(input);
+			}else{
+				this.account_create(input);
+			}
 		}
 	}
 	account_update(input){
@@ -125,7 +147,6 @@ export class StudyNewAcc {
 			total_cost += Number(item.cost);
 		})
 		input.total_cost = total_cost;
-		input.gathering = $('.datepicker').val();
 		this.accountService
 		.accUpdate(input)
 		.subscribe(

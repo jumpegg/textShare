@@ -80,6 +80,15 @@ export class UserTextShareComponent implements OnInit{
 	stateChange(){
 		this.aniStateVal = this.aniStateVal == 'open' ? 'close' : 'open';
 	}
+	newFolder_submit(){
+		if(!this.folderVo.name || this.folderVo.name.trim().length == 0){
+			alert('폴더명을 입력해주세요');
+		}else if(this.folderVo.name.trim().length > 20){
+			alert('폴더이름은 20자 이하로 정해주세요');
+		}else{
+			this.newFolder();
+		}
+	}
 	newFolder(){
 		this.folderVo.user_idx = this.userInfo.idx;
 		

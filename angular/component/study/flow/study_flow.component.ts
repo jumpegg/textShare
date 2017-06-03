@@ -8,6 +8,8 @@ import { FlowService } from '../../../service/flow.service';
 import { DataService } from '../../../service/data.service';
 import { StudyPageInfo } from '../../../global/single_studypage';
 
+import { Observable } from 'rxjs/Observable';
+
 import { Flow } from '../../../vo/flow';
 
 declare var $ : any;
@@ -93,6 +95,26 @@ export class StudyFlow {
 		}
 		flowSubmit(input){
 			input.speak_date = $('.datepicker').val();
+			
+			if(!input.speak_date){
+				alert('발표일을 정해주세요');
+			}else if(!input.speaker){
+				alert('발표자를 정해주세요');
+			}else if(!input.title){
+				alert('주제를 적어주세요');
+			}else if(input.title.trim().length == 0){
+				alert('주제를 적어주세요');
+			}else if(input.title.trim().length > 20){
+				alert('주제는 20자 이내로 해주세요');
+			}else if(!input.content){
+				alert('내용을 입력해주세요');
+			}else if(input.content.trim().length == 0){
+				alert('내용을 입력해주세요');
+			}else{
+				this.flowCreate(input);
+			}
+		}
+		flowCreate(input){
 			if(!input.idx){
 				this.flowService
 				.create(input)
@@ -106,25 +128,31 @@ export class StudyFlow {
 					data=>{
 						if(!data.msg){
 							let formData:FormData = new FormData();
-
-							for(let i=0; i< this.fileList.length; i++){
-								let file: File = this.fileList[i];
-								formData.append('uploadFile'+i , file, file.name);
+							if(this.fileList){
+								for(let i=0; i< this.fileList.length; i++){
+									let file: File = this.fileList[i];
+									formData.append('uploadFile'+i , file, file.name);
+								}
+								return this.http.post(`/study/new_flow_file_data/${this.folderIdx}/${data[0].idx}`, formData)
+								.map(res => res.json());
+							}else{
+								return Observable.of({msg:'done'});
 							}
-							return this.http.post(`/study/new_flow_file_data/${this.folderIdx}/${data[0].idx}`, formData)
-							.map(res => res.json());
 						}else{
+							console.log('state 1');
 							alert('문제가 생겼습니다.');
 						}
 					}
 				).subscribe(
 					data=>{
+						console.log(data);
 						if(data.msg=='done'){
 							alert('등록되었습니다.');
 							this.detailOpen();
 							this.getFlowList();
 							this.newFlow = new Flow();
 						}else{
+							console.log('state 2');
 							alert('문제가 생겼습니다.');
 							this.detailOpen();
 							this.getFlowList();
@@ -140,13 +168,16 @@ export class StudyFlow {
 					data=>{
 						if(data.msg=="done"){
 							let formData:FormData = new FormData();
-
-							for(let i=0; i< this.fileList.length; i++){
-								let file:File = this.fileList[i];
-								formData.append('uploadFile'+i, file, file.name);
+							if(this.fileList){
+								for(let i=0; i< this.fileList.length; i++){
+									let file:File = this.fileList[i];
+									formData.append('uploadFile'+i, file, file.name);
+								}
+								return this.http.post(`/study/new_flow_file_data/${this.folderIdx}/${input.idx}`, formData)
+								.map(res => res.json());
+							}else{
+								return Observable.of({msg:'done'});
 							}
-							return this.http.post(`/study/new_flow_file_data/${this.folderIdx}/${input.idx}`, formData)
-							.map(res => res.json());
 						}
 					}
 				).subscribe(
@@ -221,6 +252,8 @@ export class StudyFlow {
 			this.detailState = 'open';
 		}
 		detailClose(){
+			this.newFlow = new Flow();
+			this.getFileList = [];
 			this.detailState = 'close';
 		}
 		detailInfo(input){

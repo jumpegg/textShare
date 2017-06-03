@@ -131,8 +131,10 @@
 					<ul>
 						<li>
 							<div class="input-field">
-								<label for="study_name">스터디명</label>
-								<input type="text" name="study_name" [(ngModel)]="newStudy.studyname">
+								<input type="text" 
+								name="study_name" 
+								[(ngModel)]="newStudy.studyname" 
+								placeholder="스터디명(3~20자 이내)">
 							</div>
 						</li>
 						<li class="place-header">
@@ -188,7 +190,7 @@
 		</div>
 	</div>
 	<div class="modal-footer">
-		<button type="button" class="btn-flat create" (click)="study_create(newStudy, placeList)">생성</button>
+		<button type="button" class="btn-flat create" (click)="study_submit(newStudy, placeList)">생성</button>
 		<button type="button" class="btn-flat cancel" (click)="close_new_modal()">취소</button>
 	</div>
 </div>
@@ -209,8 +211,8 @@
 						</li>
 						<li class="place-list" *ngFor="let place of placeList; let i = index">
 							<i class="material-icons">flag</i>
-							<!--<p (click)="showModiPlaceInfo(place)">{{place.name}}</p>-->
-							<p>{{place.name}}</p>
+							<p (click)="showModiPlaceInfo(place)">{{place.name}}</p>
+							<!--<p>{{place.name}}</p>-->
 							<i class="material-icons delete" (click)="place_remove(place, i)">clear</i>
 						</li>
 						<li class="place-list" [ngClass]="{'deactive':placeList.length >= 3}">
@@ -249,12 +251,12 @@
 			</div>
 			<div class="row over-hidden" [@placeToggle]="placeModiState">
 				<div class="show-map" id="modiMap">
-
+					<!-- 지도가 표시되는 부분 -->
 				</div>
 			</div>
 		</div>
 		<div class="modal-footer">
-			<button type="button" class="btn-flat create" (click)="study_modify(tempStudy, placeList)">수정</button>
+			<button type="button" class="btn-flat create" (click)="study_modi_submit(tempStudy, placeList)">수정</button>
 			<button type="button" class="btn-flat cancel" (click)="close_modi_modal()">취소</button>
 		</div>
 	</div>
