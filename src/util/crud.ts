@@ -149,6 +149,10 @@ export class Crud{
 		console.log(this.query);
 		conn.query(this.query, (err, data) => {
 			if(err){
+				let errQuery = `insert into error ('log') values (${err})`;
+				conn.query(errQuery, (err2, data2) =>{
+					
+				})
 				callback(err);
 			}else if(!data.length){
 				if(this.type){

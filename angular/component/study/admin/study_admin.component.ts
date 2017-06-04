@@ -9,6 +9,7 @@ import { StudyPageInfo } from '../../../global/single_studypage';
 
 import { Member } from '../../../vo/member';
 
+declare var $ : any;
 @Component({
 		styleUrls: ['client/component/study/admin/study_admin.component.css'],
 		templateUrl: 'client/component/study/admin/study_admin.component.html',
@@ -19,12 +20,15 @@ export class StudyAdmin {
 		public joinerList:Member[];
 		public hoperList:Member[];
 		public user:any = {};
+		public setAuth:string = "";
+		private setIdx:number;
 		constructor(
 			public studyPage:StudyPageInfo,
 			public memberService:MemberService
 		){}
 		ngOnInit(){
 			this.studyPage.init();
+			$('#authModi').modal();
 			this.callThisUser();
 			this.callHoper();
 			this.callJoiner();
@@ -43,6 +47,7 @@ export class StudyAdmin {
 				data => {
 					if(!data.msg){
 						this.joinerList = data;
+						console.log(this.joinerList);
 					}else{
 						this.joinerList = [];
 					}
@@ -62,7 +67,7 @@ export class StudyAdmin {
 			)
 		}
 		reject(input){
-			if(this.user.permission == 1){
+			if(this.user.permission <= 3){
 				this.memberService.rejectMember({idx : input})
 				.subscribe(
 					data=>{
@@ -76,8 +81,7 @@ export class StudyAdmin {
 			}
 		}
 		allow(input){
-			
-			if(this.user.permission == 1){
+			if(this.user.permission <= 3){
 				this.memberService.allowMember({idx : input})
 				.subscribe(
 					data=>{
@@ -89,5 +93,70 @@ export class StudyAdmin {
 			}else{
 				alert('권한이 없습니다.');
 			}
+		}
+		changeAuth(input){
+			
+		}
+		submitAuth(input){
+			if(!this.user.permission){
+				alert('잘못된 접근입니다.');
+				this.modalClose();
+			}else if(this.user.permission > 3){
+				alert('권한이 없습니다.')
+				this.modalClose();
+			}else {
+				if(this.setAuth == ''){
+					alert('변경할 권한을 지정해주세요');
+				}else if(this.setAuth == 'subAD'){
+					this.memberService
+					.setPermission({
+						idx : this.setIdx,
+						permission : 3
+					}).subscribe(data=>{
+						if(data.msg == 'done'){
+							alert('등록되었습니다.');
+							this.modalClose();
+						}else{
+							alert('오류가 발생했습니다.');
+							this.modalClose();
+						}
+					})
+				}else if(this.setAuth == 'manager'){
+					this.memberService
+					.setPermission({
+						idx : this.setIdx,
+						permission : 5
+					}).subscribe(data=>{
+						if(data.msg == 'done'){
+							alert('등록되었습니다.');
+							this.modalClose();
+						}else{
+							alert('오류가 발생했습니다.');
+							this.modalClose();
+						}
+					})
+				}else if(this.setAuth == 'block'){
+					this.memberService
+					.setPermission({
+						idx : this.setIdx,
+						permission : 15
+					}).subscribe(data=>{
+						if(data.msg == 'done'){
+							alert('등록되었습니다.');
+							this.modalClose();
+						}else{
+							alert('오류가 발생했습니다.');
+							this.modalClose();
+						}
+					})
+				}
+			}
+		}
+		modalOpen(input){
+			this.setIdx = input;
+			$('#authModi').modal('open');
+		}
+		modalClose(){
+			$('#authModi').modal('close');
 		}
 }

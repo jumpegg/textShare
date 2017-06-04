@@ -33,6 +33,18 @@ h6{
 .joiner-card .ok{
 	background-color: #FFB300;
 }
+.joiner-card .openBtn{
+	float:right;
+	background-color: #FFB300;
+	color: #FFFFFF;
+	font-weight: bold;
+	width: 70px;
+	height: 30px;
+	position: relative;
+	top: -5px;
+	right: -10px;
+	border-radius: 5px;
+}
 .member {
 	position: relative;
 }
@@ -49,4 +61,41 @@ h6{
 .hoper span{
 	position: relative;
 	top: 5px;
+}
+
+/* modal */
+.modal{
+	width: 600px;
+}
+.modal-content{
+	padding: 0px;
+}
+.modal-header{
+	background-color: #AB47BC;
+	color: #FFFFFF;
+	padding: 15px 20px;
+	font-size: 16px;
+	font-weight: bold;
+}
+.upper{
+	padding: 10px;
+}
+.bottom{
+	padding: 10px;
+}
+.ex-content{
+	background-color: #FFFFFF;
+	border: 1px solid #DDDDDD;
+	min-height: 100px;
+}
+.ex-content li{
+	padding: 5px 10px;
+	font-size: 14px;
+	color: #444444;
+	font-weight: 600;
+}
+.modal-footer .submitAuth{
+	background-color: #AB47BC;
+	color: #FFFFFF;
+	border-radius: 5px;
 }

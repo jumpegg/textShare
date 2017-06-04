@@ -20,7 +20,7 @@ export class PermissionGuard implements CanActivate{
 		.studyPermissionChk()
 		.map(
 			data=>{
-				if(data.msg < 5){
+				if(data.msg <= 5){
 					return true;
 				}else{
 					alert('권한이 없습니다.');

@@ -52,13 +52,11 @@ export class StudyIndex {
 					if(!data.msg){
 						this.noticeList = data
 					}else{
-						this.noticeList=[
-							{
-								c_date: new Date(),
-								id: "작성자",
-								title: "등록된 공지사항이 없습니다."
-							}
-						]
+						this.noticeList=[{
+							c_date: new Date(),
+							id: "작성자",
+							title: "등록된 공지사항이 없습니다."
+						}]
 					}
 				}
 			)
@@ -71,13 +69,11 @@ export class StudyIndex {
 					if(!data.msg){
 						this.freetalkList = data
 					}else{
-						this.freetalkList=[
-							{
-								c_date: new Date(),
-								id: "작성자",
-								title: "등록된 게시글이 없습니다."
-							}
-						]
+						this.freetalkList=[{
+							c_date: new Date(),
+							id: "작성자",
+							title: "등록된 게시글이 없습니다."
+						}]
 					}
 				}
 			)

@@ -41,7 +41,6 @@ export class DataCtrl{
 	}
 	
 	public fileMake:RequestHandler = (req,res)=>{
-		// let files = [];
 		let form = new formidable.IncomingForm();
 		let obj = this;
 		form.keepExtensions = true;

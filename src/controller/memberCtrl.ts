@@ -18,8 +18,25 @@ export class MemberCtrl{
 				res.json(data);
 			}else{
 				console.log(data.msg);
+				res.json({msg: 'error'});
 			}
 		})
+	}
+	public setPermission:RequestHandler = (req,res) => {
+		if(req.session.studyAuth > 3){
+			res.json({msg: 'permission denied'});
+		}else{
+			this.memberTbl
+			.update(req.body)
+			.go(data=>{
+				if(data.msg == 'done'){
+					res.json(data);
+				}else{
+					console.log(data.msg);
+					res.json({msg: 'error'});
+				}
+			})
+		}
 	}
 	public make:RequestHandler = (req,res) =>{
 		let temp = {

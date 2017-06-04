@@ -4,6 +4,7 @@
 		<div class="card-panel joiner-card member" *ngFor="let joiner of joinerList">
 			<span>{{joiner.id}}</span>
 			<img src="public/icon/crown.svg" alt="왕관이당" *ngIf="joiner.permission == 1">
+			<button class="btn-flat openBtn" *ngIf="joiner.permission != 1 && user.permission <= 3" (click)="modalOpen(joiner.idx)">권한변경</button>
 		</div>
 	</div>
 	<h6>가입 요청</h6>
@@ -14,6 +15,52 @@
 				<button class="btn-flat reject" (click)="reject(hoper.idx)">거부</button>
 				<button class="btn-flat ok" (click)="allow(hoper.idx)">승락</button>
 			</div>
+		</div>
+	</div>
+</div>
+<div id="authModi" class="modal">
+	<div class="modal-content">
+		<div class="modal-header">
+			권한 변경
+		</div>
+		<div class="modal-body">
+			<div class="upper">
+				<select class="browser-default" [(ngModel)]="setAuth">
+					<option value="" selected disabled>권한 선택</option>
+					<option value="subAD">부운영자</option>
+					<option value="manager">매니저</option>
+					<option value="block">강퇴</option>
+				</select>
+			</div>
+			<div class="bottom">
+				<div class="ex-content" *ngIf="setAuth == ''">
+					<ul>
+						<li>해당 권한에 대한 설명</li>
+					</ul>
+				</div>
+				<div class="ex-content" *ngIf="setAuth == 'subAD'">
+					<ul>
+						<li>스터디에 대한 가입 승락, 거부 가능</li>
+						<li>회원이 가진 권한 변경 가능</li>
+						<li>스케쥴, 회계, 진행상황기록 등의</li>
+						<li>운영관련 기록 및 수정 가능</li>
+					</ul>
+				</div>
+				<div class="ex-content" *ngIf="setAuth == 'manager'">
+					<ul>
+						<li>스케쥴, 회계, 진행상황기록 등의</li>
+						<li>운영관련 기록 및 수정 가능</li>
+					</ul>
+				</div>
+				<div class="ex-content" *ngIf="setAuth == 'block'">
+					<ul>
+						<li>해당 회원에 대한 탈퇴 및 차단</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button class="btn-flat submitAuth" (click)="submitAuth(setAuth)">변경</button>
 		</div>
 	</div>
 </div>

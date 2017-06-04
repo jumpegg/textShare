@@ -22,6 +22,7 @@ studyRoute.get('/get_auth', studyCtrl.getPermission);
 
 // member
 studyRoute.get('/get_permission', memberCtrl.getPermission);
+studyRoute.post('/set_permission', memberCtrl.setPermission);
 studyRoute.get('/new_member', memberCtrl.make);
 studyRoute.get('/joiner_list_member', memberCtrl.joinerList);
 studyRoute.get('/hoper_list_member', memberCtrl.hoperList);
