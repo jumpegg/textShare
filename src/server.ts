@@ -56,7 +56,7 @@ class Server {
 		}
 
 		private start(){
-				this.app.listen(80, function(){
+				this.app.listen(4000, function(){
 						console.log('server running');
 				});
 		}
