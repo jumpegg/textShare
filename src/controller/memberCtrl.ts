@@ -75,6 +75,21 @@ export class MemberCtrl{
 			}
 		})
 	}
+	public getUserInfo:RequestHandler = (req,res) => {
+		let getQuery = 
+		`select a.id, b.permission from User a
+		inner join s_member b
+		on a.idx = b.user_idx
+		where b.study_idx = ${req.session.studyIdx}
+		and b.user_idx = ${req.session.userData.idx}`;
+		conn.query(getQuery, (err, data)=>{
+			if(err){
+				res.json({msg: 'error'})
+			}else{
+				res.json(data[0]);
+			}
+		})
+	}
 	public joinerList:RequestHandler = (req,res) => {
 		let getQuery = 
 			`select a.*, b.id from s_member a 

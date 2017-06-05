@@ -76,10 +76,10 @@
 /* help box */
 .help-box{
 	position: fixed;
-	width: 300px;
+	width: 310px;
 	height: 650px;
 	right: 10px;
-	top: 230px;
+	top: 170px;
 	padding: 0px;
 	margin: 0px;
 	margin-right: -310px;
@@ -109,4 +109,9 @@
 	border-radius: 3px;
 	border: 1px solid #666666;
 	margin-top: 10px;
+}
+.redstrong{
+	color: red;
+	font-size: 12px;
+	font-weight: bold;
 }

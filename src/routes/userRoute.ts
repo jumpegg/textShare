@@ -10,6 +10,7 @@ import {
 const userRoute: Router = Router();
 
 userRoute.post('/user_login', userCtrl.login);
+userRoute.get('/user_logout', userCtrl.logout);
 userRoute.post('/user_join', userCtrl.join);
 userRoute.post('/user_test', userCtrl.test);
 userRoute.get('/sess', userCtrl.sess);

@@ -38,7 +38,10 @@ class Server {
 				this.app.use(session({
 						secret: 'tEsTeD',
 						resave: false,
-						saveUninitialized: true
+						saveUninitialized: true,
+						cookie: {
+							maxAge: 1000 * 60 * 60 // 쿠키 유효기간 1시간
+						}
 				}));
 				
 				this.app.use('/public', express.static(path.join(__dirname, '/../public')));

@@ -129,6 +129,14 @@ nav a.button-collapse {
 	padding-left: 100px;
 	height: 40px;
 }
+i.face, i.verified{
+	display: inline-block;
+	height: 24px;
+	line-height: 24px;
+	margin-right: 10px;
+	position: relative;
+	top: 5px;
+}
 .tab .active{
 	border-bottom: 2px solid #FFF;
 }

@@ -11,12 +11,12 @@
 
 							</div>
 							<div class="side-user col s8">
-								Lv.1 디자이너 <br>
-								홍길동
+								<p><i class="material-icons face">face</i>{{userInfo.id}}</p>
+								<p>가입일 : {{userInfo.c_date|date:"yyyy-MM-dd"}}</p>
 							</div>
 						</div>
 						<div class="side-btnBox">
-							<a href="">Logout</a>
+							<a (click)="logout()">Logout</a>
 						</div>
 					</div>
 				</li>
@@ -24,18 +24,18 @@
 					<a routerLink="mypage"><i class="material-icons">group</i> MyPage</a>
 				</li>
 				<li>
-					<a href=""><i class="material-icons">send</i> Hello TextShare</a>
+					<a><i class="material-icons">send</i> Hello TextShare</a>
 					<dl>
 						<dd><a routerLink="stdAdmin">StudyList</a></dd>
 						<dd><a routerLink="stdSearch">StudySearch</a></dd>
 					</dl>
 				</li>
 				<li>
-					<a href=""><i class="material-icons">group</i> TextShare</a>
+					<a><i class="material-icons">group</i> TextShare</a>
 					<dl>
 						<dd>
 							<a routerLink="textShare">TextShare</a>
-							<a routerLink="textBag">TextBag(준비중)</a>
+							<!--<a routerLink="textBag">TextBag(준비중)</a>-->
 						</dd>
 					</dl>
 				</li>

@@ -20,6 +20,10 @@ export class UserService{
 		return this.http.post('/user/user_login', input, {headers:this.header})
 			.map(res => res.json());
 	}
+	userLogout(){
+		return this.http.get('/user/user_logout', {headers:this.header})
+			.map(res => res.json());
+	}
 	userTest(input){
 		return this.http.post('/user/user_test', input, {headers:this.header})
 			.map(res => res.json());

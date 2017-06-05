@@ -32,8 +32,9 @@
 	</div>
 	<div class="help-content">
 		<div class="help-con-wrap">
-			<p>TextShare 는 기본적으로</p>
-			<p>markdown 문법을 사용합니다.</p>
+			<p>TextShare 는 기본적으로</p><br>
+			<p><strong>markdown</strong> 문법을 사용합니다.</p><br>
+			<p class="redstrong">마크다운에는 여러가지 문법이 있습니다. 이곳에 모든 문법이 적혀있지 않으므로 더 자세히 알고싶으신 분은 markdown 검색을 권장합니다.</p><br>
 			<h6>Header 사용법</h6>
 			<p> # 은 header 태그를 사용할때 씁니다.</p>
 			<p class="label">입력</p>
@@ -96,6 +97,71 @@
 					<li>test2</li>
 					<li>test3</li>
 				</ol>
+			</div>
+
+			<h6>code 입력</h6>
+			<p> ``` (백틱) 은 코드를 입력할 때 사용합니다.</p>
+			<p class="label">입력</p>
+			<div class="code">
+				```console.log('hello world');```
+			</div>
+			<p class="label">결과</p>
+			<div class="code">
+				<pre>console.log('hello world');</pre>
+			</div>
+
+			<h6>가로선 입력</h6>
+			<p> *** 은 가로선을 그을 때 사용됩니다.</p>
+			<p class="label">입력</p>
+			<div class="code">
+				***
+			</div>
+			<p class="label">결과</p>
+			<div class="code">
+				<hr>
+			</div>
+
+			<h6>Link 생성</h6>
+			<p> [문구](주소) 형식으로 입력하면 링크가 생성됩니다.</p>
+			<p class="label">입력</p>
+			<div class="code">
+				[TextShare](textshare.io)
+			</div>
+			<p class="label">결과</p>
+			<div class="code">
+				<a href="http://textshare.io">TextShare</a>
+			</div>
+
+			<h6>강조문구 생성</h6>
+			<p> *문구* 문구가 이탤릭체로 표현됩니다.</p>
+			<p class="label">입력</p>
+			<div class="code">
+				*이탤릭체*
+			</div>
+			<p class="label">결과</p>
+			<div class="code">
+				<em>이탤릭체</em>
+			</div>
+
+			<p> **문구** 문구가 볼드체로 표현됩니다.</p>
+			<p class="label">입력</p>
+			<div class="code">
+				**볼드**
+			</div>
+			<p class="label">결과</p>
+			<div class="code">
+				<strong>볼드</strong>
+			</div>
+
+			<h6>이미지 등록</h6>
+			<p> ![사진이름](사진경로) 사진을 등록하는 방법입니다.</p>
+			<p class="label">입력</p>
+			<div class="code">
+				![고양이사진](public/img/Cat-typing.gif)
+			</div>
+			<p class="label">결과</p>
+			<div class="code">
+				<img src="public/img/Cat-typing.gif" alt="고양이사진">
 			</div>
 		</div>
 	</div>

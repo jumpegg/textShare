@@ -24,6 +24,10 @@ export class MemberService{
 		return this.http.post('/study/set_permission', input, {headers:this.header})
 			.map(res=>res.json());
 	}
+	getUserInfo(){
+		return this.http.get('/study/getUserInfo_member', {headers:this.header})
+			.map(res=>res.json());
+	}
 	joinerList(){
 		return this.http.get('/study/joiner_list_member', {headers:this.header})
 			.map(res=>res.json());

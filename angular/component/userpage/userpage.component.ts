@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {UserService} from '../../service/user.service';
 import {PageInfo} from '../../global/single_info';
 
@@ -11,13 +11,14 @@ declare var $ : any;
 	providers: [ UserService ]
 })
 export class UserpageComponent {
-	public id:string;
-	public test:Object;
+	private test:Object;
+	private userInfo:any = {};
 
 	constructor(
 		private userService:UserService, 
 		private route:ActivatedRoute, 
-		public page:PageInfo){
+		private router:Router,
+		private page:PageInfo){
 		this.userService.chkSess().subscribe(
 			data => {},
 			error => console.log(error)
@@ -25,6 +26,7 @@ export class UserpageComponent {
 	}
 	ngOnInit(){
 		this.test = this.route.snapshot.data['userResolve'];
+		
 		let urlList = document.location.hash.split('/');
 		let params = urlList[urlList.length - 1].split('?');
 		let url = params[0];
@@ -34,7 +36,24 @@ export class UserpageComponent {
 			edge: 'right'
 		});
 		// $('ul.tabs').tabs(); 
+		this.userService
+		.userInfo()
+		.subscribe(data=>{
+			this.userInfo = data;
+		})
 	}
+
+	logout(){
+			this.userService
+			.userLogout()
+			.subscribe(
+				data=>{
+					if(data.msg=='logout_done'){
+						this.router.navigate(['/']);
+					}
+				}
+			)
+		}
 	
 
 }

@@ -17,12 +17,14 @@
 
 						</div>
 						<div class="side-user col s8">
-							Lv.1 디자이너 <br>
-							홍길동
+							<p><i class="material-icons verified">verified_user</i>{{user.auth}}</p>
+							<p>
+								<i class="material-icons face">face</i>{{user.id}}
+							</p>
 						</div>
 					</div>
 					<div class="side-btnBox">
-						<a href="">Logout</a>
+						<a (click)="logout()">Logout</a>
 					</div>
 				</div>
 			</li>

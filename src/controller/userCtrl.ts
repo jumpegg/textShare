@@ -22,12 +22,23 @@ export class UserCtrl{
 					req.session.userData = data[0];
 					req.session.login = true;
 					res.send(comp);
-					// res.send(req.session.id);
 				}else{
 					res.send(false);
 				}
 			}
 		});
+	}
+	public logout: RequestHandler = (req,res) =>{
+		req.session
+		.destroy(function(err){
+				if(err){
+						console.log(err);
+				}else{
+  				res.clearCookie('sid'); // 세션 쿠키 삭제	
+					res.json({msg: "logout_done"});
+				}
+		})
+		console.log(req.session);
 	}
 	public join: RequestHandler = (req, res) => {
 		req.body.password = bcrypt.hashSync(req.body.password, this.salt);

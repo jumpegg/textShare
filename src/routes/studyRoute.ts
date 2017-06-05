@@ -29,6 +29,7 @@ studyRoute.get('/hoper_list_member', memberCtrl.hoperList);
 studyRoute.get('/is_member', memberCtrl.isMember);
 studyRoute.post('/allow_member', memberCtrl.allow);
 studyRoute.post('/reject_member', memberCtrl.reject);
+studyRoute.get('/getUserInfo_member', memberCtrl.getUserInfo);
 
 // schedule
 studyRoute.post('/new_schedule', scheduleCtrl.make);
