@@ -48,7 +48,7 @@ export class UserSTDAdminComponent{
 	private joinList:Study[] = [];
 	private placeState:string = 'close';
 	private placeModiState:string = 'close';
-	private search_input:string;
+	private search_input:string = '';
 	private markerList:any[] = [];
 	private placeList:any[] = [];
 	private modiPlaceList:any[] = [];
@@ -270,30 +270,12 @@ export class UserSTDAdminComponent{
 					let marker_item = this.markerList[i];
 					let item = data.items[i];
 					let place = this.placeOne;
+					let infoWindow = this.infoMaker(item);
 
-					let infoWindow = new naver.maps.InfoWindow({
-						content: `
-							<div class="iw_inner">
-							<h5>${item.title}</h5>
-							<hr>
-							<p> 주소 : ${item.roadAddress}</p>
-							<p>${item.telephone}  <span class="item_category">${item.category}</span></p>
-							<p><a href="${item.link}">${item.link}</a></p>
-							</div>
-							`
-					});
-					naver.maps.Event.addListener(marker_item, 'click', function(e){
-						place.name = item.title.replace(/<(\/)?([a-zA-Z]*)(\s[a-zA-Z]*=[^>]*)?(\s)*(\/)?>/ig, "");
-						place.mapx = marker_item.getPosition().x;
-						place.mapy = marker_item.getPosition().y;
-						if(infoWindow.getMap()){
-							infoWindow.close();
-						}else{
-							infoWindow.open(newMap, marker_item);
-						}
-					});
+					this.infoAdd(place, marker_item, newMap, infoWindow, item);
 				}
 				this.newMap.setCenter(naver.maps.TransCoord.fromTM128ToLatLng({x : data.items[0].mapx,y : data.items[0].mapy}));
+				this.search_input = '';
 			}
 		)
 	}
@@ -306,52 +288,67 @@ export class UserSTDAdminComponent{
 				this.markerList = [];
 
 				for(let item of data.items){
-					this.markerList.push(
-						new naver.maps.Marker({
-							position: naver.maps.TransCoord.fromTM128ToLatLng({x : item.mapx, y: item.mapy}),
-							map: this.modiMap
-					}));
+					this.markerList.push(this.markerTM128ToLatLng(item, this.modiMap));
 				}
 				for(let i=0; i<this.markerList.length; i++){
 					let modiMap = this.modiMap;
 					let marker_item = this.markerList[i];
 					let item = data.items[i];
 					let place = this.placeOne;
+					let infoWindow = this.infoMaker(item);
 
-					let infoWindow = new naver.maps.InfoWindow({
-						content: `
-							<div class="iw_inner">
-							<h5>${item.title}</h5>
-							<hr>
-							<p> 주소 : ${item.roadAddress}</p>
-							<p>${item.telephone}  <span class="item_category">${item.category}</span></p>
-							<p><a href="${item.link}">${item.link}</a></p>
-							</div>
-							`
-					});
-					naver.maps.Event.addListener(marker_item, 'click', function(e){
-						place.name = item.title.replace(/<(\/)?([a-zA-Z]*)(\s[a-zA-Z]*=[^>]*)?(\s)*(\/)?>/ig, "");
-						place.mapx = marker_item.getPosition().x;
-						place.mapy = marker_item.getPosition().y;
-						if(infoWindow.getMap()){
-							infoWindow.close();
-						}else{
-							infoWindow.open(modiMap, marker_item);
-						}
-					});
+					this.infoAdd(place, marker_item, modiMap, infoWindow, item);
 				}
 				this.modiMap.setCenter(naver.maps.TransCoord.fromTM128ToLatLng({x : data.items[0].mapx,y : data.items[0].mapy}));
+				this.search_input = '';
 			}
 		)
 	}
+	infoMaker(item){
+		return new naver.maps.InfoWindow({
+			content: `
+				<div class="iw_inner">
+				<h5>${item.title}</h5>
+				<hr>
+				<p> 주소 : ${item.roadAddress}</p>
+				<p>${item.telephone}  <span class="item_category">${item.category}</span></p>
+				<p><a href="${item.link}">${item.link}</a></p>
+				</div>
+				`
+		});
+	}
+	infoAdd(placeInput, markerInput, mapInput, infoInput, itemInput){
+		naver.maps.Event.addListener(markerInput, 'click', function(e){
+			placeInput.name = itemInput.title.replace(/<(\/)?([a-zA-Z]*)(\s[a-zA-Z]*=[^>]*)?(\s)*(\/)?>/ig, "");
+			placeInput.mapx = markerInput.getPosition().x;
+			placeInput.mapy = markerInput.getPosition().y;
+			if(infoInput.getMap()){
+				infoInput.close();
+			}else{
+				infoInput.open(mapInput, markerInput);
+			}
+		});
+	}
+	markerTM128ToLatLng(pointer, inputMap){
+		return new naver.maps.Marker({
+			position: naver.maps.TransCoord.fromTM128ToLatLng({x : pointer.mapx, y: pointer.mapy}),
+			map: inputMap
+		})
+	}
 
 	place_insert(input){
-		let placeTemp = Object.assign({}, input);
-		this.placeList.push(placeTemp);
-		this.placeOne = new Place();
-		if(this.placeList.length >= 3){
-			this.placeState = 'close';
-			this.placeModiState = 'close';
+		if(!input.name){
+			alert('장소명을 입력해주세요');
+		}else if(input.name.trim().length == 0){
+			alert('장소명을 입력해주세요');
+		}else{
+			let placeTemp = Object.assign({}, input);
+			this.placeList.push(placeTemp);
+			this.placeOne = new Place();
+			if(this.placeList.length >= 3){
+				this.placeState = 'close';
+				this.placeModiState = 'close';
+			}
 		}
 	}
 	place_remove(input, num){
@@ -401,10 +398,10 @@ export class UserSTDAdminComponent{
 		})
 	}
 
-		makeMap(map, mapy, mapx, zoomLv:number){
-			return new naver.maps.Map(map, {
-				center: new naver.maps.LatLng(Number(mapy), Number(mapx)),
-				zoom: zoomLv
-			});
-		}
+	makeMap(map, mapy, mapx, zoomLv:number){
+		return new naver.maps.Map(map, {
+			center: new naver.maps.LatLng(Number(mapy), Number(mapx)),
+			zoom: zoomLv
+		});
+	}
 }
