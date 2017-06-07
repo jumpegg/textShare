@@ -8,6 +8,7 @@ import { Place } from '../../../vo/place';
 import { StudyService } from '../../../service/study.service';
 import { UserService } from '../../../service/user.service';
 import { PlaceService } from '../../../service/place.service';
+import { ScheduleService } from '../../../service/schedule.service';
 import { PageInfo } from '../../../global/single_info';
 import { UserInfo } from '../../../global/single_user';
 import { StudyInfo } from '../../../global/single_study';
@@ -17,7 +18,7 @@ declare var naver : any;
 @Component({
 	templateUrl: 'client/component/userpage/userStudyAdmin/userSTDAdmin.component.html',
 	styleUrls: ['client/component/userpage/userStudyAdmin/userSTDAdmin.component.css'],
-	providers: [ UserService, StudyService, PlaceService ],
+	providers: [ UserService, StudyService, PlaceService, ScheduleService ],
 	animations: [
 		trigger('placeToggle',[
 			state('open', style({
@@ -69,6 +70,7 @@ export class UserSTDAdminComponent{
 		private userService:UserService,
 		private placeService:PlaceService,
 		private studyService:StudyService,
+		private scheduleService:ScheduleService,
 		private router:Router, 
 		private route:ActivatedRoute, 
 		private page:PageInfo, 
@@ -170,6 +172,7 @@ export class UserSTDAdminComponent{
 			data =>{
 				if(!data.msg){
 					this.studyList = data;
+					this.setStudySchedule(this.studyList);
 				}else{
 					this.studyList = [];
 				}
@@ -184,11 +187,31 @@ export class UserSTDAdminComponent{
 			data=>{
 				if(!data.msg){
 					this.joinList = data;
+					this.setStudySchedule(this.joinList);
 				}else{
 					this.joinList = [];
 				}
 			}
 		)
+	}
+	setStudySchedule(input){
+		input.map(item=>{
+			this.scheduleService
+			.recentSchedule({study_idx: item.idx})
+			.subscribe(
+				data=>{
+					if(!data.msg){
+						item.place_name = data.place_name;
+						item.start = data.start;
+					}else if(data.msg=="no_res"){
+						item.place_name = "다음 모임일정이 없습니다.";
+						item.start = "00:00";
+					}else{
+						console.log(data);
+					}
+				}
+			)
+		})
 	}
 	open_new_modal(){
 		$('#newStudy').modal('open');

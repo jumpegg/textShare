@@ -12,12 +12,10 @@
 				<h5>Hello Text Share</h5>
 			</div>
 			<div class="input-field">
-				<label for="id">User name</label>
-				<input type="text" name="id" [(ngModel)]="user.id" #userId="ngModel" required minlength="3" maxlength="15">
+				<input type="text" name="id" placeholder="User name" [(ngModel)]="user.id" #userId="ngModel" required minlength="3" maxlength="15">
 			</div>
 			<div class="input-field">
-				<label for="password">Password</label>
-				<input type="password" name="password" [(ngModel)]="user.password" #userPassword="ngModel" required minlength="4" maxlength="20">
+				<input type="password" name="password" placeholder="Password" [(ngModel)]="user.password" #userPassword="ngModel" required minlength="4" maxlength="20">
 			</div>
 			<button class="btn waves-effect waves-light orange darken-2 z-depth-0 loginBtn">Login</button>
 			<div class="etc">
@@ -38,18 +36,15 @@
 		<div class="modal-body">
 			<div class="idBox">
 				<div class="input-field id-field">
-					<label for="">ID (3자 이상, 15자 이하)</label>
-					<input type="text" [(ngModel)]="joiner.id" #jId="ngModel" minlength="3" maxlength="15" required>
+					<input type="text" [(ngModel)]="joiner.id" placeholder="ID (3자 이상, 15자 이하)" #jId="ngModel" minlength="3" maxlength="15" required>
 				</div>
 				<button class="btn-flat" (click)="user_chk()">중복확인</button>
 			</div>
 			<div class="input-field">
-				<label for="">PASS (6자 이상, 20자 이하)</label>
-				<input type="password" [(ngModel)]="joiner.password" #jPass="ngModel" minlength="6" maxlength="20" required>
+				<input type="password" [(ngModel)]="joiner.password" placeholder="PASS (6자 이상, 20자 이하)" #jPass="ngModel" minlength="6" maxlength="20" required>
 			</div>
 			<div class="input-field">
-				<label for="">E-mail</label>
-				<input type="text" class="lastInput" [(ngModel)]="joiner.email" #jEmail="ngModel" required pattern="^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$">
+				<input type="text" class="lastInput" placeholder="E-mail" [(ngModel)]="joiner.email" #jEmail="ngModel" required pattern="^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$">
 			</div>
 		</div>
 		<div class="modal-footer">

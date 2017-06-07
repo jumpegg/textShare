@@ -37,6 +37,7 @@ studyRoute.post('/update_schedule', scheduleCtrl.update);
 studyRoute.get('/list_schedule', scheduleCtrl.list);
 studyRoute.get('/one_schedule/:idx', scheduleCtrl.getSchedule);
 studyRoute.get('/getIndex_schedule', scheduleCtrl.index);
+studyRoute.post('/recentByStudy_schedule', scheduleCtrl.recentByStudy);
 
 // account
 studyRoute.post('/new_account', accountCtrl.accMake);

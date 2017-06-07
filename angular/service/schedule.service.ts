@@ -32,4 +32,8 @@ export class ScheduleService{
 		return this.http.get('/study/getIndex_schedule', {headers:this.header})
 			.map(res=>res.json());
 	}
+	recentSchedule(input){
+		return this.http.post('/study/recentByStudy_schedule', input, {headers:this.header})
+			.map(res=>res.json());
+	}
 }

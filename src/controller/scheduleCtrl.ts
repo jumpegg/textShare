@@ -58,7 +58,27 @@ export class ScheduleCtrl{
 				}
 			}
 		})
+	}
+	public recentByStudy:RequestHandler = (req,res)=>{
+		let getQuery = 
+		`select place_name, start from schedule
+		where study_idx = ${req.body.study_idx}
+		and gathering > now()
+		order by gathering asc
+		limit 1`;
+		console.log(getQuery);
 
+		conn.query(getQuery, (err, data)=>{
+			if(err){
+				res.json({msg:err});
+			}else{
+				if(data.length == 0){
+					res.json({msg:'no_res'});
+				}else{
+					res.json(data[0]);
+				}
+			}
+		})
 	}
 }
 
