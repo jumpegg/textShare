@@ -55,7 +55,6 @@ export class StudyPageInfo{
 				}
 			];
 		}else{
-			// console.log('else called');
 			this.need = true;
 			this.title = this.url.toUpperCase();
 			this.tabList = [

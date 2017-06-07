@@ -17,7 +17,6 @@ export class MemberCtrl{
 			if(!data.msg){
 				res.json(data);
 			}else{
-				console.log(data.msg);
 				res.json({msg: 'error'});
 			}
 		})
@@ -32,7 +31,6 @@ export class MemberCtrl{
 				if(data.msg == 'done'){
 					res.json(data);
 				}else{
-					console.log(data.msg);
 					res.json({msg: 'error'});
 				}
 			})

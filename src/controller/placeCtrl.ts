@@ -11,7 +11,6 @@ export class PlaceCtrl{
 	}
 	public make:RequestHandler = (req, res) => {
 		req.body.use = 1;
-		console.log(req.body);
 		this.placeTbl.insert(req.body).go((data) => {
 			res.json(data);
 		});

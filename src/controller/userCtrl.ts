@@ -13,7 +13,6 @@ export class UserCtrl{
 	public login: RequestHandler = (req, res) => {
 		this.usertbl.selectOne({id : req.body.id}).go((data)=>{
 			if(data.msg == 'no_res'){
-				console.log(data);
 				res.json(data);
 			}else{
 				let comp = bcrypt.compareSync(req.body.password, data[0].password);
@@ -38,7 +37,6 @@ export class UserCtrl{
 					res.json({msg: "logout_done"});
 				}
 		})
-		console.log(req.session);
 	}
 	public join: RequestHandler = (req, res) => {
 		req.body.password = bcrypt.hashSync(req.body.password, this.salt);

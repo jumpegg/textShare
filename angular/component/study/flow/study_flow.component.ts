@@ -139,20 +139,17 @@ export class StudyFlow {
 								return Observable.of({msg:'done'});
 							}
 						}else{
-							console.log('state 1');
 							alert('문제가 생겼습니다.');
 						}
 					}
 				).subscribe(
 					data=>{
-						console.log(data);
 						if(data.msg=='done'){
 							alert('등록되었습니다.');
 							this.detailOpen();
 							this.getFlowList();
 							this.newFlow = new Flow();
 						}else{
-							console.log('state 2');
 							alert('문제가 생겼습니다.');
 							this.detailOpen();
 							this.getFlowList();
@@ -224,15 +221,21 @@ export class StudyFlow {
 		}
 		fileChange(event) {
 			let chk_dupl = false;
+			let sizeOver = false;
 			let tempList = event.target.files;
 			
 			for(let i=0; i<tempList.length; i++){
 				if(this.dataList.msg == 'no_res'){
 
 				}else if(this.dataList.find(item=>{
-					return (item.file_name == tempList[i].name);
-				})){
+							return (item.file_name == tempList[i].name);
+						})){
 					chk_dupl = true;
+				}
+			}
+			for(let j=0; j<tempList.length; j++){
+				if(tempList[j].size > 10485760){
+					sizeOver = true;
 				}
 			}
 			if(this.folderIdx == null){
@@ -243,6 +246,9 @@ export class StudyFlow {
 				event.target.value = null;
 			}else if(tempList.length + this.getFileList.length > 5){
 				alert('파일은 5개 이하만 등록해주세요.');
+				event.target.value = null;
+			}else if(sizeOver){
+				alert('파일의 최대 용량은 10MB까지 가능합니다.');
 				event.target.value = null;
 			}else{
 				this.fileList = tempList;
@@ -292,7 +298,6 @@ export class StudyFlow {
 			}
 		}
 		deleteFile(input){
-			// console.log(input);
 			if(confirm('파일을 제거하시겟습니까?')){
 				this.dataService
 				.deleteFile(input)

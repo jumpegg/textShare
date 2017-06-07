@@ -77,7 +77,6 @@ export class DataCtrl{
 				}).on('error', error=>{
 					console.log('file upload error : ' + error);
 				});
-				console.log(form);
 				form.parse(req);
 			}else{
 				res.json({msg:'error'});

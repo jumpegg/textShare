@@ -56,7 +56,6 @@ export class StudyReadFreetalk{
 		.create(input)
 		.flatMap(
 			data=>{
-				console.log(data);
 				if(data.msg=='done'){
 					alert('등록되었습니다.');
 					this.new_comment = new Comment();

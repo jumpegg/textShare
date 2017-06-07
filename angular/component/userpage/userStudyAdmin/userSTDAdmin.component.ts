@@ -55,9 +55,10 @@ export class UserSTDAdminComponent{
 	private placeOne:Place;
 	private clickMarker:any;
 	private obv:Observable<any>;
-	public mydata:Object;
-	public newMap:any;
-	public modiMap:any;
+	private mydata:Object;
+	private newMap:any;
+	private modiMap:any;
+	private ginfo:any;
 
 	newStudyForm = new FormGroup({
 		newStudyNameVali : new FormControl('', Validators.compose([Validators.required])),
@@ -70,32 +71,33 @@ export class UserSTDAdminComponent{
 		private studyService:StudyService,
 		private router:Router, 
 		private route:ActivatedRoute, 
-		public page:PageInfo, 
-		public userInfo:UserInfo,
-		public studyInfo:StudyInfo
-	){
+		private page:PageInfo, 
+		private userInfo:UserInfo,
+		private studyInfo:StudyInfo
+	){}
+	ngOnInit(){
 		this.newStudy = new Study();
 		this.tempStudy = new Study();
 		this.placeOne = new Place();
 		this.study_admin_list();
 		this.study_join_list();
-	}
-	ngOnInit(){
 		this.page.init();
 		let objSave = this;
 		$('#newStudy').modal({
 			complete: function(){
+				objSave.markerListRefresher();
 				objSave.placeState = 'close';
 				objSave.placeList = [];
-				objSave.placeOne = new Place();
+				objSave.placeOneRefresher()
 				objSave.newStudy = new Study();
 			}
 		});
 		$('#modiStudy').modal({
 			complete: function(){
+				objSave.markerListRefresher();
 				objSave.placeState = 'close';
 				objSave.placeList = [];
-				objSave.placeOne = new Place();
+				objSave.placeOneRefresher();
 				objSave.tempStudy = new Study();
 			}
 		});
@@ -109,9 +111,10 @@ export class UserSTDAdminComponent{
 			zoom: 11
 		});
 	}
-	study_submit(getStudy, getPlace){
-		console.log(getStudy.studyname.trim().length);
-		if(!getStudy.studyname || getStudy.studyname.trim().length == 0){
+	study_submit(getStudy, getPlace, type){
+		if(!getStudy.studyname){
+			alert('스터디명을 입력해주세요');
+		}else if(getStudy.studyname.trim().length == 0){
 			alert('스터디명을 입력해주세요');
 		}else if((getStudy.studyname.trim().length < 3) || (getStudy.studyname.trim().length > 20)){
 			alert('스터디명은 3~20자 사이로 정해주세요');
@@ -120,7 +123,11 @@ export class UserSTDAdminComponent{
 		}else if(getPlace.length == 0){
 			alert('모임장소를 하나 이상 등록해주세요');
 		}else{
-			this.study_create(getStudy, getPlace);
+			if(type == "new"){
+				this.study_create(getStudy, getPlace);
+			}else if(type == "modi"){
+				this.study_modify(getStudy, getPlace);
+			}
 		}
 	}
 	study_create(getStudy, getPlace){
@@ -129,38 +136,29 @@ export class UserSTDAdminComponent{
 			study : getStudy,
 			place : getPlace
 		}
-		this.studyService.studyNew(input).subscribe(
+		this.studyService
+		.studyNew(input)
+		.subscribe(
 			data =>{
 				(data.msg == 'done') ? alert('등록되었습니다.') : alert('등록중 문제가 생겼습니다.')
-				this.close_new_modal();
+				this.close_modal('#newStudy');
 				this.study_admin_list();
 				this.newStudy = new Study();
 			},
 			error => console.log(error)
 		)
 	}
-	study_modi_submit(getStudy, getPlace){
-		if(!getStudy.studyname || getStudy.studyname.trim().length == 0){
-			alert('스터디명을 입력해주세요');
-		}else if((getStudy.studyname.trim().length < 3) || (getStudy.studyname.trim().length > 20)){
-			alert('스터디명은 3~20자 사이로 정해주세요');
-		}else if(!getStudy.info){
-			alert('스터디 설명을 적어주세요');
-		}else if(getPlace.length == 0){
-			alert('모임장소를 하나 이상 등록해주세요');
-		}else{
-			this.study_modify(getStudy, getPlace);
-		}
-	}
 	study_modify(getStudy, getPlace){
 		let input = {
 			study : getStudy,
 			place : getPlace
 		}
-		this.studyService.studyModify(input).subscribe(
+		this.studyService
+		.studyModify(input)
+		.subscribe(
 			data => {
 				(data.msg == 'done') ? alert('등록되었습니다.') : alert('등록중 문제가 생겼습니다.')
-				this.close_modi_modal();
+				this.close_modal('#modiStudy');
 				this.study_admin_list();
 				this.newStudy = new Study();
 			}
@@ -201,7 +199,9 @@ export class UserSTDAdminComponent{
 		this.getPlaceList(input);
 	}
 	getStudyOne(input){
-		this.studyService.studyOne(input).subscribe(
+		this.studyService
+		.studyOne(input)
+		.subscribe(
 			data => {
 				this.tempStudy = {
 					idx : data.idx,
@@ -214,7 +214,9 @@ export class UserSTDAdminComponent{
 		)
 	}
 	getPlaceList(input){
-		this.placeService.getPlaceList(input).subscribe(
+		this.placeService
+		.getPlaceList(input)
+		.subscribe(
 			data => {
 				if(data.msg != 'no_res'){
 					this.placeList = data;
@@ -225,11 +227,8 @@ export class UserSTDAdminComponent{
 			error => console.log(error)
 		)
 	}
-	close_new_modal(){
-		$('#newStudy').modal('close');
-	}
-	close_modi_modal(){
-		$('#modiStudy').modal('close');
+	close_modal(input){
+		$(input).modal('close');
 	}
 	move_search(){
 		this.router.navigate(['/userpage/stdSearch']);
@@ -245,61 +244,29 @@ export class UserSTDAdminComponent{
 		)
 	}
 	toggleSearcher(){
-		this.placeState = this.placeState == 'open' ? 'close' : 'open';
+		this.placeState = (this.placeState == 'open') ? 'close' : 'open';
 	}
 	toggleModiSearcher(){
-		this.placeModiState = this.placeModiState == 'open' ? 'close' : 'open';
+		this.placeModiState = (this.placeModiState == 'open') ? 'close' : 'open';
 	}
-	place_search(input){
-		this.placeService.placeSearch(input).subscribe(
+	place_search(input, mapInput){
+		this.placeService
+		.placeSearch(input)
+		.subscribe(
 			data=> {
-				for(let mark of this.markerList){
-					mark.setMap(null);
-				}
-				this.markerList = [];
-
+				this.markerListRefresher();
 				for(let item of data.items){
-					this.markerList.push(
-						new naver.maps.Marker({
-							position: naver.maps.TransCoord.fromTM128ToLatLng({x : item.mapx, y: item.mapy}),
-							map: this.newMap
-					}));
+					this.markerList.push(this.markerTM128ToLatLng(item, mapInput));
 				}
 				for(let i=0; i<this.markerList.length; i++){
-					let newMap = this.newMap;
+					let tempMap = mapInput;
 					let marker_item = this.markerList[i];
 					let item = data.items[i];
-					let place = this.placeOne;
 					let infoWindow = this.infoMaker(item);
-
-					this.infoAdd(place, marker_item, newMap, infoWindow, item);
+//work
+					this.infoAdd(this.placeOne, marker_item, tempMap, infoWindow, item);
 				}
-				this.newMap.setCenter(naver.maps.TransCoord.fromTM128ToLatLng({x : data.items[0].mapx,y : data.items[0].mapy}));
-				this.search_input = '';
-			}
-		)
-	}
-	place_modi_search(input){
-		this.placeService.placeSearch(input).subscribe(
-			data=> {
-				for(let mark of this.markerList){
-					mark.setMap(null);
-				}
-				this.markerList = [];
-
-				for(let item of data.items){
-					this.markerList.push(this.markerTM128ToLatLng(item, this.modiMap));
-				}
-				for(let i=0; i<this.markerList.length; i++){
-					let modiMap = this.modiMap;
-					let marker_item = this.markerList[i];
-					let item = data.items[i];
-					let place = this.placeOne;
-					let infoWindow = this.infoMaker(item);
-
-					this.infoAdd(place, marker_item, modiMap, infoWindow, item);
-				}
-				this.modiMap.setCenter(naver.maps.TransCoord.fromTM128ToLatLng({x : data.items[0].mapx,y : data.items[0].mapy}));
+				mapInput.setCenter(naver.maps.TransCoord.fromTM128ToLatLng({x : data.items[0].mapx,y : data.items[0].mapy}));
 				this.search_input = '';
 			}
 		)
@@ -335,7 +302,7 @@ export class UserSTDAdminComponent{
 			map: inputMap
 		})
 	}
-
+// work
 	place_insert(input){
 		if(!input.name){
 			alert('장소명을 입력해주세요');
@@ -344,7 +311,7 @@ export class UserSTDAdminComponent{
 		}else{
 			let placeTemp = Object.assign({}, input);
 			this.placeList.push(placeTemp);
-			this.placeOne = new Place();
+			this.placeOneRefresher();
 			if(this.placeList.length >= 3){
 				this.placeState = 'close';
 				this.placeModiState = 'close';
@@ -366,42 +333,63 @@ export class UserSTDAdminComponent{
 		}else{
 			this.placeList.splice(num, 1);
 		}
-		
 	}
 	showPlaceInfo(input){
-		console.log(input);
 		// this.placeOne = input;
 	}
+
 	showModiPlaceInfo(input){
 		this.placeModiState = 'open';
+		this.markerListRefresher();
 		let obj = this;
-		let modiMarker;
-		let infoWindow;
-		
-		for(let mark of this.markerList){
-			mark.setMap(null);
-		}
-		this.markerList = [];
-
-		// this.markerList.push(
-		// 	new naver.maps.Marker({
-		// 		position : new naver.maps.LatLng(Number(this.placeOne.mapy), Number(this.placeOne.mapx)),
-		// 		map: this.modiMap
-		// }));
-		
-		this.modiMap.setCenter(
-			new naver.maps.LatLng(input.mapy,input.mapx)
-		);
-		modiMarker = new naver.maps.Marker({
+		let modiMarker = new naver.maps.Marker({
 			position : new naver.maps.LatLng(Number(input.mapy), Number(input.mapx)),
 			map: this.modiMap
 		})
-	}
+		let infoWindow = this.makeInfoWindow(input.name);
+		
+		this.markerList.push(modiMarker);
+		this.modiMap.setCenter(
+			new naver.maps.LatLng(input.mapy,input.mapx)
+		);
 
+		naver.maps.Event.addListener(modiMarker, "click", function(e) {
+				if (infoWindow.getMap()) {
+						infoWindow.close();
+				} else {
+						infoWindow.open(obj.modiMap, modiMarker);
+				}
+		});
+		// 처음에 바로 정보창을 띄우면 정보창 wrap이 안뜨는 현상 발생
+		// infoWindow.open(obj.modiMap, modiMarker);
+	}
 	makeMap(map, mapy, mapx, zoomLv:number){
 		return new naver.maps.Map(map, {
 			center: new naver.maps.LatLng(Number(mapy), Number(mapx)),
 			zoom: zoomLv
 		});
+	}
+	makeInfoWindow(input){
+		return new naver.maps.InfoWindow({
+				content: `
+					<div class="modi_iw_inner">
+					<h6>${input}</h6>
+					</div>
+					`
+			});
+		}
+	markerListRefresher(){
+		for(let mark of this.markerList){
+			mark.setMap(null);
+		}
+		this.markerList = [];
+	}
+	placeOneRefresher(){
+		if(this.placeOne.idx){
+				delete this.placeOne.idx;
+			}
+			this.placeOne.name = '';
+			this.placeOne.mapx = 0;
+			this.placeOne.mapy = 0;
 	}
 }

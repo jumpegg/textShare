@@ -196,7 +196,6 @@ export class StudyCtrl{
 		where a.user_idx = '${req.session.userData.idx}'
 		and a.permission < 10
 		and a.permission > 1`;
-		console.log(getQuery);
 
 		conn.query(getQuery, (err, data)=>{
 			if(err){

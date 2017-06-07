@@ -14,7 +14,6 @@ export class FolderCtrl{
 
 	public make: RequestHandler = (req, res) => {
 		this.foldertbl.insert(req.body).go((data)=>{
-			console.log(data);
 			res.json(data);
 		});
 	}
@@ -28,7 +27,6 @@ export class FolderCtrl{
 					idx:data[i].idx
 				});
 			}
-			console.log(list);
 			res.json(list);
 		});
 	}
@@ -42,7 +40,6 @@ export class FolderCtrl{
 			if(err){
 				console.log(err);
 			}else{
-				console.log(data);
 				res.json(data);
 			}
 		})

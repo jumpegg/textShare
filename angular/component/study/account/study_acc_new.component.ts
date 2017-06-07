@@ -70,7 +70,6 @@ export class StudyNewAcc {
 					this.userList.map(function(input){
 						input.state = false;
 					})
-					console.log(this.userList);
 				}
 			}
 		)
@@ -236,7 +235,6 @@ export class StudyNewAcc {
 		.accCreate(input)
 		.flatMap(
 			data => {
-				console.log(data);
 				if(data.msg == 'done'){
 					return this.accountService.accGetLastOne();
 				}
@@ -250,10 +248,10 @@ export class StudyNewAcc {
 					delete input.state;
 					input.acc_idx = data[0].idx;
 					total_cost += Number(input.cost);
-					obj.accountService.userCreate(input).subscribe(
-						data=>{
-							console.log(data);
-						}
+					obj.accountService
+					.userCreate(input)
+					.subscribe(
+						data=>{}
 					)
 				});
 				let accountTemp:Account = new Account();
@@ -264,7 +262,6 @@ export class StudyNewAcc {
 			}
 		).subscribe(
 			data=>{
-				console.log(data);
 				if(data.msg == "done"){
 					alert('등록되었습니다.');
 					this.router.navigate(['/study/account']);

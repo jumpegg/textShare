@@ -30,7 +30,6 @@ export class UserSTDSearchComponent{
 		.subscribe(
 			data=>{
 				this.studyList = data;
-				console.log(this.studyList);
 			}
 		)
 	}
@@ -39,7 +38,6 @@ export class UserSTDSearchComponent{
 		.studyTextSearch({search : this.searchText})
 		.subscribe(
 			data=>{
-				console.log(data);
 				if(data.msg){
 					this.studyList = [];
 				}else{
@@ -49,7 +47,9 @@ export class UserSTDSearchComponent{
 		)
 	}
 	move_study(input){
-		this.studyService.studyEnter(input).subscribe(
+		this.studyService
+		.studyEnter(input)
+		.subscribe(
 			data => console.log(data)
 		)
 		this.router.navigate(['/study']);

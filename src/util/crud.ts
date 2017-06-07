@@ -146,7 +146,6 @@ export class Crud{
 	 * 반환값이 필요한 명령이었는지는 this.type 을 통해 판별
 	 */
 	public go(callback){
-		console.log(this.query);
 		conn.query(this.query, (err, data) => {
 			if(err){
 				let errQuery = `insert into error ('log') values (${err})`;

@@ -31,11 +31,9 @@ export class UserpageComponent {
 		let params = urlList[urlList.length - 1].split('?');
 		let url = params[0];
 		this.page.url = url;
-		// console.log(this.url);
 		$(".button-collapse").sideNav({
 			edge: 'right'
 		});
-		// $('ul.tabs').tabs(); 
 		this.userService
 		.userInfo()
 		.subscribe(data=>{

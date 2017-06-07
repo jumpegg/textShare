@@ -38,7 +38,6 @@ export class StudyAdmin {
 			.subscribe(
 				data=>{
 					this.user = data[0];
-					console.log(this.user);
 				}
 			)
 		}
@@ -47,7 +46,6 @@ export class StudyAdmin {
 				data => {
 					if(!data.msg){
 						this.joinerList = data;
-						console.log(this.joinerList);
 					}else{
 						this.joinerList = [];
 					}
@@ -59,7 +57,6 @@ export class StudyAdmin {
 				data => {
 					if(!data.msg){
 						this.hoperList = data;
-						console.log(this.hoperList);
 					}else{
 						this.hoperList = [];
 					}

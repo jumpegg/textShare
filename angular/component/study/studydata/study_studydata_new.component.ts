@@ -47,6 +47,7 @@ export class StudyNewData {
 		}
 		fileSubmit(){
 			let chk_dupl = false;
+			let sizeOver = false;
 			if(this.fileList.length > 0){
 				for(let i=0; i<this.fileList.length; i++){
 					if(this.getfileList.find(item=>{
@@ -54,9 +55,15 @@ export class StudyNewData {
 					})){
 						chk_dupl = true;
 					}
+					if(this.fileList[i].size > 10485760){
+						sizeOver = true;
+					}
 				}
+				
 				if(chk_dupl){
 					alert('중복되는 파일명이 있습니다.');
+				}else if(sizeOver){
+					alert('파일 용량은 10MB로 제한됩니다.')
 				}else{
 					let formData:FormData = new FormData();
 

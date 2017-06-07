@@ -204,7 +204,6 @@ export class UserTextShareNewComponent implements OnInit{
 		this.helpState = (this.helpState == 'close') ? 'open' : 'close';
 	}
 	tabcancle(input){
-		console.log(input.keyCode);
 		if(input.keyCode == 9){
 			this.beforeCon += "\t";
 			if(input.preventDefault){
@@ -233,7 +232,6 @@ export class UserTextShareNewComponent implements OnInit{
 			this.tshare.content = encodeURI(this.beforeCon);
 			this.tshareService.tsInsert(this.tshare).subscribe(
 				data => {
-					console.log(data);
 					if(data.msg == "done"){
 						alert("등록되었습니다.");
 						this.router.navigate(['/userpage/textShare']);

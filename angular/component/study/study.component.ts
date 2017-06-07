@@ -61,7 +61,6 @@ export class StudyComponent {
 						}else {
 							this.user.auth = "스터디원";
 						}
-						console.log(this.user);
 					}else if(data.msg == 'not_user'){
 						this.user.id = "회원가입을 해보세요";
 						this.user.auth = "회원이 아닙니다"

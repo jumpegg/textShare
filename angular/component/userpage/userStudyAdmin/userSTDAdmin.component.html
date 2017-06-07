@@ -177,7 +177,7 @@
 				</div>
 				<div class="col s4">
 					<div class="btn-box">
-						<button class="btn-flat" (click)="place_search(search_input)">검색</button>
+						<button class="btn-flat" (click)="place_search(search_input, newMap)">검색</button>
 						<button class="btn-flat" (click)="place_insert(placeOne)">장소등록</button>
 					</div>
 				</div>
@@ -190,8 +190,8 @@
 		</div>
 	</div>
 	<div class="modal-footer">
-		<button type="button" class="btn-flat create" (click)="study_submit(newStudy, placeList)">생성</button>
-		<button type="button" class="btn-flat cancel" (click)="close_new_modal()">취소</button>
+		<button type="button" class="btn-flat create" (click)="study_submit(newStudy, placeList, 'new')">생성</button>
+		<button type="button" class="btn-flat cancel" (click)="close_modal('#newStudy')">취소</button>
 	</div>
 </div>
 
@@ -215,11 +215,11 @@
 							<!--<p>{{place.name}}</p>-->
 							<i class="material-icons delete" (click)="place_remove(place, i)">clear</i>
 						</li>
-						<li class="place-list" [ngClass]="{'deactive':placeList.length >= 3}">
+						<li class="place-list" *ngIf="placeList.length < 3">
 							<i class="material-icons">add</i>
 							<p class="add-place" (click)="toggleModiSearcher()">장소 추가하기</p>
 						</li>
-						<li class="place-list place-add" [@placeModiToggle]="placeModiState">
+						<li class="place-list place-add" *ngIf="placeList.length < 3" [@placeModiToggle]="placeModiState">
 							<i class="material-icons">mode_edit</i>
 							<input type="text" placeholder="장소명" [(ngModel)]="placeOne.name">
 						</li>
@@ -237,14 +237,14 @@
 					</ul>
 				</div>
 			</div>
-			<div class="row search-map over-hidden" [@placeModiToggle]="placeModiState">
+			<div class="row search-map over-hidden" *ngIf="placeList.length < 3" [@placeModiToggle]="placeModiState">
 				<div class="col s8">
 					<i class="material-icons">search</i>
 					<input type="text" placeholder="장소명 & 건물명 검색" [(ngModel)]="search_input">
 				</div>
 				<div class="col s4">
 					<div class="btn-box">
-						<button class="btn-flat" (click)="place_modi_search(search_input)">검색</button>
+						<button class="btn-flat" (click)="place_search(search_input, modiMap)">검색</button>
 						<button class="btn-flat" (click)="place_insert(placeOne)">장소등록</button>
 					</div>
 				</div>
@@ -256,8 +256,8 @@
 			</div>
 		</div>
 		<div class="modal-footer">
-			<button type="button" class="btn-flat create" (click)="study_modi_submit(tempStudy, placeList)">수정</button>
-			<button type="button" class="btn-flat cancel" (click)="close_modi_modal()">취소</button>
+			<button type="button" class="btn-flat create" (click)="study_submit(tempStudy, placeList, 'modi')">수정</button>
+			<button type="button" class="btn-flat cancel" (click)="close_modal('#modiStudy')">취소</button>
 		</div>
 	</div>
 </div>

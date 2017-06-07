@@ -29,7 +29,6 @@ export class StudyGuard implements CanActivate{
 	canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot){
 		return this.studyService.isUserStudy().map(
 			data => {
-				console.log(data.json());
 				if(data.json()){
 					return true;
 				}else{

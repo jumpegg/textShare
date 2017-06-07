@@ -29,7 +29,6 @@ export class StudyReadNotice{
 		.subscribe(
 			data=>{
 				this.notice = data[0];
-				console.log(this.notice);
 			}
 		);
 	}

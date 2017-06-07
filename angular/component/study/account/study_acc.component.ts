@@ -220,7 +220,6 @@ export class StudyAcc {
 			let res = true;
 			if(confirm('변경하시겠습니까?')){
 				this.userList.map(function(input){
-					console.log(input);
 					let upUser = new Acc_user();
 					upUser.idx = input.idx;
 					upUser.is_pay = input.is_pay;
