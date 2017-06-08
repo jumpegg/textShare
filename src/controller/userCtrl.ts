@@ -71,6 +71,12 @@ export class UserCtrl{
 			res.json({});
 		}
 	}
+	public forTest: RequestHandler = (req, res)=>{
+		let arr = [];
+		arr.push(Math.random());
+
+		res.json(arr);
+	}
 }
 
 export const userCtrl = new UserCtrl();
