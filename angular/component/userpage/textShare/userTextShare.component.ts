@@ -81,7 +81,9 @@ export class UserTextShareComponent implements OnInit{
 		this.aniStateVal = this.aniStateVal == 'open' ? 'close' : 'open';
 	}
 	newFolder_submit(){
-		if(!this.folderVo.name || this.folderVo.name.trim().length == 0){
+		if(!this.folderVo.name){
+			alert('폴더명을 입력해주세요');
+		}else if(this.folderVo.name.trim().length == 0){
 			alert('폴더명을 입력해주세요');
 		}else if(this.folderVo.name.trim().length > 20){
 			alert('폴더이름은 20자 이하로 정해주세요');
@@ -93,6 +95,8 @@ export class UserTextShareComponent implements OnInit{
 		this.folderVo.user_idx = this.userInfo.idx;
 		
 		if(!this.folderVo.name){
+			alert("폴더명을 입력해주세요");
+		}else{
 			this.folderService.folderInsert(this.folderVo).subscribe(
 				data => {
 					if(data.msg == 'done'){
@@ -105,8 +109,6 @@ export class UserTextShareComponent implements OnInit{
 					console.log(error);
 				}
 			)
-		}else{
-			alert("폴더명을 입력해주세요");
 		}
 	}
 	contentShow(input){
