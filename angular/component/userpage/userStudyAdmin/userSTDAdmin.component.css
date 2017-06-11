@@ -42,6 +42,13 @@ p{
 .listWrap .study-info .next-info span{
 	font-size: 14px;
 }
+.next-info .next-place{
+	width: 170px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	display: inline-block;
+}
 .listWrap .study-info h5{
 	margin-top: 5px;
 	margin-bottom: 10px;

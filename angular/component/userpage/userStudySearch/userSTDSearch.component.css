@@ -57,6 +57,13 @@ h5{
 .next-info .next-time{
 	float: right;
 }
+.next-info .next-place{
+	display: inline-block;
+	width : 200px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
 .card-action{
 	padding: 10px;
 	padding-top: 20px;

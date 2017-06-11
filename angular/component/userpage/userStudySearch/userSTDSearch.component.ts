@@ -30,6 +30,7 @@ export class UserSTDSearchComponent{
 		.subscribe(
 			data=>{
 				this.studyList = data;
+				console.log(this.studyList);
 			}
 		)
 	}
