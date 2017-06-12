@@ -22,6 +22,7 @@ const userRoutes: Routes = [
 			{path: 'mypage', component: UserMyPageComponent},
 			{path: 'textShare', component: UserTextShareComponent},
 			{path: 'textShareNew', component: UserTextShareNewComponent},
+			{path: 'textShareNew/:idx', component: UserTextShareNewComponent},
 			{path: 'textBag', component: UserTextBagComponent},
 			{path: 'stdJoin', component: UserSTDJoinComponent},
 			{path: 'stdAdmin', component: UserSTDAdminComponent},

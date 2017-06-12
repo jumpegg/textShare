@@ -20,4 +20,8 @@ export class TextShareService{
 		return this.http.get('/user/ts_selectOne/'+input, {headers:this.header})
 			.map(res=>res.json());
 	}
+	tsUpdate(input){
+		return this.http.post('/user/ts_update', input, {headers:this.header})
+			.map(res=>res.json());
+	}
 }

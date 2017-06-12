@@ -8,14 +8,25 @@
 		</div>
 		<button class="btn-flat" (click)="stateChange()">폴더생성</button>
 		<a routerLink="../textShareNew" class="waves-effect waves-light btn-flat">새 글작성</a>
+		<p class="content-title" *ngIf="itemActed">
+			<span>{{title}}</span>
+			<button type="button" class="btn-flat" (click)="modiTShare(itemActed)">
+				수정 <i class="material-icons">edit</i>
+			</button>
+		</p>
 	</div>
 	<div class="row margin-b0">
 		<div class="col s4 list-tree">
 			<div class="tree-wrapper">
 				<ul class="tree-scroll">
-					<li class="folder" *ngFor="let folder of folders"><p [ngClass]="{'open':folder.state == 'open', 'close':folder.state == 'close'}" (click)="folderToggle(folder)"> {{folder.name}}</p>
+					<li class="folder" *ngFor="let folder of folders">
+						<p [ngClass]="{'open':folder.state == 'open', 'close':folder.state == 'close'}" (click)="folderToggle(folder)"> 
+							{{folder.name}}
+						</p>
 						<ul [@folderToggle]="folder.state">
-							<li *ngFor="let item of folder.items" [ngClass]="{'active':item.itemState == 'active'}" (click)="contentShow(item)">
+							<li *ngFor="let item of folder.items" 
+							[ngClass]="{'active':item.itemState == 'active'}" 
+							(click)="contentShow(item)">
 								{{item.itemName}}
 							</li>
 						</ul>

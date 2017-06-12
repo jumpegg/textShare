@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { FormControl, FormGroup, Validators, FormBuilder} from '@angular/forms';
-import {trigger, state, style, animate, transition} from '@angular/animations';
+import { ActivatedRoute, Router } from '@angular/router';
+import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { trigger, state, style, animate, transition } from '@angular/animations';
 import * as marked from 'marked';
 import 'rxjs/add/operator/mergeMap';
 
-import {PageInfo} from '../../../global/single_info';
-import {UserInfo} from '../../../global/single_user';
-import {TextShare} from '../../../vo/textshare';
-import {Folder} from '../../../vo/folder';
+import { PageInfo } from '../../../global/single_info';
+import { UserInfo } from '../../../global/single_user';
+import { TextShare } from '../../../vo/textshare';
+import { Folder } from '../../../vo/folder';
 
-import {FolderService} from '../../../service/folder.service';
-import {TextShareService} from '../../../service/textshare.service';
+import { FolderService } from '../../../service/folder.service';
+import { TextShareService } from '../../../service/textshare.service';
 
 declare var $ : any;
 
@@ -20,8 +20,7 @@ declare var $ : any;
 	templateUrl: 'client/component/userpage/textShare/userTextShare.component.html',
 	animations: [
 		trigger('folderToggle',[
-			state('open', style({
-			})),
+			state('open', style({})),
 			state('close',style({
 				height: '0px'
 			})),
@@ -29,9 +28,7 @@ declare var $ : any;
 			transition('close => open', animate('300ms ease-out'))
 		]),
 		trigger('nameToggle',[
-			state('open',style({
-
-			})),
+			state('open',style({})),
 			state('close',style({
 				width: '0px',
 				display: 'none'
@@ -44,14 +41,20 @@ declare var $ : any;
 })
 export class UserTextShareComponent implements OnInit{
 
-	private title:string;
+	private title:string = "";
 	private aniStateVal:string = "close";
 	private folderVo:Folder;
 	private folders:Array<any>;
 	private content:string = "";
 	private itemActed:number;
 
-	constructor(public page:PageInfo,public userInfo:UserInfo, public folderService:FolderService, public textShareService:TextShareService){
+	constructor(
+		private page:PageInfo,
+		private router:Router,
+		private userInfo:UserInfo, 
+		private folderService:FolderService, 
+		private textShareService:TextShareService
+	){
 		this.folderVo = new Folder();
 		this.folders = [];
 		marked.setOptions({
@@ -114,6 +117,7 @@ export class UserTextShareComponent implements OnInit{
 	contentShow(input){
 		this.textShareService.tsRead(input.itemIdx).subscribe(
 			data => {
+				this.title = data.title;
 				this.itemActed = input.itemIdx;
 				this.content = marked(decodeURI(data.content));
 			},
@@ -149,7 +153,10 @@ export class UserTextShareComponent implements OnInit{
 			}
 		)
 	}
-
+	modiTShare(input){
+		this.router.navigate(['/userpage/textShareNew/'+input]);
+		console.log(input);
+	}
 }
 
 @Component({
@@ -158,8 +165,7 @@ export class UserTextShareComponent implements OnInit{
 	providers: [FolderService, TextShareService],
 	animations: [
 		trigger('helpToggle',[
-			state('close', style({
-			})),
+			state('close', style({})),
 			state('open',style({
 				marginRight: '0px'
 			})),
@@ -169,13 +175,20 @@ export class UserTextShareComponent implements OnInit{
 	]
 })
 export class UserTextShareNewComponent implements OnInit{
-	public tshare:TextShare;
-	public converted:any;
-	public beforeCon:any;
-	public folderList:Array<any>;
-	public helpState:string = 'close';
+	private tshare:TextShare;
+	private converted:any;
+	private beforeCon:any;
+	private folderList:Array<any>;
+	private helpState:string = 'close';
 
-	constructor(public page:PageInfo,public userInfo:UserInfo, public tshareService:TextShareService, public folderService:FolderService, public router:Router){
+	constructor(
+		private page:PageInfo,
+		private userInfo:UserInfo, 
+		private tshareService:TextShareService, 
+		private folderService:FolderService, 
+		private router:Router,
+		private route:ActivatedRoute
+	){
 		this.tshare = new TextShare();
 		this.beforeCon = "";
 		marked.setOptions({
@@ -192,15 +205,31 @@ export class UserTextShareNewComponent implements OnInit{
 
 	ngOnInit(){
 		this.page.init();
+		if(this.route.snapshot.params['idx']){
+			this.tshare.idx =  this.route.snapshot.params['idx'];
+			this.getTShare(this.tshare.idx);
+		}
 		$('select').material_select();
-		this.folderService.folderList().subscribe(
-			data=>{
-				this.folderList = data;
-			},
-			error=>{
-				console.log(error);
-			}
+		this.folderService
+		.folderList()
+		.subscribe(
+			data=>{this.folderList = data;},
+			error=>{console.log(error);}
 		);
+	}
+	getTShare(input){
+		this.tshareService
+		.tsRead(input)
+		.subscribe(
+			data=>{
+				this.tshare.title = data.title;
+				this.tshare.folder_idx = data.folder_idx;
+				this.tshare.c_date = data.c_date;
+				this.beforeCon = decodeURI(data.content);
+				this.converter();
+				console.log(this.tshare);
+			}
+		)
 	}
 	helpToggle(){
 		this.helpState = (this.helpState == 'close') ? 'open' : 'close';
@@ -222,7 +251,7 @@ export class UserTextShareNewComponent implements OnInit{
 			this.converted = marked(this.beforeCon);
 		}
 	}
-	newTShare(input){
+	tShareSubmit(input){
 		let isTrue = true;
 		if(!this.tshare.folder_idx){
 			alert('폴더를 선택해주세요');
@@ -230,17 +259,29 @@ export class UserTextShareNewComponent implements OnInit{
 		Object.keys(input).map(key=>{
 			isTrue = isTrue && input[key];
 		});
-		if(isTrue){
+		delete this.tshare.c_date;
+		if(isTrue && !this.tshare.idx){
+			console.log("new called");
 			this.tshare.content = encodeURI(this.beforeCon);
 			this.tshareService.tsInsert(this.tshare).subscribe(
 				data => {
-					if(data.msg == "done"){
+					if(!data.msg){
 						alert("등록되었습니다.");
-						this.router.navigate(['/userpage/textShare']);
+						this.router.navigate(['/userpage/textShareNew/'+ data]);
 					}
 				},
 				error => {
 					console.log(error);
+				}
+			)
+		}else if(isTrue && this.tshare.idx){
+			console.log("update called");
+			this.tshare.content = encodeURI(this.beforeCon);
+			this.tshareService.tsUpdate(this.tshare).subscribe(
+				data => {
+					if(data.msg == "done"){
+						alert("등록되었습니다.");
+					}
 				}
 			)
 		}else{

@@ -41,6 +41,7 @@ userRoute.get('/place_list/:idx',placeCtrl.placeList);
 userRoute.get('/place_remove/:idx',placeCtrl.placeRemove);
 
 userRoute.post('/ts_create', textShareCtrl.make);
+userRoute.post('/ts_update', textShareCtrl.update);
 userRoute.get('/ts_selectOne/:idx', textShareCtrl.getContent);
 
 export { userRoute };

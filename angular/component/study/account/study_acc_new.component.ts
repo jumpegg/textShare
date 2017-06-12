@@ -18,21 +18,21 @@ declare var $ : any;
 		providers: [AccountService, MemberService]
 })
 export class StudyNewAcc {
-	public userList:any[];
-	public attendeeList:any[] = [];
-	public getAttendeeList:any[] = [];
-	public tempAttendeeList:any[] = [];
-	public newAccount:Account = new Account();
-	public allCost:number;
-	public idx:number;
+	private userList:any[];
+	private attendeeList:any[] = [];
+	private getAttendeeList:any[] = [];
+	private tempAttendeeList:any[] = [];
+	private newAccount:Account = new Account();
+	private allCost:number;
+	private idx:number;
 
 	constructor(
-		public studyPage:StudyPageInfo,
-		public studyInfo:StudyInfo,
-		public accountService:AccountService,
-		public memberService:MemberService,
-		public router:Router,
-		public route:ActivatedRoute
+		private studyPage:StudyPageInfo,
+		private studyInfo:StudyInfo,
+		private accountService:AccountService,
+		private memberService:MemberService,
+		private router:Router,
+		private route:ActivatedRoute
 	){}
 	ngOnInit(){
 		this.studyPage.init();

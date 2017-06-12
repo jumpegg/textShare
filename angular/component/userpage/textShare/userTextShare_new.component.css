@@ -3,6 +3,7 @@
 }
 .btnBox{
 	text-align: right;
+	float:right;
 	width: 39%;
 	display: inline-block;
 }
@@ -54,6 +55,15 @@
 	padding: 20px;
 	padding-bottom: 0px;
 }
+.content-view .modifolder{
+	display: inline-block;
+	width: 300px;
+	padding: 10px 10px;
+	color: #999999;
+	font-size: 24px;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
 .content-view .ts-folder{
 	width: 60%;
 	display: inline-block;
@@ -71,6 +81,12 @@
 	height: 100%;
 	width: 100%;
 	overflow-y: auto;
+}
+.content-view .btnBox{
+	margin-bottom: 20px;
+}
+.content-view .btnBox::after{
+	clear: both;
 }
 
 /* help box */

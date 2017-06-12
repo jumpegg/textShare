@@ -3,16 +3,28 @@
 		<div class="col s6 insert-area">
 			<input type="text" class="ts-title" [(ngModel)]="tshare.title" placeholder="제목(3~20자 이내)" #tsTitle="ngModel" required minlength="3" maxlength="20">
 			<div class="area-wrapper">
-				<textarea tabindex="-1"(keydown)="tabcancle($event)" (keyup)="converter()" [(ngModel)]="beforeCon" resize="none" #tsContent="ngModel" required></textarea>
+				<textarea tabindex="-1"
+				(keydown)="tabcancle($event)" 
+				(keyup)="converter()" 
+				[(ngModel)]="beforeCon" 
+				resize="none" 
+				#tsContent="ngModel" 
+				required></textarea>
 			</div>
 		</div>
 		<div class="col s6 content-view">
-			<select name="folder" class="ts-folder browser-default" (change)="selectChange($event)">
+			<select name="folder" class="ts-folder browser-default" *ngIf="!tshare.idx" (change)="selectChange($event)">
 				<option value="" disabled selected>폴더 선택하기</option>
-				<option *ngFor="let folder of folderList" value="{{folder.idx}}">{{folder.name}}</option>
+				<option *ngFor="let folder of folderList" value="{{folder.idx}}">
+					{{folder.name}}
+				</option>
 			</select>
+			<div class="modifolder" *ngIf="tshare.idx">
+				작성일 : {{tshare.c_date|date:"yyyy-MM-dd"}}
+			</div>
 			<div class="btnBox">
-				<button class="waves-effect waves-light btn-flat ts-submit" (click)="newTShare({
+				<button class="waves-effect waves-light btn-flat ts-submit" 
+				(click)="tShareSubmit({
 					isTitle : tsTitle.valid,
 					isContent : tsContent.valid
 				})">저장</button>

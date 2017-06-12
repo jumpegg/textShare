@@ -52,12 +52,42 @@
 .content-view{
 	padding: 20px;
 }
+
 .content-view .text-output{
 	border: 1px solid #FFB300;
 	border-radius: 10px;
 	height: 700px;
 	width: 100%;
 	padding: 20px;
+}
+.content-title {
+	color: #FFB300;
+	width: 690px;
+	display: inline-block;
+	font-size: 24px;
+	font-weight: bold;
+	overflow: hidden;
+	float:right;
+	margin-right: 10px;
+}
+.content-title span{
+	display: inline-block;
+	width: 350px;
+	padding-top: 10px;
+	overflow:hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.content-title button{
+	color: #FFFFFF;
+	background-color: #FFB300;
+	padding: 0px 10px 0px 15px;
+	float:right;
+}
+.content-view i.material-icons{
+	line-height: 24px;
+	position: relative;
+	top: 3px;
 }
 .text-output .show-area{
 	width: 100%;
