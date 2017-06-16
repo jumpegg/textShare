@@ -331,6 +331,10 @@ export class UserSTDAdminComponent{
 			alert('장소명을 입력해주세요');
 		}else if(input.name.trim().length == 0){
 			alert('장소명을 입력해주세요');
+		}else if(!input.mapx){
+			alert('좌표가 입력되지 않았습니다. 지도에서 찾아주세요');
+		}else if(!input.mapy){
+			alert('좌표가 입력되지 않았습니다. 지도에서 찾아주세요');
 		}else{
 			let placeTemp = Object.assign({}, input);
 			this.placeList.push(placeTemp);
