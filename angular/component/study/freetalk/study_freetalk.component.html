@@ -17,6 +17,11 @@
 				</td>
 				<td class="text-center">{{freetalk.id}}</td>
 			</tr>
+			<tr *ngIf="no_freetalk">
+				<td class="no_freetalk" colspan="3">
+					아직 등록된 글이 없습니다.
+				</td>
+			</tr>
 		</tbody>
 	</table>
 	<div class="btnBox">

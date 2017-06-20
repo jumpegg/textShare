@@ -11,14 +11,15 @@ import { StudyPageInfo } from '../../../global/single_studypage';
 		providers: [StudyService, FreetalkService]
 })
 export class StudyFreetalk {
-		public fList:any[] = [];
-		public listNum:number[] = [];
-		public curNum:number = 1;
-		public endNum:number;
+		private fList:any[] = [];
+		private listNum:number[] = [];
+		private curNum:number = 1;
+		private endNum:number;
+		private no_freetalk:boolean = false;
 		constructor(
-			public studyPage:StudyPageInfo,
-			public freetalkService:FreetalkService,
-			public router:Router
+			private studyPage:StudyPageInfo,
+			private freetalkService:FreetalkService,
+			private router:Router
 		){}
 		ngOnInit(){
 			this.studyPage.init();
@@ -30,7 +31,9 @@ export class StudyFreetalk {
 			.pagingList(input)
 			.subscribe(
 				data=>{
-					this.fList = data;
+					if(!data.msg){
+						this.fList = data;
+					}
 				}
 			)
 		}
@@ -45,13 +48,17 @@ export class StudyFreetalk {
 			.getCnt()
 			.subscribe(
 				data=>{
-					let listCnt = Number(data[0].cnt);
-					let res = Math.ceil(listCnt/7);
-					this.endNum = res;
-					let listLen = Math.ceil(Number(this.curNum)/10);
-					listLen = (listLen*10 > res) ? res : listLen*10;
-					for(let i=listLen-10; i<listLen; i++){
-						this.listNum.push(i+1);
+					if(data[0].cnt){
+						let listCnt = Number(data[0].cnt);
+						let res = Math.ceil(listCnt/7);
+						this.endNum = res;
+						let listLen = Math.ceil(Number(this.curNum)/10);
+						listLen = (listLen*10 > res) ? res : listLen*10;
+						for(let i=listLen-10; i<listLen; i++){
+							this.listNum.push(i+1);
+						}
+					}else{
+						this.no_freetalk = true;
 					}
 				}
 			)

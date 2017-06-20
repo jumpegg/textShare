@@ -11,14 +11,15 @@ import { StudyPageInfo } from '../../../global/single_studypage';
 		providers: [StudyService, NoticeService]
 })
 export class StudyNotice {
-		public nList:any[] = [];
-		public listNum:number[] = [];
-		public curNum:number = 1;
-		public endNum:number;
+		private nList:any[] = [];
+		private listNum:number[] = [];
+		private curNum:number = 1;
+		private endNum:number;
+		private no_notice:boolean = false;
 		constructor(
-			public studyPage:StudyPageInfo,
-			public noticeService:NoticeService,
-			public router:Router
+			private studyPage:StudyPageInfo,
+			private noticeService:NoticeService,
+			private router:Router
 		){}
 		ngOnInit(){
 			this.studyPage.init();
@@ -30,7 +31,9 @@ export class StudyNotice {
 			.pagingList(input)
 			.subscribe(
 				data=>{
-					this.nList = data;
+					if(!data.msg){
+						this.nList = data;
+					}
 				}
 			)
 		}
@@ -48,13 +51,17 @@ export class StudyNotice {
 			.getCnt()
 			.subscribe(
 				data=>{
-					let listCnt = Number(data[0].cnt);
-					let res = Math.ceil(listCnt/7);
-					this.endNum = res;
-					let listLen = Math.ceil(Number(this.curNum)/10);
-					listLen = (listLen*10 > res) ? res : listLen*10;
-					for(let i=listLen-10; i<listLen; i++){
-						this.listNum.push(i+1);
+					if(data[0].cnt != 0){
+						let listCnt = Number(data[0].cnt);
+						let res = Math.ceil(listCnt/7);
+						this.endNum = res;
+						let listLen = Math.ceil(Number(this.curNum)/10);
+						listLen = (listLen*10 > res) ? res : listLen*10;
+						for(let i=listLen-10; i<listLen; i++){
+							this.listNum.push(i+1);
+						}
+					}else{
+						this.no_notice = true;
 					}
 				}
 			)

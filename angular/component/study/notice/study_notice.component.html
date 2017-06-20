@@ -13,6 +13,11 @@
 				<td class="cursor" (click)="move_read(notice.idx)">{{notice.title}}</td>
 				<td class="text-center">{{notice.id}}</td>
 			</tr>
+			<tr *ngIf="no_notice">
+				<td class="no_notice" colspan="3">
+					아직 등록된 글이 없습니다.
+				</td>
+			</tr>
 		</tbody>
 	</table>
 	<div class="btnBox">
