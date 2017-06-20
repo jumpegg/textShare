@@ -2,6 +2,7 @@ import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import 'rxjs/add/operator/mergeMap';
+import { Observable } from 'rxjs/Observable';
 
 import { StudyService } from '../../../service/study.service';
 import { AccountService } from '../../../service/account.service';
@@ -72,10 +73,11 @@ export class StudyAcc {
 						this.accList = data;
 						this.accLatest = data[0];
 						this.isAccLatest = true;
+						return this.accountService.userList(this.accList[0].idx);
 					}else{
 						this.isAccLatest = false;
+						return Observable.of({msg:'no_res'});
 					}
-					return this.accountService.userList(this.accList[0].idx);
 				}
 			)
 			.flatMap(
@@ -86,10 +88,11 @@ export class StudyAcc {
 							input.is_pay = input.is_pay == "true";
 						})
 						this.isUserList = true;
+						return this.accountService.infoList(this.accList[0].idx);
 					}else{
 						this.isUserList = false;
+						return Observable.of({msg:'no_res'});
 					}
-					return this.accountService.infoList(this.accList[0].idx);
 				}
 			)
 			.subscribe(
@@ -162,6 +165,7 @@ export class StudyAcc {
 			this.newInfo = new Acc_info();
 		}
 		infoSubmit(){
+			if(this.accLatest.idx){
 			this.newInfo.acc_idx = this.accLatest.idx;
 			this.accountService
 				.infoCreate(this.newInfo)
@@ -180,8 +184,12 @@ export class StudyAcc {
 								obj.totalCost += Number(input.cost);
 						})
 						this.resCost =this.accLatest.total_cost - this.totalCost;
+						this.newInfo = new Acc_info();
 					}
 				)
+			}else{
+				alert("지정된 회계가 없습니다.");
+			}
 		}
 		infoRemove(input){
 			if(confirm('삭제하시겠습니까?')){
