@@ -259,7 +259,7 @@ export class UserTextShareNewComponent implements OnInit{
 		Object.keys(input).map(key=>{
 			isTrue = isTrue && input[key];
 		});
-		delete this.tshare.c_date;
+		// delete this.tshare.c_date;
 		if(isTrue && !this.tshare.idx){
 			console.log("new called");
 			this.tshare.content = encodeURI(this.beforeCon);
