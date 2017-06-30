@@ -1,4 +1,5 @@
 import { Injectable, OnInit } from '@angular/core';
+import { ActivatedRouteSnapshot } from '@angular/router';
 
 @Injectable()
 export class PageInfo{
@@ -7,6 +8,7 @@ export class PageInfo{
 		public title:string = "title test";
 
 	init(){
+		console.log(this.url);
 		let urlList = document.location.hash.split('/');
 		let params = urlList[urlList.length - 1].split('?');
 		this.url = params[0];

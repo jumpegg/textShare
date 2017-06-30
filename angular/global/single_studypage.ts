@@ -11,6 +11,7 @@ export class StudyPageInfo{
 		public geturl:string;
 		
 	init(){
+		console.log(this.url);
 		if(this.url == 'schedule' || this.url == 'scheduleNew' || this.url == 'account' || this.url == 'admin'){
 			this.need = false;
 			this.title = '운영';
