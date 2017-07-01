@@ -1,5 +1,6 @@
 node_modules
 client
 server
+apidoc
 data/**/*.*
 src/util/connector.ts

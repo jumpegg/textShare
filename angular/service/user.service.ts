@@ -35,11 +35,20 @@ export class UserService{
 		return this.http.get('/user/user_info', {headers:this.header})
 			.map(res => res.json());
 	}
+	
 	/*
 	 테스트용 함수들
 	*/
 	mapTest(){
 		return this.http.get('/user/study_map_test', {headers:this.header})
+			.map(res => res.json());
+	}
+	userPut(){
+		return this.http.put('/user/put_test', {headers:this.header})
+			.map(res => res.json());
+	}
+	userDelete(){
+		return this.http.delete('/user/delete_test', {headers:this.header})
 			.map(res => res.json());
 	}
 }

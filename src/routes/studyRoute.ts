@@ -32,56 +32,56 @@ studyRoute.post('/reject_member', memberCtrl.reject);
 studyRoute.get('/getUserInfo_member', memberCtrl.getUserInfo);
 
 // schedule
-studyRoute.post('/new_schedule', scheduleCtrl.make);
-studyRoute.post('/update_schedule', scheduleCtrl.update);
+studyRoute.post('/schedule', scheduleCtrl.make);
+studyRoute.put('/schedule', scheduleCtrl.update);
 studyRoute.get('/list_schedule', scheduleCtrl.list);
 studyRoute.get('/one_schedule/:idx', scheduleCtrl.getSchedule);
 studyRoute.get('/getIndex_schedule', scheduleCtrl.index);
 studyRoute.post('/recentByStudy_schedule', scheduleCtrl.recentByStudy);
 
 // account
-studyRoute.post('/new_account', accountCtrl.accMake);
-studyRoute.post('/new_acc_info', accountCtrl.infoMake);
-studyRoute.post('/new_acc_user', accountCtrl.userMake);
+studyRoute.post('/account', accountCtrl.accMake);
+studyRoute.post('/acc_info', accountCtrl.infoMake);
+studyRoute.post('/acc_user', accountCtrl.userMake);
 studyRoute.get('/getOne_account/:idx', accountCtrl.accGetOne);
 studyRoute.get('/list_account', accountCtrl.accList);
 studyRoute.get('/list_acc_info/:idx', accountCtrl.infoList);
 studyRoute.get('/list_acc_user/:idx', accountCtrl.userList);
 studyRoute.get('/list_acc_get_last', accountCtrl.accGetLastOne);
-studyRoute.post('/update_account', accountCtrl.accUpdate);
-studyRoute.post('/update_acc_user', accountCtrl.userUpdate);
-studyRoute.get('/delete_acc_info/:idx', accountCtrl.infoDelete);
-studyRoute.get('/delete_acc_user/:idx', accountCtrl.userDelete);
+studyRoute.put('/account', accountCtrl.accUpdate);
+studyRoute.put('/acc_user', accountCtrl.userUpdate);
+studyRoute.delete('/acc_info/:idx', accountCtrl.infoDelete);
+studyRoute.delete('/acc_user/:idx', accountCtrl.userDelete);
 
 // notice
-studyRoute.post('/new_notice',noticeCtrl.make);
+studyRoute.post('/notice',noticeCtrl.make);
 studyRoute.get('/paging_notice/:idx',noticeCtrl.limitFTList);
 studyRoute.get('/getCnt_notice', noticeCtrl.listCnt);
 studyRoute.get('/getOne_notice/:idx',noticeCtrl.getOne);
-studyRoute.post('/update_notice',noticeCtrl.update);
-studyRoute.get('/delete_notice/:idx',noticeCtrl.delete);
+studyRoute.put('/notice',noticeCtrl.update);
+studyRoute.delete('/notice/:idx',noticeCtrl.delete);
 studyRoute.get('/getIndex_notice', noticeCtrl.index);
 
 // freetalk
-studyRoute.post('/new_freetalk',freetalkCtrl.make);
+studyRoute.post('/freetalk',freetalkCtrl.make);
 studyRoute.get('/paging_freetalk/:idx',freetalkCtrl.limitFTList);
 studyRoute.get('/getCnt_freetalk',freetalkCtrl.listCnt);
 studyRoute.get('/getOne_freetalk/:idx',freetalkCtrl.getOne);
-studyRoute.post('/update_freetalk',freetalkCtrl.update);
-studyRoute.get('/delete_freetalk/:idx',freetalkCtrl.delete);
+studyRoute.put('/freetalk',freetalkCtrl.update);
+studyRoute.delete('/freetalk/:idx',freetalkCtrl.delete);
 studyRoute.get('/getIndex_freetalk',freetalkCtrl.index);
 
 // comment
-studyRoute.post('/new_comment', commentCtrl.make);
+studyRoute.post('/comment', commentCtrl.make);
 studyRoute.post('/list_comment', commentCtrl.list);
-studyRoute.get('/del_comment/:idx', commentCtrl.del);
+studyRoute.delete('/del_comment/:idx', commentCtrl.del);
 
 // place
 studyRoute.get('/list_place', placeCtrl.getPlaces);
 studyRoute.get('/getOne_place/:idx', placeCtrl.getPlace);
 
 // folder
-studyRoute.post('/new_folder_data', dataCtrl.folderMake);
+studyRoute.post('/folder_data', dataCtrl.folderMake);
 studyRoute.get('/list_folder_data', dataCtrl.folderList);
 studyRoute.post('/new_file_data/:idx', dataCtrl.fileMake);
 studyRoute.post('/new_flow_file_data/:folder_idx/:flow_idx', dataCtrl.flowFileMake);
@@ -91,10 +91,10 @@ studyRoute.post('/is_file_data',dataCtrl.isFile);
 studyRoute.post('/del_file_data', dataCtrl.delFile);
 
 // flow
-studyRoute.post('/new_flow', flowCtrl.make);
+studyRoute.post('/flow', flowCtrl.make);
 studyRoute.get('/list_flow', flowCtrl.list);
 studyRoute.get('/getOne_flow/:idx', flowCtrl.getOne);
-studyRoute.post('/update_flow', flowCtrl.update);
-studyRoute.get('/delete_flow/:idx', flowCtrl.delete);
+studyRoute.put('/flow', flowCtrl.update);
+studyRoute.delete('/flow/:idx', flowCtrl.delete);
 
 export { studyRoute };

@@ -11,7 +11,7 @@ export class CommentService{
 	}
 
 	create(input){
-		return this.http.post('/study/new_comment', input,{headers:this.header})
+		return this.http.post('/study/comment', input,{headers:this.header})
 			.map(res=>res.json());
 	}
 	list(input){
@@ -19,7 +19,7 @@ export class CommentService{
 			.map(res=>res.json());
 	}
 	del(input){
-		return this.http.get('/study/del_comment/'+input, {headers:this.header})
+		return this.http.delete('/study/comment/'+input, {headers:this.header})
 			.map(res=>res.json());
 	}
 }

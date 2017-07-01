@@ -13,7 +13,7 @@ export class FlowService{
 	}
 
 	create(input){
-		return this.http.post('/study/new_flow', input, {headers:this.header})
+		return this.http.post('/study/flow', input, {headers:this.header})
 			.map(res=>res.json());
 	}
 	list(){
@@ -25,11 +25,11 @@ export class FlowService{
 			.map(res=>res.json());
 	}
 	update(input){
-		return this.http.post('/study/update_flow', input, {headers:this.header})
+		return this.http.put('/study/flow', input, {headers:this.header})
 			.map(res=>res.json());
 	}
 	delete(input){
-		return this.http.get('/study/delete_flow/'+input, {headers:this.header})
+		return this.http.delete('/study/flow/'+input, {headers:this.header})
 			.map(res=>res.json());
 	}
 }

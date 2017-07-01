@@ -25,7 +25,7 @@ export class FolderService{
 			.map(res=>res.json());
 	}
 	folderRemove(input:number){
-		return this.http.get('/user/folder_remove', {headers:this.header})
+		return this.http.delete('/user/folder', {headers:this.header})
 			.map(res=>res.json());
 	}
 }
