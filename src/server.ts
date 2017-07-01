@@ -14,7 +14,6 @@ import * as LocalStrategy from 'passport-local';
 import { userRoute, studyRoute } from './routes';
 
 class Server {
-		public test:string;
 		public app:express.Application;
 
 		constructor(){
@@ -48,6 +47,7 @@ class Server {
 				this.app.use('/data', express.static(path.join(__dirname, '/../data')));
 				this.app.use('/node_modules', express.static(path.join(__dirname, '/../node_modules')));
 				this.app.use('/client', express.static(path.join(__dirname, '/../client')));
+				this.app.use('/apidoc', express.static(path.join(__dirname, '/../apidoc')));
 		}
 
 		private router(){

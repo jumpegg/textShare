@@ -13,11 +13,11 @@ export class ScheduleService{
 	}
 
 	create(input){
-		return this.http.post('/study/new_schedule', input, {headers:this.header})
+		return this.http.post('/study/schedule', input, {headers:this.header})
 			.map(res=>res.json());
 	}
 	update(input){
-		return this.http.post('/study/update_schedule', input, {headers:this.header})
+		return this.http.put('/study/schedule', input, {headers:this.header})
 			.map(res=>res.json());
 	}
 	list(){

@@ -13,7 +13,7 @@ export class FreetalkService{
 	}
 
 	create(input){
-		return this.http.post('/study/new_freetalk', input, {headers:this.header})
+		return this.http.post('/study/freetalk', input, {headers:this.header})
 			.map(res=>res.json());
 	}
 	getCnt(){
@@ -33,11 +33,11 @@ export class FreetalkService{
 			.map(res=>res.json());
 	}
 	update(input){
-		return this.http.post('/study/update_freetalk', input, {headers:this.header})
+		return this.http.put('/study/freetalk', input, {headers:this.header})
 			.map(res=>res.json());
 	}
 	delete(input){
-		return this.http.get('/study/delete_freetalk/'+input, {headers:this.header})
+		return this.http.delete('/study/freetalk/'+input, {headers:this.header})
 			.map(res=>res.json());
 	}
 	forIndex(){

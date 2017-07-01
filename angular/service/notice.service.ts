@@ -13,7 +13,7 @@ export class NoticeService{
 	}
 
 	create(input){
-		return this.http.post('/study/new_notice', input, {headers:this.header})
+		return this.http.post('/study/notice', input, {headers:this.header})
 			.map(res=>res.json());
 	}
 	getCnt(){
@@ -33,11 +33,11 @@ export class NoticeService{
 			.map(res=>res.json());
 	}
 	update(input){
-		return this.http.post('/study/update_notice', input, {headers:this.header})
+		return this.http.put('/study/notice', input, {headers:this.header})
 			.map(res=>res.json());
 	}
 	delete(input){
-		return this.http.get('/study/delete_notice/'+input, {headers:this.header})
+		return this.http.delete('/study/notice/'+input, {headers:this.header})
 			.map(res=>res.json());
 	}
 	forIndex(){

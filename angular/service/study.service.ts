@@ -24,17 +24,16 @@ export class StudyService{
 		return this.http.get('/user/study_enter/'+input, {headers:this.header})
 			.map(res=>res.json());
 	}
-	
 	studySet(){
 		return this.http.get('/user/study_set', {headers:this.header})
 			.map(res=>res.json());
 	}
 	studyNew(input){
-		return this.http.post('/user/study_new', input, {headers:this.header})
+		return this.http.post('/user/study', input, {headers:this.header})
 			.map(res=>res.json());
 	}
 	studyModify(input){
-		return this.http.post('/user/study_modify', input, {headers:this.header})
+		return this.http.put('/user/study', input, {headers:this.header})
 			.map(res=>res.json());
 	}
 	studyOne(input){

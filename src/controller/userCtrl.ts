@@ -2,6 +2,7 @@ import { RequestHandler } from 'express';
 import { conn } from '../util/connector';
 import { Crud } from '../util/crud';
 import * as bcrypt from 'bcrypt-nodejs';
+import * as Sequelize from 'sequelize';
 
 export class UserCtrl{
 	public usertbl:any;
@@ -56,6 +57,12 @@ export class UserCtrl{
 				res.json({msg: 'using_id'});
 			}
 		});
+	}
+	public putTest: RequestHandler = (req, res) => {
+		res.json({msg: "this is put test"})
+	}
+	public deleteTest: RequestHandler = (req, res) => {
+		res.json({msg: "this is delete test"});
 	}
 	public sess: RequestHandler = (req, res) => {
 		if(req.session.login){
