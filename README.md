@@ -14,4 +14,4 @@
 
 * 프론트측 코드 : angular 폴더
 
-* http://textshare.io/apidoc
+* api-page(작업중) : http://textshare.io/apidoc
