@@ -10,7 +10,7 @@ import {
 const userRoute: Router = Router();
 /**
  * @api {get} /tasks List all tasks
- * @apiGroup Tasks
+ * @apiGroup Test
  * @apiSuccess {Object[]} tasks Task's list
  * @apiSuccess {Number} tasks.id Task id
  * @apiSuccess {String} tasks.title Task title
