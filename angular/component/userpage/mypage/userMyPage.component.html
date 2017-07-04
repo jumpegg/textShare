@@ -2,15 +2,15 @@
 	<div class="basicInfo">
 		<div class="input-field">
 			<label class="active" for="id">User name</label>
-			<input type="text" name="id" [(ngModel)]="userInfo.id">
+			<input disabled type="text" name="id" [(ngModel)]="userInfo.id">
 		</div>
 		<div class="input-field">
 			<label class="active" for="phone">Mobile</label>
-			<input type="text" name="phone" [(ngModel)]="userInfo.phone">
+			<input disabled type="text" name="phone" [(ngModel)]="userInfo.phone">
 		</div>
 		<div class="input-field">
 			<label class="active" for="c_date">Create date</label>
-			<input type="text" name="c_date" [ngModel]="userInfo.c_date|date:'y-MM-dd'">
+			<input disabled type="text" name="c_date" [ngModel]="userInfo.c_date|date:'y-MM-dd'">
 		</div>
 	</div>
 </div>

@@ -21,7 +21,7 @@ studyRoute.get('/map', studyCtrl.map);
  * @api {get} /study/getOne_study Get study info
  * @apiGroup Study
  * @apiDescription 스터디의 간략 정보 조회
- * @apiName getOne_study
+ * @apiName Get study info
  *
  */
 studyRoute.get('/getOne_study', studyCtrl.getStudyInfo);
@@ -39,7 +39,7 @@ studyRoute.get('/get_auth', studyCtrl.getPermission);
  * @api {get} /study/get_permission Get permission
  * @apiGroup Member
  * @apiDescription 현재 접속자의 스터디 권한 조회
- * @apiName get_permission
+ * @apiName Get permission
  *
  */
 studyRoute.get('/get_permission', memberCtrl.getPermission);
@@ -47,7 +47,7 @@ studyRoute.get('/get_permission', memberCtrl.getPermission);
  * @api {post} /study/set_permission Set permission
  * @apiGroup Member
  * @apiDescription 회원정보 수정
- * @apiName set_permission
+ * @apiName Permission modify
  *
  * @apiParam {Number} idx member Table 의 PK
  * @apiParam {Number} permission 권한 레벨
@@ -58,7 +58,7 @@ studyRoute.post('/set_permission', memberCtrl.setPermission);
  * @api {get} /study/new_permission Create member
  * @apiGroup Member
  * @apiDescription 스터디 회원가입시 회원 생성
- * @apiName new_permission
+ * @apiName Member create
  *
  */
 studyRoute.get('/new_member', memberCtrl.make);
@@ -66,7 +66,7 @@ studyRoute.get('/new_member', memberCtrl.make);
  * @api {get} /study/joiner_list_member Get joiner list
  * @apiGroup Member
  * @apiDescription 가입된 스터디 멤버 조회
- * @apiName joiner_list_member
+ * @apiName Get joiner list
  *
  */
 studyRoute.get('/joiner_list_member', memberCtrl.joinerList);
@@ -74,7 +74,7 @@ studyRoute.get('/joiner_list_member', memberCtrl.joinerList);
  * @api {get} /study/hoper_list_member Get hoper list
  * @apiGroup Member
  * @apiDescription 가입신청한 멤버 조회
- * @apiName hoper_list_member
+ * @apiName Get hoper list
  *
  */
 studyRoute.get('/hoper_list_member', memberCtrl.hoperList);
@@ -82,7 +82,7 @@ studyRoute.get('/hoper_list_member', memberCtrl.hoperList);
  * @api {get} /study/is_member Create account
  * @apiGroup Member
  * @apiDescription 스터디 회원인지 조회
- * @apiName is_member
+ * @apiName Create account
  *
  */
 studyRoute.get('/is_member', memberCtrl.isMember);
@@ -90,7 +90,7 @@ studyRoute.get('/is_member', memberCtrl.isMember);
  * @api {post} /study/allow_member Allow member
  * @apiGroup Member
  * @apiDescription 가입 허가
- * @apiName allow_member
+ * @apiName Allow member
  *
  * @apiParam {Number} idx member 테이블 idx
  *
@@ -100,7 +100,7 @@ studyRoute.post('/allow_member', memberCtrl.allow);
  * @api {post} /study/reject_member Reject member
  * @apiGroup Member
  * @apiDescription 가입 거절
- * @apiName reject_member
+ * @apiName Reject member
  *
  * @apiParam {Number} idx member 테이블 idx
  *
@@ -110,7 +110,7 @@ studyRoute.post('/reject_member', memberCtrl.reject);
  * @api {get} /study/getUserInfo_member Reject member
  * @apiGroup Member
  * @apiDescription 가입 거절
- * @apiName getUserInfo_member
+ * @apiName Reject member
  *
  * @apiParam {Number} idx member 테이블 idx
  *
@@ -122,7 +122,7 @@ studyRoute.get('/getUserInfo_member', memberCtrl.getUserInfo);
  * @api {post} /study/schedule Create Schedule 
  * @apiGroup Schedule
  * @apiDescription 스케쥴 생성
- * @apiName schedule
+ * @apiName Create schedule
  *
  * @apiParam {Date} gathering 모임날짜
  * @apiParam {String} start 스터디 시작
@@ -136,7 +136,7 @@ studyRoute.post('/schedule', scheduleCtrl.make);
  * @api {put} /study/schedule Update schedule 
  * @apiGroup Schedule
  * @apiDescription 스케쥴 생성
- * @apiName schedule
+ * @apiName Schedule update
  * 
  * @apiParam {Number} idx 스케쥴 PK
  * @apiParam {Date} gathering 모임날짜
@@ -151,7 +151,7 @@ studyRoute.put('/schedule', scheduleCtrl.update);
  * @api {get} /study/list_schedule Get schedule list 
  * @apiGroup Schedule
  * @apiDescription 모든 스케쥴 리스트 받기
- * @apiName list_schedule
+ * @apiName Get schedule list
  *
  */
 studyRoute.get('/list_schedule', scheduleCtrl.list);
@@ -159,7 +159,7 @@ studyRoute.get('/list_schedule', scheduleCtrl.list);
  * @api {get} /study/one_schedule Get schedule one
  * @apiGroup Schedule
  * @apiDescription 특정 스케쥴 조회
- * @apiName one_schedule
+ * @apiName Get one schedule
  * 
  * @apiParam {Number} idx 스케쥴 PK
  */
@@ -168,7 +168,7 @@ studyRoute.get('/one_schedule/:idx', scheduleCtrl.getSchedule);
  * @api {get} /study/getIndex_schedule Get schedule one for index page
  * @apiGroup Schedule
  * @apiDescription schedule 첫 페이지에 보여줄 자료 조회
- * @apiName getIndex_schedule
+ * @apiName Get index schedule
  * 
  * @apiParam {Number} idx 스케쥴 PK
  */
@@ -177,7 +177,7 @@ studyRoute.get('/getIndex_schedule', scheduleCtrl.index);
  * @api {post} /study/recentByStudy_schedule Get place name 
  * @apiGroup Schedule
  * @apiDescription schedule 다음 장소이름 조회
- * @apiName recentByStudy_schedule
+ * @apiName Get place name
  * 
  * @apiParam {Number} idx 스케쥴 PK
  */
@@ -217,18 +217,118 @@ studyRoute.post('/acc_info', accountCtrl.infoMake);
  *
  */
 studyRoute.post('/acc_user', accountCtrl.userMake);
+/**
+ * @api {get} /study/getOne_account/{idx} Get one account
+ * @apiGroup Account
+ * @apiDescription 특정 회계정보 조회
+ * @apiName Get one account
+ *
+ * @apiParam {Number} idx 회계 PK
+ *
+ */
 studyRoute.get('/getOne_account/:idx', accountCtrl.accGetOne);
+/**
+ * @api {get} /study/list_account/ Get account list
+ * @apiGroup Account
+ * @apiDescription 스터디 회계 조회
+ * @apiName Get account list
+ *
+ */
 studyRoute.get('/list_account', accountCtrl.accList);
+/**
+ * @api {get} /study/list_acc_info/{idx} Get account info list
+ * @apiGroup Account
+ * @apiDescription 회계 관련 사용내역 조회
+ * @apiName Get account info list
+ *
+ * @apiParam {Number} idx 회계 info PK
+ *
+ */
 studyRoute.get('/list_acc_info/:idx', accountCtrl.infoList);
+/**
+ * @api {get} /study/list_acc_user/{idx} Get account user list
+ * @apiGroup Account
+ * @apiDescription 회계 관련 사용자 조회
+ * @apiName Get account user list
+ *
+ * @apiParam {Number} idx 회계 user PK
+ *
+ */
 studyRoute.get('/list_acc_user/:idx', accountCtrl.userList);
+/**
+ * @api {get} /study/list_acc_get_last Get lastest account
+ * @apiGroup Account
+ * @apiDescription 최근 회계 조회
+ * @apiName Get lastest account
+ *
+ */
 studyRoute.get('/list_acc_get_last', accountCtrl.accGetLastOne);
+/**
+ * @api {put} /study/account Create Account
+ * @apiGroup Account
+ * @apiDescription 회계 생성
+ * @apiName Create Account
+ *
+ * @apiParam {Number} idx 회계 PK
+ * @apiParam {String} title 회계이름
+ * @apiParam {Date} gathering 수금날짜
+ *
+ */
 studyRoute.put('/account', accountCtrl.accUpdate);
+/**
+ * @api {put} /study/acc_user Update Account user
+ * @apiGroup Account
+ * @apiDescription 회계 관련 사용자 수정
+ * @apiName Update Account user
+ *
+ * @apiParam {Number} idx 회계 사용자 PK
+ * @apiParam {Number} cost 회비내역
+ *
+ */
 studyRoute.put('/acc_user', accountCtrl.userUpdate);
+/**
+ * @api {delete} /study/acc_info/{idx} Delete account info
+ * @apiGroup Account
+ * @apiDescription 회계 관련 정보 삭제
+ * @apiName Delete account info
+ *
+ * @apiParam {Number} idx 회계 user PK
+ *
+ */
 studyRoute.delete('/acc_info/:idx', accountCtrl.infoDelete);
+/**
+ * @api {delete} /study/acc_user/{idx} Delete account user
+ * @apiGroup Account
+ * @apiDescription 회계 관련 사용자 삭제
+ * @apiName Delete account user
+ *
+ * @apiParam {Number} idx 회계 user PK
+ *
+ */
 studyRoute.delete('/acc_user/:idx', accountCtrl.userDelete);
 
 // notice
+/**
+ * @api {post} /notice Create notice
+ * @apiGroup Notice
+ * @apiDescription 공지사항 생성
+ * @apiName Create notice
+ *
+ * @apiParam {String} title 공지사항 제목
+ * @apiParam {String} content 공지사항 내용
+ * 
+ */
 studyRoute.post('/notice',noticeCtrl.make);
+/**
+ * @api {get} /paging_notice/{idx} Create notice
+ * @apiGroup Notice
+ * @apiDescription 공지사항 생성
+ * @apiName Create notice
+ *
+ * @apiParam {String} title 공지사항 제목
+ * @apiParam {String} content 공지사항 내용
+ * 
+ */
 studyRoute.get('/paging_notice/:idx',noticeCtrl.limitFTList);
 studyRoute.get('/getCnt_notice', noticeCtrl.listCnt);
 studyRoute.get('/getOne_notice/:idx',noticeCtrl.getOne);

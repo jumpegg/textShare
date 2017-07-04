@@ -29,14 +29,9 @@ export class PageInfo{
 			this.title = 'My Page';
 				this.tabList = [
 				{
-					name : 'Account',
+					name : 'MyPage',
 					link : 'mypage'
-				},
-				{
-					name : 'More',
-					link: 'mypage'
 				}
-
 			]
 		}else if(this.url == 'stdAdmin' || this.url == 'stdSearch' || this.url == 'userpage'){
 			this.title = "Hello TextShare";
