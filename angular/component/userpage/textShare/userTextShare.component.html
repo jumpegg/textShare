@@ -1,12 +1,13 @@
-<div class="container">
+<div id="loader" *ngIf="!pageState"></div>
+<div class="container" *ngIf="pageState">
 	<div class="row header-area">
 		<div class="nameWrapper" [@nameToggle]="aniStateVal">
 			<div class="nameBox">
 				<input type="text" name="foldername" class='foldername' placeholder="폴더이름" [(ngModel)] = "folderVo.name">
-				<button class="btn-flat" (click)="newFolder_submit()">등록</button>
+				<button class="btn-flat padding-slim" (click)="newFolder_submit()">등록</button>
 			</div>
 		</div>
-		<button class="btn-flat" (click)="stateChange()">폴더생성</button>
+		<button class="btn-flat padding-slim" (click)="stateChange()">폴더생성</button>
 		<a routerLink="../textShareNew" class="waves-effect waves-light btn-flat">새 글작성</a>
 		<p class="content-title" *ngIf="itemActed">
 			<span>{{title}}</span>

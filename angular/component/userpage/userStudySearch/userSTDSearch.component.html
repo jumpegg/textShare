@@ -1,4 +1,5 @@
-<div class="listWrap">
+<div id="loader" *ngIf="!pageState"></div>
+<div class="listWrap" *ngIf="pageState">
 	<div class="search-box">
 		<div class="input-field">
 			<i class="material-icons prefix">search</i>

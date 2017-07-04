@@ -16,7 +16,7 @@
 	color: white;
 }
 .header-area .nameBox{
-	width: 400px;
+	width: 300px;
 	margin: 0px;
 	/*display: inline;*/
 	float: left;
@@ -25,11 +25,11 @@
 .header-area .foldername{
 	margin: 0px;
 	margin-right: 20px;
-	width: 250px;
+	width: 200px;
 	height: 35px;
 }
 .header-area .nameWrapper{
-	width: 410px;
+	width: 300px;
 	overflow: hidden;
 	float: left;
 }
@@ -52,7 +52,9 @@
 .content-view{
 	padding: 20px;
 }
-
+.padding-slim{
+	padding: 0px 15px;
+}
 .content-view .text-output{
 	border: 1px solid #FFB300;
 	border-radius: 10px;
@@ -62,7 +64,7 @@
 }
 .content-title {
 	color: #FFB300;
-	width: 690px;
+	width: 53%;
 	display: inline-block;
 	font-size: 24px;
 	font-weight: bold;

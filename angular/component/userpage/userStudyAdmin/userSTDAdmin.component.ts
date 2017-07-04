@@ -61,6 +61,8 @@ export class UserSTDAdminComponent{
 	private modiMap:any;
 	private ginfo:any;
 
+	private pageState:Boolean = false;
+
 	newStudyForm = new FormGroup({
 		newStudyNameVali : new FormControl('', Validators.compose([Validators.required])),
 		newStudyInfoVali : new FormControl('', Validators.compose([Validators.required]))
@@ -103,6 +105,30 @@ export class UserSTDAdminComponent{
 				objSave.tempStudy = new Study();
 			}
 		});
+
+		this.studyService
+		.studyAdminList()
+		.flatMap(
+			data =>{
+				if(!data.msg){
+					this.studyList = data;
+					this.setStudySchedule(this.studyList);
+				}else{
+					this.studyList = [];
+				}
+				return this.studyService.studyJoinList();
+			}
+		).subscribe(
+			data=>{
+				if(!data.msg){
+					this.joinList = data;
+					this.setStudySchedule(this.joinList);
+				}else{
+					this.joinList = [];
+				}
+				this.pageState = true;
+			}
+		)
 
 		this.newMap = new naver.maps.Map('map', {
 			center: new naver.maps.LatLng(37.3595704, 127.105399),

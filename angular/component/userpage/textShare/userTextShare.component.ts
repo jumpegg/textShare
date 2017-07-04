@@ -47,6 +47,7 @@ export class UserTextShareComponent implements OnInit{
 	private folders:Array<any>;
 	private content:string = "";
 	private itemActed:number;
+	private pageState:Boolean = false;
 
 	constructor(
 		private page:PageInfo,
@@ -104,6 +105,7 @@ export class UserTextShareComponent implements OnInit{
 				data => {
 					if(data.msg == 'done'){
 						this.makeTree();
+						this.folderVo = new Folder();
 					}else{
 						alert('폴더 생성중 에러발생');
 					}
@@ -115,16 +117,19 @@ export class UserTextShareComponent implements OnInit{
 		}
 	}
 	contentShow(input){
+		this.pageState = false;
 		this.textShareService.tsRead(input.itemIdx).subscribe(
 			data => {
 				this.title = data.title;
 				this.itemActed = input.itemIdx;
 				this.content = marked(decodeURI(data.content));
+				this.pageState = true;
 			},
 			error => console.log(error)
 		)
 	}
 	makeTree(){
+		this.pageState = false;
 		this.folders = [];
 		this.folderService
 		.folderList()
@@ -149,6 +154,7 @@ export class UserTextShareComponent implements OnInit{
 							});
 						}
 					})
+					this.pageState = true;
 				})
 			}
 		)

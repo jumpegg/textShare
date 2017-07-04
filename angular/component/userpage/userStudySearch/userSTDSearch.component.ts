@@ -14,6 +14,7 @@ import { PageInfo } from '../../../global/single_info';
 export class UserSTDSearchComponent{
 	public studyList:any[] = [];
 	public searchText:string = "";
+	private pageState:Boolean = false;
 	constructor(
 		public page:PageInfo,
 		private router:Router,
@@ -30,19 +31,22 @@ export class UserSTDSearchComponent{
 		.subscribe(
 			data=>{
 				this.studyList = data;
-				console.log(this.studyList);
+				this.pageState = true;
 			}
 		)
 	}
 	studySearch(){
+		this.pageState = false;
 		this.studyService
 		.studyTextSearch({search : this.searchText})
 		.subscribe(
 			data=>{
 				if(data.msg){
 					this.studyList = [];
+					this.pageState = true;
 				}else{
 					this.studyList = data;
+					this.pageState = true;
 				}
 			}
 		)
