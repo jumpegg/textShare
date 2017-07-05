@@ -1,6 +1,6 @@
 <div id="loader" *ngIf="!pageState"></div>
-
-<div class="container" *ngIf="pageState" [@fadeInAnimation]="pageState">
+<div id="studyLoader" *ngIf="moveToStudy"></div>
+<div class="container" *ngIf="pageState&&!moveToStudy" [@fadeInAnimation]="pageState">
 
 <div class="listWrap">
 	<div class="row adminList">

@@ -46,6 +46,7 @@ export class UserSTDAdminComponent{
 	private ginfo:any;
 
 	private pageState:Boolean = false;
+	private moveToStudy:Boolean = false;
 
 	newStudyForm = new FormGroup({
 		newStudyNameVali : new FormControl('', Validators.compose([Validators.required])),
@@ -272,6 +273,7 @@ export class UserSTDAdminComponent{
 		.subscribe(
 			data => {
 				this.studyInfo.idx = input;
+				this.moveToStudy = true;
 				this.router.navigate(['/study']);
 			}
 		)
