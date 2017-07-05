@@ -4,13 +4,15 @@ import { FormControl, FormGroup, Validators, FormBuilder} from '@angular/forms';
 import { User } from '../../vo/user';
 import { UserService } from '../../service/user.service';
 import { Vali } from '../../global/single_vali';
+import { fadeInAnimation } from '../animation/fadein';
 
 declare var $ : any;
 @Component({
 	selector:'index',
 	templateUrl: 'client/component/index/index.component.html',
 	styleUrls: ['client/component/index/index.component.css'],
-	providers: [UserService]
+	providers: [UserService],
+	animations: [fadeInAnimation]
 })
 export class IndexComponent implements OnInit{
 	private title:String;
@@ -19,6 +21,7 @@ export class IndexComponent implements OnInit{
 	private chk_dupl:boolean = false;
 	private control:FormControl;
 	private tempId:string = "";
+	private pageState:Boolean = true;
 
 	constructor(
 		private userService:UserService,
@@ -45,6 +48,7 @@ export class IndexComponent implements OnInit{
 						alert('아이디, 비밀번호를 확인해주세요');
 						return false;
 					}else if(data == true){
+						this.pageState = false;
 						this.router.navigate(['/userpage']);
 					}else if(data == false){
 						alert('아이디, 비밀번호를 확인해주세요');

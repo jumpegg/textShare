@@ -1,9 +1,10 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { StudyService } from '../../../service/study.service';
 import { DataService } from '../../../service/data.service';
 import { StudyPageInfo } from '../../../global/single_studypage';
+import { fadeInAnimation } from '../../animation/fadein'
 
 @Component({
 		styleUrls: ['client/component/study/studydata/study_studydata.component.css'],
@@ -18,13 +19,15 @@ import { StudyPageInfo } from '../../../global/single_studypage';
 				})),
 				transition('open => close', animate('300ms ease-in')),
 				transition('close => open', animate('300ms ease-out'))
-			])
+			]),
+			fadeInAnimation
 		]
 })
 export class StudyData {
-		public folder_name:string = "";
-		public inputState:string="close";
-		public folderList:any[] = [];
+		private folder_name:string = "";
+		private inputState:string="close";
+		private folderList:any[] = [];
+		private pageState:Boolean = false;
 		constructor(
 			public studyPage:StudyPageInfo,
 			public dataService:DataService,
@@ -41,6 +44,7 @@ export class StudyData {
 				data=>{
 					if(!data.msg){
 						this.folderList = data;
+						this.pageState = true;
 					}
 				}
 			)

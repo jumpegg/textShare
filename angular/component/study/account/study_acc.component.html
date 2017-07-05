@@ -1,4 +1,5 @@
-<div class="container">
+<div id="studyLoader" *ngIf="!pageState"></div>
+<div class="container" *ngIf="pageState" [@fadeInAnimation]="pageState">
 	<div class="acc-wrap">
 		<div class="row">
 			<div class="left col s6">

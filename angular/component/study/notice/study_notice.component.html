@@ -1,4 +1,5 @@
-<div class="container">
+<div id="studyLoader" *ngIf="!pageState"></div>
+<div class="container" *ngIf="pageState" [@fadeInAnimation]="pageState">
 	<table class="bordered">
 		<thead>
 			<tr>

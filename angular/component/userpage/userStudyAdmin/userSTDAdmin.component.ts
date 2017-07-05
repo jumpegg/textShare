@@ -13,6 +13,8 @@ import { PageInfo } from '../../../global/single_info';
 import { UserInfo } from '../../../global/single_user';
 import { StudyInfo } from '../../../global/single_study';
 
+import { fadeInAnimation } from '../../animation/fadein';
+import { HeightToggle } from '../../animation/heightToggle';
 declare var $ : any;
 declare var naver : any;
 @Component({
@@ -20,26 +22,8 @@ declare var naver : any;
 	styleUrls: ['client/component/userpage/userStudyAdmin/userSTDAdmin.component.css'],
 	providers: [ UserService, StudyService, PlaceService, ScheduleService ],
 	animations: [
-		trigger('placeToggle',[
-			state('open', style({
-			})),
-			state('close', style({
-				height: '0px',
-				display: 'none'
-			})),
-			transition('open => close', animate('300ms ease-in')),
-			transition('close => open', animate('300ms ease-out'))
-		]),
-		trigger('placeModiToggle', [
-			state('open', style({
-			})),
-			state('close', style({
-				height: '0px',
-				display: 'none'
-			})),
-			transition('open => close', animate('300ms ease-in')),
-			transition('close => open', animate('300ms ease-out'))
-		])
+		HeightToggle,
+		fadeInAnimation
 	]
 })
 export class UserSTDAdminComponent{

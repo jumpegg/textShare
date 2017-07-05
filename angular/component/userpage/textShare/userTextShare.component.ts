@@ -12,6 +12,9 @@ import { Folder } from '../../../vo/folder';
 
 import { FolderService } from '../../../service/folder.service';
 import { TextShareService } from '../../../service/textshare.service';
+import { fadeInAnimation } from '../../animation/fadein';
+import { WidthToggle } from '../../animation/widthToggle';
+import { HeightToggle} from '../../animation/heightToggle';
 
 declare var $ : any;
 
@@ -19,23 +22,9 @@ declare var $ : any;
 	styleUrls: ['client/component/userpage/textShare/userTextShare.component.css'],
 	templateUrl: 'client/component/userpage/textShare/userTextShare.component.html',
 	animations: [
-		trigger('folderToggle',[
-			state('open', style({})),
-			state('close',style({
-				height: '0px'
-			})),
-			transition('open => close', animate('300ms ease-in')),
-			transition('close => open', animate('300ms ease-out'))
-		]),
-		trigger('nameToggle',[
-			state('open',style({})),
-			state('close',style({
-				width: '0px',
-				display: 'none'
-			})),
-			transition('open => close', animate('300ms ease-in')),
-			transition('close => open', animate('300ms ease-out'))
-		])
+		HeightToggle,
+		WidthToggle,
+		fadeInAnimation
 	],
 	providers: [FolderService, TextShareService]
 })

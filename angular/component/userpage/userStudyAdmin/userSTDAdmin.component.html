@@ -1,5 +1,6 @@
 <div id="loader" *ngIf="!pageState"></div>
-<div class="container" *ngIf="pageState">
+
+<div class="container" *ngIf="pageState" [@fadeInAnimation]="pageState">
 
 <div class="listWrap">
 	<div class="row adminList">
@@ -155,7 +156,7 @@
 							<i class="material-icons">add</i>
 							<p class="add-place" (click)="toggleSearcher()">장소 추가하기</p>
 						</li>
-						<li class="place-list place-add" [@placeToggle]="placeState">
+						<li class="place-list place-add" [@HeightToggle]="placeState">
 							<i class="material-icons">mode_edit</i>
 							<input type="text" placeholder="장소명" [(ngModel)]="placeOne.name">
 						</li>
@@ -173,7 +174,7 @@
 					</ul>
 				</div>
 			</div>
-			<div class="row search-map over-hidden" [@placeToggle]="placeState">
+			<div class="row search-map over-hidden" [@HeightToggle]="placeState">
 				<div class="col s8">
 					<i class="material-icons">search</i>
 					<input type="text" placeholder="장소명 & 건물명 검색" [(ngModel)]="search_input">
@@ -185,7 +186,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="row over-hidden" [@placeToggle]="placeState">
+			<div class="row over-hidden" [@HeightToggle]="placeState">
 				<div class="show-map" id="map">
 
 				</div>
@@ -222,7 +223,7 @@
 							<i class="material-icons">add</i>
 							<p class="add-place" (click)="toggleModiSearcher()">장소 추가하기</p>
 						</li>
-						<li class="place-list place-add" *ngIf="placeList.length < 3" [@placeModiToggle]="placeModiState">
+						<li class="place-list place-add" *ngIf="placeList.length < 3" [@HeightToggle]="placeModiState">
 							<i class="material-icons">mode_edit</i>
 							<input type="text" placeholder="장소명" [(ngModel)]="placeOne.name">
 						</li>
@@ -240,7 +241,7 @@
 					</ul>
 				</div>
 			</div>
-			<div class="row search-map over-hidden" *ngIf="placeList.length < 3" [@placeModiToggle]="placeModiState">
+			<div class="row search-map over-hidden" *ngIf="placeList.length < 3" [@HeightToggle]="placeModiState">
 				<div class="col s8">
 					<i class="material-icons">search</i>
 					<input type="text" placeholder="장소명 & 건물명 검색" [(ngModel)]="search_input">
@@ -252,7 +253,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="row over-hidden" [@placeToggle]="placeModiState">
+			<div class="row over-hidden" [@HeightToggle]="placeModiState">
 				<div class="show-map" id="modiMap">
 					<!-- 지도가 표시되는 부분 -->
 				</div>

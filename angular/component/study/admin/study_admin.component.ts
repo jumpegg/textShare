@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 
+import { fadeInAnimation } from '../../animation/fadein';
+
 import { StudyService } from '../../../service/study.service';
 import { MemberService } from '../../../service/member.service';
 
@@ -13,15 +15,20 @@ declare var $ : any;
 @Component({
 		styleUrls: ['client/component/study/admin/study_admin.component.css'],
 		templateUrl: 'client/component/study/admin/study_admin.component.html',
+		animations: [fadeInAnimation],
 		providers: [MemberService]
 })
 export class StudyAdmin {
-		public title:string;
-		public joinerList:Member[];
-		public hoperList:Member[];
-		public user:any = {};
-		public setAuth:string = "";
+		private title:string;
+		private joinerList:Member[];
+		private hoperList:Member[];
+		private user:any = {};
+		private setAuth:string = "";
 		private setIdx:number;
+		private pageState:Boolean = false;
+		private joinerReady:Boolean = false;
+		private hoperReady:Boolean = false;
+
 		constructor(
 			public studyPage:StudyPageInfo,
 			public memberService:MemberService
@@ -32,6 +39,11 @@ export class StudyAdmin {
 			this.callThisUser();
 			this.callHoper();
 			this.callJoiner();
+		}
+		readyChk(){
+			if(this.joinerReady && this.hoperReady){
+				this.pageState = true;
+			}
 		}
 		callThisUser(){
 			this.memberService.getPermission()
@@ -46,8 +58,12 @@ export class StudyAdmin {
 				data => {
 					if(!data.msg){
 						this.joinerList = data;
+						this.joinerReady = true;
+						this.readyChk();
 					}else{
 						this.joinerList = [];
+						this.joinerReady = true;
+						this.readyChk();
 					}
 				}
 			)
@@ -57,8 +73,12 @@ export class StudyAdmin {
 				data => {
 					if(!data.msg){
 						this.hoperList = data;
+						this.hoperReady = true;
+						this.readyChk();
 					}else{
 						this.hoperList = [];
+						this.hoperReady = true;
+						this.readyChk();
 					}
 				}
 			)

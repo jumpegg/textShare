@@ -4,11 +4,13 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 import { StudyService } from '../../../service/study.service';
 import { FreetalkService } from '../../../service/freetalk.service';
 import { StudyPageInfo } from '../../../global/single_studypage';
+import { fadeInAnimation } from '../../animation/fadein';
 
 @Component({
 		styleUrls: ['client/component/study/freetalk/study_freetalk.component.css'],
 		templateUrl: 'client/component/study/freetalk/study_freetalk.component.html',
-		providers: [StudyService, FreetalkService]
+		providers: [StudyService, FreetalkService],
+		animations: [fadeInAnimation]
 })
 export class StudyFreetalk {
 		private fList:any[] = [];
@@ -16,6 +18,9 @@ export class StudyFreetalk {
 		private curNum:number = 1;
 		private endNum:number;
 		private no_freetalk:boolean = false;
+		private pageState:Boolean = false;
+		private listState:Boolean = false;
+		private pagerState:Boolean = false;
 		constructor(
 			private studyPage:StudyPageInfo,
 			private freetalkService:FreetalkService,
@@ -26,6 +31,11 @@ export class StudyFreetalk {
 			this.getList(this.curNum);
 			this.calCnt(this.curNum);
 		}
+		readyChk(){
+			if(this.listState && this.pagerState){
+				this.pageState = true;
+			}
+		}
 		getList(input){
 			this.freetalkService
 			.pagingList(input)
@@ -33,6 +43,8 @@ export class StudyFreetalk {
 				data=>{
 					if(!data.msg){
 						this.fList = data;
+						this.listState = true;
+						this.readyChk();
 					}
 				}
 			)
@@ -57,8 +69,12 @@ export class StudyFreetalk {
 						for(let i=listLen-10; i<listLen; i++){
 							this.listNum.push(i+1);
 						}
+						this.pagerState = true;
+						this.readyChk();
 					}else{
 						this.no_freetalk = true;
+						this.pagerState = true;
+						this.readyChk();
 					}
 				}
 			)

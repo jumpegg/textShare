@@ -10,7 +10,6 @@ import { UserpageComponent } from './userpage.component';
 import { UserMyPageComponent } from './mypage/userMyPage.component';
 import { UserTextBagComponent } from './textBag/userTextBag.component';
 import { UserSTDAdminComponent } from './userStudyAdmin/userSTDAdmin.component';
-import { UserSTDJoinComponent } from './userStudyJoin/userSTDJoin.component';
 import { UserSTDSearchComponent } from './userStudySearch/userSTDSearch.component';
 import { 
 	UserTextShareComponent, 
@@ -30,7 +29,6 @@ import {
 		UserMyPageComponent,
 		UserTextBagComponent,
 		UserSTDAdminComponent,
-		UserSTDJoinComponent,
 		UserSTDSearchComponent,
 		UserTextShareComponent, 
 		UserTextShareNewComponent

@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { trigger, state, style, animate, transition } from '@angular/animations';
-
 import { StudyService } from '../../../service/study.service';
 import { PlaceService } from '../../../service/place.service';
 import { ScheduleService } from '../../../service/schedule.service';
-
 import { StudyPageInfo } from '../../../global/single_studypage';
-
 import { Schedule } from '../../../vo/schedule';
 import { Place } from '../../../vo/place';
+
+import { fadeInAnimation } from '../../animation/fadein';
 
 declare var $ : any;
 declare var naver : any;
@@ -26,19 +25,21 @@ declare var naver : any;
 			})),
 			transition('open => close', animate('300ms ease-in')),
 			transition('close => open', animate('300ms ease-out'))
-		])
+		]),
+		fadeInAnimation
 	]
 })
 export class StudySchedule implements OnInit{
-	public title: string;
-	public map: any;
-	public marker: any;
-	public tableState:string = 'close';
-	public schList:Schedule[] = [];
-	public lastSch:Schedule = new Schedule();
-	public lastPlc:Place = new Place();
-	public tempSch:any;
-	public continue:boolean;
+	private title: string;
+	private map: any;
+	private marker: any;
+	private tableState:string = 'close';
+	private schList:Schedule[] = [];
+	private lastSch:Schedule = new Schedule();
+	private lastPlc:Place = new Place();
+	private tempSch:any;
+	private continue:boolean;
+	private pageState:Boolean = false;
 
 	constructor(
 		public studyPage:StudyPageInfo,
@@ -98,9 +99,11 @@ export class StudySchedule implements OnInit{
 							});
 
 							infoWindow.open(this.map, this.marker);
+							this.pageState = true;
 					})
 				}else{
 					this.lastPlc.name = '다음 모임을 등록해보세요.';
+					this.pageState = true;
 				}
 			}
 		);

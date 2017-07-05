@@ -4,11 +4,13 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 import { StudyService } from '../../../service/study.service';
 import { NoticeService } from '../../../service/notice.service';
 import { StudyPageInfo } from '../../../global/single_studypage';
+import { fadeInAnimation } from '../../animation/fadein';
 
 @Component({
 		styleUrls: ['client/component/study/notice/study_notice.component.css'],
 		templateUrl: 'client/component/study/notice/study_notice.component.html',
-		providers: [StudyService, NoticeService]
+		providers: [StudyService, NoticeService],
+		animations: [fadeInAnimation]
 })
 export class StudyNotice {
 		private nList:any[] = [];
@@ -16,6 +18,9 @@ export class StudyNotice {
 		private curNum:number = 1;
 		private endNum:number;
 		private no_notice:boolean = false;
+		private pageState:Boolean = false;
+		private listState:Boolean = false;
+		private pagerState:Boolean = false;
 		constructor(
 			private studyPage:StudyPageInfo,
 			private noticeService:NoticeService,
@@ -26,13 +31,21 @@ export class StudyNotice {
 			this.getList(this.curNum);
 			this.calCnt(this.curNum);
 		}
+		readyChk(){
+			if(this.listState && this.pagerState){
+				this.pageState = true;
+			}
+		}
 		getList(input){
+			this.pageState = false;
 			this.noticeService
 			.pagingList(input)
 			.subscribe(
 				data=>{
 					if(!data.msg){
 						this.nList = data;
+						this.listState = true;
+						this.readyChk();
 					}
 				}
 			)
@@ -46,6 +59,7 @@ export class StudyNotice {
 			this.router.navigate(['/study/noticeRead/'+input]);
 		}
 		calCnt(input){
+			this.pageState = false;
 			this.listNum = [];
 			this.noticeService
 			.getCnt()
@@ -60,8 +74,12 @@ export class StudyNotice {
 						for(let i=listLen-10; i<listLen; i++){
 							this.listNum.push(i+1);
 						}
+						this.pagerState = true;
+						this.readyChk();
 					}else{
 						this.no_notice = true;
+						this.pagerState = true;
+						this.readyChk();
 					}
 				}
 			)

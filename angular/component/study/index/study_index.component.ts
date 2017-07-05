@@ -12,21 +12,29 @@ import { Schedule } from '../../../vo/schedule';
 import { Freetalk } from '../../../vo/freetalk';
 import { Notice } from '../../../vo/notice';
 
+import { fadeInAnimation } from '../../animation/fadein';
+
 declare var $ : any;
 declare var naver : any;
 
 @Component({
 		styleUrls: ['client/component/study/index/study_index.component.css'],
 		templateUrl: 'client/component/study/index/study_index.component.html',
-		providers: [StudyService, NoticeService, FreetalkService, ScheduleService]
+		providers: [StudyService, NoticeService, FreetalkService, ScheduleService],
+		animations: [fadeInAnimation]
 })
 export class StudyIndex {
-		public title:string;
-		public map: any;
-		public marker: any;
-		public noticeList:any[] = [];
-		public freetalkList:any[] = [];
-		public schedule:any = new Schedule();
+		private title:string;
+		private map: any;
+		private marker: any;
+		private noticeList:any[] = [];
+		private freetalkList:any[] = [];
+		private schedule:any = new Schedule();
+		private pageState:Boolean = false;
+		private noticeReady:Boolean = false;
+		private freetalkReady:Boolean = false;
+		private scheduleReady:Boolean = false;
+
 		constructor(
 			public studyPage:StudyPageInfo,
 			public studyInfo:StudyInfo,
@@ -39,24 +47,32 @@ export class StudyIndex {
 
 		ngOnInit(){
 			this.studyPage.init();
+			this.getSchedule();
 			this.getNoticeList();
 			this.getFreetalkList();
-			this.getSchedule();
 		}
-
+		readyChk(){
+			if(this.noticeReady && this.freetalkReady && this.scheduleReady){
+				this.pageState = true;
+			}
+		}
 		getNoticeList(){
 			this.noticeService
 			.forIndex()
 			.subscribe(
 				data=>{
 					if(!data.msg){
-						this.noticeList = data
+						this.noticeList = data;
+						this.noticeReady = true;
+						this.readyChk();
 					}else{
 						this.noticeList=[{
 							c_date: new Date(),
 							id: "작성자",
 							title: "등록된 공지사항이 없습니다."
-						}]
+						}];
+						this.noticeReady = true;
+						this.readyChk();
 					}
 				}
 			)
@@ -67,13 +83,17 @@ export class StudyIndex {
 			.subscribe(
 				data=>{
 					if(!data.msg){
-						this.freetalkList = data
+						this.freetalkList = data;
+						this.freetalkReady = true;
+						this.readyChk();
 					}else{
 						this.freetalkList=[{
 							c_date: new Date(),
 							id: "작성자",
 							title: "등록된 게시글이 없습니다."
-						}]
+						}];
+						this.freetalkReady = true;
+						this.readyChk();
 					}
 				}
 			)
@@ -99,6 +119,8 @@ export class StudyIndex {
 						});
 
 						infoWindow.open(this.map, this.marker);
+						this.scheduleReady = true;
+						this.readyChk();
 					}else{
 						this.schedule.start = "00:00";
 						this.schedule.end = "00:00";
@@ -108,6 +130,8 @@ export class StudyIndex {
 						this.map = new naver.maps.Map('map', {
 							zoom: 11
 						});
+						this.scheduleReady = true;
+						this.readyChk();
 					}
 				}
 			)

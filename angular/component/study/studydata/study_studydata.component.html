@@ -1,4 +1,5 @@
-<div class="container">
+<div id="studyLoader" *ngIf="!pageState"></div>
+<div class="container" *ngIf="pageState" [@fadeInAnimation]="pageState">
 	<ul class="data-list">
 		<li class="data-folder" *ngFor="let folder of folderList" (click)="moveDataFolder(folder.idx)">
 			{{folder.folder_name}}

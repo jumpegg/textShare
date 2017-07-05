@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { trigger, state, style, animate, transition } from '@angular/animations';
-
 import { StudyService } from '../../../service/study.service';
-
 import { PageInfo } from '../../../global/single_info';
+import { fadeInAnimation } from '../../animation/fadein';
 
 @Component({
 	templateUrl: 'client/component/userpage/userStudySearch/userSTDSearch.component.html',
 	styleUrls: ['client/component/userpage/userStudySearch/userSTDSearch.component.css'],
-	providers: [StudyService]
+	providers: [StudyService],
+	animations: [fadeInAnimation]
 })
 export class UserSTDSearchComponent{
 	public studyList:any[] = [];

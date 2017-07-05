@@ -1,4 +1,5 @@
-<div class="container">
+<div id="studyLoader" [ngClass]="{'hide':pageState}"></div>
+<div class="container" [ngClass]="{'pagehide':!pageState}" [@fadeInAnimation]="pageState">
 	<div class="lastest-scd card-panel">
 		<h6>
 			다음 모임 일정

@@ -26,12 +26,21 @@ export class PlaceCtrl{
 		});
 	}
 	public getPlaces:RequestHandler = (req, res) => {
-		this.placeTbl.selectList({study_idx : req.session.studyIdx}).go((data) => {
+		this.placeTbl
+		.selectList({
+			study_idx : req.session.studyIdx,
+			able : 1
+		}).go((data) => {
 			res.json(data);
 		});
 	}
 	public getPlace:RequestHandler = (req, res) => {
-		this.placeTbl.selectOne({idx : req.params.idx}).go((data) => {
+		this.placeTbl
+		.selectOne({
+			idx : req.params.idx,
+			able : 1
+		})
+		.go((data) => {
 			res.json(data[0]);
 		});
 	}

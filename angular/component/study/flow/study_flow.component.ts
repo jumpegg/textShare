@@ -12,26 +12,30 @@ import { Observable } from 'rxjs/Observable';
 
 import { Flow } from '../../../vo/flow';
 
+import { fadeInAnimation } from '../../animation/fadein'
+
 declare var $ : any;
 
 @Component({
 		styleUrls: ['client/component/study/flow/study_flow.component.css'],
 		templateUrl: 'client/component/study/flow/study_flow.component.html',
-		providers: [StudyService, MemberService, FlowService, DataService]
+		providers: [StudyService, MemberService, FlowService, DataService],
+		animations: [fadeInAnimation]
 })
 export class StudyFlow {
-		public title:string;
-		public detailState:string = "open";
-		public iconState:string = "open";
-		public newFlow:Flow = new Flow();
-		public getFlow:Flow = new Flow();
-		public getFileList = [];
-		public userList:any[] = [];
-		public flowList:any[] = [];
-		public folderList:any[] = [];
-		public dataList:any[] = [];
-		public fileList:FileList;
-		public folderIdx:number = null;
+		private title:string;
+		private detailState:string = "open";
+		private iconState:string = "open";
+		private newFlow:Flow = new Flow();
+		private getFlow:Flow = new Flow();
+		private getFileList = [];
+		private userList:any[] = [];
+		private flowList:any[] = [];
+		private folderList:any[] = [];
+		private dataList:any[] = [];
+		private fileList:FileList;
+		private folderIdx:number = null;
+		private pageState:Boolean = false;
 
 		constructor(
 			public studyPage:StudyPageInfo,
@@ -77,6 +81,7 @@ export class StudyFlow {
 						this.getFlow.id = '작성자';
 						this.getFlow.title = '등록된 글이 없습니다.';
 						this.getFlow.content = '진행사항을 기록해 보세요!';
+						this.pageState = true;
 					}
 				}
 			)
@@ -89,6 +94,19 @@ export class StudyFlow {
 					if(!data.msg){
 						this.getFlow = data[0];
 						this.getFlowFileList(this.getFlow.idx);
+					}
+				}
+			)
+		}
+		getFolderList(){
+			this.dataService
+			.getFolderList()
+			.subscribe(
+				data=>{
+					if(!data.msg){
+						this.folderList = data;
+					}else{
+						this.folderList = [{}];
 					}
 				}
 			)
@@ -211,10 +229,13 @@ export class StudyFlow {
 				data=>{
 					if(!data.msg){
 						this.getFileList = data;
+						this.pageState = true;
 					}else if(data.msg == 'no_res'){
 						this.getFileList = [];
+						this.pageState = true;
 					}else{
 						alert('문제가 생겼습니다.');
+						this.pageState = true;
 					}
 				}
 			)
@@ -317,19 +338,7 @@ export class StudyFlow {
 			this.detailOpen();
 			this.newFlow = new Flow();
 		}
-		getFolderList(){
-			this.dataService
-			.getFolderList()
-			.subscribe(
-				data=>{
-					if(!data.msg){
-						this.folderList = data;
-					}else{
-						this.folderList = [{}];
-					}
-				}
-			)
-		}
+		
 		
 	
 }

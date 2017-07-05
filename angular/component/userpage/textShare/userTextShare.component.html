@@ -1,7 +1,7 @@
 <div id="loader" *ngIf="!pageState"></div>
-<div class="container" *ngIf="pageState">
+<div class="container" *ngIf="pageState" [@fadeInAnimation]="pageState">
 	<div class="row header-area">
-		<div class="nameWrapper" [@nameToggle]="aniStateVal">
+		<div class="nameWrapper" [@WidthToggle]="aniStateVal">
 			<div class="nameBox">
 				<input type="text" name="foldername" class='foldername' placeholder="폴더이름" [(ngModel)] = "folderVo.name">
 				<button class="btn-flat padding-slim" (click)="newFolder_submit()">등록</button>
@@ -24,7 +24,7 @@
 						<p [ngClass]="{'open':folder.state == 'open', 'close':folder.state == 'close'}" (click)="folderToggle(folder)"> 
 							{{folder.name}}
 						</p>
-						<ul [@folderToggle]="folder.state">
+						<ul [@HeightToggle]="folder.state">
 							<li *ngFor="let item of folder.items" 
 							[ngClass]="{'active':item.itemState == 'active'}" 
 							(click)="contentShow(item)">

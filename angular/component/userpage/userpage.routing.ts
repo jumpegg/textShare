@@ -7,7 +7,6 @@ import { UserpageComponent } from './userpage.component';
 import { UserMyPageComponent } from './mypage/userMyPage.component';
 import { UserTextBagComponent } from './textBag/userTextBag.component';
 import { UserSTDAdminComponent } from './userStudyAdmin/userSTDAdmin.component';
-import { UserSTDJoinComponent } from './userStudyJoin/userSTDJoin.component';
 import { UserSTDSearchComponent } from './userStudySearch/userSTDSearch.component';
 import { 
 	UserTextShareComponent, 
@@ -24,7 +23,6 @@ const userRoutes: Routes = [
 			{path: 'textShareNew', component: UserTextShareNewComponent},
 			{path: 'textShareNew/:idx', component: UserTextShareNewComponent},
 			{path: 'textBag', component: UserTextBagComponent},
-			{path: 'stdJoin', component: UserSTDJoinComponent},
 			{path: 'stdAdmin', component: UserSTDAdminComponent},
 			{path: 'stdSearch', component: UserSTDSearchComponent}
 		]

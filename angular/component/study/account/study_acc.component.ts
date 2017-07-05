@@ -13,6 +13,8 @@ import { Acc_user } from '../../../vo/acc_user';
 import { Acc_info } from '../../../vo/acc_info';
 import { Account } from '../../../vo/account';
 
+import { fadeInAnimation } from '../../animation/fadein';
+
 declare var $ : any;
 declare var naver : any;
 
@@ -38,27 +40,31 @@ declare var naver : any;
 				})),
 				transition('open => close', animate('300ms ease-in')),
 				transition('close => open', animate('300ms ease-out'))
-			])
+			]),
+			fadeInAnimation
 		]
 })
 export class StudyAcc {
-		public title:string;
-		public accLatest:Account = new Account();
-		public newInfo:Acc_info = new Acc_info();
-		public upUser:Acc_user = new Acc_user();
-		public totalCost:number = 0;
-		public resCost:number = 0;
+		private title:string;
+		private accLatest:Account = new Account();
+		private newInfo:Acc_info = new Acc_info();
+		private upUser:Acc_user = new Acc_user();
+		private totalCost:number = 0;
+		private resCost:number = 0;
 		//state
-		public tableState:string = 'close';
-		public infoState:string = 'close';
+		private tableState:string = 'close';
+		private infoState:string = 'close';
 		// is
-		public isAccLatest:boolean;
-		public isInfoList:boolean;
-		public isUserList:boolean;
+		private isAccLatest:boolean;
+		private isInfoList:boolean;
+		private isUserList:boolean;
 		// list
-		public accList:any[] = [];
-		public userList:any[] = [];
-		public infoList:any[] = [];
+		private accList:any[] = [];
+		private userList:any[] = [];
+		private infoList:any[] = [];
+
+		private pageState:Boolean = false;
+
 		constructor(
 			public studyPage:StudyPageInfo,
 			public accountService:AccountService
@@ -105,8 +111,10 @@ export class StudyAcc {
 						})
 						this.resCost =this.accLatest.total_cost - this.totalCost;
 						this.isInfoList = true;
+						this.pageState = true;
 					}else{
 						this.isInfoList = false;
+						this.pageState = true;
 					}
 				}
 			)
