@@ -43,9 +43,9 @@ export class StudyFreetalk {
 				data=>{
 					if(!data.msg){
 						this.fList = data;
-						this.listState = true;
-						this.readyChk();
 					}
+					this.listState = true;
+					this.readyChk();
 				}
 			)
 		}
