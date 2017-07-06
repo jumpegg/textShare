@@ -44,8 +44,8 @@ export class StudyData {
 				data=>{
 					if(!data.msg){
 						this.folderList = data;
-						this.pageState = true;
 					}
+					this.pageState = true;
 				}
 			)
 		}
