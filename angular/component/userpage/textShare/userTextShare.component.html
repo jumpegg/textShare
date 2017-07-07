@@ -21,8 +21,10 @@
 			<div class="tree-wrapper">
 				<ul class="tree-scroll">
 					<li class="folder" *ngFor="let folder of folders">
-						<p [ngClass]="{'open':folder.state == 'open', 'close':folder.state == 'close'}" (click)="folderToggle(folder)"> 
-							{{folder.name}}
+						<p [ngClass]="{'open':folder.state == 'open'}" (click)="folderToggle(folder)"> 
+							<i class="material-icons" *ngIf="folder.state == 'close'">keyboard_arrow_right</i>
+							<i class="material-icons" *ngIf="folder.state == 'open'">keyboard_arrow_down</i>
+							{{folder.name}} ({{folder.items.length}})
 						</p>
 						<ul [@HeightToggle]="folder.state">
 							<li *ngFor="let item of folder.items" 
