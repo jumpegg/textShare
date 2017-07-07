@@ -37,8 +37,7 @@ export class PlaceCtrl{
 	public getPlace:RequestHandler = (req, res) => {
 		this.placeTbl
 		.selectOne({
-			idx : req.params.idx,
-			able : 1
+			idx : req.params.idx
 		})
 		.go((data) => {
 			res.json(data[0]);
