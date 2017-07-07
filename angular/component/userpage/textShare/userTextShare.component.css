@@ -125,3 +125,353 @@
 .folder li.active{
 	color: #FFB300;
 }
+/* test */
+
+	/*html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}*/
+/* HTML5 display-role reset for older browsers */
+/*article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: disc;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}*/
+
+ /*end reset*/
+.show-area ul:not(.browser-default){
+	padding-left: 15px;
+}
+.show-area ul:not(.browser-default) li{
+	list-style-type: disc;
+}
+
+ /*material clear*/
+.show-area body {
+   font-family: Helvetica, arial, sans-serif;
+   font-size: 14px;
+   line-height: 1.6;
+   padding-top: 10px;
+   padding-bottom: 10px;
+   background-color: white;
+   padding: 30px; }
+
+.show-area body > *:first-child {
+   margin-top: 0 !important; }
+.show-area body > *:last-child {
+   margin-bottom: 0 !important; }
+
+.show-area a {
+   color: #4183C4; }
+.show-area a.absent {
+   color: #cc0000; }
+.show-area a.anchor {
+   display: block;
+   padding-left: 30px;
+   margin-left: -30px;
+   cursor: pointer;
+   position: absolute;
+   top: 0;
+   left: 0;
+   bottom: 0; }
+
+.show-area h1, .show-area h2, .show-area h3, .show-area h4, .show-area h5, .show-area h6 {
+   margin: 20px 0 10px;
+   padding: 0;
+   font-weight: bold;
+   -webkit-font-smoothing: antialiased;
+   cursor: text;
+   position: relative; }
+
+.show-area h1:hover a.anchor, .show-area h2:hover a.anchor, .show-area h3:hover a.anchor, .show-area h4:hover a.anchor, .show-area h5:hover a.anchor, .show-area h6:hover a.anchor {
+   text-decoration: none; }
+
+.show-area h1 tt, .show-area h1 code {
+   font-size: inherit; }
+
+.show-area h2 tt, .show-area h2 code {
+   font-size: inherit; }
+
+.show-area h3 tt, .show-area h3 code {
+   font-size: inherit; }
+
+.show-area h4 tt, .show-area h4 code {
+   font-size: inherit; }
+
+.show-area h5 tt, .show-area h5 code {
+   font-size: inherit; }
+
+.show-area h6 tt, .show-area h6 code {
+   font-size: inherit; }
+
+.show-area h1 {
+   font-size: 28px;
+   color: black; }
+
+.show-area h2 {
+   font-size: 24px;
+   border-bottom: 1px solid #cccccc;
+   color: black; }
+
+.show-area h3 {
+   font-size: 18px; }
+
+.show-area h4 {
+   font-size: 16px; }
+
+.show-area h5 {
+   font-size: 14px; }
+
+.show-area h6 {
+   color: #777777;
+   font-size: 14px; }
+
+.show-area p, .show-area blockquote, .show-area ul, .show-area ol, .show-area dl, .show-area li, .show-area table, .show-area pre {
+   margin: 15px 0; }
+
+.show-area hr {
+   border: 0 none;
+   color: #cccccc;
+   height: 4px;
+   padding: 0;
+}
+
+.show-area body > h2:first-child {
+   margin-top: 0;
+   padding-top: 0; }
+.show-area body > h1:first-child {
+   margin-top: 0;
+   padding-top: 0; }
+.show-area body > h1:first-child + h2 {
+   margin-top: 0;
+   padding-top: 0; }
+.show-area body > h3:first-child, .show-area body > h4:first-child, .show-area body > h5:first-child, .show-area body > h6:first-child {
+   margin-top: 0;
+   padding-top: 0; }
+
+.show-area a:first-child h1, .show-area a:first-child h2, .show-area a:first-child h3, .show-area a:first-child h4, .show-area a:first-child h5, .show-area a:first-child h6 {
+   margin-top: 0;
+   padding-top: 0; }
+
+.show-area h1 p, .show-area h2 p, .show-area h3 p, .show-area h4 p, .show-area h5 p, .show-area h6 p {
+   margin-top: 0; }
+
+.show-area li p.first {
+   display: inline-block; }
+.show-area li {
+   margin: 0; }
+.show-area ul, .show-area ol {
+   padding-left: 30px; }
+
+.show-area ul :first-child, .show-area ol :first-child {
+   margin-top: 0; }
+
+.show-area dl {
+   padding: 0; }
+.show-area dl dt {
+   font-size: 14px;
+   font-weight: bold;
+   font-style: italic;
+   padding: 0;
+   margin: 15px 0 5px; }
+.show-area dl dt:first-child {
+   padding: 0; }
+.show-area dl dt > :first-child {
+   margin-top: 0; }
+.show-area dl dt > :last-child {
+   margin-bottom: 0; }
+.show-area dl dd {
+   margin: 0 0 15px;
+   padding: 0 15px; }
+.show-area dl dd > :first-child {
+   margin-top: 0; }
+.show-area dl dd > :last-child {
+   margin-bottom: 0; }
+
+.show-area blockquote {
+   border-left: 4px solid #dddddd;
+   padding: 0 15px;
+   color: #777777; }
+.show-area blockquote > :first-child {
+   margin-top: 0; }
+.show-area blockquote > :last-child {
+   margin-bottom: 0; }
+
+.show-area table {
+   padding: 0;border-collapse: collapse; }
+.show-area table tr {
+   border-top: 1px solid #cccccc;
+   background-color: white;
+   margin: 0;
+   padding: 0; }
+.show-area table tr:nth-child(2n) {
+   background-color: #f8f8f8; }
+.show-area table tr th {
+   font-weight: bold;
+   border: 1px solid #cccccc;
+   margin: 0;
+   padding: 6px 13px; }
+.show-area table tr td {
+   border: 1px solid #cccccc;
+   margin: 0;
+   padding: 6px 13px; }
+.show-area table tr th :first-child, .show-area table tr td :first-child {
+   margin-top: 0; }
+.show-area table tr th :last-child, .show-area table tr td :last-child {
+   margin-bottom: 0; }
+
+.show-area img {
+   max-width: 100%; }
+
+.show-area span.frame {
+   display: block;
+   overflow: hidden; }
+.show-area span.frame > span {
+   border: 1px solid #dddddd;
+   display: block;
+   float: left;
+   overflow: hidden;
+   margin: 13px 0 0;
+   padding: 7px;
+   width: auto; }
+.show-area span.frame span img {
+   display: block;
+   float: left; }
+.show-area span.frame span span {
+   clear: both;
+   color: #333333;
+   display: block;
+   padding: 5px 0 0; }
+.show-area span.align-center {
+   display: block;
+   overflow: hidden;
+   clear: both; }
+.show-area span.align-center > span {
+   display: block;
+   overflow: hidden;
+   margin: 13px auto 0;
+   text-align: center; }
+.show-area span.align-center span img {
+   margin: 0 auto;
+   text-align: center; }
+.show-area span.align-right {
+   display: block;
+   overflow: hidden;
+   clear: both; }
+.show-area span.align-right > span {
+   display: block;
+   overflow: hidden;
+   margin: 13px 0 0;
+   text-align: right; }
+.show-area span.align-right span img {
+   margin: 0;
+   text-align: right; }
+.show-area span.float-left {
+   display: block;
+   margin-right: 13px;
+   overflow: hidden;
+   float: left; }
+.show-area span.float-left span {
+   margin: 13px 0 0; }
+.show-area span.float-right {
+   display: block;
+   margin-left: 13px;
+   overflow: hidden;
+   float: right; }
+.show-area span.float-right > span {
+   display: block;
+   overflow: hidden;
+   margin: 13px auto 0;
+   text-align: right; }
+
+.show-area code, .show-area tt {
+   margin: 0 2px;
+   padding: 0 5px;
+   white-space: nowrap;
+   border: 1px solid #eaeaea;
+   background-color: #f8f8f8;
+   border-radius: 3px; }
+
+.show-area pre code {
+   margin: 0;
+   padding: 0;
+   white-space: pre;
+   border: none;
+   background: transparent; }
+
+.show-area .highlight pre {
+   background-color: #f8f8f8;
+   border: 1px solid #cccccc;
+   font-size: 13px;
+   line-height: 19px;
+   overflow: auto;
+   padding: 6px 10px;
+   border-radius: 3px; }
+
+.show-area pre {
+   background-color: #f8f8f8;
+   border: 1px solid #cccccc;
+   font-size: 13px;
+   line-height: 19px;
+   overflow: auto;
+   padding: 6px 10px;
+   border-radius: 3px; }
+.show-area pre code, .show-area pre tt {
+   background-color: transparent;
+   border: none; }
+
+.show-area sup {
+   font-size: 0.83em;
+   vertical-align: super;
+   line-height: 0;
+}
+.show-area * {
+	 -webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+   body {
+      width: 854px;
+      margin:0 auto;
+   }
+}
+@media print {
+	 table, pre {
+		  page-break-inside: avoid;
+	 }
+	 pre {
+		  word-wrap: break-word;
+	 }
+}
