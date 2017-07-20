@@ -23,13 +23,13 @@ import { StudyPageInfo } from '../../../global/single_studypage';
 		]
 })
 export class StudyNewData {
-		public idx:number;
-		public fileState:string = "close";
-		public fileTest:any;
-		public fileList:FileList;
-		public getfileList:any[] = [];
+		private idx:number;
+		private fileState:string = "close";
+		private fileTest:any;
+		private fileList:FileList;
+		private getfileList:any[] = [];
+		private pageState:Boolean = false;
 		
-
 		constructor(
 			public studyPage:StudyPageInfo,
 			public dataService:DataService,
@@ -100,10 +100,12 @@ export class StudyNewData {
 				data=>{
 					if(!data.msg){
 						this.getfileList = data;
+						this.pageState = true;
 					}else{
 						this.getfileList = [{
 							file_name : '등록된 파일이 없습니다.'
-						}]
+						}];
+						this.pageState = true;
 					}
 				}
 			)
